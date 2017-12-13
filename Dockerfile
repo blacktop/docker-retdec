@@ -21,11 +21,6 @@ RUN buildDeps='ca-certificates \
   && apt-get update -q \
   && apt-get install -y $buildDeps bc graphviz upx bash python
 
-RUN groupadd --gid 1000 retdec \
-  && adduser --uid 1000 --gid 1000 --home-dir /usr/share/retdec --no-create-home retdec
-
-USER retdec
-
 RUN echo "===> Install retdec..." \
   && cd /tmp \
   && git clone --recursive https://github.com/avast-tl/retdec.git \
@@ -37,7 +32,7 @@ RUN echo "===> Install retdec..." \
   && make install
 
 ##################
-# RUNNER #########
+# RECDEC #########
 ##################
 
 FROM ubuntu:bionic
@@ -45,12 +40,14 @@ FROM ubuntu:bionic
 LABEL maintainer "https://github.com/blacktop"
 
 RUN groupadd --gid 1000 retdec \
-  && adduser --uid 1000 --gid 1000 --home-dir /usr/share/retdec --no-create-home retdec
+  && useradd -lm --uid 1000 --gid 1000 --home-dir /usr/share/retdec retdec
 
 RUN apt-get update -q \
   && apt-get install -y bc graphviz upx bash python
 
 COPY --from=builder /usr/share/retdec /usr/share/retdec
+
+RUN chown retdec:retdec /usr/share/retdec
 
 WORKDIR /usr/share/retdec
 
