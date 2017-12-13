@@ -1,6 +1,6 @@
-##################
-# BUILDER ########
-##################
+#############################
+# [BUILDER] #################
+#############################
 
 FROM ubuntu:bionic as builder
 
@@ -32,7 +32,7 @@ RUN echo "===> Install retdec..." \
   && make install
 
 ##################
-# RECDEC #########
+# [RECDEC] #######
 ##################
 
 FROM ubuntu:bionic
@@ -46,11 +46,10 @@ RUN apt-get update -q \
   && apt-get install -y bc graphviz upx bash python
 
 COPY --from=builder /usr/share/retdec /usr/share/retdec
-
 RUN chown retdec:retdec /usr/share/retdec
 
 WORKDIR /usr/share/retdec
 
 USER retdec
 
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["scripts/decompile.sh"]
