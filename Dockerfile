@@ -1,35 +1,37 @@
-FROM alpine:3.7
+FROM ubuntu:bionic
 
 LABEL maintainer "https://github.com/blacktop"
 
-RUN apk add --no-cache bash bc upx graphviz
-RUN apk add --no-cache -t .build-deps \
-                          linux-headers \
-                          openssl-dev \
-                          libpcap-dev \
-                          python-dev \
-                          geoip-dev \
-                          zlib-dev \
-                          binutils \
-                          fts-dev \
-                          cmake \
-                          clang \
-                          bison \
-                          perl \
-                          make \
-                          flex \
-                          git \
-                          g++ \
-                          fts \
+RUN buildDeps='ca-certificates \
+               build-essential \
+               libtinfo-dev \
+               zlib1g-dev \
+               pkg-config \
+               autoconf \
+               git-core \
+               libtool \
+               cmake \
+               bison \
+               flex \
+               wget \
+               m4' \
+  && set -x \
+  && apt-get update -q \
+  && apt-get install -y $buildDeps bc graphviz upx bash python --no-install-recommends \
+  && echo "===> Install retdec..." \
   && cd /tmp \
   && git clone --recursive https://github.com/avast-tl/retdec.git \
   && cd retdec \
-  && mkdir build && cd build \
-  && mkdir /retdec \
+  && mkdir build /retdec \
+  && cd build \
   && cmake .. -DCMAKE_INSTALL_PREFIX=/retdec \
   && make \
   && make install \
-  && rm -rf /tmp/* \
-  && apk del --purge .build-deps
+  && echo "===> Clean up unnecessary files..." \
+  && apt-get purge -y --auto-remove $buildDeps $(apt-mark showauto) \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives /tmp/* /var/tmp/*
 
-ENTRYPOINT ["sh"]
+WORKDIR /retdec
+
+ENTRYPOINT ["bash"]
