@@ -32,13 +32,7 @@ $ docker run --rm -v `pwd`:/sample blacktop/retdec FILE
 
 ## Issues
 
-Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/blacktop/docker-retdec/issues/new) and I'll get right on it.
-
-## Contributing
-
-[See all contributors on GitHub](https://github.com/blacktop/docker-retdec/graphs/contributors).
-
-Please update the [CHANGELOG.md](https://github.com/blacktop/docker-retdec/blob/master/CHANGELOG.md) and submit a [Pull Request on GitHub](https://help.github.com/articles/using-pull-requests/).
+Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/blacktop/docker-retdec/issues/new).
 
 ## License
 
