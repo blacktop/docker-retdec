@@ -1,6 +1,12 @@
-FROM ubuntu:bionic
+##################
+# BUILDER ########
+##################
+FROM ubuntu:bionic as builder
 
-LABEL maintainer "https://github.com/blacktop"
+RUN groupadd --gid 1000 retdec && \
+    useradd -lm --uid 1000 --gid 1000 \
+      --home-dir /usr/share/retdec \
+      retdec
 
 RUN buildDeps='ca-certificates \
                build-essential \
@@ -17,21 +23,37 @@ RUN buildDeps='ca-certificates \
                m4' \
   && set -x \
   && apt-get update -q \
-  && apt-get install -y $buildDeps bc graphviz upx bash python --no-install-recommends \
-  && echo "===> Install retdec..." \
+  && apt-get install -y $buildDeps bc graphviz upx bash python
+
+RUN echo "===> Install retdec..." \
   && cd /tmp \
   && git clone --recursive https://github.com/avast-tl/retdec.git \
   && cd retdec \
-  && mkdir build /retdec \
+  && mkdir -p build \
   && cd build \
-  && cmake .. -DCMAKE_INSTALL_PREFIX=/retdec \
+  && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/share/retdec \
   && make \
-  && make install \
-  && echo "===> Clean up unnecessary files..." \
-  && apt-get purge -y --auto-remove $buildDeps $(apt-mark showauto) \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives /tmp/* /var/tmp/*
+  && make install
 
-WORKDIR /retdec
+##################
+# RECDEC #########
+##################
+FROM ubuntu:bionic
+
+LABEL maintainer "https://github.com/blacktop"
+
+RUN groupadd --gid 1000 retdec && \
+    adduser --uid 1000 --gid 1000 \
+      --home-dir /usr/share/retdec --no-create-home \
+      retdec
+
+RUN apt-get update -q \
+  && apt-get install -y bc graphviz upx bash python
+
+COPY --from=builder /usr/share/retdec /usr/share/retdec
+
+WORKDIR /usr/share/retdec
+
+USER retdec
 
 ENTRYPOINT ["bash"]
