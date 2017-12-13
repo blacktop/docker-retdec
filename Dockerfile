@@ -53,3 +53,4 @@ WORKDIR /usr/share/retdec
 USER retdec
 
 ENTRYPOINT ["scripts/decompile.sh"]
+CMD ["--help"]

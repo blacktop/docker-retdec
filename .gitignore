@@ -1,0 +1,3 @@
+
+*.bu
+.circleci/build_num
