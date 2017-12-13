@@ -1,12 +1,8 @@
 ##################
 # BUILDER ########
 ##################
-FROM ubuntu:bionic as builder
 
-RUN groupadd --gid 1000 retdec && \
-    useradd -lm --uid 1000 --gid 1000 \
-      --home-dir /usr/share/retdec \
-      retdec
+FROM ubuntu:bionic as builder
 
 RUN buildDeps='ca-certificates \
                build-essential \
@@ -25,6 +21,11 @@ RUN buildDeps='ca-certificates \
   && apt-get update -q \
   && apt-get install -y $buildDeps bc graphviz upx bash python
 
+RUN groupadd --gid 1000 retdec \
+  && adduser --uid 1000 --gid 1000 --home-dir /usr/share/retdec --no-create-home retdec
+
+USER retdec
+
 RUN echo "===> Install retdec..." \
   && cd /tmp \
   && git clone --recursive https://github.com/avast-tl/retdec.git \
@@ -36,16 +37,15 @@ RUN echo "===> Install retdec..." \
   && make install
 
 ##################
-# RECDEC #########
+# RUNNER #########
 ##################
+
 FROM ubuntu:bionic
 
 LABEL maintainer "https://github.com/blacktop"
 
-RUN groupadd --gid 1000 retdec && \
-    adduser --uid 1000 --gid 1000 \
-      --home-dir /usr/share/retdec --no-create-home \
-      retdec
+RUN groupadd --gid 1000 retdec \
+  && adduser --uid 1000 --gid 1000 --home-dir /usr/share/retdec --no-create-home retdec
 
 RUN apt-get update -q \
   && apt-get install -y bc graphviz upx bash python
