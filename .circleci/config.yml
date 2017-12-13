@@ -25,7 +25,6 @@ jobs:
       - run:
           name: Build application Docker image
           command: |
-            cd $(cat LATEST)
             docker version
             docker build --cache-from=app -t app .
       - run:

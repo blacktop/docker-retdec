@@ -8,7 +8,7 @@ This repository contains a **Dockerfile** of [RetDec](https://github.com/avast-t
 
 ## Dependencies
 
-- [alpine:3.7](https://hub.docker.com/_/alpine/)
+- [ubuntu:bionic](https://hub.docker.com/r/_/ubuntu/)
 
 ## Image Tags
 
@@ -33,10 +33,6 @@ $ docker run --rm -v `pwd`:/sample blacktop/retdec FILE
 ## Issues
 
 Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/blacktop/docker-retdec/issues/new) and I'll get right on it.
-
-## CHANGELOG
-
-See [`CHANGELOG.md`](https://github.com/blacktop/docker-retdec/blob/master/CHANGELOG.md)
 
 ## Contributing
 
