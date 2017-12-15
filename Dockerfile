@@ -50,6 +50,8 @@ RUN chown retdec:retdec /usr/share/retdec
 
 WORKDIR /usr/share/retdec
 
+RUN ls -lah
+
 USER retdec
 
 ENTRYPOINT ["bash"]
