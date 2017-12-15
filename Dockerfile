@@ -52,5 +52,6 @@ WORKDIR /usr/share/retdec
 
 USER retdec
 
-ENTRYPOINT ["scripts/decompile.sh"]
-CMD ["--help"]
+ENTRYPOINT ["bash"]
+# ENTRYPOINT ["scripts/decompile.sh"]
+# CMD ["--help"]
