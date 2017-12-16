@@ -24,8 +24,8 @@ tags:
 
 test: stop-all ## Test docker image
 	@echo "===> Running tests..."
-	@test -f $(MALWARE) || wget https://github.com/maliceio/malice-av/raw/master/samples/$(MALWARE)
-	@docker run --rm -v $(PWD):/samples $(ORG)/$(NAME):$(BUILD) $(MALWARE)
+	@cd samples; test -f $(MALWARE) || wget https://github.com/maliceio/malice-av/raw/master/samples/$(MALWARE)
+	@cd samples; docker run --rm -v $(PWD):/samples $(ORG)/$(NAME):$(BUILD) $(MALWARE)
 
 .PHONY: tar
 tar: ## Export tar of docker image
@@ -68,7 +68,7 @@ ci-size: ci-build
 clean: ## Clean docker image and stop all running containers
 	docker-clean stop
 	docker rmi $(ORG)/$(NAME):$(BUILD) || true
-	rm $(MALWARE) || true
+	rm samples/$(MALWARE) || true
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help:
