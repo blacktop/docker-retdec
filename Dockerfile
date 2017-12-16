@@ -9,17 +9,20 @@ RUN buildDeps='ca-certificates \
                libtinfo-dev \
                zlib1g-dev \
                pkg-config \
+               coreutils \
                autoconf \
                git-core \
+               doxygen \
                libtool \
                cmake \
                bison \
                flex \
                wget \
+               perl \
                m4' \
   && set -ex \
   && apt-get update -q \
-  && apt-get install -y $buildDeps bc graphviz upx bash python
+  && apt-get install -y $buildDeps bc graphviz upx bash python3
 
 RUN echo "===> Install retdec..." \
   && set -ex \
@@ -44,7 +47,7 @@ RUN groupadd --gid 1000 retdec \
   && useradd -lm --uid 1000 --gid 1000 --home-dir /usr/share/retdec retdec
 
 RUN apt-get update -q \
-  && apt-get install -y bc graphviz upx bash python
+  && apt-get install -y bc graphviz upx bash python3
 
 COPY --from=builder /usr/share/retdec /usr/share/retdec
 RUN chown retdec:retdec /usr/share/retdec
@@ -56,4 +59,4 @@ WORKDIR /samples
 USER retdec
 
 ENTRYPOINT ["decompile.sh"]
-# CMD ["--help"]
+CMD ["--help"]
