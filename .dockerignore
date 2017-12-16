@@ -1,0 +1,12 @@
+
+# Ignore .git folder
+.git*
+.gitignore
+
+samples*
+
+LATEST
+LICENSE
+Makefile
+README.md
+README.md.bu
