@@ -53,7 +53,7 @@ RUN apt-get update -q \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives /tmp/* /var/tmp/*
 
 COPY --from=builder /usr/share/retdec /usr/share/retdec
-RUN chown retdec:retdec /usr/share/retdec
+RUN chown retdec:retdec /usr/share/retdec && du -sh /usr/share/retdec
 
 ENV PATH /usr/share/retdec/bin:$PATH
 

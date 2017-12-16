@@ -8,7 +8,7 @@ MALWARE="befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408"
 all: build size test
 
 build: ## Build docker image
-	cd $(BUILD); docker build -t $(ORG)/$(NAME):$(BUILD) .
+	docker build -t $(ORG)/$(NAME):$(BUILD) .
 
 .PHONY: size
 size: build ## Get built image size
