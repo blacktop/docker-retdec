@@ -15,8 +15,8 @@ This repository contains a **Dockerfile** of [RetDec](https://github.com/avast-t
 ```bash
 $ docker images
 
-REPOSITORY          TAG        SIZE   (compressed)
-blacktop/retdec     latest     4.39GB (4.39GB)
+REPOSITORY          TAG        SIZE        TAR
+blacktop/retdec     latest     4.39GB      414MB
 ```
 
 ## Installation
