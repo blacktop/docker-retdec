@@ -1,42 +1,37 @@
-docker-retdec
-=============
+# docker-retdec
 
 [![CircleCI](https://circleci.com/gh/blacktop/docker-retdec.png?style=shield)](https://circleci.com/gh/blacktop/docker-retdec) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/blacktop/retdec.svg)](https://hub.docker.com/r/blacktop/retdec/) [![Docker Pulls](https://img.shields.io/docker/pulls/blacktop/retdec.svg)](https://hub.docker.com/r/blacktop/retdec/) [![Docker Image](https://img.shields.io/badge/docker%20image-4.31GB-blue.svg)](https://hub.docker.com/r/blacktop/retdec/)
 
 This repository contains a **Dockerfile** of [RetDec](https://github.com/avast-tl/retdec) **blacktop/retdec**.
 
----
+--------------------------------------------------------------------------------
 
-Dependencies
-------------
+## Dependencies
 
--	[ubuntu:bionic](https://hub.docker.com/r/_/ubuntu/)
+- [ubuntu:bionic](https://hub.docker.com/r/_/ubuntu/)
 
-Image Tags
-----------
+## Image Tags
 
 ```bash
 $ docker images
 
-REPOSITORY          TAG        SIZE        TAR
-blacktop/retdec     latest     4.31GB      414MB
+REPOSITORY          TAG        SIZE       TAR
+blacktop/retdec     latest     4.31GB     369MB
 ```
 
 > **NOTE:** why is this image so large??? :neutral_face:
 
 ```bash
 retdec@17b1596c8f0c:/$ du -sh /usr/share/retdec/
-"3.9G"	/usr/share/retdec/
+"3.9G"    /usr/share/retdec/
 ```
 
-Installation
-------------
+## Installation
 
-1.	Install [Docker](https://docs.docker.com).
-2.	Download [trusted build](https://hub.docker.com/r/blacktop/retdec/) from public [Docker Registry](https://hub.docker.com): `docker pull blacktop/retdec`
+1. Install [Docker](https://docs.docker.com).
+2. Download [trusted build](https://hub.docker.com/r/blacktop/retdec/) from public [Docker Registry](https://hub.docker.com): `docker pull blacktop/retdec`
 
-Getting Started
----------------
+## Getting Started
 
 ```bash
 $ docker run --rm -v `pwd`:/samples blacktop/retdec
@@ -111,12 +106,10 @@ $ docker run --rm -v `pwd`:/samples blacktop/retdec FILE
 
 #### To see an example output C file look [here](https://github.com/blacktop/docker-retdec/blob/master/samples/befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408.c)
 
-Issues
-------
+## Issues
 
 Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/blacktop/docker-retdec/issues/new).
 
-License
--------
+## License
 
 MIT Copyright (c) 2018 **blacktop**
