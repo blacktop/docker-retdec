@@ -399,11 +399,11 @@ char * g49;
 char * g50;
 int32_t g51 = 0;
 int32_t g52 = 0;
-struct timeval * g53 = NULL;
+struct sockaddr * g53 = NULL;
 int32_t g54 = 0;
 int32_t g55 = 0;
 int32_t g56 = 0;
-struct timeval * g57 = NULL;
+struct sockaddr * g57 = NULL;
 int16_t g58 = 0;
 char * g59;
 int16_t g60 = 0;
@@ -445,8 +445,8 @@ int32_t function_401041(void) {
 // Address range: 0x401047 - 0x401058
 int32_t function_401047(char * a1) {
     int32_t result = (int32_t)a1; // 0x401047
-    unsigned char v1 = *a1; // 0x40104b3
-    int32_t v2 = g4 & -256 | (int32_t)v1; // 0x40104b7
+    unsigned char v1 = *a1; // 0x40104b2
+    int32_t v2 = g4 & -256 | (int32_t)v1; // 0x40104b6
     if (v1 == 0) {
         // 0x401058
         return result;
@@ -1165,10 +1165,15 @@ int32_t function_4019e2(struct sockaddr * a1, int32_t protocol, int32_t a3, int3
     int32_t timeout = v2; // bp-12
     int32_t v3 = g5; // 0x4019f1
     int32_t v4 = v3; // bp-16
+    int32_t v5 = (int32_t)a1;
+    struct sockaddr * v6 = NULL; // bp-20
+    *(int32_t *)&v6 = v5;
     int32_t cp = function_4028cc((char *)a1, v3, v2, v1); // 0x4019f5
-    g4 = (int32_t)(struct timeval *)a1;
+    g4 = (int32_t)v6;
+    v6 = (struct sockaddr *)cp;
     inet_addr((char *)cp);
     g3 = 0;
+    v6 = (struct sockaddr *)protocol;
     int32_t sock_fd = socket(AF_INET, SOCK_STREAM, protocol); // 0x401a14
     g6 = sock_fd;
     int32_t result; // 0x401baa
@@ -1178,75 +1183,98 @@ int32_t function_4019e2(struct sockaddr * a1, int32_t protocol, int32_t a3, int3
     } else {
         // 0x401a25
         v4 = 1;
+        v6 = (struct sockaddr *)&v4;
         ioctlsocket(sock_fd, -0x7ffb9982, &v4);
-        int32_t v5 = g3; // 0x401a3c
+        int32_t v7 = g3; // 0x401a3c
         timeout = 60;
         char * writefds = (char *)1; // bp-300
-        if ((int32_t)g59 == v5) {
+        int32_t v8;
+        if ((int32_t)g59 == v7) {
             // 0x401a6e
             g5 = -0x7ffb9982;
+            v8 = (int32_t)v6;
             // branch -> 0x401a74
         } else {
             // 0x401a5e
+            v6 = (struct sockaddr *)&g57;
             g5 = inet_addr((char *)1);
+            v8 = g58;
             // branch -> 0x401a74
         }
         // 0x401a74
+        v6 = (struct sockaddr *)v8;
+        v6 = (struct sockaddr *)16;
         connect((int32_t)htons(2), (struct sockaddr *)g5, g6);
+        v6 = (struct sockaddr *)&timeout;
         g4 = (int32_t)&writefds;
         struct fd_set * readfds = (struct fd_set *)g3; // 0x401aa2
-        uint32_t v6 = select(g6 + 1, readfds, (struct fd_set *)&writefds, readfds, (struct timeval *)&timeout); // 0x401aa6
-        if (v6 >= 1) {
+        uint32_t v9 = select(g6 + 1, readfds, (struct fd_set *)&writefds, readfds, (struct timeval *)&timeout); // 0x401aa6
+        int32_t v10; // 0x401b28
+        if (v9 >= 1) {
             // 0x401ab0
+            v6 = (struct sockaddr *)a5;
             int32_t str; // bp-8492
-            function_40267d((char *)(0x10000 * (int32_t)&str / 0x10000), (int32_t)a1, protocol, a3, a8, a5);
+            function_40267d((char *)(0x10000 * (int32_t)&str / 0x10000), v5, protocol, a3, a8, a5);
             int32_t len = strlen((char *)&str); // 0x401ad2
             memcpy((int32_t *)(len - 0x2128 + g2), (int32_t *)a4, a5);
             int32_t length = len + a5; // 0x401af2
             g5 = length;
-            send(g6, (char *)&str, length, g3);
+            int32_t flags = g3; // 0x401afa
+            v6 = (struct sockaddr *)flags;
+            send(g6, (char *)&str, length, flags);
             if (a8 != 1) {
-                int32_t v7 = g6; // 0x401b33
-                int32_t v8 = function_40277e(v7); // 0x401b34
-                g4 = (int32_t)(struct timeval *)v7;
-                if (v8 != -1) {
+                int32_t v11 = g6; // 0x401b33
+                v6 = (struct sockaddr *)v11;
+                int32_t v12 = function_40277e(v11); // 0x401b34
+                g4 = (int32_t)v6;
+                int32_t v13; // 0x401b9d
+                if (v12 != -1) {
                     // 0x401b3f
-                    if (v8 < 0x3e800) {
-                        int32_t v9 = 0; // edi
+                    if (v12 < 0x3e800) {
+                        int32_t v14 = 0; // edi
                         // branch -> 0x401b48
+                        int32_t v15; // 0x401b8c
                         while (true) {
+                            // 0x401b48
+                            v6 = (struct sockaddr *)&timeout;
                             struct fd_set * writefds2 = (struct fd_set *)g3; // 0x401b4c
-                            int32_t v10 = select(g6 + 1, (struct fd_set *)&writefds, writefds2, writefds2, (struct timeval *)&timeout); // 0x401b59
-                            if (v10 < 1) {
+                            int32_t v16 = select(g6 + 1, (struct fd_set *)&writefds, writefds2, writefds2, (struct timeval *)&timeout); // 0x401b59
+                            if (v16 < 1) {
                                 // 0x401b28
-                                closesocket(g6);
+                                v10 = g6;
+                                v6 = (struct sockaddr *)v10;
+                                closesocket(v10);
                                 result = g3;
                                 // branch -> 0x401ba6
                                 // 0x401ba6
                                 g5 = v4;
                                 g6 = timeout;
-                                g3 = v5;
+                                g3 = v7;
                                 return result;
                             }
-                            int32_t v11 = v9; // 0x401b69
-                            int32_t v12 = recv(g6, (char *)(v11 + a6), 0x3e800 - v11, g3); // 0x401b73
-                            if (v12 == -1) {
+                            // 0x401b63
+                            v6 = (struct sockaddr *)g3;
+                            int32_t v17 = v14; // 0x401b69
+                            int32_t v18 = recv(g6, (char *)(v17 + a6), 0x3e800 - v17, g3); // 0x401b73
+                            if (v18 == -1) {
                                 // 0x401b9d
-                                closesocket(g6);
+                                v13 = g6;
+                                v6 = (struct sockaddr *)v13;
+                                closesocket(v13);
                                 // branch -> 0x401ba4
                                 // 0x401ba4
                                 // branch -> 0x401ba6
                                 // 0x401ba6
                                 g5 = v4;
                                 g6 = timeout;
-                                g3 = v5;
+                                g3 = v7;
                                 return 0;
                             }
                             // 0x401b7e
-                            if (v12 != g3) {
-                                int32_t v13 = v9 + v12; // 0x401b82
-                                v9 = v13;
-                                if (v13 >= 0x3e800) {
+                            if (v18 != g3) {
+                                int32_t v19 = v14 + v18; // 0x401b82
+                                v14 = v19;
+                                if (v19 >= 0x3e800) {
                                     // break -> 0x401b8c
                                     break;
                                 }
@@ -1254,54 +1282,69 @@ int32_t function_4019e2(struct sockaddr * a1, int32_t protocol, int32_t a3, int3
                                 continue;
                             }
                             // 0x401b8c
-                            closesocket(g6);
-                            *(int32_t *)a7 = v9;
+                            v15 = g6;
+                            v6 = (struct sockaddr *)v15;
+                            closesocket(v15);
+                            v6 = (struct sockaddr *)1;
+                            *(int32_t *)a7 = v14;
                             // branch -> 0x401ba6
                             // 0x401ba6
                             g5 = v4;
                             g6 = timeout;
-                            g3 = v5;
-                            return (int32_t)(struct timeval *)1;
+                            g3 = v7;
+                            return (int32_t)v6;
                         }
                         // 0x401b8c
-                        closesocket(g6);
-                        *(int32_t *)a7 = v9;
+                        v15 = g6;
+                        v6 = (struct sockaddr *)v15;
+                        closesocket(v15);
+                        v6 = (struct sockaddr *)1;
+                        *(int32_t *)a7 = v14;
                         // branch -> 0x401ba6
                         // 0x401ba6
                         g5 = v4;
                         g6 = timeout;
-                        g3 = v5;
-                        return (int32_t)(struct timeval *)1;
+                        g3 = v7;
+                        return (int32_t)v6;
                     }
                 }
                 // 0x401b9d
-                closesocket(g6);
+                v13 = g6;
+                v6 = (struct sockaddr *)v13;
+                closesocket(v13);
                 // branch -> 0x401ba4
                 // 0x401ba4
                 result = 0;
                 // branch -> 0x401ba6
             } else {
+                // 0x401b0a
+                v6 = (struct sockaddr *)&timeout;
                 struct fd_set * readfds2 = (struct fd_set *)g3; // 0x401b14
-                uint32_t v14 = select(g6 + 1, readfds2, (struct fd_set *)&writefds, readfds2, (struct timeval *)&timeout); // 0x401b1b
-                if (v14 >= 1) {
+                uint32_t v20 = select(g6 + 1, readfds2, (struct fd_set *)&writefds, readfds2, (struct timeval *)&timeout); // 0x401b1b
+                if (v20 >= 1) {
                     // 0x401b25
+                    v6 = (struct sockaddr *)1;
                     g3 = 1;
                     // branch -> 0x401b28
                 }
                 // 0x401b28
-                closesocket(g6);
+                v10 = g6;
+                v6 = (struct sockaddr *)v10;
+                closesocket(v10);
                 result = g3;
                 // branch -> 0x401ba6
             }
             // 0x401ba6
             g5 = v4;
             g6 = timeout;
-            g3 = v5;
+            g3 = v7;
             return result;
         }
         // 0x401b28
-        closesocket(g6);
-        v1 = v5;
+        v10 = g6;
+        v6 = (struct sockaddr *)v10;
+        closesocket(v10);
+        v1 = v7;
         result = g3;
         // branch -> 0x401ba6
     }
@@ -2528,20 +2571,20 @@ int32_t function_4028eb(void) {
     g5 = 0;
     g6 = 1;
     int32_t timeout; // bp-16
-    struct timeval * writefds; // bp-296
+    struct sockaddr * writefds; // bp-296
     int32_t addr; // bp-32
     int32_t lpThreadId; // bp-36
-    struct timeval * v4; // bp-8
+    struct sockaddr * v4; // bp-8
     int32_t result;
     int32_t readfds; // 0x402a33
-    int32_t v5; // 0x402a5e
-    int32_t v6; // 0x402a6e
+    int32_t hObject; // 0x402a5e
+    int32_t v5; // 0x402a6e
     int32_t lpThreadAttributes; // 0x402a7f
-    int32_t v7; // 0x402a3d
+    int32_t v6; // 0x402a3d
     int32_t * threadHandle; // 0x402a81
-    int32_t v8; // 0x402a81
-    int32_t v9; // 0x402a4d
-    int32_t v10; // 0x402a63
+    int32_t v7; // 0x402a81
+    int32_t v8; // 0x402a4d
+    int32_t v9; // 0x402a63
     int32_t sock_fd; // 0x4029b4
     if (g52 != 0) {
         // 0x4028eb
@@ -2559,17 +2602,17 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x4029c8
-        v4 = (struct timeval *)g6;
+        v4 = (struct sockaddr *)g6;
         ioctlsocket(sock_fd, -0x7ffb9982, (int32_t *)&v4);
         timeout = 60;
-        writefds = (struct timeval *)g6;
+        writefds = (struct sockaddr *)g6;
         addr = 2;
         htons(g58);
         inet_addr((char *)&g57);
         connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
         readfds = g5;
-        v7 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
-        if (v7 < 1) {
+        v6 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
+        if (v6 < 1) {
             // 0x402a90
             closesocket((int32_t)g34);
             // branch -> 0x402a9c
@@ -2582,28 +2625,28 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x402a47
-        g53 = (struct timeval *)g6;
+        g53 = (struct sockaddr *)g6;
         // branch -> 0x402a4d
         // 0x402a4d
-        v9 = g5;
-        v10 = v9;
-        if (g52 != v9) {
+        v8 = g5;
+        v9 = v8;
+        if (g52 != v8) {
             // 0x402a5e
-            v5 = g67;
-            lpThreadAttributes = v10;
-            if (v5 != v10) {
+            hObject = g67;
+            lpThreadAttributes = v9;
+            if (hObject != v9) {
                 // 0x402a67
-                CloseHandle(&((struct timeval *)v5)->e0);
-                v6 = g5;
-                g67 = v6;
-                lpThreadAttributes = v6;
+                CloseHandle((int32_t *)hObject);
+                v5 = g5;
+                g67 = v5;
+                lpThreadAttributes = v5;
                 // branch -> 0x402a74
             }
             // 0x402a74
             threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v8 = (int32_t)threadHandle;
-            g67 = v8;
-            if (v8 != g5) {
+            v7 = (int32_t)threadHandle;
+            g67 = v7;
+            if (v7 != g5) {
                 // 0x402aa0
                 result = g6;
                 // branch -> 0x402aa2
@@ -2632,25 +2675,25 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x402a55
-        v10 = g5;
+        v9 = g5;
         // branch -> 0x402a5e
         // 0x402a5e
-        v5 = g67;
-        lpThreadAttributes = v10;
-        if (v5 != v10) {
+        hObject = g67;
+        lpThreadAttributes = v9;
+        if (hObject != v9) {
             // 0x402a67
-            CloseHandle(&((struct timeval *)v5)->e0);
-            v6 = g5;
-            g67 = v6;
-            lpThreadAttributes = v6;
+            CloseHandle((int32_t *)hObject);
+            v5 = g5;
+            g67 = v5;
+            lpThreadAttributes = v5;
             // branch -> 0x402a74
         }
         // 0x402a74
         lpThreadId = 0;
         threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-        v8 = (int32_t)threadHandle;
-        g67 = v8;
-        if (v8 != g5) {
+        v7 = (int32_t)threadHandle;
+        g67 = v7;
+        if (v7 != g5) {
             // 0x402aa0
             result = g6;
             // branch -> 0x402aa2
@@ -2682,36 +2725,36 @@ int32_t function_4028eb(void) {
         return 0;
     }
     // 0x40292c
-    v4 = (struct timeval *)g6;
+    v4 = (struct sockaddr *)g6;
     ioctlsocket(sock_fd2, -0x7ffb9982, (int32_t *)&v4);
     timeout = 60;
-    writefds = (struct timeval *)g6;
+    writefds = (struct sockaddr *)g6;
     addr = 2;
     htons(81);
     connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
     int32_t readfds2 = g5; // 0x40298c
-    int32_t v11 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds2, (struct fd_set *)&writefds, (struct fd_set *)readfds2, (struct timeval *)&timeout); // 0x402996
-    if (v11 >= 1) {
+    int32_t v10 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds2, (struct fd_set *)&writefds, (struct fd_set *)readfds2, (struct timeval *)&timeout); // 0x402996
+    if (v10 >= 1) {
         // 0x402a4d
-        v9 = g5;
-        v10 = v9;
-        if (g52 != v9) {
+        v8 = g5;
+        v9 = v8;
+        if (g52 != v8) {
             // 0x402a5e
-            v5 = g67;
-            lpThreadAttributes = v10;
-            if (v5 != v10) {
+            hObject = g67;
+            lpThreadAttributes = v9;
+            if (hObject != v9) {
                 // 0x402a67
-                CloseHandle(&((struct timeval *)v5)->e0);
-                v6 = g5;
-                g67 = v6;
-                lpThreadAttributes = v6;
+                CloseHandle((int32_t *)hObject);
+                v5 = g5;
+                g67 = v5;
+                lpThreadAttributes = v5;
                 // branch -> 0x402a74
             }
             // 0x402a74
             threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v8 = (int32_t)threadHandle;
-            g67 = v8;
-            if (v8 != g5) {
+            v7 = (int32_t)threadHandle;
+            g67 = v7;
+            if (v7 != g5) {
                 // 0x402aa0
                 result = g6;
                 // branch -> 0x402aa2
@@ -2740,24 +2783,24 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x402a55
-        v10 = g5;
+        v9 = g5;
         // branch -> 0x402a5e
         // 0x402a5e
-        v5 = g67;
-        lpThreadAttributes = v10;
-        if (v5 != v10) {
+        hObject = g67;
+        lpThreadAttributes = v9;
+        if (hObject != v9) {
             // 0x402a67
-            CloseHandle(&((struct timeval *)v5)->e0);
-            v6 = g5;
-            g67 = v6;
-            lpThreadAttributes = v6;
+            CloseHandle((int32_t *)hObject);
+            v5 = g5;
+            g67 = v5;
+            lpThreadAttributes = v5;
             // branch -> 0x402a74
         }
         // 0x402a74
         threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-        v8 = (int32_t)threadHandle;
-        g67 = v8;
-        if (v8 != g5) {
+        v7 = (int32_t)threadHandle;
+        g67 = v7;
+        if (v7 != g5) {
             // 0x402aa0
             result = g6;
             // branch -> 0x402aa2
@@ -2784,17 +2827,17 @@ int32_t function_4028eb(void) {
         g34 = (struct fd_set *)sock_fd;
         if (sock_fd != -1) {
             // 0x4029c8
-            v4 = (struct timeval *)g6;
+            v4 = (struct sockaddr *)g6;
             ioctlsocket(sock_fd, -0x7ffb9982, (int32_t *)&v4);
             timeout = 60;
-            writefds = (struct timeval *)g6;
+            writefds = (struct sockaddr *)g6;
             addr = 2;
             htons(g58);
             inet_addr((char *)&g57);
             connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
             readfds = g5;
-            v7 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
-            if (v7 < 1) {
+            v6 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
+            if (v6 < 1) {
                 // 0x402a90
                 closesocket((int32_t)g34);
                 // branch -> 0x402a9c
@@ -2807,28 +2850,28 @@ int32_t function_4028eb(void) {
                 return 0;
             }
             // 0x402a47
-            g53 = (struct timeval *)g6;
+            g53 = (struct sockaddr *)g6;
             // branch -> 0x402a4d
             // 0x402a4d
-            v9 = g5;
-            v10 = v9;
-            if (g52 != v9) {
+            v8 = g5;
+            v9 = v8;
+            if (g52 != v8) {
                 // 0x402a5e
-                v5 = g67;
-                lpThreadAttributes = v10;
-                if (v5 != v10) {
+                hObject = g67;
+                lpThreadAttributes = v9;
+                if (hObject != v9) {
                     // 0x402a67
-                    CloseHandle(&((struct timeval *)v5)->e0);
-                    v6 = g5;
-                    g67 = v6;
-                    lpThreadAttributes = v6;
+                    CloseHandle((int32_t *)hObject);
+                    v5 = g5;
+                    g67 = v5;
+                    lpThreadAttributes = v5;
                     // branch -> 0x402a74
                 }
                 // 0x402a74
                 threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-                v8 = (int32_t)threadHandle;
-                g67 = v8;
-                if (v8 != g5) {
+                v7 = (int32_t)threadHandle;
+                g67 = v7;
+                if (v7 != g5) {
                     // 0x402aa0
                     result = g6;
                     // branch -> 0x402aa2
@@ -2857,24 +2900,24 @@ int32_t function_4028eb(void) {
                 return 0;
             }
             // 0x402a55
-            v10 = g5;
+            v9 = g5;
             // branch -> 0x402a5e
             // 0x402a5e
-            v5 = g67;
-            lpThreadAttributes = v10;
-            if (v5 != v10) {
+            hObject = g67;
+            lpThreadAttributes = v9;
+            if (hObject != v9) {
                 // 0x402a67
-                CloseHandle(&((struct timeval *)v5)->e0);
-                v6 = g5;
-                g67 = v6;
-                lpThreadAttributes = v6;
+                CloseHandle((int32_t *)hObject);
+                v5 = g5;
+                g67 = v5;
+                lpThreadAttributes = v5;
                 // branch -> 0x402a74
             }
             // 0x402a74
             threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v8 = (int32_t)threadHandle;
-            g67 = v8;
-            if (v8 != g5) {
+            v7 = (int32_t)threadHandle;
+            g67 = v7;
+            if (v7 != g5) {
                 // 0x402aa0
                 result = g6;
                 // branch -> 0x402aa2
@@ -3155,7 +3198,7 @@ int32_t function_402f2f(char * a1, int32_t result) {
     int32_t result2 = result; // edi
     int32_t v2 = 0; // esi
     int32_t v3 = 0; // ebx
-    int32_t v4; // 0x402f4522
+    int32_t v4; // 0x402f4521
     if (result > 0x2000) {
         // 0x402f45
         result2 = 0x2000;
@@ -3174,7 +3217,7 @@ int32_t function_402f2f(char * a1, int32_t result) {
     int32_t v6 = v4; // 0x402f49
     // branch -> 0x402f49
     while (true) {
-        int32_t sock = *(int32_t *)&g34; // 0x402f572
+        int32_t sock = *(int32_t *)&g34; // 0x402f571
         int32_t v7 = recv(sock, (char *)(v5 + (int32_t)a1), v6 - v5, 0); // 0x402f5d
         if (v7 < 1) {
             // 0x402f67
@@ -5022,7 +5065,6 @@ int32_t function_404ba8(int16_t * str2, int32_t a2) {
     int32_t v1 = (int32_t)str2; // 0x404bb1
     char * v2 = (char *)g5; // bp-1112
     struct hostent * v3 = gethostbyname((char *)(v1 + 2)); // 0x404bbb
-    int16_t * v4; // bp-1124
     int32_t str; // bp-76
     if (v3 == NULL) {
         // 0x404be9
@@ -5030,14 +5072,13 @@ int32_t function_404ba8(int16_t * str2, int32_t a2) {
         strcpy((char *)&str, (char *)&g68);
         // branch -> 0x404bf9
     } else {
-        int32_t v5 = *(int32_t *)((int32_t)v3 + 12); // 0x404bcb
+        int32_t v4 = *(int32_t *)((int32_t)v3 + 12); // 0x404bcb
         in = (struct in_addr){
             .e0 = 0
         };
-        in.e0 = *(int32_t *)*(int32_t *)v5;
-        char * v6 = inet_ntoa(in); // 0x404bd2
-        v4 = (int16_t *)&str;
-        sprintf((char *)&str, "[%s:", v6);
+        in.e0 = *(int32_t *)*(int32_t *)v4;
+        char * v5 = inet_ntoa(in); // 0x404bd2
+        sprintf((char *)&str, "[%s:", v5);
         // branch -> 0x404bf9
     }
     // 0x404bf9
@@ -5047,65 +5088,59 @@ int32_t function_404ba8(int16_t * str2, int32_t a2) {
         // branch -> 0x404c0f
     }
     int32_t * moduleHandle = LoadLibraryA("Netapi32"); // 0x404c14
-    int16_t * v7; // bp-1128
+    int16_t * v6; // bp-1128
+    char * v7; // bp-1136
+    char * v8;
     int32_t chars_printed; // 0x404ddd
-    int16_t * v8; // 0x404ddb
     if (moduleHandle != NULL) {
         int32_t (*func)() = GetProcAddress(moduleHandle, "NetServerGetInfo"); // 0x404c3d
         if (func != NULL) {
             int32_t CodePage = 0; // edi
-            int16_t * v9; // bp-1120
+            char * v9;
             int16_t * format2; // 0x404dd4
             if (GetProcAddress(moduleHandle, "NetApiBufferFree") == NULL) {
                 // 0x404dc8
-                v9 = (int16_t *)"%sAddrErr]";
+                v9 = v8;
                 format2 = (int16_t *)"%sAddrErr]";
                 // branch -> 0x404dd1
             } else {
                 int32_t format = 0; // bp-588
-                *(int32_t *)&v4 = v1;
-                int32_t cbMultiByte = strlen((char *)str2) + 1; // 0x404c80
-                v4 = (int16_t *)cbMultiByte;
-                v7 = NULL;
-                *(int32_t *)&v7 = v1;
+                int32_t len = strlen((char *)str2); // 0x404c7a
+                v6 = NULL;
+                *(int32_t *)&v6 = v1;
                 int16_t * lpWideCharStr = (int16_t *)&format; // 0x404c87
-                MultiByteToWideChar(CodePage, CodePage, (char *)str2, cbMultiByte, lpWideCharStr, (int32_t)(struct timeval *)512);
+                MultiByteToWideChar(CodePage, CodePage, (char *)str2, len + 1, lpWideCharStr, (int32_t)(struct timeval *)512);
                 int32_t wstr = 0; // bp-1100
-                v4 = (int16_t *)&wstr;
                 swprintf((int16_t *)&wstr, (int32_t)L"%s", (int16_t *)&format);
-                v9 = (int16_t *)101;
-                v4 = (int16_t *)&wstr;
-                v7 = (int16_t *)0x404cb9;
+                v6 = (int16_t *)0x404cb9;
                 __pseudo_call((int32_t)func);
+                v7 = "%sErr]";
+                v9 = (char *)&str;
                 format2 = (int16_t *)101;
                 // branch -> 0x404dd1
             }
             // 0x404dd1
-            v4 = (int16_t *)a2;
             // branch -> 0x404dd9
             // 0x404dd9
             g5 = (int32_t)v7;
-            g6 = (int32_t)v4;
-            g3 = (int32_t)v9;
+            g6 = (int32_t)v9;
+            g3 = (int32_t)v6;
             return sprintf(str3, (char *)format2);
         }
         // 0x404c46
         // branch -> 0x404dd1
         // 0x404dd1
-        v4 = (int16_t *)a2;
         chars_printed = sprintf(str3, (char *)(int16_t *)"%sNetServerGetInfo");
-        v8 = (int16_t *)"%sNetServerGetInfo";
         // branch -> 0x404dd9
     } else {
         // 0x404c20
         chars_printed = sprintf(str3, "%sLibErr]", v2);
-        v8 = (int16_t *)a2;
         // branch -> 0x404dd9
     }
     // 0x404dd9
     g5 = (int32_t)v7;
-    g6 = (int32_t)v4;
-    g3 = (int32_t)v8;
+    g6 = (int32_t)v8;
+    g3 = (int32_t)v6;
     return chars_printed;
 }
 
@@ -5778,4 +5813,4 @@ int32_t function_405bf4(void) {
 // Detected compiler/packer: microsoft linker (6.0)
 // Detected language: Visual C++
 // Detected functions: 88
-// Decompilation date: 2017-12-16 01:29:35
+// Decompilation date: 2017-12-16 03:00:27

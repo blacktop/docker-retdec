@@ -22,7 +22,7 @@ RUN buildDeps='ca-certificates \
                m4' \
   && set -ex \
   && apt-get update -q \
-  && apt-get install -y $buildDeps bc graphviz upx bash python3 --no-install-recommends
+  && apt-get install -y $buildDeps bc graphviz upx bash python3
 
 RUN echo "===> Install retdec..." \
   && set -ex \
