@@ -32,7 +32,7 @@ tar: ## Export tar of docker image
 	docker save $(ORG)/$(NAME):$(BUILD) -o $(NAME).tar
 
 .PHONY: push
-push: build ## Push docker image to docker registry
+push: ## Push docker image to docker registry
 	@echo "===> Pushing $(ORG)/$(NAME):$(BUILD) to docker hub..."
 	@docker push $(ORG)/$(NAME):$(BUILD)
 
