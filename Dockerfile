@@ -17,22 +17,23 @@ RUN buildDeps='ca-certificates \
                flex \
                wget \
                m4' \
-  && set -x \
+  && set -ex \
   && apt-get update -q \
   && apt-get install -y $buildDeps bc graphviz upx bash python
 
 RUN echo "===> Install retdec..." \
+  && set -ex \
   && cd /tmp \
   && git clone --recursive https://github.com/avast-tl/retdec.git \
   && cd retdec \
   && mkdir -p build \
   && cd build \
   && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/share/retdec \
-  && make \
+  && make -j "$(grep -c ^processor /proc/cpuinfo)" \
   && make install
 
 ##################
-# [RECDEC] #######
+# [RUNNER] #######
 ##################
 
 FROM ubuntu:bionic
@@ -48,12 +49,11 @@ RUN apt-get update -q \
 COPY --from=builder /usr/share/retdec /usr/share/retdec
 RUN chown retdec:retdec /usr/share/retdec
 
-WORKDIR /usr/share/retdec
+ENV PATH /usr/share/retdec/bin:$PATH
 
-RUN ls -lah
+WORKDIR /samples
 
 USER retdec
 
-ENTRYPOINT ["bash"]
-# ENTRYPOINT ["scripts/decompile.sh"]
+ENTRYPOINT ["decompile.sh"]
 # CMD ["--help"]

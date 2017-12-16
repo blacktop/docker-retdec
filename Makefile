@@ -3,7 +3,7 @@ ORG=blacktop
 NAME=retdec
 BUILD ?=$(shell cat LATEST)
 LATEST ?=$(shell cat LATEST)
-
+MALWARE="befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408"
 
 all: build size test
 
@@ -24,6 +24,8 @@ tags:
 
 test: stop-all ## Test docker image
 	@echo "===> Running tests..."
+	@test -f $(MALWARE) || wget https://github.com/maliceio/malice-av/raw/master/samples/$(MALWARE)
+	@docker run --rm -v $(PWD):/samples $(ORG)/$(NAME):$(BUILD) $(MALWARE)
 
 .PHONY: tar
 tar: ## Export tar of docker image
@@ -40,7 +42,7 @@ run: stop ## Run docker container
 
 .PHONY: ssh
 ssh: ## SSH into docker image
-	@docker run --init -it --rm --entrypoint=sh $(ORG)/$(NAME):$(BUILD)
+	@docker run --init -it --rm --entrypoint=bash $(ORG)/$(NAME):$(BUILD)
 
 .PHONY: stop
 stop: ## Kill running docker containers
@@ -66,6 +68,7 @@ ci-size: ci-build
 clean: ## Clean docker image and stop all running containers
 	docker-clean stop
 	docker rmi $(ORG)/$(NAME):$(BUILD) || true
+	rm $(MALWARE) || true
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help:
