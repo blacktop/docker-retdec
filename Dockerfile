@@ -32,7 +32,7 @@ RUN echo "===> Install retdec..." \
   && mkdir -p build \
   && cd build \
   && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/share/retdec \
-  && make -j "$(grep -c ^processor /proc/cpuinfo)" \
+  && make -j `nproc` \
   && make install
 
 ##################
