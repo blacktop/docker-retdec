@@ -30,6 +30,12 @@ blacktop/retdec     latest     4.39GB      414MB
 $ docker run --rm -v `pwd`:/samples blacktop/retdec FILE
 ```
 
+To see an example output C file look [here](https://github.com/blacktop/docker-retdec/blob/master/samples/befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408.c)
+
+```bash
+$ docker run --rm -v `pwd`:/samples blacktop/retdec --help
+```
+
 ```
 Decompiles the given file into the selected target high-level language.
 
