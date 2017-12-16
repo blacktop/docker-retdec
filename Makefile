@@ -25,7 +25,7 @@ tags:
 test: stop-all ## Test docker image
 	@echo "===> Running tests..."
 	@cd samples; test -f $(MALWARE) || wget https://github.com/maliceio/malice-av/raw/master/samples/$(MALWARE)
-	@cd samples; docker run --rm -v $(PWD):/samples $(ORG)/$(NAME):$(BUILD) $(MALWARE)
+	@cd samples; docker run --rm -v `pwd`:/samples $(ORG)/$(NAME):$(BUILD) --cleanup $(MALWARE)
 
 .PHONY: tar
 tar: ## Export tar of docker image
