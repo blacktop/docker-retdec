@@ -22,7 +22,7 @@ RUN buildDeps='ca-certificates \
                m4' \
   && set -ex \
   && apt-get update -q \
-  && apt-get install -y $buildDeps bc graphviz upx bash python3
+  && apt-get install -y $buildDeps bc graphviz upx bash python3 --no-install-recommends
 
 RUN echo "===> Install retdec..." \
   && set -ex \
@@ -47,7 +47,10 @@ RUN groupadd --gid 1000 retdec \
   && useradd -lm --uid 1000 --gid 1000 --home-dir /usr/share/retdec retdec
 
 RUN apt-get update -q \
-  && apt-get install -y bc graphviz upx bash python3
+  && apt-get install -y bc graphviz upx bash python3 --no-install-recommends \
+  && echo "===> Clean up unnecessary files..." \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives /tmp/* /var/tmp/*
 
 COPY --from=builder /usr/share/retdec /usr/share/retdec
 RUN chown retdec:retdec /usr/share/retdec
