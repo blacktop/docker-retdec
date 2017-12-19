@@ -98,7 +98,7 @@ Options:
                --no-default-static-signatures         No default signatures for statically linked code analysis are loaded (options static-code-sigfile/archive are still available).
 ```
 
-### Decompile some malware
+### Decompile some [malware](https://www.virustotal.com/#/file/befb88b89c2eb401900a68e9f5b78764203f2b48264fcc3f7121bf04a57fd408/behavior)
 
 ```bash
 $ docker run --rm -v `pwd`:/samples blacktop/retdec FILE
