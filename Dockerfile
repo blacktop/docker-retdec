@@ -3,7 +3,7 @@
 #############################
 
 FROM ubuntu:bionic as builder
-
+       
 RUN buildDeps='ca-certificates \
                build-essential \
                libtinfo-dev \
@@ -12,6 +12,7 @@ RUN buildDeps='ca-certificates \
                coreutils \
                autoconf \
                git-core \
+               automake \
                doxygen \
                libtool \
                cmake \
