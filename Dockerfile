@@ -3,7 +3,7 @@
 #############################
 
 FROM ubuntu:bionic as builder
-       
+
 RUN buildDeps='ca-certificates \
                build-essential \
                libtinfo-dev \
@@ -62,5 +62,5 @@ WORKDIR /samples
 
 USER retdec
 
-ENTRYPOINT ["decompile.sh"]
+ENTRYPOINT ["retdec-decompiler.sh"]
 CMD ["--help"]
