@@ -1,14 +1,14 @@
 # docker-retdec
 
-[![CircleCI](https://circleci.com/gh/blacktop/docker-retdec.png?style=shield)](https://circleci.com/gh/blacktop/docker-retdec) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/blacktop/retdec.svg)](https://hub.docker.com/r/blacktop/retdec/) [![Docker Pulls](https://img.shields.io/docker/pulls/blacktop/retdec.svg)](https://hub.docker.com/r/blacktop/retdec/) [![Docker Image](https://img.shields.io/badge/docker%20image-4.31GB-blue.svg)](https://hub.docker.com/r/blacktop/retdec/)
+[![CircleCI](https://circleci.com/gh/blacktop/docker-retdec.png?style=shield)](https://circleci.com/gh/blacktop/docker-retdec) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/blacktop/retdec.svg)](https://hub.docker.com/r/blacktop/retdec/) [![Docker Pulls](https://img.shields.io/docker/pulls/blacktop/retdec.svg)](https://hub.docker.com/r/blacktop/retdec/) [![Docker Image](https://img.shields.io/badge/docker%20image-4.29GB-blue.svg)](https://hub.docker.com/r/blacktop/retdec/)
 
 This repository contains a **Dockerfile** of [RetDec](https://github.com/avast-tl/retdec) **blacktop/retdec**.
 
---------------------------------------------------------------------------------
+---
 
 ## Dependencies
 
-- [ubuntu:bionic](https://hub.docker.com/r/_/ubuntu/)
+* [ubuntu:bionic](https://hub.docker.com/r/_/ubuntu/)
 
 ## Image Tags
 
@@ -16,20 +16,21 @@ This repository contains a **Dockerfile** of [RetDec](https://github.com/avast-t
 $ docker images
 
 REPOSITORY          TAG        SIZE       TAR
-blacktop/retdec     latest     4.31GB     369MB
+blacktop/retdec     latest     4.31GB     4.29GB
 ```
 
 > **NOTE:** why is this image so large??? :neutral_face:
 
 ```bash
 retdec@17b1596c8f0c:/$ du -sh /usr/share/retdec/
+
 "3.9G"    /usr/share/retdec/
 ```
 
 ## Installation
 
-1. Install [Docker](https://docs.docker.com).
-2. Download [trusted build](https://hub.docker.com/r/blacktop/retdec/) from public [Docker Registry](https://hub.docker.com): `docker pull blacktop/retdec`
+1.  Install [Docker](https://docs.docker.com).
+2.  Download [trusted build](https://hub.docker.com/r/blacktop/retdec/) from public [Docker Registry](https://hub.docker.com): `docker pull blacktop/retdec`
 
 ## Getting Started
 

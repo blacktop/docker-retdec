@@ -312,13 +312,13 @@ int32_t function_4028eb(void);
 int32_t function_402aa7(void);
 int32_t function_402d8f(void);
 int32_t function_402ece(void);
-int32_t function_402f2f(char * a1, int32_t result);
+int32_t function_402f2f(char * a1);
 int32_t function_402f9b(void);
 int32_t function_4030c7(void);
 int32_t function_40328d(int32_t * a1, int32_t a2);
 int32_t function_403319(int32_t * TokenHandle, int32_t lpName, int32_t PreviousState);
 int32_t function_403379(int32_t * TokenHandle, int32_t NewState);
-int32_t function_40338e(int32_t ** a1);
+int32_t function_40338e(int32_t ** a1, int32_t dwDesiredAccess);
 int32_t function_4034cb(char * str);
 int32_t function_403587(void);
 int32_t function_403887(int32_t * a1);
@@ -377,7 +377,7 @@ struct _WIN32_FIND_DATAA * g27 = NULL;
 struct _WIN32_FIND_DATAA * g28 = NULL;
 char g29 = 0;
 char g30 = 0;
-char * g31;
+struct _NETRESOURCEA * g31 = NULL;
 int32_t g32 = 0;
 int32_t g33 = 0;
 struct fd_set * g34 = NULL;
@@ -399,11 +399,11 @@ char * g49;
 char * g50;
 int32_t g51 = 0;
 int32_t g52 = 0;
-struct sockaddr * g53 = NULL;
+struct timeval * g53 = NULL;
 int32_t g54 = 0;
 int32_t g55 = 0;
 int32_t g56 = 0;
-struct sockaddr * g57 = NULL;
+struct timeval * g57 = NULL;
 int16_t g58 = 0;
 char * g59;
 int16_t g60 = 0;
@@ -610,7 +610,7 @@ int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4) {
     g32 = mem;
     if (mem != g5) {
         int32_t * mem2 = malloc(0x2000); // 0x4013e2
-        g31 = (char *)mem2;
+        g31 = (struct _NETRESOURCEA *)mem2;
         if ((int32_t)mem2 != g5) {
             // 0x4013f2
             function_4015ab();
@@ -1165,15 +1165,10 @@ int32_t function_4019e2(struct sockaddr * a1, int32_t protocol, int32_t a3, int3
     int32_t timeout = v2; // bp-12
     int32_t v3 = g5; // 0x4019f1
     int32_t v4 = v3; // bp-16
-    int32_t v5 = (int32_t)a1;
-    struct sockaddr * v6 = NULL; // bp-20
-    *(int32_t *)&v6 = v5;
     int32_t cp = function_4028cc((char *)a1, v3, v2, v1); // 0x4019f5
-    g4 = (int32_t)v6;
-    v6 = (struct sockaddr *)cp;
+    g4 = (int32_t)(struct timeval *)a1;
     inet_addr((char *)cp);
     g3 = 0;
-    v6 = (struct sockaddr *)protocol;
     int32_t sock_fd = socket(AF_INET, SOCK_STREAM, protocol); // 0x401a14
     g6 = sock_fd;
     int32_t result; // 0x401baa
@@ -1183,98 +1178,75 @@ int32_t function_4019e2(struct sockaddr * a1, int32_t protocol, int32_t a3, int3
     } else {
         // 0x401a25
         v4 = 1;
-        v6 = (struct sockaddr *)&v4;
         ioctlsocket(sock_fd, -0x7ffb9982, &v4);
-        int32_t v7 = g3; // 0x401a3c
+        int32_t v5 = g3; // 0x401a3c
         timeout = 60;
         char * writefds = (char *)1; // bp-300
-        int32_t v8;
-        if ((int32_t)g59 == v7) {
+        if ((int32_t)g59 == v5) {
             // 0x401a6e
             g5 = -0x7ffb9982;
-            v8 = (int32_t)v6;
             // branch -> 0x401a74
         } else {
             // 0x401a5e
-            v6 = (struct sockaddr *)&g57;
             g5 = inet_addr((char *)1);
-            v8 = g58;
             // branch -> 0x401a74
         }
         // 0x401a74
-        v6 = (struct sockaddr *)v8;
-        v6 = (struct sockaddr *)16;
         connect((int32_t)htons(2), (struct sockaddr *)g5, g6);
-        v6 = (struct sockaddr *)&timeout;
         g4 = (int32_t)&writefds;
         struct fd_set * readfds = (struct fd_set *)g3; // 0x401aa2
-        uint32_t v9 = select(g6 + 1, readfds, (struct fd_set *)&writefds, readfds, (struct timeval *)&timeout); // 0x401aa6
-        int32_t v10; // 0x401b28
-        if (v9 >= 1) {
+        uint32_t v6 = select(g6 + 1, readfds, (struct fd_set *)&writefds, readfds, (struct timeval *)&timeout); // 0x401aa6
+        if (v6 >= 1) {
             // 0x401ab0
-            v6 = (struct sockaddr *)a5;
             int32_t str; // bp-8492
-            function_40267d((char *)(0x10000 * (int32_t)&str / 0x10000), v5, protocol, a3, a8, a5);
+            function_40267d((char *)(0x10000 * (int32_t)&str / 0x10000), (int32_t)a1, protocol, a3, a8, a5);
             int32_t len = strlen((char *)&str); // 0x401ad2
             memcpy((int32_t *)(len - 0x2128 + g2), (int32_t *)a4, a5);
             int32_t length = len + a5; // 0x401af2
             g5 = length;
-            int32_t flags = g3; // 0x401afa
-            v6 = (struct sockaddr *)flags;
-            send(g6, (char *)&str, length, flags);
+            send(g6, (char *)&str, length, g3);
             if (a8 != 1) {
-                int32_t v11 = g6; // 0x401b33
-                v6 = (struct sockaddr *)v11;
-                int32_t v12 = function_40277e(v11); // 0x401b34
-                g4 = (int32_t)v6;
-                int32_t v13; // 0x401b9d
-                if (v12 != -1) {
+                int32_t v7 = g6; // 0x401b33
+                int32_t v8 = function_40277e(v7); // 0x401b34
+                g4 = (int32_t)(struct timeval *)v7;
+                if (v8 != -1) {
                     // 0x401b3f
-                    if (v12 < 0x3e800) {
-                        int32_t v14 = 0; // edi
+                    if (v8 < 0x3e800) {
+                        int32_t v9 = 0; // edi
                         // branch -> 0x401b48
-                        int32_t v15; // 0x401b8c
                         while (true) {
-                            // 0x401b48
-                            v6 = (struct sockaddr *)&timeout;
                             struct fd_set * writefds2 = (struct fd_set *)g3; // 0x401b4c
-                            int32_t v16 = select(g6 + 1, (struct fd_set *)&writefds, writefds2, writefds2, (struct timeval *)&timeout); // 0x401b59
-                            if (v16 < 1) {
+                            int32_t v10 = select(g6 + 1, (struct fd_set *)&writefds, writefds2, writefds2, (struct timeval *)&timeout); // 0x401b59
+                            if (v10 < 1) {
                                 // 0x401b28
-                                v10 = g6;
-                                v6 = (struct sockaddr *)v10;
-                                closesocket(v10);
+                                closesocket(g6);
                                 result = g3;
                                 // branch -> 0x401ba6
                                 // 0x401ba6
                                 g5 = v4;
                                 g6 = timeout;
-                                g3 = v7;
+                                g3 = v5;
                                 return result;
                             }
-                            // 0x401b63
-                            v6 = (struct sockaddr *)g3;
-                            int32_t v17 = v14; // 0x401b69
-                            int32_t v18 = recv(g6, (char *)(v17 + a6), 0x3e800 - v17, g3); // 0x401b73
-                            if (v18 == -1) {
+                            int32_t v11 = v9; // 0x401b69
+                            int32_t v12 = recv(g6, (char *)(v11 + a6), 0x3e800 - v11, g3); // 0x401b73
+                            if (v12 == -1) {
                                 // 0x401b9d
-                                v13 = g6;
-                                v6 = (struct sockaddr *)v13;
-                                closesocket(v13);
+                                closesocket(g6);
                                 // branch -> 0x401ba4
                                 // 0x401ba4
                                 // branch -> 0x401ba6
                                 // 0x401ba6
                                 g5 = v4;
                                 g6 = timeout;
-                                g3 = v7;
+                                g3 = v5;
                                 return 0;
                             }
                             // 0x401b7e
-                            if (v18 != g3) {
-                                int32_t v19 = v14 + v18; // 0x401b82
-                                v14 = v19;
-                                if (v19 >= 0x3e800) {
+                            if (v12 != g3) {
+                                int32_t v13 = v9 + v12; // 0x401b82
+                                v9 = v13;
+                                if (v13 >= 0x3e800) {
                                     // break -> 0x401b8c
                                     break;
                                 }
@@ -1282,69 +1254,54 @@ int32_t function_4019e2(struct sockaddr * a1, int32_t protocol, int32_t a3, int3
                                 continue;
                             }
                             // 0x401b8c
-                            v15 = g6;
-                            v6 = (struct sockaddr *)v15;
-                            closesocket(v15);
-                            v6 = (struct sockaddr *)1;
-                            *(int32_t *)a7 = v14;
+                            closesocket(g6);
+                            *(int32_t *)a7 = v9;
                             // branch -> 0x401ba6
                             // 0x401ba6
                             g5 = v4;
                             g6 = timeout;
-                            g3 = v7;
-                            return (int32_t)v6;
+                            g3 = v5;
+                            return (int32_t)(struct timeval *)1;
                         }
                         // 0x401b8c
-                        v15 = g6;
-                        v6 = (struct sockaddr *)v15;
-                        closesocket(v15);
-                        v6 = (struct sockaddr *)1;
-                        *(int32_t *)a7 = v14;
+                        closesocket(g6);
+                        *(int32_t *)a7 = v9;
                         // branch -> 0x401ba6
                         // 0x401ba6
                         g5 = v4;
                         g6 = timeout;
-                        g3 = v7;
-                        return (int32_t)v6;
+                        g3 = v5;
+                        return (int32_t)(struct timeval *)1;
                     }
                 }
                 // 0x401b9d
-                v13 = g6;
-                v6 = (struct sockaddr *)v13;
-                closesocket(v13);
+                closesocket(g6);
                 // branch -> 0x401ba4
                 // 0x401ba4
                 result = 0;
                 // branch -> 0x401ba6
             } else {
-                // 0x401b0a
-                v6 = (struct sockaddr *)&timeout;
                 struct fd_set * readfds2 = (struct fd_set *)g3; // 0x401b14
-                uint32_t v20 = select(g6 + 1, readfds2, (struct fd_set *)&writefds, readfds2, (struct timeval *)&timeout); // 0x401b1b
-                if (v20 >= 1) {
+                uint32_t v14 = select(g6 + 1, readfds2, (struct fd_set *)&writefds, readfds2, (struct timeval *)&timeout); // 0x401b1b
+                if (v14 >= 1) {
                     // 0x401b25
-                    v6 = (struct sockaddr *)1;
                     g3 = 1;
                     // branch -> 0x401b28
                 }
                 // 0x401b28
-                v10 = g6;
-                v6 = (struct sockaddr *)v10;
-                closesocket(v10);
+                closesocket(g6);
                 result = g3;
                 // branch -> 0x401ba6
             }
             // 0x401ba6
             g5 = v4;
             g6 = timeout;
-            g3 = v7;
+            g3 = v5;
             return result;
         }
         // 0x401b28
-        v10 = g6;
-        v6 = (struct sockaddr *)v10;
-        closesocket(v10);
-        v1 = v7;
+        closesocket(g6);
+        v1 = v5;
         result = g3;
         // branch -> 0x401ba6
     }
@@ -1569,12 +1526,12 @@ int32_t function_401e99(char * a1, int32_t a2) {
         // 0x401edb
         if (g24 == 0) {
             int32_t v9 = v5; // 0x401ee6
-            int32_t flags = 0; // 0x401ee523
-            int32_t v10 = a2; // 0x401ee322
+            int32_t flags = 0; // 0x401ee524
+            int32_t v10 = a2; // 0x401ee323
             // branch -> 0x401ee3
             while (true) {
                 int32_t buf = v9 + (int32_t)a1; // 0x401eed
-                int32_t sock = *(int32_t *)&g34; // 0x401ef01
+                int32_t sock = *(int32_t *)&g34; // 0x401ef02
                 int32_t v11 = send(sock, (char *)buf, v10 - v9, flags); // 0x401ef6
                 int32_t v12; // 0x401f2f
                 int32_t v13; // 0x401f1f
@@ -2571,20 +2528,20 @@ int32_t function_4028eb(void) {
     g5 = 0;
     g6 = 1;
     int32_t timeout; // bp-16
-    struct sockaddr * writefds; // bp-296
+    struct timeval * writefds; // bp-296
     int32_t addr; // bp-32
     int32_t lpThreadId; // bp-36
-    struct sockaddr * v4; // bp-8
+    struct timeval * v4; // bp-8
     int32_t result;
     int32_t readfds; // 0x402a33
-    int32_t hObject; // 0x402a5e
-    int32_t v5; // 0x402a6e
+    int32_t v5; // 0x402a5e
+    int32_t v6; // 0x402a6e
     int32_t lpThreadAttributes; // 0x402a7f
-    int32_t v6; // 0x402a3d
+    int32_t v7; // 0x402a3d
     int32_t * threadHandle; // 0x402a81
-    int32_t v7; // 0x402a81
-    int32_t v8; // 0x402a4d
-    int32_t v9; // 0x402a63
+    int32_t v8; // 0x402a81
+    int32_t v9; // 0x402a4d
+    int32_t v10; // 0x402a63
     int32_t sock_fd; // 0x4029b4
     if (g52 != 0) {
         // 0x4028eb
@@ -2602,17 +2559,17 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x4029c8
-        v4 = (struct sockaddr *)g6;
+        v4 = (struct timeval *)g6;
         ioctlsocket(sock_fd, -0x7ffb9982, (int32_t *)&v4);
         timeout = 60;
-        writefds = (struct sockaddr *)g6;
+        writefds = (struct timeval *)g6;
         addr = 2;
         htons(g58);
         inet_addr((char *)&g57);
         connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
         readfds = g5;
-        v6 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
-        if (v6 < 1) {
+        v7 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
+        if (v7 < 1) {
             // 0x402a90
             closesocket((int32_t)g34);
             // branch -> 0x402a9c
@@ -2625,28 +2582,28 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x402a47
-        g53 = (struct sockaddr *)g6;
+        g53 = (struct timeval *)g6;
         // branch -> 0x402a4d
         // 0x402a4d
-        v8 = g5;
-        v9 = v8;
-        if (g52 != v8) {
+        v9 = g5;
+        v10 = v9;
+        if (g52 != v9) {
             // 0x402a5e
-            hObject = g67;
-            lpThreadAttributes = v9;
-            if (hObject != v9) {
+            v5 = g67;
+            lpThreadAttributes = v10;
+            if (v5 != v10) {
                 // 0x402a67
-                CloseHandle((int32_t *)hObject);
-                v5 = g5;
-                g67 = v5;
-                lpThreadAttributes = v5;
+                CloseHandle(&((struct timeval *)v5)->e0);
+                v6 = g5;
+                g67 = v6;
+                lpThreadAttributes = v6;
                 // branch -> 0x402a74
             }
             // 0x402a74
             threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v7 = (int32_t)threadHandle;
-            g67 = v7;
-            if (v7 != g5) {
+            v8 = (int32_t)threadHandle;
+            g67 = v8;
+            if (v8 != g5) {
                 // 0x402aa0
                 result = g6;
                 // branch -> 0x402aa2
@@ -2675,25 +2632,25 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x402a55
-        v9 = g5;
+        v10 = g5;
         // branch -> 0x402a5e
         // 0x402a5e
-        hObject = g67;
-        lpThreadAttributes = v9;
-        if (hObject != v9) {
+        v5 = g67;
+        lpThreadAttributes = v10;
+        if (v5 != v10) {
             // 0x402a67
-            CloseHandle((int32_t *)hObject);
-            v5 = g5;
-            g67 = v5;
-            lpThreadAttributes = v5;
+            CloseHandle(&((struct timeval *)v5)->e0);
+            v6 = g5;
+            g67 = v6;
+            lpThreadAttributes = v6;
             // branch -> 0x402a74
         }
         // 0x402a74
         lpThreadId = 0;
         threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-        v7 = (int32_t)threadHandle;
-        g67 = v7;
-        if (v7 != g5) {
+        v8 = (int32_t)threadHandle;
+        g67 = v8;
+        if (v8 != g5) {
             // 0x402aa0
             result = g6;
             // branch -> 0x402aa2
@@ -2725,36 +2682,36 @@ int32_t function_4028eb(void) {
         return 0;
     }
     // 0x40292c
-    v4 = (struct sockaddr *)g6;
+    v4 = (struct timeval *)g6;
     ioctlsocket(sock_fd2, -0x7ffb9982, (int32_t *)&v4);
     timeout = 60;
-    writefds = (struct sockaddr *)g6;
+    writefds = (struct timeval *)g6;
     addr = 2;
     htons(81);
     connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
     int32_t readfds2 = g5; // 0x40298c
-    int32_t v10 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds2, (struct fd_set *)&writefds, (struct fd_set *)readfds2, (struct timeval *)&timeout); // 0x402996
-    if (v10 >= 1) {
+    int32_t v11 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds2, (struct fd_set *)&writefds, (struct fd_set *)readfds2, (struct timeval *)&timeout); // 0x402996
+    if (v11 >= 1) {
         // 0x402a4d
-        v8 = g5;
-        v9 = v8;
-        if (g52 != v8) {
+        v9 = g5;
+        v10 = v9;
+        if (g52 != v9) {
             // 0x402a5e
-            hObject = g67;
-            lpThreadAttributes = v9;
-            if (hObject != v9) {
+            v5 = g67;
+            lpThreadAttributes = v10;
+            if (v5 != v10) {
                 // 0x402a67
-                CloseHandle((int32_t *)hObject);
-                v5 = g5;
-                g67 = v5;
-                lpThreadAttributes = v5;
+                CloseHandle(&((struct timeval *)v5)->e0);
+                v6 = g5;
+                g67 = v6;
+                lpThreadAttributes = v6;
                 // branch -> 0x402a74
             }
             // 0x402a74
             threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v7 = (int32_t)threadHandle;
-            g67 = v7;
-            if (v7 != g5) {
+            v8 = (int32_t)threadHandle;
+            g67 = v8;
+            if (v8 != g5) {
                 // 0x402aa0
                 result = g6;
                 // branch -> 0x402aa2
@@ -2783,24 +2740,24 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x402a55
-        v9 = g5;
+        v10 = g5;
         // branch -> 0x402a5e
         // 0x402a5e
-        hObject = g67;
-        lpThreadAttributes = v9;
-        if (hObject != v9) {
+        v5 = g67;
+        lpThreadAttributes = v10;
+        if (v5 != v10) {
             // 0x402a67
-            CloseHandle((int32_t *)hObject);
-            v5 = g5;
-            g67 = v5;
-            lpThreadAttributes = v5;
+            CloseHandle(&((struct timeval *)v5)->e0);
+            v6 = g5;
+            g67 = v6;
+            lpThreadAttributes = v6;
             // branch -> 0x402a74
         }
         // 0x402a74
         threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-        v7 = (int32_t)threadHandle;
-        g67 = v7;
-        if (v7 != g5) {
+        v8 = (int32_t)threadHandle;
+        g67 = v8;
+        if (v8 != g5) {
             // 0x402aa0
             result = g6;
             // branch -> 0x402aa2
@@ -2827,17 +2784,17 @@ int32_t function_4028eb(void) {
         g34 = (struct fd_set *)sock_fd;
         if (sock_fd != -1) {
             // 0x4029c8
-            v4 = (struct sockaddr *)g6;
+            v4 = (struct timeval *)g6;
             ioctlsocket(sock_fd, -0x7ffb9982, (int32_t *)&v4);
             timeout = 60;
-            writefds = (struct sockaddr *)g6;
+            writefds = (struct timeval *)g6;
             addr = 2;
             htons(g58);
             inet_addr((char *)&g57);
             connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
             readfds = g5;
-            v6 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
-            if (v6 < 1) {
+            v7 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
+            if (v7 < 1) {
                 // 0x402a90
                 closesocket((int32_t)g34);
                 // branch -> 0x402a9c
@@ -2850,28 +2807,28 @@ int32_t function_4028eb(void) {
                 return 0;
             }
             // 0x402a47
-            g53 = (struct sockaddr *)g6;
+            g53 = (struct timeval *)g6;
             // branch -> 0x402a4d
             // 0x402a4d
-            v8 = g5;
-            v9 = v8;
-            if (g52 != v8) {
+            v9 = g5;
+            v10 = v9;
+            if (g52 != v9) {
                 // 0x402a5e
-                hObject = g67;
-                lpThreadAttributes = v9;
-                if (hObject != v9) {
+                v5 = g67;
+                lpThreadAttributes = v10;
+                if (v5 != v10) {
                     // 0x402a67
-                    CloseHandle((int32_t *)hObject);
-                    v5 = g5;
-                    g67 = v5;
-                    lpThreadAttributes = v5;
+                    CloseHandle(&((struct timeval *)v5)->e0);
+                    v6 = g5;
+                    g67 = v6;
+                    lpThreadAttributes = v6;
                     // branch -> 0x402a74
                 }
                 // 0x402a74
                 threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-                v7 = (int32_t)threadHandle;
-                g67 = v7;
-                if (v7 != g5) {
+                v8 = (int32_t)threadHandle;
+                g67 = v8;
+                if (v8 != g5) {
                     // 0x402aa0
                     result = g6;
                     // branch -> 0x402aa2
@@ -2900,24 +2857,24 @@ int32_t function_4028eb(void) {
                 return 0;
             }
             // 0x402a55
-            v9 = g5;
+            v10 = g5;
             // branch -> 0x402a5e
             // 0x402a5e
-            hObject = g67;
-            lpThreadAttributes = v9;
-            if (hObject != v9) {
+            v5 = g67;
+            lpThreadAttributes = v10;
+            if (v5 != v10) {
                 // 0x402a67
-                CloseHandle((int32_t *)hObject);
-                v5 = g5;
-                g67 = v5;
-                lpThreadAttributes = v5;
+                CloseHandle(&((struct timeval *)v5)->e0);
+                v6 = g5;
+                g67 = v6;
+                lpThreadAttributes = v6;
                 // branch -> 0x402a74
             }
             // 0x402a74
             threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v7 = (int32_t)threadHandle;
-            g67 = v7;
-            if (v7 != g5) {
+            v8 = (int32_t)threadHandle;
+            g67 = v8;
+            if (v8 != g5) {
                 // 0x402aa0
                 result = g6;
                 // branch -> 0x402aa2
@@ -2953,30 +2910,29 @@ int32_t function_402aa7(void) {
     int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x402ab7
     int32_t (*func)() = GetProcAddress(moduleHandle, "GetTickCount"); // 0x402ac5
     FreeLibrary(moduleHandle);
-    int32_t v3 = *(int32_t *)&g31; // 0x402ae06
-    memcpy((int32_t *)v3, (int32_t *)g32, (int32_t)g27);
-    int32_t v4 = 0; // esi
+    memcpy(&g31->e0, (int32_t *)g32, (int32_t)g27);
+    int32_t v3 = 0; // esi
     *(int32_t *)&g28 = *(int32_t *)&g27;
     g29 = g30;
     g26 = 0;
     g23 = NULL;
     __pseudo_call((int32_t)func);
     g33 = g30;
-    int32_t v5 = *(int32_t *)(4 * (int32_t)g29 + (int32_t)&g8 - 260); // 0x402b2a
-    __pseudo_branch(v5);
+    int32_t v4 = *(int32_t *)(4 * (int32_t)g29 + (int32_t)&g8 - 260); // 0x402b2a
+    __pseudo_branch(v4);
     g5 = 1;
     g23 = (char *)1;
     int32_t result; // 0x402c4f
-    if (g24 != v4) {
+    if (g24 != v3) {
         // 0x402c08
-        g24 = v4;
+        g24 = v3;
         g6 = (int32_t)"&ha_j]?&";
-        int32_t v6 = 90; // bp-260
+        int32_t v5 = 90; // bp-260
         strlen("&ha_j]?&");
         int32_t str = 0; // bp-255
         strcpy((char *)&str, (char *)g6);
         int32_t len = strlen((char *)g6); // 0x402c37
-        function_401f45((char *)&v6, len + 5);
+        function_401f45((char *)&v5, len + 5);
         result = g5;
         // branch -> 0x402c4f
     } else {
@@ -3018,7 +2974,7 @@ int32_t function_402d8f(void) {
             g25 = v4;
             // branch -> 0x402e29
             while (true) {
-                int32_t v7 = function_402f2f(&v1, v6); // 0x402e31
+                int32_t v7 = function_402f2f((char *)v6); // 0x402e31
                 g27 = (struct _WIN32_FIND_DATAA *)v7;
                 if (v7 == -1) {
                     // 0x402ea7
@@ -3094,7 +3050,7 @@ int32_t function_402d8f(void) {
             // 0x402db8
             if (function_402ece() != 0) {
                 // 0x402dc5
-                if (function_402f2f(&v1, 5) != -1) {
+                if (function_402f2f((char *)5) != -1) {
                     // 0x402dde
                     int32_t v11;
                     g6 = v11;
@@ -3194,12 +3150,13 @@ int32_t function_402ece(void) {
 }
 
 // Address range: 0x402f2f - 0x402f9a
-int32_t function_402f2f(char * a1, int32_t result) {
+int32_t function_402f2f(char * a1) {
     int32_t v1 = g5; // 0x402f31
+    int32_t result;
     int32_t result2 = result; // edi
     int32_t v2 = 0; // esi
     int32_t v3 = 0; // ebx
-    int32_t v4; // 0x402f4521
+    int32_t v4; // 0x402f4522
     if (result > 0x2000) {
         // 0x402f45
         result2 = 0x2000;
@@ -3218,7 +3175,7 @@ int32_t function_402f2f(char * a1, int32_t result) {
     int32_t v6 = v4; // 0x402f49
     // branch -> 0x402f49
     while (true) {
-        int32_t sock = *(int32_t *)&g34; // 0x402f571
+        int32_t sock = *(int32_t *)&g34; // 0x402f572
         int32_t v7 = recv(sock, (char *)(v5 + (int32_t)a1), v6 - v5, 0); // 0x402f5d
         if (v7 < 1) {
             // 0x402f67
@@ -3348,47 +3305,43 @@ int32_t function_402f9b(void) {
 // Address range: 0x4030c7 - 0x40328c
 int32_t function_4030c7(void) {
     // 0x4030c7
-    char lpString1; // bp-1348
-    int32_t v1 = &lpString1; // 0x4030ca
+    char str2; // bp-1348
+    int32_t v1 = &str2; // 0x4030ca
+    int32_t v2 = g3; // 0x4030d0
     g3 = 0;
-    int32_t v2 = g5; // 0x4030db
-    int32_t v3;
-    char * v4; // bp-1364
-    char * v5; // bp-1368
+    int32_t v3 = g6; // 0x4030da
+    int32_t v4 = g5; // 0x4030db
+    int32_t v5;
     int32_t v6;
     int32_t v7; // bp-324
     int32_t str; // bp-833
     int32_t lpBuffer; // bp-836
     int32_t v8;
-    int32_t v9; // 0x403186
     int32_t result; // 0x40328c
     int32_t * hObject; // 0x403189
     int32_t handleClosed; // 0x403278
     if (g62 == 2) {
-        // 0x4030e7
-        v4 = "psapi.dll";
         int32_t * moduleHandle = LoadLibraryA("psapi.dll"); // 0x4030ec
         int32_t hModule = (int32_t)moduleHandle; // 0x4030ec
         if (hModule == g3) {
             // 0x403288
-            g5 = (int32_t)v5;
-            g6 = (int32_t)v4;
+            g5 = v4;
+            g6 = v3;
             g3 = v2;
             return hModule;
         }
         int32_t func = (int32_t)GetProcAddress(moduleHandle, "EnumProcessModules"); // 0x40310b
-        v4 = "GetModuleFileNameExA";
         int32_t func2 = (int32_t)GetProcAddress((int32_t *)hModule, "GetModuleFileNameExA"); // 0x403116
-        int32_t v10 = g3; // 0x403118
-        if (func == v10 || func2 == v10) {
+        int32_t v9 = g3; // 0x403118
+        if (func == v9 || func2 == v9) {
             // 0x403288
-            g5 = (int32_t)(char *)hModule;
-            g6 = (int32_t)v4;
+            g5 = v4;
+            g6 = v3;
             g3 = v2;
             return func2;
         }
         v6 = func2;
-        v3 = func;
+        v5 = func;
         v8 = hModule;
         // 0x40312c
         g6 = 512;
@@ -3397,10 +3350,7 @@ int32_t function_4030c7(void) {
         strcat((char *)&lpBuffer, (char *)&g12);
         strcat((char *)&lpBuffer, g13);
         strcat((char *)&lpBuffer, (char *)&g48);
-        v9 = g3;
-        v4 = (char *)v9;
-        v5 = (char *)2;
-        hObject = CreateToolhelp32Snapshot(2, v9);
+        hObject = CreateToolhelp32Snapshot(2, g3);
         g5 = *(int32_t *)0x4060e0;
         if (hObject != (int32_t *)-1) {
             // 0x4031a0
@@ -3410,7 +3360,7 @@ int32_t function_4030c7(void) {
                 // branch -> 0x4031bf
                 while (true) {
                     // 0x4031bf
-                    lpString1 = 0;
+                    str2 = 0;
                     if (g62 != 2) {
                         goto lab_0x403218;
                     }
@@ -3428,14 +3378,14 @@ int32_t function_4030c7(void) {
             result = handleClosed;
         }
         // 0x403288
-        g5 = (int32_t)v5;
-        g6 = (int32_t)v4;
+        g5 = v4;
+        g6 = v3;
         g3 = v2;
         return result;
     }
     // 0x4030c7
     v6 = 0;
-    v3 = 0;
+    v5 = 0;
     v8 = 0;
     // branch -> 0x40312c
     // 0x40312c
@@ -3447,58 +3397,51 @@ int32_t function_4030c7(void) {
     strcat((char *)&lpBuffer, (char *)&g12);
     strcat((char *)&lpBuffer, g13);
     strcat((char *)&lpBuffer, (char *)&g48);
-    v9 = g3;
-    v4 = (char *)v9;
-    v5 = (char *)2;
-    hObject = CreateToolhelp32Snapshot(2, v9);
+    hObject = CreateToolhelp32Snapshot(2, g3);
     g5 = *(int32_t *)0x4060e0;
     if (hObject != (int32_t *)-1) {
         // 0x4031a0
         v7 = 296;
         if (Process32First(hObject, (struct tagPROCESSENTRY32 *)&v7)) {
-            int32_t str2 = 0; // bp-288
-            char * str3 = NULL; // bp-1404
+            int32_t str3 = 0; // bp-288
             // branch -> 0x4031bf
             while (true) {
                 // 0x4031bf
-                lpString1 = 0;
+                str2 = 0;
+                char * v10;
                 if (g62 != 2) {
                   lab_0x403218:
                     // 0x403218
-                    strcpy((char *)&str2, str3);
+                    strcpy(&str2, (char *)&str3);
                     // branch -> 0x40322d
                 } else {
                   lab_0x4031cf:
                     // 0x4031cf
-                    g3 = function_40338e((int32_t **)1040);
-                    __pseudo_call(v3);
-                    str3 = &lpString1;
+                    g3 = function_40338e((int32_t **)v10, 1040);
+                    __pseudo_call(v5);
                     __pseudo_call(v6);
                     g1 = v1;
-                    function_4034cb(&lpString1);
+                    function_4034cb(&str2);
                     CloseHandle(&((struct tagPROCESSENTRY32 *)g3)->e0);
                     g3 = 0;
                     // branch -> 0x40322d
                 }
                 // 0x40322d
-                str3 = &lpString1;
-                if (lstrcmpiA(&lpString1, (char *)&lpBuffer) == 0) {
+                if (lstrcmpiA(&str2, (char *)&lpBuffer) == 0) {
                     // 0x403259
-                    char * v11;
                     if (g62 != 2) {
                         // 0x40326f
-                        function_4038e7((int32_t)v11);
+                        function_4038e7((int32_t)v10);
                         // branch -> 0x403274
                     } else {
                         // 0x403268
-                        function_403887((int32_t *)v11);
+                        function_403887((int32_t *)v10);
                         // branch -> 0x403274
                     }
                     // 0x403274
                     // branch -> 0x403275
                 } else {
                     // 0x403245
-                    *(int32_t *)&str3 = (int32_t)hObject;
                     if (!Process32Next(hObject, (struct tagPROCESSENTRY32 *)&v7)) {
                         // break -> 0x403275
                         break;
@@ -3516,8 +3459,8 @@ int32_t function_4030c7(void) {
                     result = handleClosed;
                 }
                 // 0x403288
-                g5 = (int32_t)v5;
-                g6 = (int32_t)v4;
+                g5 = v4;
+                g6 = v3;
                 g3 = v2;
                 return result;
             }
@@ -3531,8 +3474,8 @@ int32_t function_4030c7(void) {
                 result = handleClosed;
             }
             // 0x403288
-            g5 = (int32_t)v5;
-            g6 = (int32_t)v4;
+            g5 = v4;
+            g6 = v3;
             g3 = v2;
             return result;
         }
@@ -3547,8 +3490,8 @@ int32_t function_4030c7(void) {
         result = handleClosed;
     }
     // 0x403288
-    g5 = (int32_t)v5;
-    g6 = (int32_t)v4;
+    g5 = v4;
+    g6 = v3;
     g3 = v2;
     return result;
 }
@@ -3608,13 +3551,12 @@ int32_t function_403379(int32_t * TokenHandle, int32_t NewState) {
 }
 
 // Address range: 0x40338e - 0x4034ca
-int32_t function_40338e(int32_t ** a1) {
+int32_t function_40338e(int32_t ** a1, int32_t dwDesiredAccess) {
     int32_t ** ReturnLength = a1;
     int32_t v1 = g3; // 0x403397
     int32_t v2 = g5; // 0x403399
     int32_t dwProcessId = (int32_t)a1;
     int32_t dwOptions2 = 0; // ebx
-    int32_t dwDesiredAccess;
     int32_t * v3 = OpenProcess(dwDesiredAccess, false, dwProcessId); // 0x4033a9
     int32_t lpTargetHandle = (int32_t)v3; // bp-16
     if (v3 != NULL) {
@@ -3967,7 +3909,7 @@ int32_t function_403587(void) {
                     // 0x40366b
                     *v20 = g5;
                     *v19 = v14;
-                    g6 = function_40338e((int32_t **)str);
+                    g6 = function_40338e((int32_t **)str, (int32_t)&str2);
                     *(int32_t *)(g7 + 4) = (int32_t)&v9;
                     *(int32_t *)g7 = 4;
                     *(int32_t *)(g7 - 4) = (int32_t)&c;
@@ -4146,7 +4088,7 @@ int32_t function_403887(int32_t * a1) {
     int32_t func = (int32_t)GetProcAddress(moduleHandle, "TerminateProcess"); // 0x40389c
     g5 = func;
     FreeLibrary((int32_t *)g6);
-    int32_t v1 = function_40338e((int32_t **)a1); // 0x4038b1
+    int32_t v1 = function_40338e((int32_t **)a1, 1); // 0x4038b1
     int32_t result; // 0x4038c7
     if (v1 == 0) {
         // 0x4038c3
@@ -4189,7 +4131,7 @@ int32_t function_403b42(void) {
     g2 = &v1;
     int32_t v2 = *(int32_t *)&g31; // 0x403b5a9
     int32_t str = 0; // bp-536
-    memcpy(&str, (int32_t *)v2, *(int32_t *)&g28);
+    memcpy(&str, &((struct _NETRESOURCEA *)v2)->e0, *(int32_t *)&g28);
     g6 = 0x6b46;
     int32_t found_char_pos = (int32_t)strrchr((char *)*(int32_t *)&g31, 92); // 0x403b74
     g1 = found_char_pos;
@@ -4615,7 +4557,7 @@ int32_t function_404905(void) {
     function_405a10();
     g5 = 2;
     g3 = 0;
-    char * lpcCount = NULL; // bp-24
+    struct _NETRESOURCEA * lpcCount = NULL; // bp-24
     *(int32_t *)&lpcCount = *(int32_t *)&g31;
     char * lpNetResource = (char *)2; // bp-64
     char * dwBytes = (char *)0x4000; // bp-20
@@ -4625,7 +4567,7 @@ int32_t function_404905(void) {
     dwBytes = (char *)92;
     int32_t v2;
     int32_t v3; // bp-16959
-    struct _NETRESOURCEA * lphEnum; // bp-28
+    int32_t lphEnum; // bp-28
     int32_t v4; // bp-32
     char * v5; // bp-68
     int32_t v6;
@@ -4638,9 +4580,9 @@ int32_t function_404905(void) {
     int32_t result; // 0x404b73
     int32_t v12; // 0x404a41
     if (substr_pos != g3) {
-        char * str2 = (char *)(substr_pos + 3); // 0x404970
-        lpcCount = str2;
-        int32_t found_char_pos = (int32_t)strchr(str2, 92); // 0x404971
+        int32_t str2 = substr_pos + 3; // 0x40496d
+        lpcCount = (struct _NETRESOURCEA *)str2;
+        int32_t found_char_pos = (int32_t)strchr((char *)str2, 92); // 0x404971
         g5 = found_char_pos;
         if (found_char_pos == g3) {
             // 0x404b3a
@@ -4651,22 +4593,21 @@ int32_t function_404905(void) {
             // branch -> 0x404b4a
             // 0x404b4a
             dwBytes = (char *)&v5;
-            lpcCount = (char *)&v3;
-            lphEnum = (struct _NETRESOURCEA *)(v7 - 5);
+            lpcCount = (struct _NETRESOURCEA *)&v3;
+            lphEnum = v7 - 5;
             function_402830(v7, v10, (char *)&str, (int32_t)&str);
             result = function_401f45((char *)&v1, g6);
             // branch -> 0x404b7b
             // 0x404b7b
             return result;
         }
-        // 0x404983
+        int32_t str3 = found_char_pos + 1; // 0x404983
         dwBytes = (char *)92;
-        char * str3 = (char *)(found_char_pos + 1); // 0x404988
-        lpcCount = str3;
+        lpcCount = (struct _NETRESOURCEA *)str3;
         int32_t v13 = substr_pos + 1; // 0x4049ae
         g6 = v13;
         int32_t result2; // 0x404b7f
-        if (strchr(str3, 92) == NULL) {
+        if (strchr((char *)str3, 92) == NULL) {
             // 0x4049ae
             dwBytes = (char *)2;
             *(char *)g5 = (char)g3;
@@ -4675,9 +4616,10 @@ int32_t function_404905(void) {
             v2 = 0;
             // branch -> 0x404a24
             // 0x404a24
-            lpcCount = (char *)&lphEnum;
-            lphEnum = (struct _NETRESOURCEA *)&lpNetResource;
+            dwBytes = (char *)&lphEnum;
+            lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
             dwType = g3;
+            lphEnum = dwType;
             v11 = WNetOpenEnumA(dwScope, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
             if (v11 == 0) {
                 // 0x404a3c
@@ -4702,15 +4644,15 @@ int32_t function_404905(void) {
             // branch -> 0x404b4a
             // 0x404b4a
             dwBytes = (char *)&v5;
-            lpcCount = (char *)&v3;
-            lphEnum = (struct _NETRESOURCEA *)(v7 - 5);
+            lpcCount = (struct _NETRESOURCEA *)&v3;
+            lphEnum = v7 - 5;
             function_402830(v7, v10, (char *)&str, (int32_t)&str);
             result2 = function_401f45((char *)&v1, g6);
             // branch -> 0x404b7b
         } else {
             char * str5 = (char *)v13; // 0x404996
             dwBytes = str5;
-            int32_t str4 = *(int32_t *)&g31; // 0x40499714
+            int32_t str4 = *(int32_t *)&g31; // 0x40499713
             *(int32_t *)&lpcCount = str4;
             strcpy((char *)str4, str5);
             g4 = (int32_t)dwBytes;
@@ -4720,7 +4662,7 @@ int32_t function_404905(void) {
         // 0x404b7b
         return result2;
     }
-    int32_t str6 = *(int32_t *)&g31; // 0x4049b917
+    int32_t str6 = *(int32_t *)&g31; // 0x4049b916
     *(int32_t *)&lpcCount = str6;
     char * found_char_pos2 = strrchr((char *)str6, 92); // 0x4049c5
     int32_t v14 = g3; // 0x4049c8
@@ -4733,8 +4675,8 @@ int32_t function_404905(void) {
         // branch -> 0x404b4a
         // 0x404b4a
         dwBytes = (char *)&v5;
-        lpcCount = (char *)&v3;
-        lphEnum = (struct _NETRESOURCEA *)(v7 - 5);
+        lpcCount = (struct _NETRESOURCEA *)&v3;
+        lphEnum = v7 - 5;
         function_402830(v7, v10, (char *)&str, (int32_t)&str);
         result = function_401f45((char *)&v1, g6);
         // branch -> 0x404b7b
@@ -4743,16 +4685,17 @@ int32_t function_404905(void) {
     }
     // 0x4049d1
     *found_char_pos2 = (char)v14;
-    char * str11 = g31; // 0x4049d3
-    if (found_char_pos2 == str11) {
+    struct _NETRESOURCEA * str10 = g31; // 0x4049d3
+    if (found_char_pos2 == (char *)str10) {
         // 0x4049d1
         v2 = 0;
         // branch -> 0x404a24
         // 0x404a24
-        lphEnum = NULL;
-        lpcCount = (char *)&lphEnum;
-        lphEnum = (struct _NETRESOURCEA *)&lpNetResource;
+        lphEnum = 0;
+        dwBytes = (char *)&lphEnum;
+        lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
         dwType = g3;
+        lphEnum = dwType;
         v11 = WNetOpenEnumA(g5, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
         if (v11 == 0) {
             // 0x404a3c
@@ -4772,16 +4715,16 @@ int32_t function_404905(void) {
                 int32_t v16; // bp-16
                 int32_t v17;
                 int32_t v18; // 0x404a6a
-                char * v19; // 0x404a72
+                struct _NETRESOURCEA * v19; // 0x404a72
                 while (true) {
                     // 0x404a4c
                     memset((int32_t *)*(int32_t *)&dwBytes, v9, v8);
-                    int32_t v20 = WNetEnumResourceA(&lphEnum->e0, (int32_t *)&lpcCount, (int32_t *)g5, (int32_t *)&dwBytes); // 0x404a65
+                    int32_t v20 = WNetEnumResourceA((int32_t *)lphEnum, (int32_t *)&lpcCount, (int32_t *)g5, (int32_t *)&dwBytes); // 0x404a65
                     v18 = g3;
                     if (v20 != v18) {
                         // 0x404b23
                         GlobalFree((int32_t *)g5);
-                        WNetCloseEnum(&lphEnum->e0);
+                        WNetCloseEnum((int32_t *)lphEnum);
                         g6 = v6;
                         if (v6 != 5) {
                             // 0x404b23
@@ -4791,8 +4734,8 @@ int32_t function_404905(void) {
                             // 0x404b4a
                             v5 = NULL;
                             dwBytes = (char *)&v5;
-                            lpcCount = (char *)&v3;
-                            lphEnum = (struct _NETRESOURCEA *)(v7 - 5);
+                            lpcCount = (struct _NETRESOURCEA *)&v3;
+                            lphEnum = v7 - 5;
                             function_402830(v7, v3, (char *)&str, (int32_t)&str);
                             result = function_401f45((char *)&v1, g6);
                             // branch -> 0x404b7b
@@ -4807,8 +4750,8 @@ int32_t function_404905(void) {
                         // branch -> 0x404b4a
                         // 0x404b4a
                         dwBytes = (char *)&v5;
-                        lpcCount = (char *)&v3;
-                        lphEnum = (struct _NETRESOURCEA *)(v7 - 5);
+                        lpcCount = (struct _NETRESOURCEA *)&v3;
+                        lphEnum = v7 - 5;
                         function_402830(v7, v10, (char *)&str, (int32_t)&str);
                         result = function_401f45((char *)&v1, g6);
                         // branch -> 0x404b7b
@@ -4832,42 +4775,40 @@ int32_t function_404905(void) {
                 int32_t v22 = v6;
                 int32_t v23 = v17;
                 int32_t v24 = v18; // 0x404a7f
-                int32_t v25 = v18; // 0x404b0c23
+                int32_t v25 = v18; // 0x404b0c22
                 // branch -> 0x404a7d
                 while (true) {
                     int32_t v26 = *(int32_t *)v21; // 0x404a7d
                     int32_t v27 = v22;
                     int32_t v28 = v23;
-                    char * v29 = v19; // 0x404b15
+                    struct _NETRESOURCEA * v29 = v19; // 0x404b15
                     int32_t v30 = v21; // 0x404b0f
                     int32_t v31 = v25; // 0x404b0c
                     if (v26 != v24) {
                         // 0x404a87
                         if (*(int32_t *)(v21 - 16) == 1) {
-                            char * str7 = (char *)(v26 + 2); // 0x404a92
-                            lpNetResource = str7;
-                            int32_t found_char_pos3 = (int32_t)strchr(str7, 92); // 0x404a93
+                            int32_t found_char_pos3 = (int32_t)strchr((char *)(v26 + 2), 92); // 0x404a93
                             if (found_char_pos3 != g3) {
                                 // 0x404a9f
                                 *(int32_t *)g6 = found_char_pos3 + 1;
                                 // branch -> 0x404aa2
                             }
                         }
-                        char * str8 = (char *)(v22 - 0x4240 + g2); // 0x404aae
-                        lpNetResource = str8;
-                        strcpy(str8, (char *)*(int32_t *)g6);
-                        char * str9 = (char *)*(int32_t *)g6; // 0x404ab4
-                        v5 = str9;
-                        int32_t v32 = v22 + strlen(str9); // 0x404abe
+                        // 0x404aa2
+                        strcpy((char *)(v22 - 0x4240 + g2), (char *)*(int32_t *)g6);
+                        char * str7 = (char *)*(int32_t *)g6; // 0x404ab4
+                        lpNetResource = str7;
+                        int32_t v32 = v22 + strlen(str7); // 0x404abe
                         g5 = v32;
                         if (v2 != g3) {
-                            int32_t v33 = *(int32_t *)g6; // 0x404acc
-                            lpNetResource = (char *)v33;
-                            int32_t str10; // bp-580
-                            function_404b80(v33, (int32_t)&str10);
-                            v5 = (char *)&str10;
-                            strcpy((char *)(g2 - 0x4240 + g5), (char *)&str10);
-                            v32 = g5 + strlen((char *)&str10);
+                            // 0x404ac5
+                            int32_t str9; // bp-580
+                            function_404b80(*(int32_t *)g6, (int32_t)&str9);
+                            lpNetResource = (char *)&str9;
+                            char * str8 = (char *)(g2 - 0x4240 + g5); // 0x404ae1
+                            v5 = str8;
+                            strcpy(str8, (char *)&str9);
+                            v32 = g5 + strlen((char *)&str9);
                             // branch -> 0x404af8
                         }
                         // 0x404af8
@@ -4880,11 +4821,11 @@ int32_t function_404905(void) {
                         v31 = v16;
                         // branch -> 0x404b0c
                     }
-                    int32_t v34 = v31 + 1; // 0x404b0c
-                    v16 = v34;
-                    int32_t v35 = v30 + 32; // 0x404b0f
-                    g6 = v35;
-                    if (v34 >= (int32_t)v29) {
+                    int32_t v33 = v31 + 1; // 0x404b0c
+                    v16 = v33;
+                    int32_t v34 = v30 + 32; // 0x404b0f
+                    g6 = v34;
+                    if (v33 >= (int32_t)v29) {
                         v6 = v27;
                         v15 = v28;
                         goto lab_0x404a4c;
@@ -4894,8 +4835,8 @@ int32_t function_404905(void) {
                     v23 = v28;
                     v19 = v29;
                     v24 = g3;
-                    v25 = v34;
-                    v21 = v35;
+                    v25 = v33;
+                    v21 = v34;
                     // branch -> 0x404a7d
                 }
             }
@@ -4903,19 +4844,20 @@ int32_t function_404905(void) {
     } else {
         // 0x4049dd
         dwBytes = (char *)92;
-        lpcCount = str11;
-        char * found_char_pos4 = strrchr(str11, 92); // 0x4049e0
+        lpcCount = str10;
+        char * found_char_pos4 = strrchr((char *)str10, 92); // 0x4049e0
         if ((int32_t)found_char_pos4 != g3) {
             int32_t dwScope2 = g5; // 0x4049ec
-            char * v36 = g31; // 0x404a15
+            struct _NETRESOURCEA * v35 = g31; // 0x404a15
             if (g62 != dwScope2) {
                 // 0x404a15
-                if (found_char_pos4 != v36) {
+                if (found_char_pos4 != (char *)v35) {
                     v2 = 0;
                     // 0x404a24
-                    lpcCount = (char *)&lphEnum;
-                    lphEnum = (struct _NETRESOURCEA *)&lpNetResource;
+                    dwBytes = (char *)&lphEnum;
+                    lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
                     dwType = g3;
+                    lphEnum = dwType;
                     v11 = WNetOpenEnumA(dwScope2, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
                     if (v11 == 0) {
                         // 0x404a3c
@@ -4940,8 +4882,8 @@ int32_t function_404905(void) {
                     // branch -> 0x404b4a
                     // 0x404b4a
                     dwBytes = (char *)&v5;
-                    lpcCount = (char *)&v3;
-                    lphEnum = (struct _NETRESOURCEA *)(v7 - 5);
+                    lpcCount = (struct _NETRESOURCEA *)&v3;
+                    lphEnum = v7 - 5;
                     function_402830(v7, v10, (char *)&str, (int32_t)&str);
                     result = function_401f45((char *)&v1, g6);
                     // branch -> 0x404b7b
@@ -4950,14 +4892,15 @@ int32_t function_404905(void) {
                 }
             } else {
                 // 0x4049fa
-                if (found_char_pos4 == v36) {
+                if (found_char_pos4 == (char *)v35) {
                     // 0x404a02
                     v2 = 0;
                     // branch -> 0x404a24
                     // 0x404a24
-                    lpcCount = (char *)&lphEnum;
-                    lphEnum = (struct _NETRESOURCEA *)&lpNetResource;
+                    dwBytes = (char *)&lphEnum;
+                    lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
                     dwType = g3;
+                    lphEnum = dwType;
                     v11 = WNetOpenEnumA(dwScope2, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
                     if (v11 == 0) {
                         // 0x404a3c
@@ -4982,8 +4925,8 @@ int32_t function_404905(void) {
                     // branch -> 0x404b4a
                     // 0x404b4a
                     dwBytes = (char *)&v5;
-                    lpcCount = (char *)&v3;
-                    lphEnum = (struct _NETRESOURCEA *)(v7 - 5);
+                    lpcCount = (struct _NETRESOURCEA *)&v3;
+                    lphEnum = v7 - 5;
                     function_402830(v7, v10, (char *)&str, (int32_t)&str);
                     result = function_401f45((char *)&v1, g6);
                     // branch -> 0x404b7b
@@ -4995,9 +4938,10 @@ int32_t function_404905(void) {
             v2 = 1;
             // branch -> 0x404a24
             // 0x404a24
-            lpcCount = (char *)&lphEnum;
-            lphEnum = (struct _NETRESOURCEA *)&lpNetResource;
+            dwBytes = (char *)&lphEnum;
+            lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
             dwType = g3;
+            lphEnum = dwType;
             v11 = WNetOpenEnumA(dwScope2, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
             if (v11 == 0) {
                 // 0x404a3c
@@ -5024,8 +4968,8 @@ int32_t function_404905(void) {
     // branch -> 0x404b4a
     // 0x404b4a
     dwBytes = (char *)&v5;
-    lpcCount = (char *)&v3;
-    lphEnum = (struct _NETRESOURCEA *)(v7 - 5);
+    lpcCount = (struct _NETRESOURCEA *)&v3;
+    lphEnum = v7 - 5;
     function_402830(v7, v10, (char *)&str, (int32_t)&str);
     result = function_401f45((char *)&v1, g6);
     // branch -> 0x404b7b
@@ -5057,6 +5001,7 @@ int32_t function_404ba8(int16_t * str2, int32_t a2) {
     int32_t v1 = (int32_t)str2; // 0x404bb1
     char * v2 = (char *)g5; // bp-1112
     struct hostent * v3 = gethostbyname((char *)(v1 + 2)); // 0x404bbb
+    int16_t * v4; // bp-1124
     int32_t str; // bp-76
     if (v3 == NULL) {
         // 0x404be9
@@ -5064,13 +5009,14 @@ int32_t function_404ba8(int16_t * str2, int32_t a2) {
         strcpy((char *)&str, (char *)&g68);
         // branch -> 0x404bf9
     } else {
-        int32_t v4 = *(int32_t *)((int32_t)v3 + 12); // 0x404bcb
+        int32_t v5 = *(int32_t *)((int32_t)v3 + 12); // 0x404bcb
         in = (struct in_addr){
             .e0 = 0
         };
-        in.e0 = *(int32_t *)*(int32_t *)v4;
-        char * v5 = inet_ntoa(in); // 0x404bd2
-        sprintf((char *)&str, "[%s:", v5);
+        in.e0 = *(int32_t *)*(int32_t *)v5;
+        char * v6 = inet_ntoa(in); // 0x404bd2
+        v4 = (int16_t *)&str;
+        sprintf((char *)&str, "[%s:", v6);
         // branch -> 0x404bf9
     }
     // 0x404bf9
@@ -5080,59 +5026,65 @@ int32_t function_404ba8(int16_t * str2, int32_t a2) {
         // branch -> 0x404c0f
     }
     int32_t * moduleHandle = LoadLibraryA("Netapi32"); // 0x404c14
-    int16_t * v6; // bp-1128
-    char * v7; // bp-1136
-    char * v8;
+    int16_t * v7; // bp-1128
     int32_t chars_printed; // 0x404ddd
+    int16_t * v8; // 0x404ddb
     if (moduleHandle != NULL) {
         int32_t (*func)() = GetProcAddress(moduleHandle, "NetServerGetInfo"); // 0x404c3d
         if (func != NULL) {
             int32_t CodePage = 0; // edi
-            char * v9;
+            int16_t * v9; // bp-1120
             int16_t * format2; // 0x404dd4
             if (GetProcAddress(moduleHandle, "NetApiBufferFree") == NULL) {
                 // 0x404dc8
-                v9 = v8;
+                v9 = (int16_t *)"%sAddrErr]";
                 format2 = (int16_t *)"%sAddrErr]";
                 // branch -> 0x404dd1
             } else {
                 int32_t format = 0; // bp-588
-                int32_t len = strlen((char *)str2); // 0x404c7a
-                v6 = NULL;
-                *(int32_t *)&v6 = v1;
+                *(int32_t *)&v4 = v1;
+                int32_t cbMultiByte = strlen((char *)str2) + 1; // 0x404c80
+                v4 = (int16_t *)cbMultiByte;
+                v7 = NULL;
+                *(int32_t *)&v7 = v1;
                 int16_t * lpWideCharStr = (int16_t *)&format; // 0x404c87
-                MultiByteToWideChar(CodePage, CodePage, (char *)str2, len + 1, lpWideCharStr, (int32_t)(struct timeval *)512);
+                MultiByteToWideChar(CodePage, CodePage, (char *)str2, cbMultiByte, lpWideCharStr, (int32_t)(struct timeval *)512);
                 int32_t wstr = 0; // bp-1100
+                v4 = (int16_t *)&wstr;
                 swprintf((int16_t *)&wstr, (int32_t)L"%s", (int16_t *)&format);
-                v6 = (int16_t *)0x404cb9;
+                v9 = (int16_t *)101;
+                v4 = (int16_t *)&wstr;
+                v7 = (int16_t *)0x404cb9;
                 __pseudo_call((int32_t)func);
-                v7 = "%sErr]";
-                v9 = (char *)&str;
                 format2 = (int16_t *)101;
                 // branch -> 0x404dd1
             }
             // 0x404dd1
+            v4 = (int16_t *)a2;
             // branch -> 0x404dd9
             // 0x404dd9
             g5 = (int32_t)v7;
-            g6 = (int32_t)v9;
-            g3 = (int32_t)v6;
+            g6 = (int32_t)v4;
+            g3 = (int32_t)v9;
             return sprintf(str3, (char *)format2);
         }
         // 0x404c46
         // branch -> 0x404dd1
         // 0x404dd1
+        v4 = (int16_t *)a2;
         chars_printed = sprintf(str3, (char *)(int16_t *)"%sNetServerGetInfo");
+        v8 = (int16_t *)"%sNetServerGetInfo";
         // branch -> 0x404dd9
     } else {
         // 0x404c20
         chars_printed = sprintf(str3, "%sLibErr]", v2);
+        v8 = (int16_t *)a2;
         // branch -> 0x404dd9
     }
     // 0x404dd9
     g5 = (int32_t)v7;
-    g6 = (int32_t)v8;
-    g3 = (int32_t)v6;
+    g6 = (int32_t)v4;
+    g3 = (int32_t)v8;
     return chars_printed;
 }
 
@@ -5433,7 +5385,7 @@ int32_t function_40511a(struct _STARTUPINFOA * str) {
     char * found_char_pos3 = strrchr((char *)&str2, 92); // 0x40519c
     int32_t v6 = (int32_t)found_char_pos3; // 0x40519c
     int32_t v7; // 0x4051c3
-    int32_t lpCommandLine2; // 0x4051e68
+    int32_t lpCommandLine2; // 0x4051e610
     if (v6 != v4) {
         char v8 = v4; // 0x4051b3
         int32_t v9;
@@ -5803,6 +5755,6 @@ int32_t function_405bf4(void) {
 // --------------------- Meta-Information ---------------------
 
 // Detected compiler/packer: microsoft linker (6.0)
-// Detected language: Visual C++
+// Detected language: C++
 // Detected functions: 88
-// Decompilation date: 2018-02-02 21:35:19
+// Decompilation date: 2018-03-28 18:37:18
