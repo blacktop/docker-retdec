@@ -16,7 +16,7 @@ This repository contains a **Dockerfile** of [RetDec](https://github.com/avast-t
 $ docker images
 
 REPOSITORY          TAG        SIZE       TAR
-blacktop/retdec     latest     4.31GB     4.29GB
+blacktop/retdec     latest     4.29GB     369MB
 ```
 
 > **NOTE:** why is this image so large??? :neutral_face:
