@@ -8,7 +8,7 @@ This repository contains a **Dockerfile** of [RetDec](https://github.com/avast-t
 
 ## Dependencies
 
-* [ubuntu:bionic](https://hub.docker.com/r/_/ubuntu/)
+- [ubuntu:bionic](https://hub.docker.com/r/_/ubuntu/)
 
 ## Image Tags
 

