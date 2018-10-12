@@ -5,22 +5,21 @@
 FROM ubuntu:bionic as builder
 
 RUN buildDeps='ca-certificates \
-               build-essential \
-               libtinfo-dev \
-               zlib1g-dev \
-               pkg-config \
-               coreutils \
-               autoconf \
-               git-core \
-               automake \
-               doxygen \
-               libtool \
-               cmake \
-               bison \
-               flex \
-               wget \
-               perl \
-               m4' \
+  build-essential \
+  zlib1g-dev \
+  pkg-config \
+  coreutils \
+  autoconf \
+  git-core \
+  automake \
+  doxygen \
+  libtool \
+  cmake \
+  bison \
+  flex \
+  wget \
+  perl \
+  m4' \
   && set -ex \
   && apt-get update -q \
   && apt-get install -y $buildDeps bc graphviz upx bash python3
@@ -28,7 +27,7 @@ RUN buildDeps='ca-certificates \
 RUN echo "===> Install retdec..." \
   && set -ex \
   && cd /tmp \
-  && git clone --recursive https://github.com/avast-tl/retdec.git \
+  && git clone https://github.com/avast-tl/retdec.git \
   && cd retdec \
   && mkdir -p build \
   && cd build \

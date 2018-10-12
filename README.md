@@ -17,6 +17,7 @@ $ docker images
 
 REPOSITORY          TAG        SIZE       TAR
 blacktop/retdec     latest     4.29GB     369MB
+blacktop/retdec     3.2        4.29GB     369MB
 ```
 
 > **NOTE:** why is this image so large??? :neutral_face:
