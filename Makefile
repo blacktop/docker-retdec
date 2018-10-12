@@ -22,7 +22,7 @@ endif
 tags:
 	docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}" $(ORG)/$(NAME)
 
-test: stop-all ## Test docker image
+test: ## Test docker image
 	@echo "===> Running tests..."
 	@cd samples; test -f $(MALWARE) || wget https://github.com/maliceio/malice-av/raw/master/samples/$(MALWARE)
 	@cd samples; docker run --rm -v `pwd`:/samples $(ORG)/$(NAME):$(BUILD) --cleanup $(MALWARE)

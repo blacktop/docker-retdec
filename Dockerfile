@@ -61,5 +61,5 @@ WORKDIR /samples
 
 USER retdec
 
-ENTRYPOINT ["retdec-decompiler.sh"]
+ENTRYPOINT ["retdec-decompiler.py"]
 CMD ["--help"]
