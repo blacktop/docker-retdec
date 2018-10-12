@@ -4,6 +4,8 @@
 .gitignore
 
 samples*
+.circleci*
+hooks*
 
 LATEST
 LICENSE
